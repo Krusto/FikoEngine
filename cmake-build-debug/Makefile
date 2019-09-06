@@ -111,341 +111,341 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FikoEngine
+# Target rules for targets named Engine
 
 # Build rule for target.
-FikoEngine: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 FikoEngine
-.PHONY : FikoEngine
+Engine: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Engine
+.PHONY : Engine
 
 # fast build rule for target.
-FikoEngine/fast:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/build
-.PHONY : FikoEngine/fast
+Engine/fast:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/build
+.PHONY : Engine/fast
 
-FikoEngine/Application.o: FikoEngine/Application.cpp.o
+Engine/Application.o: Engine/Application.cpp.o
 
-.PHONY : FikoEngine/Application.o
-
-# target to build an object file
-FikoEngine/Application.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o
-.PHONY : FikoEngine/Application.cpp.o
-
-FikoEngine/Application.i: FikoEngine/Application.cpp.i
-
-.PHONY : FikoEngine/Application.i
-
-# target to preprocess a source file
-FikoEngine/Application.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.i
-.PHONY : FikoEngine/Application.cpp.i
-
-FikoEngine/Application.s: FikoEngine/Application.cpp.s
-
-.PHONY : FikoEngine/Application.s
-
-# target to generate assembly for a file
-FikoEngine/Application.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s
-.PHONY : FikoEngine/Application.cpp.s
-
-FikoEngine/Logger/lwlog/formatter.o: FikoEngine/Logger/lwlog/formatter.cpp.o
-
-.PHONY : FikoEngine/Logger/lwlog/formatter.o
+.PHONY : Engine/Application.o
 
 # target to build an object file
-FikoEngine/Logger/lwlog/formatter.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.o
+Engine/Application.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Application.cpp.o
+.PHONY : Engine/Application.cpp.o
 
-FikoEngine/Logger/lwlog/formatter.i: FikoEngine/Logger/lwlog/formatter.cpp.i
+Engine/Application.i: Engine/Application.cpp.i
 
-.PHONY : FikoEngine/Logger/lwlog/formatter.i
+.PHONY : Engine/Application.i
 
 # target to preprocess a source file
-FikoEngine/Logger/lwlog/formatter.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.i
+Engine/Application.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Application.cpp.i
+.PHONY : Engine/Application.cpp.i
 
-FikoEngine/Logger/lwlog/formatter.s: FikoEngine/Logger/lwlog/formatter.cpp.s
+Engine/Application.s: Engine/Application.cpp.s
 
-.PHONY : FikoEngine/Logger/lwlog/formatter.s
+.PHONY : Engine/Application.s
 
 # target to generate assembly for a file
-FikoEngine/Logger/lwlog/formatter.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.s
+Engine/Application.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Application.cpp.s
+.PHONY : Engine/Application.cpp.s
 
-FikoEngine/Logger/lwlog/lwlog.o: FikoEngine/Logger/lwlog/lwlog.cpp.o
+Engine/Logger/lwlog/formatter.o: Engine/Logger/lwlog/formatter.cpp.o
 
-.PHONY : FikoEngine/Logger/lwlog/lwlog.o
+.PHONY : Engine/Logger/lwlog/formatter.o
 
 # target to build an object file
-FikoEngine/Logger/lwlog/lwlog.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.o
+Engine/Logger/lwlog/formatter.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/formatter.cpp.o
+.PHONY : Engine/Logger/lwlog/formatter.cpp.o
 
-FikoEngine/Logger/lwlog/lwlog.i: FikoEngine/Logger/lwlog/lwlog.cpp.i
+Engine/Logger/lwlog/formatter.i: Engine/Logger/lwlog/formatter.cpp.i
 
-.PHONY : FikoEngine/Logger/lwlog/lwlog.i
+.PHONY : Engine/Logger/lwlog/formatter.i
 
 # target to preprocess a source file
-FikoEngine/Logger/lwlog/lwlog.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.i
+Engine/Logger/lwlog/formatter.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/formatter.cpp.i
+.PHONY : Engine/Logger/lwlog/formatter.cpp.i
 
-FikoEngine/Logger/lwlog/lwlog.s: FikoEngine/Logger/lwlog/lwlog.cpp.s
+Engine/Logger/lwlog/formatter.s: Engine/Logger/lwlog/formatter.cpp.s
 
-.PHONY : FikoEngine/Logger/lwlog/lwlog.s
+.PHONY : Engine/Logger/lwlog/formatter.s
 
 # target to generate assembly for a file
-FikoEngine/Logger/lwlog/lwlog.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.s
+Engine/Logger/lwlog/formatter.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/formatter.cpp.s
+.PHONY : Engine/Logger/lwlog/formatter.cpp.s
 
-FikoEngine/Logger/lwlog/registry.o: FikoEngine/Logger/lwlog/registry.cpp.o
+Engine/Logger/lwlog/lwlog.o: Engine/Logger/lwlog/lwlog.cpp.o
 
-.PHONY : FikoEngine/Logger/lwlog/registry.o
+.PHONY : Engine/Logger/lwlog/lwlog.o
 
 # target to build an object file
-FikoEngine/Logger/lwlog/registry.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.o
+Engine/Logger/lwlog/lwlog.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/lwlog.cpp.o
+.PHONY : Engine/Logger/lwlog/lwlog.cpp.o
 
-FikoEngine/Logger/lwlog/registry.i: FikoEngine/Logger/lwlog/registry.cpp.i
+Engine/Logger/lwlog/lwlog.i: Engine/Logger/lwlog/lwlog.cpp.i
 
-.PHONY : FikoEngine/Logger/lwlog/registry.i
+.PHONY : Engine/Logger/lwlog/lwlog.i
 
 # target to preprocess a source file
-FikoEngine/Logger/lwlog/registry.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.i
+Engine/Logger/lwlog/lwlog.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/lwlog.cpp.i
+.PHONY : Engine/Logger/lwlog/lwlog.cpp.i
 
-FikoEngine/Logger/lwlog/registry.s: FikoEngine/Logger/lwlog/registry.cpp.s
+Engine/Logger/lwlog/lwlog.s: Engine/Logger/lwlog/lwlog.cpp.s
 
-.PHONY : FikoEngine/Logger/lwlog/registry.s
+.PHONY : Engine/Logger/lwlog/lwlog.s
 
 # target to generate assembly for a file
-FikoEngine/Logger/lwlog/registry.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.s
+Engine/Logger/lwlog/lwlog.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/lwlog.cpp.s
+.PHONY : Engine/Logger/lwlog/lwlog.cpp.s
 
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o: FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
+Engine/Logger/lwlog/registry.o: Engine/Logger/lwlog/registry.cpp.o
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o
+.PHONY : Engine/Logger/lwlog/registry.o
 
 # target to build an object file
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
+Engine/Logger/lwlog/registry.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/registry.cpp.o
+.PHONY : Engine/Logger/lwlog/registry.cpp.o
 
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.i: FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
+Engine/Logger/lwlog/registry.i: Engine/Logger/lwlog/registry.cpp.i
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.i
+.PHONY : Engine/Logger/lwlog/registry.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
+Engine/Logger/lwlog/registry.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/registry.cpp.i
+.PHONY : Engine/Logger/lwlog/registry.cpp.i
 
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.s: FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
+Engine/Logger/lwlog/registry.s: Engine/Logger/lwlog/registry.cpp.s
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.s
+.PHONY : Engine/Logger/lwlog/registry.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
+Engine/Logger/lwlog/registry.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Logger/lwlog/registry.cpp.s
+.PHONY : Engine/Logger/lwlog/registry.cpp.s
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.o: FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
+Engine/Renderer/Platform/Vulkan/AllocationManger.o: Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.o
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.o
 
 # target to build an object file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
+Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.i: FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
+Engine/Renderer/Platform/Vulkan/AllocationManger.i: Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.i
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
+Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.s: FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
+Engine/Renderer/Platform/Vulkan/AllocationManger.s: Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.s
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
+Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
+.PHONY : Engine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.o: FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanCore.o: Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.o
 
 # target to build an object file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.i: FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanCore.i: Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.s: FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanCore.s: Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.o: FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.o: Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.o
 
 # target to build an object file
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.i: FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.i: Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
 
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.s: FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.s: Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
 
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
-.PHONY : FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
 
-FikoEngine/Renderer/RenderCommand.o: FikoEngine/Renderer/RenderCommand.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.o: Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
 
-.PHONY : FikoEngine/Renderer/RenderCommand.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.o
 
 # target to build an object file
-FikoEngine/Renderer/RenderCommand.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o
-.PHONY : FikoEngine/Renderer/RenderCommand.cpp.o
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
 
-FikoEngine/Renderer/RenderCommand.i: FikoEngine/Renderer/RenderCommand.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.i: Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
 
-.PHONY : FikoEngine/Renderer/RenderCommand.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/RenderCommand.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.i
-.PHONY : FikoEngine/Renderer/RenderCommand.cpp.i
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
 
-FikoEngine/Renderer/RenderCommand.s: FikoEngine/Renderer/RenderCommand.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.s: Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
 
-.PHONY : FikoEngine/Renderer/RenderCommand.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/RenderCommand.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.s
-.PHONY : FikoEngine/Renderer/RenderCommand.cpp.s
+Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
+.PHONY : Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
 
-FikoEngine/Renderer/Renderer.o: FikoEngine/Renderer/Renderer.cpp.o
+Engine/Renderer/RenderCommand.o: Engine/Renderer/RenderCommand.cpp.o
 
-.PHONY : FikoEngine/Renderer/Renderer.o
+.PHONY : Engine/Renderer/RenderCommand.o
 
 # target to build an object file
-FikoEngine/Renderer/Renderer.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o
-.PHONY : FikoEngine/Renderer/Renderer.cpp.o
+Engine/Renderer/RenderCommand.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RenderCommand.cpp.o
+.PHONY : Engine/Renderer/RenderCommand.cpp.o
 
-FikoEngine/Renderer/Renderer.i: FikoEngine/Renderer/Renderer.cpp.i
+Engine/Renderer/RenderCommand.i: Engine/Renderer/RenderCommand.cpp.i
 
-.PHONY : FikoEngine/Renderer/Renderer.i
+.PHONY : Engine/Renderer/RenderCommand.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/Renderer.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i
-.PHONY : FikoEngine/Renderer/Renderer.cpp.i
+Engine/Renderer/RenderCommand.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RenderCommand.cpp.i
+.PHONY : Engine/Renderer/RenderCommand.cpp.i
 
-FikoEngine/Renderer/Renderer.s: FikoEngine/Renderer/Renderer.cpp.s
+Engine/Renderer/RenderCommand.s: Engine/Renderer/RenderCommand.cpp.s
 
-.PHONY : FikoEngine/Renderer/Renderer.s
+.PHONY : Engine/Renderer/RenderCommand.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/Renderer.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s
-.PHONY : FikoEngine/Renderer/Renderer.cpp.s
+Engine/Renderer/RenderCommand.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RenderCommand.cpp.s
+.PHONY : Engine/Renderer/RenderCommand.cpp.s
 
-FikoEngine/Renderer/RendererAPI.o: FikoEngine/Renderer/RendererAPI.cpp.o
+Engine/Renderer/Renderer.o: Engine/Renderer/Renderer.cpp.o
 
-.PHONY : FikoEngine/Renderer/RendererAPI.o
+.PHONY : Engine/Renderer/Renderer.o
 
 # target to build an object file
-FikoEngine/Renderer/RendererAPI.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o
-.PHONY : FikoEngine/Renderer/RendererAPI.cpp.o
+Engine/Renderer/Renderer.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Renderer.cpp.o
+.PHONY : Engine/Renderer/Renderer.cpp.o
 
-FikoEngine/Renderer/RendererAPI.i: FikoEngine/Renderer/RendererAPI.cpp.i
+Engine/Renderer/Renderer.i: Engine/Renderer/Renderer.cpp.i
 
-.PHONY : FikoEngine/Renderer/RendererAPI.i
+.PHONY : Engine/Renderer/Renderer.i
 
 # target to preprocess a source file
-FikoEngine/Renderer/RendererAPI.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i
-.PHONY : FikoEngine/Renderer/RendererAPI.cpp.i
+Engine/Renderer/Renderer.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Renderer.cpp.i
+.PHONY : Engine/Renderer/Renderer.cpp.i
 
-FikoEngine/Renderer/RendererAPI.s: FikoEngine/Renderer/RendererAPI.cpp.s
+Engine/Renderer/Renderer.s: Engine/Renderer/Renderer.cpp.s
 
-.PHONY : FikoEngine/Renderer/RendererAPI.s
+.PHONY : Engine/Renderer/Renderer.s
 
 # target to generate assembly for a file
-FikoEngine/Renderer/RendererAPI.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s
-.PHONY : FikoEngine/Renderer/RendererAPI.cpp.s
+Engine/Renderer/Renderer.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/Renderer.cpp.s
+.PHONY : Engine/Renderer/Renderer.cpp.s
 
-FikoEngine/Window.o: FikoEngine/Window.cpp.o
+Engine/Renderer/RendererAPI.o: Engine/Renderer/RendererAPI.cpp.o
 
-.PHONY : FikoEngine/Window.o
+.PHONY : Engine/Renderer/RendererAPI.o
 
 # target to build an object file
-FikoEngine/Window.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o
-.PHONY : FikoEngine/Window.cpp.o
+Engine/Renderer/RendererAPI.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RendererAPI.cpp.o
+.PHONY : Engine/Renderer/RendererAPI.cpp.o
 
-FikoEngine/Window.i: FikoEngine/Window.cpp.i
+Engine/Renderer/RendererAPI.i: Engine/Renderer/RendererAPI.cpp.i
 
-.PHONY : FikoEngine/Window.i
+.PHONY : Engine/Renderer/RendererAPI.i
 
 # target to preprocess a source file
-FikoEngine/Window.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i
-.PHONY : FikoEngine/Window.cpp.i
+Engine/Renderer/RendererAPI.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RendererAPI.cpp.i
+.PHONY : Engine/Renderer/RendererAPI.cpp.i
 
-FikoEngine/Window.s: FikoEngine/Window.cpp.s
+Engine/Renderer/RendererAPI.s: Engine/Renderer/RendererAPI.cpp.s
 
-.PHONY : FikoEngine/Window.s
+.PHONY : Engine/Renderer/RendererAPI.s
 
 # target to generate assembly for a file
-FikoEngine/Window.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s
-.PHONY : FikoEngine/Window.cpp.s
+Engine/Renderer/RendererAPI.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Renderer/RendererAPI.cpp.s
+.PHONY : Engine/Renderer/RendererAPI.cpp.s
+
+Engine/Window.o: Engine/Window.cpp.o
+
+.PHONY : Engine/Window.o
+
+# target to build an object file
+Engine/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Window.cpp.o
+.PHONY : Engine/Window.cpp.o
+
+Engine/Window.i: Engine/Window.cpp.i
+
+.PHONY : Engine/Window.i
+
+# target to preprocess a source file
+Engine/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Window.cpp.i
+.PHONY : Engine/Window.cpp.i
+
+Engine/Window.s: Engine/Window.cpp.s
+
+.PHONY : Engine/Window.s
+
+# target to generate assembly for a file
+Engine/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Engine/Window.cpp.s
+.PHONY : Engine/Window.cpp.s
 
 Sandbox/src/Sandbox.o: Sandbox/src/Sandbox.cpp.o
 
@@ -453,7 +453,7 @@ Sandbox/src/Sandbox.o: Sandbox/src/Sandbox.cpp.o
 
 # target to build an object file
 Sandbox/src/Sandbox.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Sandbox/src/Sandbox.cpp.o
 .PHONY : Sandbox/src/Sandbox.cpp.o
 
 Sandbox/src/Sandbox.i: Sandbox/src/Sandbox.cpp.i
@@ -462,7 +462,7 @@ Sandbox/src/Sandbox.i: Sandbox/src/Sandbox.cpp.i
 
 # target to preprocess a source file
 Sandbox/src/Sandbox.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Sandbox/src/Sandbox.cpp.i
 .PHONY : Sandbox/src/Sandbox.cpp.i
 
 Sandbox/src/Sandbox.s: Sandbox/src/Sandbox.cpp.s
@@ -471,7 +471,7 @@ Sandbox/src/Sandbox.s: Sandbox/src/Sandbox.cpp.s
 
 # target to generate assembly for a file
 Sandbox/src/Sandbox.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/Sandbox/src/Sandbox.cpp.s
 .PHONY : Sandbox/src/Sandbox.cpp.s
 
 # Help Target
@@ -481,44 +481,44 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... FikoEngine"
+	@echo "... Engine"
 	@echo "... edit_cache"
-	@echo "... FikoEngine/Application.o"
-	@echo "... FikoEngine/Application.i"
-	@echo "... FikoEngine/Application.s"
-	@echo "... FikoEngine/Logger/lwlog/formatter.o"
-	@echo "... FikoEngine/Logger/lwlog/formatter.i"
-	@echo "... FikoEngine/Logger/lwlog/formatter.s"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.o"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.i"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.s"
-	@echo "... FikoEngine/Logger/lwlog/registry.o"
-	@echo "... FikoEngine/Logger/lwlog/registry.i"
-	@echo "... FikoEngine/Logger/lwlog/registry.s"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.i"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.s"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCore.o"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCore.i"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCore.s"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.o"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.i"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.s"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.o"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.i"
-	@echo "... FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.s"
-	@echo "... FikoEngine/Renderer/RenderCommand.o"
-	@echo "... FikoEngine/Renderer/RenderCommand.i"
-	@echo "... FikoEngine/Renderer/RenderCommand.s"
-	@echo "... FikoEngine/Renderer/Renderer.o"
-	@echo "... FikoEngine/Renderer/Renderer.i"
-	@echo "... FikoEngine/Renderer/Renderer.s"
-	@echo "... FikoEngine/Renderer/RendererAPI.o"
-	@echo "... FikoEngine/Renderer/RendererAPI.i"
-	@echo "... FikoEngine/Renderer/RendererAPI.s"
-	@echo "... FikoEngine/Window.o"
-	@echo "... FikoEngine/Window.i"
-	@echo "... FikoEngine/Window.s"
+	@echo "... Engine/Application.o"
+	@echo "... Engine/Application.i"
+	@echo "... Engine/Application.s"
+	@echo "... Engine/Logger/lwlog/formatter.o"
+	@echo "... Engine/Logger/lwlog/formatter.i"
+	@echo "... Engine/Logger/lwlog/formatter.s"
+	@echo "... Engine/Logger/lwlog/lwlog.o"
+	@echo "... Engine/Logger/lwlog/lwlog.i"
+	@echo "... Engine/Logger/lwlog/lwlog.s"
+	@echo "... Engine/Logger/lwlog/registry.o"
+	@echo "... Engine/Logger/lwlog/registry.i"
+	@echo "... Engine/Logger/lwlog/registry.s"
+	@echo "... Engine/Renderer/Platform/Vulkan/AllocationManger.o"
+	@echo "... Engine/Renderer/Platform/Vulkan/AllocationManger.i"
+	@echo "... Engine/Renderer/Platform/Vulkan/AllocationManger.s"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCore.o"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCore.i"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCore.s"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.o"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.i"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanCreateInfos.s"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.o"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.i"
+	@echo "... Engine/Renderer/Platform/Vulkan/VulkanRendererAPI.s"
+	@echo "... Engine/Renderer/RenderCommand.o"
+	@echo "... Engine/Renderer/RenderCommand.i"
+	@echo "... Engine/Renderer/RenderCommand.s"
+	@echo "... Engine/Renderer/Renderer.o"
+	@echo "... Engine/Renderer/Renderer.i"
+	@echo "... Engine/Renderer/Renderer.s"
+	@echo "... Engine/Renderer/RendererAPI.o"
+	@echo "... Engine/Renderer/RendererAPI.i"
+	@echo "... Engine/Renderer/RendererAPI.s"
+	@echo "... Engine/Window.o"
+	@echo "... Engine/Window.i"
+	@echo "... Engine/Window.s"
 	@echo "... Sandbox/src/Sandbox.o"
 	@echo "... Sandbox/src/Sandbox.i"
 	@echo "... Sandbox/src/Sandbox.s"

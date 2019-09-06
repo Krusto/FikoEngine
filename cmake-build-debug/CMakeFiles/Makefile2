@@ -65,39 +65,39 @@ CMAKE_SOURCE_DIR = /home/krusto/CLionProjects/FikoEngine
 CMAKE_BINARY_DIR = /home/krusto/CLionProjects/FikoEngine/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/FikoEngine.dir
+# Target rules for target CMakeFiles/Engine.dir
 
 # All Build rule for target.
-CMakeFiles/FikoEngine.dir/all:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/depend
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target FikoEngine"
-.PHONY : CMakeFiles/FikoEngine.dir/all
+CMakeFiles/Engine.dir/all:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/depend
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target Engine"
+.PHONY : CMakeFiles/Engine.dir/all
 
 # Include target in all.
-all: CMakeFiles/FikoEngine.dir/all
+all: CMakeFiles/Engine.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FikoEngine.dir/rule: cmake_check_build_system
+CMakeFiles/Engine.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles 14
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FikoEngine.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Engine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/FikoEngine.dir/rule
+.PHONY : CMakeFiles/Engine.dir/rule
 
 # Convenience name for target.
-FikoEngine: CMakeFiles/FikoEngine.dir/rule
+Engine: CMakeFiles/Engine.dir/rule
 
-.PHONY : FikoEngine
-
-# clean rule for target.
-CMakeFiles/FikoEngine.dir/clean:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/clean
-.PHONY : CMakeFiles/FikoEngine.dir/clean
+.PHONY : Engine
 
 # clean rule for target.
-clean: CMakeFiles/FikoEngine.dir/clean
+CMakeFiles/Engine.dir/clean:
+	$(MAKE) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/clean
+.PHONY : CMakeFiles/Engine.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/Engine.dir/clean
 
 .PHONY : clean
 
