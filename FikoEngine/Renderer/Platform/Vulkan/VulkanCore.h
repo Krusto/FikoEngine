@@ -11,7 +11,7 @@
 namespace FikoEngine::VulkanRenderer {
         class VulkanCore {
         public:
-            inline VulkanCore() = default;
+            VulkanCore() = default;
 
             void Init();
 
@@ -20,7 +20,6 @@ namespace FikoEngine::VulkanRenderer {
         private:
 
             VulkanCreateInfos createInfo;
-
 
             VkResult mCreateInstance();
             VkResult mSelectPhysicalDevice(VkPhysicalDeviceType physicalDeviceType);
@@ -37,8 +36,6 @@ namespace FikoEngine::VulkanRenderer {
             VkCommandBuffer mCommandBuffer;
 
             uint32_t mQueueFamilyIndex;
-
-
         };
     }
 

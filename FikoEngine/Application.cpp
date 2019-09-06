@@ -43,6 +43,4 @@ namespace FikoEngine {
         glfwPollEvents();
 
     }
-
-
 }

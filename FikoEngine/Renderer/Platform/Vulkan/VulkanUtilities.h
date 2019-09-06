@@ -20,7 +20,6 @@ namespace FikoEngine::VulkanRenderer{
             error += "\n";
 
             FIKO_CORE_ERROR(error);
-                assert(false);
         }
     }
 

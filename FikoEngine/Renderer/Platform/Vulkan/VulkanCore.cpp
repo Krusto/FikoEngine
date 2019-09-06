@@ -50,7 +50,7 @@ VKAPI_ATTR VkBool32 VKAPI_CALL dbgFunc(VkDebugReportFlagsEXT msgFlags, VkDebugRe
 namespace FikoEngine::VulkanRenderer{
     void VulkanCore::Init() {
         Log::Init();
-        VK_CHECK(mCreateInstance(),"Instance creation Failed ! ");
+        VK_CHECK(mCreateInstance(),"Instance creation Failed !");
         VK_CHECK(mSelectPhysicalDevice(VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU));
         VK_CHECK(mSelectQueueFamilyIndex());
         VK_CHECK(mCreateDevice());
@@ -88,7 +88,6 @@ namespace FikoEngine::VulkanRenderer{
 
         std::vector<const char*> glfwExtensions (&glfwGetRequiredInstanceExtensions(&glfwExtensionCount)[0],&glfwGetRequiredInstanceExtensions(&glfwExtensionCount)[glfwExtensionCount]);
         glfwExtensions.insert(glfwExtensions.begin(),VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
-
 
         createInfo.setInstanceAttr(&Layers,&glfwExtensions);
 
