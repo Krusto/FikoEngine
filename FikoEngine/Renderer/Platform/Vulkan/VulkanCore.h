@@ -4,38 +4,46 @@
 
 #ifndef FIKOENGINE_VULKANCORE_H
 #define FIKOENGINE_VULKANCORE_H
+
 #include <iostream>
 #include <vulkan/vulkan.h>
 #include "VulkanCreateInfos.h"
+#include "../../../Window.h"
 
 namespace FikoEngine::VulkanRenderer {
-        class VulkanCore {
-        public:
-            VulkanCore() = default;
+    class VulkanCore {
+    public:
+        VulkanCore() = default;
 
-            void Init();
+        void Init(FikoEngine::Window window);
 
-            ~VulkanCore();
+        ~VulkanCore();
 
-        private:
+    private:
 
-            VulkanCreateInfos createInfo;
+        VulkanCreateInfos createInfo;
 
-            VkResult mCreateInstance();
-            VkResult mSelectPhysicalDevice(VkPhysicalDeviceType physicalDeviceType);
-            VkResult mSelectQueueFamilyIndex();
-            VkResult mCreateDevice();
-            VkResult mCreateDebugCallback();
-            VkResult mGetSurface();
-            VkResult mCreateSwapchainKHR();
+        VkResult mCreateInstance();
 
-            VkPhysicalDevice mPhysicalDevice;
-            VkInstance mInstance;
-            VkDevice mDevice;
-            VkDebugReportCallbackEXT mDebugReportCallback;
-            VkSurfaceKHR mSurface;
-            uint32_t mQueueFamilyIndex;
-        };
-    }
+        VkResult mSelectPhysicalDevice(VkPhysicalDeviceType physicalDeviceType);
+
+        VkResult mSelectQueueFamilyIndex();
+
+        VkResult mCreateDevice();
+
+        VkResult mCreateDebugCallback();
+
+        VkResult mGetSurface(FikoEngine::Window window);
+
+        VkResult mCreateSwapchainKHR();
+
+        VkPhysicalDevice mPhysicalDevice;
+        VkInstance mInstance;
+        VkDevice mDevice;
+        VkDebugReportCallbackEXT mDebugReportCallback;
+        VkSurfaceKHR mSurface;
+        uint32_t mQueueFamilyIndex;
+    };
+}
 
 #endif //FIKOENGINE_VULKANCORE_H

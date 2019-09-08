@@ -40,6 +40,7 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCore.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanUtilities.h
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Window.h
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.h
@@ -49,6 +50,7 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Renderer/RendererAPI.h
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Window.h
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCore.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.h
@@ -56,14 +58,17 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/RenderCommand.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/RenderCommand.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/RendererAPI.h
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Window.h
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/RenderCommand.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/Renderer.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/Renderer.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/RendererAPI.h
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Window.h
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: ../FikoEngine/Renderer/RendererAPI.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: ../FikoEngine/Renderer/RendererAPI.h
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: ../FikoEngine/Window.h
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: ../FikoEngine/Window.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: ../FikoEngine/Window.h

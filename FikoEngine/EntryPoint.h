@@ -7,11 +7,12 @@
 
 #include "Application.h"
 
-extern FikoEngine::Application* FikoEngine::CreateApplication();
+extern FikoEngine::Application *FikoEngine::CreateApplication();
 
-int main(int argc,char** argv){
+int main(int argc, char **argv) {
     auto app = FikoEngine::CreateApplication();
     app->Run();
     delete app;
 }
+
 #endif //FIKOENGINE_ENTRYPOINT_H

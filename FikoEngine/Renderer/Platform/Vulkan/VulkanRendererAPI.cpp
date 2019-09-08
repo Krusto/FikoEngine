@@ -4,8 +4,8 @@
 
 #include "VulkanRendererAPI.h"
 
-void FikoEngine::VulkanRendererAPI::Init() {
-    mCore.Init();
+void FikoEngine::VulkanRendererAPI::Init(FikoEngine::Window window) {
+    mCore.Init(window);
 }
 
 void FikoEngine::VulkanRendererAPI::Clear() {

@@ -10,8 +10,9 @@
 
 namespace FikoEngine {
     class VulkanRendererAPI : public RendererAPI {
-        virtual void Init() override ;
-        virtual void Clear() override ;
+        virtual void Init(FikoEngine::Window window) override;
+
+        virtual void Clear() override;
 
     private:
         VulkanRenderer::VulkanCore mCore;

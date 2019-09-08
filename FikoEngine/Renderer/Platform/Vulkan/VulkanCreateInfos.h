@@ -4,81 +4,114 @@
 
 #ifndef FIKOENGINE_VULKANCREATEINFOS_H
 #define FIKOENGINE_VULKANCREATEINFOS_H
+
+class VkWin32SurfaceCreateInfoKHR;
+
 #include <vulkan/vulkan.h>
 #include <vector>
+
 namespace FikoEngine::VulkanRenderer {
     class VulkanCreateInfos {
     public:
         VulkanCreateInfos();
 
-        void setInstanceAttr(std::vector<const char*>* Layers,std::vector<const char*>* Extensions);
-        void setDeviceAttr(std::vector<const char*> Extensions,std::vector<VkDeviceQueueCreateInfo> QueueCreateInfos);
+        void setInstanceAttr(std::vector<const char *> *Layers, std::vector<const char *> *Extensions);
+
+        void setDeviceAttr(std::vector<const char *> Extensions, std::vector<VkDeviceQueueCreateInfo> QueueCreateInfos);
+
         void setQueueFamilyAttr(uint32_t QueueFamilyIndex);
 
-        VkInstanceCreateInfo* getVkInstance();
-        VkApplicationInfo* getApplicationInfo();
-        VkDeviceCreateInfo* getDeviceCreateInfo();
-        VkDeviceQueueCreateInfo* getDeviceQueueCreateInfo(int index);
-        VkDebugReportCallbackCreateInfoEXT* getDebugReportCallbackCreateInfo();
-        VkSwapchainCreateInfoKHR* getSwapchainCreateInfo();
+        VkInstanceCreateInfo *getVkInstance();
 
-        void setVkInstanceCreateInfo( const VkApplicationInfo*    pApplicationInfo,
-                                      uint32_t                    enabledLayerCount,
-                                      const char* const*          ppEnabledLayerNames,
-                                      uint32_t                    enabledExtensionCount,
-                                      const char* const*          ppEnabledExtensionNames,
-                                      VkStructureType             sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
-                                      const void*                 pNext = nullptr,
-                                      VkInstanceCreateFlags       flags = 0);
+        VkApplicationInfo *getApplicationInfo();
 
-        void setVkApplicationInfo(  const char*        pApplicationName,
-                                    uint32_t           applicationVersion,
-                                    const char*        pEngineName,
-                                    uint32_t           engineVersion,
-                                    uint32_t           apiVersion,
-                                    VkStructureType    sType = VK_STRUCTURE_TYPE_APPLICATION_INFO,
-                                    const void*        pNext = nullptr);
+        VkDeviceCreateInfo *getDeviceCreateInfo();
 
-        void setVkQueueCreateInfo(  VkDeviceQueueCreateFlags    flags,
-                                    uint32_t                    queueFamilyIndex,
-                                    uint32_t                    queueCount,
-                                    const float*                pQueuePriorities,
-                                    VkStructureType             sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
-                                    const void*                 pNext = nullptr);
+        VkDeviceQueueCreateInfo *getDeviceQueueCreateInfo(int index);
 
-        void setVkDeviceCreateInfo( uint32_t                           queueCreateInfoCount,
-                                    const VkDeviceQueueCreateInfo*     pQueueCreateInfos,
-                                    uint32_t                           enabledExtensionCount,
-                                    const char* const*                 ppEnabledExtensionNames,
-                                    const VkPhysicalDeviceFeatures*    pEnabledFeatures,
-                                    VkStructureType                    sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
-                                    const void*                        pNext = nullptr,
-                                    VkDeviceCreateFlags                flags = 0);
+        VkDebugReportCallbackCreateInfoEXT *getDebugReportCallbackCreateInfo();
 
-        void setDebugReportCallbackCreateInfo(  VkDebugReportFlagsEXT           flags,
-                                                PFN_vkDebugReportCallbackEXT    pfnCallback,
-                                                void*                           pUserData = nullptr,
-                                                VkStructureType                 sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT,
-                                                const void*                     pNext = nullptr);
-        void setSwapchainCreateInfo(    VkSwapchainCreateFlagsKHR        flags,
-                                        VkSurfaceKHR                     surface,
-                                        uint32_t                         minImageCount,
-                                        VkFormat                         imageFormat,
-                                        VkColorSpaceKHR                  imageColorSpace,
-                                        VkExtent2D                       imageExtent,
-                                        uint32_t                         imageArrayLayers,
-                                        VkImageUsageFlags                imageUsage,
-                                        VkSharingMode                    imageSharingMode,
-                                        uint32_t                         queueFamilyIndexCount,
-                                        const uint32_t*                  pQueueFamilyIndices,
-                                        VkSurfaceTransformFlagBitsKHR    preTransform,
-                                        VkCompositeAlphaFlagBitsKHR      compositeAlpha,
-                                        VkPresentModeKHR                 presentMode,
-                                        VkBool32                         clipped,
-                                        VkSwapchainKHR                   oldSwapchain = VK_NULL_HANDLE,
-                                        VkStructureType                  sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
-                                        const void*                      pNext = nullptr
-                );
+        VkSwapchainCreateInfoKHR *getSwapchainCreateInfo();
+
+#if defined(_LINUX)
+
+        VkXlibSurfaceCreateInfoKHR *getXlibSurfaceCreateInfo();
+
+#else defined(_WIN32)
+        VkWin32SurfaceCreateInfoKHR* getWin32SurfaceCreateInfo();
+#endif
+
+        void setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo,
+                                     uint32_t enabledLayerCount,
+                                     const char *const *ppEnabledLayerNames,
+                                     uint32_t enabledExtensionCount,
+                                     const char *const *ppEnabledExtensionNames,
+                                     VkStructureType sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO,
+                                     const void *pNext = nullptr,
+                                     VkInstanceCreateFlags flags = 0);
+
+        void setVkApplicationInfo(const char *pApplicationName,
+                                  uint32_t applicationVersion,
+                                  const char *pEngineName,
+                                  uint32_t engineVersion,
+                                  uint32_t apiVersion,
+                                  VkStructureType sType = VK_STRUCTURE_TYPE_APPLICATION_INFO,
+                                  const void *pNext = nullptr);
+
+        void setVkQueueCreateInfo(VkDeviceQueueCreateFlags flags,
+                                  uint32_t queueFamilyIndex,
+                                  uint32_t queueCount,
+                                  const float *pQueuePriorities,
+                                  VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
+                                  const void *pNext = nullptr);
+
+        void setVkDeviceCreateInfo(uint32_t queueCreateInfoCount,
+                                   const VkDeviceQueueCreateInfo *pQueueCreateInfos,
+                                   uint32_t enabledExtensionCount,
+                                   const char *const *ppEnabledExtensionNames,
+                                   const VkPhysicalDeviceFeatures *pEnabledFeatures,
+                                   VkStructureType sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO,
+                                   const void *pNext = nullptr,
+                                   VkDeviceCreateFlags flags = 0);
+
+        void setDebugReportCallbackCreateInfo(VkDebugReportFlagsEXT flags,
+                                              PFN_vkDebugReportCallbackEXT pfnCallback,
+                                              void *pUserData = nullptr,
+                                              VkStructureType sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT,
+                                              const void *pNext = nullptr);
+
+#if defined(_LINUX)
+
+        void setXlibSurfaceCreateInfo(Display *dpy,
+                                      Window window,
+                                      VkStructureType sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR,
+                                      const void *pNext = nullptr,
+                                      VkXlibSurfaceCreateFlagsKHR flags = NULL);
+
+#else defined(_WIN32)
+
+#endif
+
+        void setSwapchainCreateInfo(VkSwapchainCreateFlagsKHR flags,
+                                    VkSurfaceKHR surface,
+                                    uint32_t minImageCount,
+                                    VkFormat imageFormat,
+                                    VkColorSpaceKHR imageColorSpace,
+                                    VkExtent2D imageExtent,
+                                    uint32_t imageArrayLayers,
+                                    VkImageUsageFlags imageUsage,
+                                    VkSharingMode imageSharingMode,
+                                    uint32_t queueFamilyIndexCount,
+                                    const uint32_t *pQueueFamilyIndices,
+                                    VkSurfaceTransformFlagBitsKHR preTransform,
+                                    VkCompositeAlphaFlagBitsKHR compositeAlpha,
+                                    VkPresentModeKHR presentMode,
+                                    VkBool32 clipped,
+                                    VkSwapchainKHR oldSwapchain = VK_NULL_HANDLE,
+                                    VkStructureType sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
+                                    const void *pNext = nullptr
+        );
+
     private:
         VkInstanceCreateInfo mInstanceCreateInfo;
         VkApplicationInfo mApplicationInfo;
@@ -87,24 +120,25 @@ namespace FikoEngine::VulkanRenderer {
 
         std::vector<VkDeviceQueueCreateInfo> mDeviceQueueCreateInfo;
 
-#ifdef FIKOEGINE_PLATFORM_LINUX
-        VkXlibSurfaceCreateInfoKHR mXlibCreateInfo;
+#if defined(_LINUX)
+        VkXlibSurfaceCreateInfoKHR mXlibSurfaceCreateInfo;
+#else defined(_WIN32)
+        VkWin32SurfaceCreateInfoKHR mWin32SurfaceCreateInfo;
 #endif
-
         VkSwapchainCreateInfoKHR mSwapchainCreateInfo;
 
     private:
-        struct mInstanceAttr{
-            std::vector<const char*> Layers;
-            std::vector<const char*> Extensions;
-        }mInstanceAttr;
-        struct mDeviceAttr{
-            std::vector<const char*> Extensions;
+        struct mInstanceAttr {
+            std::vector<const char *> Layers;
+            std::vector<const char *> Extensions;
+        } mInstanceAttr;
+        struct mDeviceAttr {
+            std::vector<const char *> Extensions;
             std::vector<VkDeviceQueueCreateInfo> QueueCreateInfos;
-        }mDeviceAttr;
-        struct mQueueFamilyAttr{
+        } mDeviceAttr;
+        struct mQueueFamilyAttr {
             uint32_t queueFamilyIndex;
-        }mQueueFamilyAttr;
+        } mQueueFamilyAttr;
     };
 }
 

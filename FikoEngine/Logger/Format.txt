@@ -1,4 +1,4 @@
-%À - Abbreviated weekday name			"Thu"
+%ï¿½ - Abbreviated weekday name			"Thu"
 %a - Full weekday name					"Thursday"
 
 %B - Abbreviated month name				"Aug"

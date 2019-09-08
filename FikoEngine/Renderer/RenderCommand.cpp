@@ -4,6 +4,6 @@
 
 namespace FikoEngine {
 
-	RendererAPI* RenderCommand::s_RendererAPI = new VulkanRendererAPI();
+    RendererAPI *RenderCommand::s_RendererAPI = new VulkanRendererAPI();
 
 }

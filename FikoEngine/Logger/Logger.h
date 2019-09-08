@@ -8,11 +8,9 @@
 #include <memory>
 #include <iostream>
 
-class Log
-{
+class Log {
 public:
-    static void Init()
-    {
+    static void Init() {
     }
 
 private:

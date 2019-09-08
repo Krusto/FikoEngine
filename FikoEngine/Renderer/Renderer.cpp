@@ -2,9 +2,8 @@
 
 namespace FikoEngine {
 
-	void Renderer::Init()
-	{
-	    RenderCommand::Init();
-	}
+    void Renderer::Init(FikoEngine::Window window) {
+        RenderCommand::Init(window);
+    }
 
 }

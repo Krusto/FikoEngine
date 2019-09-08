@@ -22,10 +22,11 @@ namespace FikoEngine {
         virtual ~Application();
 
         void Loop();
+
     private:
         mutable Window m_Window;
     };
 
-    Application* CreateApplication();
+    Application *CreateApplication();
 }
 #endif //FIKOENGINE_APPLICATION_H

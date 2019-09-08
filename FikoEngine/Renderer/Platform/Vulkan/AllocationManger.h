@@ -10,7 +10,7 @@
 namespace FikoEngine::VulkanRenderer {
     class AllocationManger {
     public:
-        AllocationManger(){}
+        AllocationManger() {}
 
         void Init(VkDevice Device);
 

@@ -2,37 +2,30 @@
 #include "lwlog.h"
 #include "utilities.h"
 
-namespace lwlog
-{
-	std::map<std::string, const logger&> registry::m_loggers = {};
+namespace lwlog {
+    std::map<std::string, const logger &> registry::m_loggers = {};
 
-	bool registry::m_automaticRegistry = true;
+    bool registry::m_automaticRegistry = true;
 
-	void registry::register_logger(const logger& new_logger)
-	{
-		m_loggers.emplace(new_logger.get_name(), new_logger);
-	}
+    void registry::register_logger(const logger &new_logger) {
+        m_loggers.emplace(new_logger.get_name(), new_logger);
+    }
 
-	void registry::drop(std::string logger_name)
-	{
-		m_loggers.erase(logger_name);
-	}
+    void registry::drop(std::string logger_name) {
+        m_loggers.erase(logger_name);
+    }
 
-	void registry::drop_all()
-	{
-		m_loggers.clear();
-	}
+    void registry::drop_all() {
+        m_loggers.clear();
+    }
 
-	void registry::set_automatic_registry(bool automatic)
-	{
-		m_automaticRegistry = automatic;
-	}
+    void registry::set_automatic_registry(bool automatic) {
+        m_automaticRegistry = automatic;
+    }
 
-	void registry::display_all_loggers()
-	{
-		for (auto it = m_loggers.begin(); it != m_loggers.end(); it++)
-		{
-			print("{0} \n", it->first);
-		}
-	}
+    void registry::display_all_loggers() {
+        for (auto it = m_loggers.begin(); it != m_loggers.end(); it++) {
+            print("{0} \n", it->first);
+        }
+    }
 }

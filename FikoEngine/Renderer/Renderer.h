@@ -4,13 +4,12 @@
 
 namespace FikoEngine {
 
-	class Renderer
-	{
-	public:
-		static void Init();
+    class Renderer {
+    public:
+        static void Init(FikoEngine::Window window);
 
-		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
-	};
+        inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
+    };
 
 
 }

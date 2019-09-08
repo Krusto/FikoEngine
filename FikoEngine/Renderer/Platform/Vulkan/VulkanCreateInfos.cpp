@@ -5,58 +5,81 @@
 #include <vector>
 #include "VulkanCreateInfos.h"
 
-namespace FikoEngine::VulkanRenderer{
+namespace FikoEngine::VulkanRenderer {
 
     VulkanCreateInfos::VulkanCreateInfos() {
-        setVkApplicationInfo("appName",VK_MAKE_VERSION(1,0,0),"FikoEngine",VK_MAKE_VERSION(1,0,0),VK_MAKE_VERSION(1,0,0));
-        setVkInstanceCreateInfo(getApplicationInfo(),mInstanceAttr.Layers.size(),mInstanceAttr.Layers.data(),mInstanceAttr.Extensions.size(),mInstanceAttr.Extensions.data());
+        setVkApplicationInfo("appName", VK_MAKE_VERSION(1, 0, 0), "FikoEngine", VK_MAKE_VERSION(1, 0, 0),
+                             VK_MAKE_VERSION(1, 0, 0));
+        setVkInstanceCreateInfo(getApplicationInfo(), mInstanceAttr.Layers.size(), mInstanceAttr.Layers.data(),
+                                mInstanceAttr.Extensions.size(), mInstanceAttr.Extensions.data());
     }
 
-    void VulkanCreateInfos::setInstanceAttr(std::vector<const char *>* Layers, std::vector<const char *>* Extensions) {
-        mInstanceAttr = {*Layers,*Extensions};
+    void VulkanCreateInfos::setInstanceAttr(std::vector<const char *> *Layers, std::vector<const char *> *Extensions) {
+        mInstanceAttr = {*Layers, *Extensions};
         mInstanceCreateInfo.enabledLayerCount = mInstanceAttr.Layers.size();
         mInstanceCreateInfo.ppEnabledLayerNames = mInstanceAttr.Layers.data();
         mInstanceCreateInfo.enabledExtensionCount = mInstanceAttr.Extensions.size();
         mInstanceCreateInfo.ppEnabledExtensionNames = mInstanceAttr.Extensions.data();
     }
-    void VulkanCreateInfos::setDeviceAttr(std::vector<const char *> Extensions,std::vector<VkDeviceQueueCreateInfo> QueueCreateInfo) {
-        mDeviceAttr = {Extensions,QueueCreateInfo};
+
+    void VulkanCreateInfos::setDeviceAttr(std::vector<const char *> Extensions,
+                                          std::vector<VkDeviceQueueCreateInfo> QueueCreateInfo) {
+        mDeviceAttr = {Extensions, QueueCreateInfo};
     }
+
     void VulkanCreateInfos::setQueueFamilyAttr(uint32_t QueueFamilyIndex) {
         mQueueFamilyAttr = {QueueFamilyIndex};
     }
-    VkInstanceCreateInfo* VulkanCreateInfos::getVkInstance() {
+
+    VkInstanceCreateInfo *VulkanCreateInfos::getVkInstance() {
         return &mInstanceCreateInfo;
     }
 
-    VkApplicationInfo* VulkanCreateInfos::getApplicationInfo() {
+    VkApplicationInfo *VulkanCreateInfos::getApplicationInfo() {
         return &mApplicationInfo;
     }
 
     VkDeviceCreateInfo *VulkanCreateInfos::getDeviceCreateInfo() {
         return &mDeviceCreateInfo;
     }
-    VkDeviceQueueCreateInfo* VulkanCreateInfos::getDeviceQueueCreateInfo(int index) {
+
+    VkDeviceQueueCreateInfo *VulkanCreateInfos::getDeviceQueueCreateInfo(int index) {
         return &mDeviceQueueCreateInfo[index];
     }
+
     VkDebugReportCallbackCreateInfoEXT *VulkanCreateInfos::getDebugReportCallbackCreateInfo() {
         return &mDebugCallbackCreateInfoEXT;
     }
+
     VkSwapchainCreateInfoKHR *VulkanCreateInfos::getSwapchainCreateInfo() {
         return &mSwapchainCreateInfo;
     }
 
-    void VulkanCreateInfos::setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo, uint32_t enabledLayerCount,
+#if defined(_LINUX)
+
+    VkXlibSurfaceCreateInfoKHR *VulkanCreateInfos::getXlibSurfaceCreateInfo() {
+        return &mXlibSurfaceCreateInfo;
+    }
+
+#else defined(_WIN32)
+    VkWin32SurfaceCreateInfoKHR *VulkanCreateInfos::getWin32SurfaceCreateInfo(){
+        return &mWin32SurfaceCreateInfoKHR;
+    }
+#endif
+
+    void
+    VulkanCreateInfos::setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo, uint32_t enabledLayerCount,
                                                const char *const *ppEnabledLayerNames, uint32_t enabledExtensionCount,
                                                const char *const *ppEnabledExtensionNames, VkStructureType sType,
                                                const void *pNext, VkInstanceCreateFlags flags) {
-        mInstanceCreateInfo = {sType,pNext,flags,pApplicationInfo,enabledLayerCount,ppEnabledLayerNames,enabledExtensionCount,ppEnabledExtensionNames};
+        mInstanceCreateInfo = {sType, pNext, flags, pApplicationInfo, enabledLayerCount, ppEnabledLayerNames,
+                               enabledExtensionCount, ppEnabledExtensionNames};
     }
 
     void VulkanCreateInfos::setVkApplicationInfo(const char *pApplicationName, uint32_t applicationVersion,
                                                  const char *pEngineName, uint32_t engineVersion, uint32_t apiVersion,
                                                  VkStructureType sType, const void *pNext) {
-        mApplicationInfo = {sType,pNext,pApplicationName,applicationVersion,pEngineName,engineVersion,apiVersion};
+        mApplicationInfo = {sType, pNext, pApplicationName, applicationVersion, pEngineName, engineVersion, apiVersion};
     }
 
     void VulkanCreateInfos::setVkDeviceCreateInfo(uint32_t queueCreateInfoCount,
@@ -66,21 +89,21 @@ namespace FikoEngine::VulkanRenderer{
                                                   const VkPhysicalDeviceFeatures *pEnabledFeatures,
                                                   VkStructureType sType, const void *pNext, VkDeviceCreateFlags flags) {
 
-        mDeviceCreateInfo = {sType,pNext,flags,queueCreateInfoCount,pQueueCreateInfos,0,nullptr,enabledExtensionCount,ppEnabledExtensionNames,pEnabledFeatures};
-
+        mDeviceCreateInfo = {sType, pNext, flags, queueCreateInfoCount, pQueueCreateInfos, 0, nullptr,
+                             enabledExtensionCount, ppEnabledExtensionNames, pEnabledFeatures};
     }
 
     void VulkanCreateInfos::setVkQueueCreateInfo(VkDeviceQueueCreateFlags flags, uint32_t queueFamilyIndex,
                                                  uint32_t queueCount, const float *pQueuePriorities,
                                                  VkStructureType sType, const void *pNext) {
-        mDeviceQueueCreateInfo.emplace_back((VkDeviceQueueCreateInfo){sType,pNext,flags,queueFamilyIndex,queueCount,pQueuePriorities});
-
+        mDeviceQueueCreateInfo.emplace_back(
+                (VkDeviceQueueCreateInfo) {sType, pNext, flags, queueFamilyIndex, queueCount, pQueuePriorities});
     }
 
     void VulkanCreateInfos::setDebugReportCallbackCreateInfo(VkDebugReportFlagsEXT flags,
                                                              PFN_vkDebugReportCallbackEXT pfnCallback, void *pUserData,
                                                              VkStructureType sType, const void *pNext) {
-        mDebugCallbackCreateInfoEXT = {sType,pNext,flags,pfnCallback,pUserData};
+        mDebugCallbackCreateInfoEXT = {sType, pNext, flags, pfnCallback, pUserData};
     }
 
     void VulkanCreateInfos::setSwapchainCreateInfo(VkSwapchainCreateFlagsKHR flags, VkSurfaceKHR surface,
@@ -94,9 +117,23 @@ namespace FikoEngine::VulkanRenderer{
                                                    VkPresentModeKHR presentMode, VkBool32 clipped,
                                                    VkSwapchainKHR oldSwapchain, VkStructureType sType,
                                                    const void *pNext) {
-        mSwapchainCreateInfo = {sType,pNext,flags,surface,minImageCount,imageFormat,imageColorSpace,imageExtent,imageArrayLayers,imageUsage,imageSharingMode,queueFamilyIndexCount,pQueueFamilyIndices,preTransform,compositeAlpha,presentMode,clipped,oldSwapchain};
-
+        mSwapchainCreateInfo = {sType, pNext, flags, surface, minImageCount, imageFormat, imageColorSpace, imageExtent,
+                                imageArrayLayers, imageUsage, imageSharingMode, queueFamilyIndexCount,
+                                pQueueFamilyIndices, preTransform, compositeAlpha, presentMode, clipped, oldSwapchain};
     }
 
+#if defined(_LINUX)
+
+    void VulkanCreateInfos::setXlibSurfaceCreateInfo(Display *dpy,
+                                                     Window window,
+                                                     VkStructureType sType,
+                                                     const void *pNext,
+                                                     VkXlibSurfaceCreateFlagsKHR flags) {
+        mXlibSurfaceCreateInfo = {sType, pNext, flags, dpy, window};
+    }
+
+#else defined(_WIN32)
+
+#endif
 
 }
