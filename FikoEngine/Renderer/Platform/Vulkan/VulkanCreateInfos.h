@@ -20,6 +20,7 @@ namespace FikoEngine::VulkanRenderer {
         VkDeviceCreateInfo* getDeviceCreateInfo();
         VkDeviceQueueCreateInfo* getDeviceQueueCreateInfo(int index);
         VkDebugReportCallbackCreateInfoEXT* getDebugReportCallbackCreateInfo();
+        VkSwapchainCreateInfoKHR* getSwapchainCreateInfo();
 
         void setVkInstanceCreateInfo( const VkApplicationInfo*    pApplicationInfo,
                                       uint32_t                    enabledLayerCount,
@@ -59,7 +60,25 @@ namespace FikoEngine::VulkanRenderer {
                                                 void*                           pUserData = nullptr,
                                                 VkStructureType                 sType = VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT,
                                                 const void*                     pNext = nullptr);
-
+        void setSwapchainCreateInfo(    VkSwapchainCreateFlagsKHR        flags,
+                                        VkSurfaceKHR                     surface,
+                                        uint32_t                         minImageCount,
+                                        VkFormat                         imageFormat,
+                                        VkColorSpaceKHR                  imageColorSpace,
+                                        VkExtent2D                       imageExtent,
+                                        uint32_t                         imageArrayLayers,
+                                        VkImageUsageFlags                imageUsage,
+                                        VkSharingMode                    imageSharingMode,
+                                        uint32_t                         queueFamilyIndexCount,
+                                        const uint32_t*                  pQueueFamilyIndices,
+                                        VkSurfaceTransformFlagBitsKHR    preTransform,
+                                        VkCompositeAlphaFlagBitsKHR      compositeAlpha,
+                                        VkPresentModeKHR                 presentMode,
+                                        VkBool32                         clipped,
+                                        VkSwapchainKHR                   oldSwapchain = VK_NULL_HANDLE,
+                                        VkStructureType                  sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR,
+                                        const void*                      pNext = nullptr
+                );
     private:
         VkInstanceCreateInfo mInstanceCreateInfo;
         VkApplicationInfo mApplicationInfo;
@@ -67,6 +86,12 @@ namespace FikoEngine::VulkanRenderer {
         VkDebugReportCallbackCreateInfoEXT mDebugCallbackCreateInfoEXT;
 
         std::vector<VkDeviceQueueCreateInfo> mDeviceQueueCreateInfo;
+
+#ifdef FIKOEGINE_PLATFORM_LINUX
+        VkXlibSurfaceCreateInfoKHR mXlibCreateInfo;
+#endif
+
+        VkSwapchainCreateInfoKHR mSwapchainCreateInfo;
 
     private:
         struct mInstanceAttr{

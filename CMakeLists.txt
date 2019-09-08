@@ -6,6 +6,8 @@ find_package(Vulkan REQUIRED)
 find_package(X11 REQUIRED)
 link_libraries(${X11_LIBRARIES})
 add_definitions(-DVK_USE_PLATFORM_XLIB_KHR)
+add_definitions(-FIKOENGINE_PLATFORM_LINUX)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
 
 set(CMAKE_CXX_STANDARD 17)

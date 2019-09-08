@@ -26,15 +26,14 @@ namespace FikoEngine::VulkanRenderer {
             VkResult mSelectQueueFamilyIndex();
             VkResult mCreateDevice();
             VkResult mCreateDebugCallback();
+            VkResult mGetSurface();
+            VkResult mCreateSwapchainKHR();
 
             VkPhysicalDevice mPhysicalDevice;
             VkInstance mInstance;
             VkDevice mDevice;
             VkDebugReportCallbackEXT mDebugReportCallback;
-
-            VkCommandPool mCommandPool;
-            VkCommandBuffer mCommandBuffer;
-
+            VkSurfaceKHR mSurface;
             uint32_t mQueueFamilyIndex;
         };
     }

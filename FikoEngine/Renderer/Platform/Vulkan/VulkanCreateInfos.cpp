@@ -42,6 +42,9 @@ namespace FikoEngine::VulkanRenderer{
     VkDebugReportCallbackCreateInfoEXT *VulkanCreateInfos::getDebugReportCallbackCreateInfo() {
         return &mDebugCallbackCreateInfoEXT;
     }
+    VkSwapchainCreateInfoKHR *VulkanCreateInfos::getSwapchainCreateInfo() {
+        return &mSwapchainCreateInfo;
+    }
 
     void VulkanCreateInfos::setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo, uint32_t enabledLayerCount,
                                                const char *const *ppEnabledLayerNames, uint32_t enabledExtensionCount,
@@ -78,6 +81,21 @@ namespace FikoEngine::VulkanRenderer{
                                                              PFN_vkDebugReportCallbackEXT pfnCallback, void *pUserData,
                                                              VkStructureType sType, const void *pNext) {
         mDebugCallbackCreateInfoEXT = {sType,pNext,flags,pfnCallback,pUserData};
+    }
+
+    void VulkanCreateInfos::setSwapchainCreateInfo(VkSwapchainCreateFlagsKHR flags, VkSurfaceKHR surface,
+                                                   uint32_t minImageCount, VkFormat imageFormat,
+                                                   VkColorSpaceKHR imageColorSpace, VkExtent2D imageExtent,
+                                                   uint32_t imageArrayLayers, VkImageUsageFlags imageUsage,
+                                                   VkSharingMode imageSharingMode, uint32_t queueFamilyIndexCount,
+                                                   const uint32_t *pQueueFamilyIndices,
+                                                   VkSurfaceTransformFlagBitsKHR preTransform,
+                                                   VkCompositeAlphaFlagBitsKHR compositeAlpha,
+                                                   VkPresentModeKHR presentMode, VkBool32 clipped,
+                                                   VkSwapchainKHR oldSwapchain, VkStructureType sType,
+                                                   const void *pNext) {
+        mSwapchainCreateInfo = {sType,pNext,flags,surface,minImageCount,imageFormat,imageColorSpace,imageExtent,imageArrayLayers,imageUsage,imageSharingMode,queueFamilyIndexCount,pQueueFamilyIndices,preTransform,compositeAlpha,presentMode,clipped,oldSwapchain};
+
     }
 
 

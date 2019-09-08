@@ -55,23 +55,8 @@ namespace FikoEngine::VulkanRenderer{
         VK_CHECK(mSelectQueueFamilyIndex());
         VK_CHECK(mCreateDevice());
         VK_CHECK(mCreateDebugCallback());
-
-        VkCommandPoolCreateInfo cmd_pool_info = {};
-        cmd_pool_info.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
-        cmd_pool_info.pNext = NULL;
-        cmd_pool_info.queueFamilyIndex = mQueueFamilyIndex;
-        cmd_pool_info.flags = 0;
-
-        VK_CHECK(vkCreateCommandPool(mDevice, &cmd_pool_info, NULL, &mCommandPool));
-
-        /* Create the command buffer from the command pool */
-        VkCommandBufferAllocateInfo cmd;
-        cmd.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-        cmd.pNext = nullptr;
-        cmd.commandPool = mCommandPool;
-        cmd.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-        cmd.commandBufferCount = 1;
-        VK_CHECK( vkAllocateCommandBuffers(mDevice, &cmd, &mCommandBuffer));
+        VK_CHECK(mGetSurface());
+        VK_CHECK(mCreateSwapchainKHR());
 
     }
 
@@ -170,4 +155,16 @@ namespace FikoEngine::VulkanRenderer{
         createInfo.setDebugReportCallbackCreateInfo(VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT,dbgFunc);
         return dbgCreateDebugReportCallback(mInstance, createInfo.getDebugReportCallbackCreateInfo(), NULL, &mDebugReportCallback);
     }
+
+    VkResult VulkanCore::mGetSurface() {
+        return vkCreateXlibSurfaceKHR(mInstance,);
+    }
+
+    VkResult VulkanCore::mCreateSwapchainKHR() {
+        createInfo.setSwapchainCreateInfo(  VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
+                                            mSurface,
+
+                                            );
+    }
+
 }
