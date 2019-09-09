@@ -21,6 +21,8 @@ namespace FikoEngine::VulkanRenderer {
 
         void setQueueFamilyAttr(uint32_t QueueFamilyIndex);
 
+        void setAttachmentDescriptionAttr(uint32_t id,VkFormat SurfaceFormat);
+
         VkInstanceCreateInfo *getVkInstance();
 
         VkApplicationInfo *getApplicationInfo();
@@ -39,6 +41,17 @@ namespace FikoEngine::VulkanRenderer {
 #if defined(_WIN32)
         VkWin32SurfaceCreateInfoKHR* getWin32SurfaceCreateInfo();
 #endif
+
+        VkCommandPoolCreateInfo *getCommandPoolCreateInfo();
+
+
+        VkCommandBufferAllocateInfo *getCommandBufferAllocateInfo();
+
+        std::vector<VkAttachmentDescription> getAttachmentDescription();
+
+        VkSubpassDescription *getSubpassDescription();
+
+        VkSubpassDependency *getSubpassDependency();
 
         void setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo,
                                      uint32_t enabledLayerCount,
@@ -109,6 +122,44 @@ namespace FikoEngine::VulkanRenderer {
                                     const void *pNext = nullptr
         );
 
+        void setCommandPoolCreateInfo(  VkCommandPoolCreateFlags    flags,
+                                        uint32_t                    queueFamilyIndex,
+                                        VkStructureType             sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,
+                                        const void*                 pNext = nullptr);
+
+        void setCommandBufferAllocateInfo(  VkCommandPool           commandPool,
+                                            VkCommandBufferLevel    level,
+                                            uint32_t                commandBufferCount,
+                                            VkStructureType         sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
+                                            const void*             pNext = nullptr);
+
+        void setAttachmentDescription(  VkAttachmentDescriptionFlags    flags,
+                                        VkSampleCountFlagBits           samples,
+                                        VkAttachmentLoadOp              loadOp,
+                                        VkAttachmentStoreOp             storeOp,
+                                        VkAttachmentLoadOp              stencilLoadOp,
+                                        VkAttachmentStoreOp             stencilStoreOp,
+                                        VkImageLayout                   initialLayout,
+                                        VkImageLayout                   finalLayout);
+
+        void setSubpassDescription( VkSubpassDescriptionFlags       flags,
+                                    VkPipelineBindPoint             pipelineBindPoint,
+                                    uint32_t                        inputAttachmentCount,
+                                    const VkAttachmentReference*    pInputAttachments,
+                                    uint32_t                        colorAttachmentCount,
+                                    const VkAttachmentReference*    pColorAttachments,
+                                    const VkAttachmentReference*    pResolveAttachments,
+                                    const VkAttachmentReference*    pDepthStencilAttachment,
+                                    uint32_t                        preserveAttachmentCount,
+                                    const uint32_t*                 pPreserveAttachments);
+
+        void setSubpassDependency(  uint32_t                srcSubpass,
+                                    uint32_t                dstSubpass,
+                                    VkPipelineStageFlags    srcStageMask,
+                                    VkPipelineStageFlags    dstStageMask,
+                                    VkAccessFlags           srcAccessMask,
+                                    VkAccessFlags           dstAccessMask,
+                                    VkDependencyFlags       dependencyFlags);
     private:
         VkInstanceCreateInfo mInstanceCreateInfo;
         VkApplicationInfo mApplicationInfo;
@@ -125,6 +176,15 @@ namespace FikoEngine::VulkanRenderer {
 #endif
         VkSwapchainCreateInfoKHR mSwapchainCreateInfo;
 
+        VkCommandPoolCreateInfo mCommandPoolCreateInfo;
+
+        VkCommandBufferAllocateInfo mCommandBufferAllocateInfo;
+
+        std::vector<VkAttachmentDescription> mAttachmentDescription;
+
+        VkSubpassDescription mSubpassDescription;
+
+        VkSubpassDependency mSubpassDependency;
     private:
         struct mInstanceAttr {
             std::vector<const char *> Layers;

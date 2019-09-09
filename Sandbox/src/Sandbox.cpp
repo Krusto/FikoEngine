@@ -1,5 +1,4 @@
-#include "../../FikoEngine/FikoEngine.h"
-
+#include "../../FikoEngine/Application.h"
 class Sandbox : public FikoEngine::Application {
 
 public :

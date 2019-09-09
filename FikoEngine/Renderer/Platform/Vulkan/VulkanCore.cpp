@@ -57,16 +57,21 @@ namespace FikoEngine::VulkanRenderer {
     void VulkanCore::Init(FikoEngine::Window window) {
         mWindow = &window;
         Log::Init();
-        VK_CHECK(mCreateInstance(), "Instance creation Failed !");
+        VK_CHECK(mCreateInstance(), "Instance creation Failed!");
 #if defined(_DEBUG)
         VK_CHECK(mCreateDebugCallback(), "Can not create Debug Callback!");
 #endif
         VK_CHECK(mSelectPhysicalDevice(VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU), "Can not select graphical adapter!");
         VK_CHECK(mSelectQueueFamilyIndex(), "Can not find queue!");
-        VK_CHECK(mCreateDevice(), "Can not create logical device!");
+        VK_CHECK(mCreateDevice(), "Can not create VkDevice!");
         VK_CHECK(mGetSurface(), "Can not get surface!");
-        VK_CHECK(mCreateSwapchainKHR(), "Can not create swapchain!");
-
+        VK_CHECK(mCreateSwapchainKHR(), "Can not create VkSwapchainKHR!");
+        VK_CHECK(mCreateCommandPool(),"Can not create VkCommandPool!");
+        VK_CHECK(mAllocateCommandBuffers(),"Can not allocate command buffers!");
+        VK_CHECK(mGetSwapchainImages(),"Can not get swapchain images!");
+        VK_CHECK(mGetSwapchainImagesView(),"Can not get swapchain images view!");
+        VK_CHECK(mCreateSemaphores(),"Can not create semaphores!");
+        VK_CHECK(mCreateRenderpass(),"Can not create renderpass!");
     }
 
     VulkanCore::~VulkanCore() {
@@ -213,6 +218,7 @@ namespace FikoEngine::VulkanRenderer {
         vkGetPhysicalDeviceSurfaceFormatsKHR(mPhysicalDevice, mSurface, &formatCount, nullptr);
         formatsKHR.resize(formatCount);
         vkGetPhysicalDeviceSurfaceFormatsKHR(mPhysicalDevice, mSurface, &formatCount, formatsKHR.data());
+        mSurfaceFormat = formatsKHR[0];
 
         VkSurfaceCapabilitiesKHR capabilitiesKHR;
         VK_CHECK(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(mPhysicalDevice,mSurface, &capabilitiesKHR));
@@ -221,11 +227,12 @@ namespace FikoEngine::VulkanRenderer {
         vkGetPhysicalDeviceSurfaceSupportKHR(mPhysicalDevice,mQueueFamilyIndex,mSurface,&supported);
 
 
+
         createInfo.setSwapchainCreateInfo(  VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
                                             mSurface,
                                             capabilitiesKHR.minImageCount,
-                                            formatsKHR[0].format,
-                                            formatsKHR[0].colorSpace,
+                                            mSurfaceFormat.format,
+                                            mSurfaceFormat.colorSpace,
                                             capabilitiesKHR.currentExtent,
                                            1,
                                            VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
@@ -240,6 +247,113 @@ namespace FikoEngine::VulkanRenderer {
                                             );
 
        return vkCreateSwapchainKHR(mDevice,createInfo.getSwapchainCreateInfo(),nullptr,&mSwapchain);
+    }
+
+    VkResult VulkanCore::mCreateCommandPool() {
+        createInfo.setCommandPoolCreateInfo(VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT,mQueueFamilyIndex);
+        return vkCreateCommandPool(mDevice,createInfo.getCommandPoolCreateInfo(),nullptr,&mCommandPool);
+    }
+
+    VkResult VulkanCore::mAllocateCommandBuffers() {
+
+        mCommandBuffers.resize(1);
+        createInfo.setCommandBufferAllocateInfo(mCommandPool,VK_COMMAND_BUFFER_LEVEL_PRIMARY,mCommandBuffers.size());
+
+        return vkAllocateCommandBuffers(mDevice,createInfo.getCommandBufferAllocateInfo(),mCommandBuffers.data());
+    }
+
+    VkResult VulkanCore::mGetSwapchainImages() {
+        uint32_t count;
+
+        VK_CHECK(vkGetSwapchainImagesKHR(mDevice, mSwapchain, &count, nullptr),"Can not get swapchain image count!");
+
+        VK_CHECK((count >=2 )? VK_SUCCESS : VK_TIMEOUT,"Swap chain image count is not correct!");
+
+        mSwapchainImages = std::vector<VkImage>(count);
+        VK_CHECK(vkGetSwapchainImagesKHR(mDevice, mSwapchain, &count, mSwapchainImages.data()),"Can not get swapchain images!");
+
+        return VK_SUCCESS;
+    }
+
+    VkResult VulkanCore::mGetSwapchainImagesView() {
+        mSwapchainImagesView.resize(mSwapchainImages.size());
+        for (uint32_t i = 0; i < mSwapchainImages.size(); i++)
+        {
+            VkImageViewCreateInfo imageViewCreateInfo = {VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO};
+            imageViewCreateInfo.image = mSwapchainImages[i];
+            imageViewCreateInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+            imageViewCreateInfo.format = mSurfaceFormat.format;
+            imageViewCreateInfo.components = {VK_COMPONENT_SWIZZLE_R,VK_COMPONENT_SWIZZLE_G,VK_COMPONENT_SWIZZLE_B,VK_COMPONENT_SWIZZLE_A};
+            imageViewCreateInfo.subresourceRange = {VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};
+
+            VK_CHECK(vkCreateImageView(mDevice, &imageViewCreateInfo, nullptr, &mSwapchainImagesView[i]),"Can not create image view with id:" + std::to_string(i)+" !");
+        }
+        return VK_SUCCESS;
+    }
+
+    VkResult VulkanCore::mCreateSemaphores() {
+
+        VkSemaphoreCreateInfo semaphoreCreateInfo= {VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
+        VK_CHECK(vkCreateSemaphore(mDevice,&semaphoreCreateInfo,nullptr,&mWaitSemaphore),"Can not create wait semaphore!");
+        VK_CHECK(vkCreateSemaphore(mDevice,&semaphoreCreateInfo,nullptr,&mSignalSemaphore),"Can not create signal semaphore!");
+        return VK_SUCCESS;
+    }
+
+    VkRenderPass createRenderPass(VkDevice device, VkFormat format)
+    {
+        VkAttachmentDescription attachments[1] = {};
+        attachments[0].format = format;
+        attachments[0].samples = VK_SAMPLE_COUNT_1_BIT;
+        attachments[0].loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+        attachments[0].storeOp = VK_ATTACHMENT_STORE_OP_STORE;
+        attachments[0].stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+        attachments[0].stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+        attachments[0].initialLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+        attachments[0].finalLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
+
+        VkAttachmentReference colorAttachments = { 0, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
+
+        VkSubpassDescription subpass = {};
+        subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
+        subpass.colorAttachmentCount = 1;
+        subpass.pColorAttachments = &colorAttachments;
+
+        VkRenderPassCreateInfo createInfo = { VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO };
+        createInfo.attachmentCount = sizeof(attachments) / sizeof(attachments[0]);
+        createInfo.pAttachments = attachments;
+        createInfo.subpassCount = 1;
+        createInfo.pSubpasses = &subpass;
+
+        VkRenderPass renderPass = 0;
+        VK_CHECK(vkCreateRenderPass(device, &createInfo, 0, &renderPass));
+
+        return renderPass;
+    }
+
+    VkResult VulkanCore::mCreateRenderpass() {
+        createInfo.setAttachmentDescription(0,VK_SAMPLE_COUNT_1_BIT,VK_ATTACHMENT_LOAD_OP_CLEAR,VK_ATTACHMENT_STORE_OP_STORE,VK_ATTACHMENT_LOAD_OP_DONT_CARE,VK_ATTACHMENT_STORE_OP_DONT_CARE,VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+        createInfo.setAttachmentDescriptionAttr(0,mSurfaceFormat.format);
+
+        VkAttachmentReference colorAttachments = { 0, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
+
+        createInfo.setSubpassDescription(0,
+                              VK_PIPELINE_BIND_POINT_GRAPHICS,
+                              0,
+                              nullptr,
+                              1,
+                              &colorAttachments,
+                              nullptr,
+                              nullptr,
+                              0,
+                              nullptr);
+
+        VkRenderPassCreateInfo passCreateInfo ={VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
+        passCreateInfo.attachmentCount = createInfo.getAttachmentDescription().size();
+        passCreateInfo.pAttachments = createInfo.getAttachmentDescription().data();
+        passCreateInfo.subpassCount = 1;
+        passCreateInfo.pSubpasses = createInfo.getSubpassDescription();
+
+        return vkCreateRenderPass(mDevice,&passCreateInfo,nullptr,&mRenderPass);
     }
 
 }

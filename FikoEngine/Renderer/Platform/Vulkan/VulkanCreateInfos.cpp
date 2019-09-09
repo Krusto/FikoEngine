@@ -13,6 +13,8 @@ namespace FikoEngine::VulkanRenderer {
         setVkInstanceCreateInfo(getApplicationInfo(), mInstanceAttr.Layers.size(), mInstanceAttr.Layers.data(),
                                 mInstanceAttr.Extensions.size(), mInstanceAttr.Extensions.data());
         mSwapchainCreateInfo = {};
+
+
     }
 
     void VulkanCreateInfos::setInstanceAttr(std::vector<const char *> *Layers, std::vector<const char *> *Extensions) {
@@ -30,6 +32,10 @@ namespace FikoEngine::VulkanRenderer {
 
     void VulkanCreateInfos::setQueueFamilyAttr(uint32_t QueueFamilyIndex) {
         mQueueFamilyAttr = {QueueFamilyIndex};
+    }
+
+    void VulkanCreateInfos::setAttachmentDescriptionAttr(uint32_t id,VkFormat SurfaceFormat) {
+        mAttachmentDescription[id].format = SurfaceFormat;
     }
 
     VkInstanceCreateInfo *VulkanCreateInfos::getVkInstance() {
@@ -69,8 +75,29 @@ namespace FikoEngine::VulkanRenderer {
     }
 #endif
 
-    void
-    VulkanCreateInfos::setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo, uint32_t enabledLayerCount,
+    VkCommandPoolCreateInfo *VulkanCreateInfos::getCommandPoolCreateInfo() {
+        return &mCommandPoolCreateInfo;
+    }
+
+    VkCommandBufferAllocateInfo *VulkanCreateInfos::getCommandBufferAllocateInfo() {
+        return &mCommandBufferAllocateInfo;
+    }
+
+
+    std::vector<VkAttachmentDescription> VulkanCreateInfos::getAttachmentDescription() {
+        return mAttachmentDescription;
+    }
+
+
+    VkSubpassDescription *VulkanCreateInfos::getSubpassDescription() {
+        return &mSubpassDescription;
+    }
+
+    VkSubpassDependency *VulkanCreateInfos::getSubpassDependency() {
+        return &mSubpassDependency;
+    }
+
+    void VulkanCreateInfos::setVkInstanceCreateInfo(const VkApplicationInfo *pApplicationInfo, uint32_t enabledLayerCount,
                                                const char *const *ppEnabledLayerNames, uint32_t enabledExtensionCount,
                                                const char *const *ppEnabledExtensionNames, VkStructureType sType,
                                                const void *pNext, VkInstanceCreateFlags flags) {
@@ -136,5 +163,44 @@ namespace FikoEngine::VulkanRenderer {
 #if defined(_WIN32)
 
 #endif
+    void VulkanCreateInfos::setCommandPoolCreateInfo(VkCommandPoolCreateFlags flags, uint32_t queueFamilyIndex,
+                                                     VkStructureType sType, const void *pNext) {
+        mCommandPoolCreateInfo = {sType,pNext,flags,queueFamilyIndex};
+    }
+
+    void VulkanCreateInfos::setCommandBufferAllocateInfo(VkCommandPool commandPool, VkCommandBufferLevel level,
+                                                         uint32_t commandBufferCount, VkStructureType sType,
+                                                         const void *pNext) {
+        mCommandBufferAllocateInfo = {sType,pNext,commandPool,level,commandBufferCount};
+    }
+
+    void VulkanCreateInfos::setAttachmentDescription(VkAttachmentDescriptionFlags flags, VkSampleCountFlagBits samples,
+                                                     VkAttachmentLoadOp loadOp, VkAttachmentStoreOp storeOp,
+                                                     VkAttachmentLoadOp stencilLoadOp,
+                                                     VkAttachmentStoreOp stencilStoreOp, VkImageLayout initialLayout,
+                                                     VkImageLayout finalLayout) {
+        mAttachmentDescription.emplace_back((VkAttachmentDescription){flags,VK_FORMAT_UNDEFINED,samples,loadOp,storeOp,stencilLoadOp,stencilStoreOp,initialLayout,finalLayout});
+    }
+
+    void
+    VulkanCreateInfos::setSubpassDescription(VkSubpassDescriptionFlags flags, VkPipelineBindPoint pipelineBindPoint,
+                                             uint32_t inputAttachmentCount,
+                                             const VkAttachmentReference *pInputAttachments,
+                                             uint32_t colorAttachmentCount,
+                                             const VkAttachmentReference *pColorAttachments,
+                                             const VkAttachmentReference *pResolveAttachments,
+                                             const VkAttachmentReference *pDepthStencilAttachment,
+                                             uint32_t preserveAttachmentCount, const uint32_t *pPreserveAttachments) {
+
+        mSubpassDescription = {flags,pipelineBindPoint,inputAttachmentCount,pInputAttachments,colorAttachmentCount,pColorAttachments,pResolveAttachments,pDepthStencilAttachment,preserveAttachmentCount,pPreserveAttachments};
+    }
+
+    void
+    VulkanCreateInfos::setSubpassDependency(uint32_t srcSubpass, uint32_t dstSubpass, VkPipelineStageFlags srcStageMask,
+                                            VkPipelineStageFlags dstStageMask, VkAccessFlags srcAccessMask,
+                                            VkAccessFlags dstAccessMask, VkDependencyFlags dependencyFlags) {
+        mSubpassDependency = {srcSubpass,dstSubpass,srcStageMask,dstStageMask,srcAccessMask,dstAccessMask,dependencyFlags};
+    }
+
 
 }

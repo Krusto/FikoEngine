@@ -70,57 +70,57 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: ../FikoEngine/Window.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
 
-CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o: ../Sandbox/src/Sandbox.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o -c /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
 
-CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp > CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
 
-CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp -o CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: ../FikoEngine/Renderer/RendererAPI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o: ../FikoEngine/Renderer/RenderCommand.cpp
@@ -135,91 +135,106 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o: ../FikoEngine/Renderer/Renderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o: ../FikoEngine/Renderer/RendererAPI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
+CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o: ../FikoEngine/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i
+CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.s
+CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
+CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o: ../Sandbox/src/Sandbox.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o -c /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i
+CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp > CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.i
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.s
+CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp -o CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.s
+
+CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
+CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o -c /home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp
+
+CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp > CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
+
+CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp -o CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
 
 # Object files for target FikoEngine
 FikoEngine_OBJECTS = \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o" \
-"CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o" \
+"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
+"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o" \
+"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o" \
+"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o" \
+"CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o" \
+"CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o" \
+"CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o" \
+"CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o"
 
 # External object files for target FikoEngine
 FikoEngine_EXTERNAL_OBJECTS =
 
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Renderer.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Window.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/Sandbox/src/Sandbox.cpp.o
+FikoEngine: CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/build.make
 FikoEngine: /usr/lib/x86_64-linux-gnu/libSM.so
 FikoEngine: /usr/lib/x86_64-linux-gnu/libICE.so
 FikoEngine: /usr/lib/x86_64-linux-gnu/libX11.so
 FikoEngine: /usr/lib/x86_64-linux-gnu/libXext.so
 FikoEngine: CMakeFiles/FikoEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable FikoEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable FikoEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FikoEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

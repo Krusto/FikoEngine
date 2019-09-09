@@ -9,7 +9,7 @@ namespace FikoEngine {
         enum class API {
             None = 0, OpenGL = 1, Vulkan = 2
         };
-    public:
+
         virtual void Init(FikoEngine::Window window) = 0;
 
         virtual void Clear() = 0;

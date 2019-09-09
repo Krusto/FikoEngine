@@ -16,6 +16,7 @@ namespace FikoEngine::VulkanRenderer {
         VulkanCore() = default;
 
         void Init(FikoEngine::Window window);
+        VkResult mCreateRenderpass();
 
         ~VulkanCore();
 
@@ -37,6 +38,17 @@ namespace FikoEngine::VulkanRenderer {
 
         VkResult mCreateSwapchainKHR();
 
+        VkResult mCreateCommandPool();
+
+        VkResult mAllocateCommandBuffers();
+
+        VkResult mGetSwapchainImages();
+
+        VkResult mGetSwapchainImagesView();
+
+        VkResult mCreateSemaphores();
+
+    private:
         FikoEngine::Window* mWindow;
         VkPhysicalDevice mPhysicalDevice;
         VkInstance mInstance;
@@ -45,6 +57,14 @@ namespace FikoEngine::VulkanRenderer {
         VkSurfaceKHR mSurface;
         uint32_t mQueueFamilyIndex;
         VkSwapchainKHR mSwapchain;
+        VkCommandPool mCommandPool;
+        std::vector<VkCommandBuffer> mCommandBuffers;
+        std::vector<VkImage> mSwapchainImages;
+        std::vector<VkImageView> mSwapchainImagesView;
+        VkSurfaceFormatKHR mSurfaceFormat;
+        VkSemaphore mWaitSemaphore;
+        VkSemaphore mSignalSemaphore;
+        VkRenderPass mRenderPass;
     };
 }
 
