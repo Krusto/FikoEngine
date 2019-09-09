@@ -33,16 +33,18 @@ namespace FikoEngine::VulkanRenderer {
 
         VkResult mCreateDebugCallback();
 
-        VkResult mGetSurface(FikoEngine::Window window);
+        VkResult mGetSurface();
 
         VkResult mCreateSwapchainKHR();
 
+        FikoEngine::Window* mWindow;
         VkPhysicalDevice mPhysicalDevice;
         VkInstance mInstance;
         VkDevice mDevice;
         VkDebugReportCallbackEXT mDebugReportCallback;
         VkSurfaceKHR mSurface;
         uint32_t mQueueFamilyIndex;
+        VkSwapchainKHR mSwapchain;
     };
 }
 

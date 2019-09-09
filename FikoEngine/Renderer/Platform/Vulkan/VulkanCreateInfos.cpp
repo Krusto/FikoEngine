@@ -12,6 +12,7 @@ namespace FikoEngine::VulkanRenderer {
                              VK_MAKE_VERSION(1, 0, 0));
         setVkInstanceCreateInfo(getApplicationInfo(), mInstanceAttr.Layers.size(), mInstanceAttr.Layers.data(),
                                 mInstanceAttr.Extensions.size(), mInstanceAttr.Extensions.data());
+        mSwapchainCreateInfo = {};
     }
 
     void VulkanCreateInfos::setInstanceAttr(std::vector<const char *> *Layers, std::vector<const char *> *Extensions) {
@@ -61,7 +62,8 @@ namespace FikoEngine::VulkanRenderer {
         return &mXlibSurfaceCreateInfo;
     }
 
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
     VkWin32SurfaceCreateInfoKHR *VulkanCreateInfos::getWin32SurfaceCreateInfo(){
         return &mWin32SurfaceCreateInfoKHR;
     }
@@ -123,7 +125,6 @@ namespace FikoEngine::VulkanRenderer {
     }
 
 #if defined(_LINUX)
-
     void VulkanCreateInfos::setXlibSurfaceCreateInfo(Display *dpy,
                                                      Window window,
                                                      VkStructureType sType,
@@ -131,8 +132,8 @@ namespace FikoEngine::VulkanRenderer {
                                                      VkXlibSurfaceCreateFlagsKHR flags) {
         mXlibSurfaceCreateInfo = {sType, pNext, flags, dpy, window};
     }
-
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
 
 #endif
 

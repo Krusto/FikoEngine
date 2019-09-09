@@ -9,29 +9,6 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o
  /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.h
  /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.h
  /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/color.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/core.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/datetime.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/details.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.cpp
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/utilities.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/core.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/details.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.cpp
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/utilities.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/core.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/details.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.cpp
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.h
- /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/utilities.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
  /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
  /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.h

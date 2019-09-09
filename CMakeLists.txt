@@ -13,11 +13,6 @@ add_definitions(-DGLFW_EXPOSE_NATIVE_X11)
 
 add_definitions(-D_DEBUG)
 
-IF (${CMAKE_SYSTEM_NAME} AND "Linux")
-
-ELSE ()
-ENDIF ()
-
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
 
@@ -39,17 +34,6 @@ add_executable(FikoEngine FikoEngine/Application.cpp
         FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.h
         FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
         FikoEngine/Renderer/Platform/Vulkan/VulkanCore.h
-        FikoEngine/Logger/lwlog/color.h
-        FikoEngine/Logger/lwlog/core.h
-        FikoEngine/Logger/lwlog/datetime.h
-        FikoEngine/Logger/lwlog/details.h
-        FikoEngine/Logger/lwlog/formatter.cpp
-        FikoEngine/Logger/lwlog/formatter.h
-        FikoEngine/Logger/lwlog/lwlog.cpp
-        FikoEngine/Logger/lwlog/lwlog.h
-        FikoEngine/Logger/lwlog/registry.cpp
-        FikoEngine/Logger/lwlog/registry.h
-        FikoEngine/Logger/lwlog/utilities.h
         FikoEngine/Logger/Logger.h
         FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
         FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.h

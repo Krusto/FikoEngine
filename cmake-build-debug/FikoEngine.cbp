@@ -107,39 +107,6 @@
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/Logger.h">
 			<Option target="FikoEngine"/>
 		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/color.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/core.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/datetime.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/details.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.cpp">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.cpp">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.cpp">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.h">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/utilities.h">
-			<Option target="FikoEngine"/>
-		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp">
 			<Option target="FikoEngine"/>
 		</Unit>

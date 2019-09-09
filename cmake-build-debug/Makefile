@@ -150,87 +150,6 @@ FikoEngine/Application.cpp.s:
 	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s
 .PHONY : FikoEngine/Application.cpp.s
 
-FikoEngine/Logger/lwlog/formatter.o: FikoEngine/Logger/lwlog/formatter.cpp.o
-
-.PHONY : FikoEngine/Logger/lwlog/formatter.o
-
-# target to build an object file
-FikoEngine/Logger/lwlog/formatter.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.o
-
-FikoEngine/Logger/lwlog/formatter.i: FikoEngine/Logger/lwlog/formatter.cpp.i
-
-.PHONY : FikoEngine/Logger/lwlog/formatter.i
-
-# target to preprocess a source file
-FikoEngine/Logger/lwlog/formatter.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.i
-
-FikoEngine/Logger/lwlog/formatter.s: FikoEngine/Logger/lwlog/formatter.cpp.s
-
-.PHONY : FikoEngine/Logger/lwlog/formatter.s
-
-# target to generate assembly for a file
-FikoEngine/Logger/lwlog/formatter.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/formatter.cpp.s
-
-FikoEngine/Logger/lwlog/lwlog.o: FikoEngine/Logger/lwlog/lwlog.cpp.o
-
-.PHONY : FikoEngine/Logger/lwlog/lwlog.o
-
-# target to build an object file
-FikoEngine/Logger/lwlog/lwlog.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.o
-
-FikoEngine/Logger/lwlog/lwlog.i: FikoEngine/Logger/lwlog/lwlog.cpp.i
-
-.PHONY : FikoEngine/Logger/lwlog/lwlog.i
-
-# target to preprocess a source file
-FikoEngine/Logger/lwlog/lwlog.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.i
-
-FikoEngine/Logger/lwlog/lwlog.s: FikoEngine/Logger/lwlog/lwlog.cpp.s
-
-.PHONY : FikoEngine/Logger/lwlog/lwlog.s
-
-# target to generate assembly for a file
-FikoEngine/Logger/lwlog/lwlog.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/lwlog.cpp.s
-
-FikoEngine/Logger/lwlog/registry.o: FikoEngine/Logger/lwlog/registry.cpp.o
-
-.PHONY : FikoEngine/Logger/lwlog/registry.o
-
-# target to build an object file
-FikoEngine/Logger/lwlog/registry.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.o
-
-FikoEngine/Logger/lwlog/registry.i: FikoEngine/Logger/lwlog/registry.cpp.i
-
-.PHONY : FikoEngine/Logger/lwlog/registry.i
-
-# target to preprocess a source file
-FikoEngine/Logger/lwlog/registry.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.i
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.i
-
-FikoEngine/Logger/lwlog/registry.s: FikoEngine/Logger/lwlog/registry.cpp.s
-
-.PHONY : FikoEngine/Logger/lwlog/registry.s
-
-# target to generate assembly for a file
-FikoEngine/Logger/lwlog/registry.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.s
-.PHONY : FikoEngine/Logger/lwlog/registry.cpp.s
-
 FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o: FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 
 .PHONY : FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o
@@ -486,15 +405,6 @@ help:
 	@echo "... FikoEngine/Application.o"
 	@echo "... FikoEngine/Application.i"
 	@echo "... FikoEngine/Application.s"
-	@echo "... FikoEngine/Logger/lwlog/formatter.o"
-	@echo "... FikoEngine/Logger/lwlog/formatter.i"
-	@echo "... FikoEngine/Logger/lwlog/formatter.s"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.o"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.i"
-	@echo "... FikoEngine/Logger/lwlog/lwlog.s"
-	@echo "... FikoEngine/Logger/lwlog/registry.o"
-	@echo "... FikoEngine/Logger/lwlog/registry.i"
-	@echo "... FikoEngine/Logger/lwlog/registry.s"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.i"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.s"

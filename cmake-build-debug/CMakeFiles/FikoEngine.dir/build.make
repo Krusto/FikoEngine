@@ -161,48 +161,9 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.s
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/formatter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.cpp
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.i
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/formatter.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.s
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/lwlog.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.cpp
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.i
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/lwlog.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.s
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/registry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.cpp
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.cpp > CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.i
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/lwlog/registry.cpp -o CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.s
-
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.i: cmake_force
@@ -215,7 +176,7 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: CMakeFiles/FikoEngine.dir/flags.make
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o -c /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
 
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.i: cmake_force
@@ -236,9 +197,6 @@ FikoEngine_OBJECTS = \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o" \
-"CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o" \
 "CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
 
@@ -253,9 +211,6 @@ FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RendererAPI.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/RenderCommand.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o
-FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 FikoEngine: CMakeFiles/FikoEngine.dir/build.make
@@ -264,7 +219,7 @@ FikoEngine: /usr/lib/x86_64-linux-gnu/libICE.so
 FikoEngine: /usr/lib/x86_64-linux-gnu/libX11.so
 FikoEngine: /usr/lib/x86_64-linux-gnu/libXext.so
 FikoEngine: CMakeFiles/FikoEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable FikoEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable FikoEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FikoEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

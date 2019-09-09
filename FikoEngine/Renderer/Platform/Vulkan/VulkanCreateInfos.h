@@ -34,10 +34,9 @@ namespace FikoEngine::VulkanRenderer {
         VkSwapchainCreateInfoKHR *getSwapchainCreateInfo();
 
 #if defined(_LINUX)
-
         VkXlibSurfaceCreateInfoKHR *getXlibSurfaceCreateInfo();
-
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
         VkWin32SurfaceCreateInfoKHR* getWin32SurfaceCreateInfo();
 #endif
 
@@ -81,15 +80,13 @@ namespace FikoEngine::VulkanRenderer {
                                               const void *pNext = nullptr);
 
 #if defined(_LINUX)
-
         void setXlibSurfaceCreateInfo(Display *dpy,
                                       Window window,
                                       VkStructureType sType = VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR,
                                       const void *pNext = nullptr,
-                                      VkXlibSurfaceCreateFlagsKHR flags = NULL);
-
-#else defined(_WIN32)
-
+                                      VkXlibSurfaceCreateFlagsKHR flags = 0);
+#endif
+#if defined(_WIN32)
 #endif
 
         void setSwapchainCreateInfo(VkSwapchainCreateFlagsKHR flags,
@@ -122,7 +119,8 @@ namespace FikoEngine::VulkanRenderer {
 
 #if defined(_LINUX)
         VkXlibSurfaceCreateInfoKHR mXlibSurfaceCreateInfo;
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
         VkWin32SurfaceCreateInfoKHR mWin32SurfaceCreateInfo;
 #endif
         VkSwapchainCreateInfoKHR mSwapchainCreateInfo;

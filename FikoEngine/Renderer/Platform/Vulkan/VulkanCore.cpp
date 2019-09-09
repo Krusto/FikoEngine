@@ -55,6 +55,7 @@ namespace FikoEngine::VulkanRenderer {
 #endif
 
     void VulkanCore::Init(FikoEngine::Window window) {
+        mWindow = &window;
         Log::Init();
         VK_CHECK(mCreateInstance(), "Instance creation Failed !");
 #if defined(_DEBUG)
@@ -63,13 +64,16 @@ namespace FikoEngine::VulkanRenderer {
         VK_CHECK(mSelectPhysicalDevice(VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU), "Can not select graphical adapter!");
         VK_CHECK(mSelectQueueFamilyIndex(), "Can not find queue!");
         VK_CHECK(mCreateDevice(), "Can not create logical device!");
-        VK_CHECK(mGetSurface(window), "Can not get surface!");
+        VK_CHECK(mGetSurface(), "Can not get surface!");
         VK_CHECK(mCreateSwapchainKHR(), "Can not create swapchain!");
 
     }
 
     VulkanCore::~VulkanCore() {
-
+        vkDestroySwapchainKHR(mDevice,mSwapchain,nullptr);
+        vkDestroySurfaceKHR(mInstance,mSurface,nullptr);
+        vkDestroyDevice(mDevice,nullptr);
+        vkDestroyInstance(mInstance,nullptr);
     }
 
     VkResult VulkanCore::mCreateInstance() {
@@ -83,16 +87,17 @@ namespace FikoEngine::VulkanRenderer {
         std::vector<const char *> glfwExtensions(&glfwGetRequiredInstanceExtensions(&glfwExtensionCount)[0],
                                                  &glfwGetRequiredInstanceExtensions(
                                                          &glfwExtensionCount)[glfwExtensionCount]);
+
 #if defined(_DEBUG)
         glfwExtensions.insert(glfwExtensions.begin(), VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
 #endif
-        glfwExtensions.emplace_back("VK_KHR_surface");
-
 #if defined(_LINUX)
         glfwExtensions.emplace_back("VK_KHR_xlib_surface");
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
         glfwExtensions.emplace_back("VK_KHR_win32_surface");
 #endif
+
         createInfo.setInstanceAttr(&Layers, &glfwExtensions);
 
         return vkCreateInstance(createInfo.getVkInstance(), nullptr, &mInstance);
@@ -154,49 +159,87 @@ namespace FikoEngine::VulkanRenderer {
 
     VkResult VulkanCore::mCreateDevice() {
 
+//TODO
         createInfo.setQueueFamilyAttr(mQueueFamilyIndex);
         const float priorities = {0.00};
+        createInfo.setVkQueueCreateInfo(0, mQueueFamilyIndex, 1, &priorities);
 
-        createInfo.setVkQueueCreateInfo(0, 3, 1, &priorities);
+        std::vector<const char*> deviceExtensions;
+        deviceExtensions.emplace_back("VK_KHR_swapchain");
+        deviceExtensions.emplace_back("VK_KHR_maintenance2");
+        deviceExtensions.emplace_back("VK_KHR_image_format_list");
+        deviceExtensions.emplace_back("VK_KHR_swapchain_mutable_format");
 
-        createInfo.setVkDeviceCreateInfo(1, createInfo.getDeviceQueueCreateInfo(0), 0, nullptr, nullptr);
+        createInfo.setVkDeviceCreateInfo(1, createInfo.getDeviceQueueCreateInfo(0),deviceExtensions.size(), deviceExtensions.data(), nullptr);
 
         return vkCreateDevice(mPhysicalDevice, createInfo.getDeviceCreateInfo(), nullptr, &mDevice);
     }
 
 #if defined(_DEBUG)
-
     VkResult VulkanCore::mCreateDebugCallback() {
 
-        PFN_vkCreateDebugReportCallbackEXT dbgCreateDebugReportCallback =
+        auto dbgCreateDebugReportCallback =
                 (PFN_vkCreateDebugReportCallbackEXT) vkGetInstanceProcAddr(mInstance, "vkCreateDebugReportCallbackEXT");
         if (!dbgCreateDebugReportCallback) {
-            std::cout << "GetInstanceProcAddr: Unable to find "
-                         "vkCreateDebugReportCallbackEXT function."
-                      << std::endl;
-            exit(1);
+            FIKO_CORE_ERROR( "GetInstanceProcAddr: Unable to find "
+                         "vkCreateDebugReportCallbackEXT function.");
         }
-        createInfo.setDebugReportCallbackCreateInfo(VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT,
+
+
+        createInfo.setDebugReportCallbackCreateInfo(VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_DEBUG_BIT_EXT,
                                                     dbgFunc);
+
         return dbgCreateDebugReportCallback(mInstance, createInfo.getDebugReportCallbackCreateInfo(), NULL,
                                             &mDebugReportCallback);
     }
-
 #endif
 
-    VkResult VulkanCore::mGetSurface(FikoEngine::Window window) {
+    VkResult VulkanCore::mGetSurface() {
 #if defined(_LINUX)
-        createInfo.setXlibSurfaceCreateInfo(glfwGetX11Display(), glfwGetX11Window(window.GetInstance()));
+        createInfo.setXlibSurfaceCreateInfo(glfwGetX11Display(), glfwGetX11Window(mWindow->GetInstance()));
         return vkCreateXlibSurfaceKHR(mInstance, createInfo.getXlibSurfaceCreateInfo(), nullptr, &mSurface);
-#else defined(_WIN32)
+#endif
+#if defined(_WIN32)
         return VK_TIMEOUT;
 #endif
     }
 
     VkResult VulkanCore::mCreateSwapchainKHR() {
-        //   createInfo.setSwapchainCreateInfo(  VK_SWAPCHAIN_CREATE_MUTABLE_FORMAT_BIT_KHR,
-        //                                     mSurface,
-        //                                   );
+
+        //TODO This needs to be cleaned
+
+        std::vector<VkSurfaceFormatKHR>formatsKHR;
+        uint32_t formatCount;
+        vkGetPhysicalDeviceSurfaceFormatsKHR(mPhysicalDevice, mSurface, &formatCount, nullptr);
+        formatsKHR.resize(formatCount);
+        vkGetPhysicalDeviceSurfaceFormatsKHR(mPhysicalDevice, mSurface, &formatCount, formatsKHR.data());
+
+        VkSurfaceCapabilitiesKHR capabilitiesKHR;
+        VK_CHECK(vkGetPhysicalDeviceSurfaceCapabilitiesKHR(mPhysicalDevice,mSurface, &capabilitiesKHR));
+
+        VkBool32 supported;
+        vkGetPhysicalDeviceSurfaceSupportKHR(mPhysicalDevice,mQueueFamilyIndex,mSurface,&supported);
+
+
+        createInfo.setSwapchainCreateInfo(  VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR,
+                                            mSurface,
+                                            capabilitiesKHR.minImageCount,
+                                            formatsKHR[0].format,
+                                            formatsKHR[0].colorSpace,
+                                            capabilitiesKHR.currentExtent,
+                                           1,
+                                           VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT,
+                                           VK_SHARING_MODE_EXCLUSIVE,
+                                           1,
+                                            &mQueueFamilyIndex,
+                                           capabilitiesKHR.currentTransform,
+                                           VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR,
+                                           VK_PRESENT_MODE_FIFO_KHR,
+                                            VK_TRUE,
+                                            VK_NULL_HANDLE
+                                            );
+
+       return vkCreateSwapchainKHR(mDevice,createInfo.getSwapchainCreateInfo(),nullptr,&mSwapchain);
     }
 
 }

@@ -2,6 +2,7 @@
   <dictionary name="krusto">
     <words>
       <w>fiko</w>
+      <w>swapchain</w>
       <w>vulkan</w>
     </words>
   </dictionary>

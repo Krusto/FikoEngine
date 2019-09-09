@@ -20,7 +20,6 @@ namespace FikoEngine {
                 GetWindow().SetWindowShouldClose(GLFW_TRUE);
             }
             Loop();
-            return true;
         }
         return true;
     }

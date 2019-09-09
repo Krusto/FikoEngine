@@ -9,29 +9,6 @@ CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o: ../FikoEngine/Renderer/R
 CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o: ../FikoEngine/Renderer/RendererAPI.h
 CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o: ../FikoEngine/Window.h
 
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/color.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/core.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/datetime.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/details.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/formatter.cpp
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/formatter.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/formatter.cpp.o: ../FikoEngine/Logger/lwlog/utilities.h
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/core.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/details.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/formatter.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/lwlog.cpp
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/lwlog.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/registry.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/lwlog.cpp.o: ../FikoEngine/Logger/lwlog/utilities.h
-
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/core.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/details.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/lwlog.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/registry.cpp
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/registry.h
-CMakeFiles/FikoEngine.dir/FikoEngine/Logger/lwlog/registry.cpp.o: ../FikoEngine/Logger/lwlog/utilities.h
-
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
 CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o: ../FikoEngine/Renderer/Platform/Vulkan/AllocationManger.h
 
