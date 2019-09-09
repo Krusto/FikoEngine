@@ -347,11 +347,15 @@ namespace FikoEngine::VulkanRenderer {
                               0,
                               nullptr);
 
+        createInfo.setSubpassDependency(VK_SUBPASS_EXTERNAL,0,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT,0,VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT|VK_ACCESS_COLOR_ATTACHMENT_READ_BIT,0);
+
         VkRenderPassCreateInfo passCreateInfo ={VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
-        passCreateInfo.attachmentCount = createInfo.getAttachmentDescription().size();
-        passCreateInfo.pAttachments = createInfo.getAttachmentDescription().data();
+        passCreateInfo.attachmentCount = 1;
+        passCreateInfo.pAttachments = &createInfo.getAttachmentDescription()[0];
         passCreateInfo.subpassCount = 1;
         passCreateInfo.pSubpasses = createInfo.getSubpassDescription();
+        passCreateInfo.dependencyCount = 1;
+        passCreateInfo.pDependencies = createInfo.getSubpassDependency();
 
         return vkCreateRenderPass(mDevice,&passCreateInfo,nullptr,&mRenderPass);
     }

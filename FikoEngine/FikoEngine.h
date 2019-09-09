@@ -5,6 +5,8 @@
 #ifndef FIKOENGINE_FIKOENGINE_H
 #define FIKOENGINE_FIKOENGINE_H
 
+#include "LayerStack.h"
+
 #include "Application.h"
 
 #include "Logger/Logger.h"
@@ -13,5 +15,6 @@
 #include "Renderer/RenderCommand.h"
 
 #include "EntryPoint.h"
+
 
 #endif //FIKOENGINE_FIKOENGINE_H

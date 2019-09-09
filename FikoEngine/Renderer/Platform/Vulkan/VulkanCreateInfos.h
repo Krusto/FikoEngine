@@ -47,7 +47,7 @@ namespace FikoEngine::VulkanRenderer {
 
         VkCommandBufferAllocateInfo *getCommandBufferAllocateInfo();
 
-        std::vector<VkAttachmentDescription> getAttachmentDescription();
+        VkAttachmentDescription* getAttachmentDescription();
 
         VkSubpassDescription *getSubpassDescription();
 

@@ -123,33 +123,6 @@ FikoEngine/fast:
 	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/build
 .PHONY : FikoEngine/fast
 
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.o: CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.o
-
-# target to build an object file
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.i: CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.i
-
-# target to preprocess a source file
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.s: CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.s
-
-# target to generate assembly for a file
-CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s:
-	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-.PHONY : CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
 FikoEngine/Application.o: FikoEngine/Application.cpp.o
 
 .PHONY : FikoEngine/Application.o
@@ -176,6 +149,60 @@ FikoEngine/Application.s: FikoEngine/Application.cpp.s
 FikoEngine/Application.cpp.s:
 	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.s
 .PHONY : FikoEngine/Application.cpp.s
+
+FikoEngine/Layer.o: FikoEngine/Layer.cpp.o
+
+.PHONY : FikoEngine/Layer.o
+
+# target to build an object file
+FikoEngine/Layer.cpp.o:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Layer.cpp.o
+.PHONY : FikoEngine/Layer.cpp.o
+
+FikoEngine/Layer.i: FikoEngine/Layer.cpp.i
+
+.PHONY : FikoEngine/Layer.i
+
+# target to preprocess a source file
+FikoEngine/Layer.cpp.i:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Layer.cpp.i
+.PHONY : FikoEngine/Layer.cpp.i
+
+FikoEngine/Layer.s: FikoEngine/Layer.cpp.s
+
+.PHONY : FikoEngine/Layer.s
+
+# target to generate assembly for a file
+FikoEngine/Layer.cpp.s:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/Layer.cpp.s
+.PHONY : FikoEngine/Layer.cpp.s
+
+FikoEngine/LayerStack.o: FikoEngine/LayerStack.cpp.o
+
+.PHONY : FikoEngine/LayerStack.o
+
+# target to build an object file
+FikoEngine/LayerStack.cpp.o:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/LayerStack.cpp.o
+.PHONY : FikoEngine/LayerStack.cpp.o
+
+FikoEngine/LayerStack.i: FikoEngine/LayerStack.cpp.i
+
+.PHONY : FikoEngine/LayerStack.i
+
+# target to preprocess a source file
+FikoEngine/LayerStack.cpp.i:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/LayerStack.cpp.i
+.PHONY : FikoEngine/LayerStack.cpp.i
+
+FikoEngine/LayerStack.s: FikoEngine/LayerStack.cpp.s
+
+.PHONY : FikoEngine/LayerStack.s
+
+# target to generate assembly for a file
+FikoEngine/LayerStack.cpp.s:
+	$(MAKE) -f CMakeFiles/FikoEngine.dir/build.make CMakeFiles/FikoEngine.dir/FikoEngine/LayerStack.cpp.s
+.PHONY : FikoEngine/LayerStack.cpp.s
 
 FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o: FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o
 
@@ -429,12 +456,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... FikoEngine"
 	@echo "... edit_cache"
-	@echo "... CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.o"
-	@echo "... CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.i"
-	@echo "... CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.s"
 	@echo "... FikoEngine/Application.o"
 	@echo "... FikoEngine/Application.i"
 	@echo "... FikoEngine/Application.s"
+	@echo "... FikoEngine/Layer.o"
+	@echo "... FikoEngine/Layer.i"
+	@echo "... FikoEngine/Layer.s"
+	@echo "... FikoEngine/LayerStack.o"
+	@echo "... FikoEngine/LayerStack.i"
+	@echo "... FikoEngine/LayerStack.s"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.o"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.i"
 	@echo "... FikoEngine/Renderer/Platform/Vulkan/AllocationManger.s"

@@ -19,8 +19,32 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
 set(CMAKE_CXX_STANDARD 17)
 
 
-file(GLOB_RECURSE src ${PROJECT_SOURCE_DIR} *.cpp *.hpp)
-add_executable(FikoEngine ${src})
+
+add_executable(FikoEngine
+        FikoEngine/Application.cpp
+        FikoEngine/Application.h
+        FikoEngine/Window.cpp
+        FikoEngine/Window.h
+        FikoEngine/Renderer/Renderer.cpp
+        FikoEngine/Renderer/Renderer.h
+        FikoEngine/FikoEngine.h
+        FikoEngine/EntryPoint.h
+        Sandbox/src/Sandbox.cpp
+        FikoEngine/Renderer/RendererAPI.cpp
+        FikoEngine/Renderer/RendererAPI.h
+        FikoEngine/Renderer/RenderCommand.h
+        FikoEngine/Renderer/RenderCommand.cpp
+        FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.cpp
+        FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.h
+        FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp
+        FikoEngine/Renderer/Platform/Vulkan/VulkanCore.h
+        FikoEngine/Logger/Logger.h
+        FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp
+        FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.h
+        FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp
+        FikoEngine/Renderer/Platform/Vulkan/AllocationManger.h
+        FikoEngine/Renderer/Platform/Vulkan/VulkanUtilities.h FikoEngine/Layer.cpp FikoEngine/Layer.h FikoEngine/LayerStack.cpp FikoEngine/LayerStack.h)
+
 
 target_link_libraries(FikoEngine glfw3)
 target_link_libraries(FikoEngine dl)

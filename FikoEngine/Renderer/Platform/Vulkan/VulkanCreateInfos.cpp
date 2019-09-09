@@ -84,8 +84,8 @@ namespace FikoEngine::VulkanRenderer {
     }
 
 
-    std::vector<VkAttachmentDescription> VulkanCreateInfos::getAttachmentDescription() {
-        return mAttachmentDescription;
+    VkAttachmentDescription* VulkanCreateInfos::getAttachmentDescription() {
+        return mAttachmentDescription.data();
     }
 
 

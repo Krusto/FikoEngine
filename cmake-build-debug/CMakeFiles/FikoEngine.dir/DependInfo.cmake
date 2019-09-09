@@ -4,8 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp.o"
   "/home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/Application.cpp.o"
+  "/home/krusto/CLionProjects/FikoEngine/FikoEngine/Layer.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/Layer.cpp.o"
+  "/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/LayerStack.cpp.o"
   "/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp.o"
   "/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCore.cpp.o"
   "/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp" "/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir/FikoEngine/Renderer/Platform/Vulkan/VulkanCreateInfos.cpp.o"

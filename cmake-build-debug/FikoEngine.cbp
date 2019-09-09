@@ -98,6 +98,27 @@
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.h">
 			<Option target="FikoEngine"/>
 		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/EntryPoint.h">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/FikoEngine.h">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Layer.cpp">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Layer.h">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.cpp">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.h">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/Logger.h">
+			<Option target="FikoEngine"/>
+		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/AllocationManger.cpp">
 			<Option target="FikoEngine"/>
 		</Unit>
@@ -120,6 +141,9 @@
 			<Option target="FikoEngine"/>
 		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanRendererAPI.h">
+			<Option target="FikoEngine"/>
+		</Unit>
+		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/Vulkan/VulkanUtilities.h">
 			<Option target="FikoEngine"/>
 		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.cpp">
@@ -147,15 +171,6 @@
 			<Option target="FikoEngine"/>
 		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/3.14.5/CompilerIdCXX/CMakeCXXCompilerId.cpp">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/FikoEngine">
-			<Option target="FikoEngine"/>
-		</Unit>
-		<Unit filename="/home/krusto/CLionProjects/FikoEngine2/cmake-build-debug/FikoEngine">
 			<Option target="FikoEngine"/>
 		</Unit>
 		<Unit filename="/home/krusto/CLionProjects/FikoEngine/CMakeLists.txt">
