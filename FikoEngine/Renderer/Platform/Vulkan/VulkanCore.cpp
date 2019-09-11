@@ -299,37 +299,6 @@ namespace FikoEngine::VulkanRenderer {
         return VK_SUCCESS;
     }
 
-    VkRenderPass createRenderPass(VkDevice device, VkFormat format)
-    {
-        VkAttachmentDescription attachments[1] = {};
-        attachments[0].format = format;
-        attachments[0].samples = VK_SAMPLE_COUNT_1_BIT;
-        attachments[0].loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
-        attachments[0].storeOp = VK_ATTACHMENT_STORE_OP_STORE;
-        attachments[0].stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
-        attachments[0].stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
-        attachments[0].initialLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-        attachments[0].finalLayout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
-
-        VkAttachmentReference colorAttachments = { 0, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL };
-
-        VkSubpassDescription subpass = {};
-        subpass.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
-        subpass.colorAttachmentCount = 1;
-        subpass.pColorAttachments = &colorAttachments;
-
-        VkRenderPassCreateInfo createInfo = { VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO };
-        createInfo.attachmentCount = sizeof(attachments) / sizeof(attachments[0]);
-        createInfo.pAttachments = attachments;
-        createInfo.subpassCount = 1;
-        createInfo.pSubpasses = &subpass;
-
-        VkRenderPass renderPass = 0;
-        VK_CHECK(vkCreateRenderPass(device, &createInfo, 0, &renderPass));
-
-        return renderPass;
-    }
-
     VkResult VulkanCore::mCreateRenderpass() {
         createInfo.setAttachmentDescription(0,VK_SAMPLE_COUNT_1_BIT,VK_ATTACHMENT_LOAD_OP_CLEAR,VK_ATTACHMENT_STORE_OP_STORE,VK_ATTACHMENT_LOAD_OP_DONT_CARE,VK_ATTACHMENT_STORE_OP_DONT_CARE,VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
         createInfo.setAttachmentDescriptionAttr(0,mSurfaceFormat.format);

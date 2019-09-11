@@ -2,20 +2,19 @@
 
 class ExampleLayer : public FikoEngine::Layer{
 public:
-    ExampleLayer(){
+    ExampleLayer()= default;
+    void OnUpdate() override{
 
     }
-    void OnUpdate(){
+    void OnAttach() override{
 
     }
-    void OnAttach(){
-
-    }
-    void OnDetach(){
+    void OnDetach() override{
 
     }
 };
 std::unordered_map<std::string_view,FikoEngine::Layer*> FikoEngine::LayerStack::mLayers = (std::unordered_map<std::string_view,FikoEngine::Layer*>)NULL;
+
 class Sandbox : public FikoEngine::Application {
 
 public :
