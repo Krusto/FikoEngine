@@ -6,59 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.h
-Window.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/OpenGL/OpenGLCore.h
+../../../Window.h
 /home/krusto/CLionProjects/FikoEngine/FikoEngine/Window.h
-Logger/Logger.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/Logger.h
 
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/EntryPoint.h
-Application.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/OpenGL/OpenGLRendererAPI.h
+../../RendererAPI.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.h
+OpenGLCore.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/OpenGL/OpenGLCore.h
 
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/FikoEngine.h
-LayerStack.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.h
-Application.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Application.h
-Logger/Logger.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/Logger.h
-Renderer/Renderer.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.h
-Renderer/RenderCommand.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.cpp
+RenderCommand.h
 /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.h
-EntryPoint.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/EntryPoint.h
-
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Layer.h
-
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.cpp
-LayerStack.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.h
-
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/LayerStack.h
-utility
--
-unordered_map
--
-vector
--
-Layer.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Layer.h
-
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Logger/Logger.h
-memory
--
-iostream
--
+Platform/OpenGL/OpenGLRendererAPI.h
+/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Platform/OpenGL/OpenGLRendererAPI.h
 
 /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.h
 RendererAPI.h
 /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.h
-
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/Renderer.h
-RenderCommand.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RenderCommand.h
 
 /home/krusto/CLionProjects/FikoEngine/FikoEngine/Renderer/RendererAPI.h
 ../Window.h
@@ -69,8 +35,4 @@ GLFW/glfw3.h
 -
 iostream
 -
-
-/home/krusto/CLionProjects/FikoEngine/Sandbox/src/Sandbox.cpp
-../../FikoEngine/FikoEngine.h
-/home/krusto/CLionProjects/FikoEngine/FikoEngine/FikoEngine.h
 

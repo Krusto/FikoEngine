@@ -9,48 +9,29 @@
 #include <vulkan/vulkan.h>
 #include "VulkanCreateInfos.h"
 #include "../../../Window.h"
-
 namespace FikoEngine::VulkanRenderer {
     class VulkanCore {
     public:
         VulkanCore() = default;
 
         void Init(FikoEngine::Window window);
-        VkResult mCreateRenderpass();
+
+        void Begin();
+        void End();
 
         ~VulkanCore();
 
     private:
-
-        VulkanCreateInfos createInfo;
-
-        VkResult mCreateInstance();
-
-        VkResult mSelectPhysicalDevice(VkPhysicalDeviceType physicalDeviceType);
-
-        VkResult mSelectQueueFamilyIndex();
-
-        VkResult mCreateDevice();
-
-        VkResult mCreateDebugCallback();
-
-        VkResult mGetSurface();
-
-        VkResult mCreateSwapchainKHR();
-
-        VkResult mCreateCommandPool();
-
-        VkResult mAllocateCommandBuffers();
-
-        VkResult mGetSwapchainImages();
-
-        VkResult mGetSwapchainImagesView();
+        void mAcquireNextImage();
 
         VkResult mCreateSemaphores();
 
     private:
         FikoEngine::Window* mWindow;
+        std::vector<VkPhysicalDevice> mPhysicalDevices;
+
         VkPhysicalDevice mPhysicalDevice;
+
         VkInstance mInstance;
         VkDevice mDevice;
         VkDebugReportCallbackEXT mDebugReportCallback;
@@ -58,13 +39,18 @@ namespace FikoEngine::VulkanRenderer {
         uint32_t mQueueFamilyIndex;
         VkSwapchainKHR mSwapchain;
         VkCommandPool mCommandPool;
-        std::vector<VkCommandBuffer> mCommandBuffers;
+
+
         std::vector<VkImage> mSwapchainImages;
         std::vector<VkImageView> mSwapchainImagesView;
         VkSurfaceFormatKHR mSurfaceFormat;
         VkSemaphore mWaitSemaphore;
         VkSemaphore mSignalSemaphore;
         VkRenderPass mRenderPass;
+        uint32_t mSwapchainImageIndex;
+
+        VkPipeline mGraphicsPipeline;
+
     };
 }
 

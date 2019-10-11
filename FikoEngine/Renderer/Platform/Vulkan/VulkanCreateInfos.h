@@ -5,8 +5,6 @@
 #ifndef FIKOENGINE_VULKANCREATEINFOS_H
 #define FIKOENGINE_VULKANCREATEINFOS_H
 
-class VkWin32SurfaceCreateInfoKHR;
-
 #include <vulkan/vulkan.h>
 #include <vector>
 
@@ -160,6 +158,8 @@ namespace FikoEngine::VulkanRenderer {
                                     VkAccessFlags           srcAccessMask,
                                     VkAccessFlags           dstAccessMask,
                                     VkDependencyFlags       dependencyFlags);
+
+
     private:
         VkInstanceCreateInfo mInstanceCreateInfo;
         VkApplicationInfo mApplicationInfo;
@@ -185,6 +185,9 @@ namespace FikoEngine::VulkanRenderer {
         VkSubpassDescription mSubpassDescription;
 
         VkSubpassDependency mSubpassDependency;
+
+        VkPipelineShaderStageCreateInfo mPipelineShaderStage;
+
     private:
         struct mInstanceAttr {
             std::vector<const char *> Layers;

@@ -6,4 +6,12 @@ namespace FikoEngine {
         RenderCommand::Init(window);
     }
 
+    void Renderer::Begin() {
+        RenderCommand::Begin();
+    }
+
+    void Renderer::End() {
+        RenderCommand::End();
+    }
+
 }

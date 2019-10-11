@@ -3,6 +3,9 @@
 #include "Logger/Logger.h"
 #include <GLFW/glfw3.h>
 
+#include "Vendor/ImGUI/imgui.h"
+#include "Vendor/ImGUI/imgui_impl_glfw.h"
+
 namespace FikoEngine {
     void Application::CreateWindow(const char *Title, int width, int height) {
         m_Window.Create(width, height, Title, WindowMode::Windowed);
@@ -27,10 +30,9 @@ namespace FikoEngine {
     Application::Application() {
         glfwInit();
         m_Window.Create();
-
         Log::Init();
-
         Renderer::Init(m_Window);
+
     }
 
     Application::~Application() {
@@ -40,6 +42,8 @@ namespace FikoEngine {
 
     void Application::Loop() {
         glfwPollEvents();
+        Renderer::Begin();
 
+        Renderer::End();
     }
 }

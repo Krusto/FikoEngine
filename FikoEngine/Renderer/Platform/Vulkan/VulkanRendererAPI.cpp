@@ -11,3 +11,11 @@ void FikoEngine::VulkanRendererAPI::Init(FikoEngine::Window window) {
 void FikoEngine::VulkanRendererAPI::Clear() {
 
 }
+
+void FikoEngine::VulkanRendererAPI::Begin() {
+    mCore.Begin();
+}
+
+void FikoEngine::VulkanRendererAPI::End() {
+    mCore.End();
+}
