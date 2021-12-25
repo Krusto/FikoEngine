@@ -1,3 +1,0 @@
-/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/FikoEngine.dir
-/home/krusto/CLionProjects/FikoEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
