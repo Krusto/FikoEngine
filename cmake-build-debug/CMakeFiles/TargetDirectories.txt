@@ -1,0 +1,3 @@
+C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/CMakeFiles/FIKO_ENGINE.dir
+C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
