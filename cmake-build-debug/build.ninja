@@ -32,14 +32,14 @@ CONFIGURATION = Debug
 #############################################
 # Include rules file.
 
-include CMakeFiles/rules.ninja
+include CMakeFiles\rules.ninja
 
 # =============================================================================
 
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/
+cmake_ninja_workdir = C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\
 # =============================================================================
 # Object build statements for EXECUTABLE target FIKO_ENGINE
 
@@ -47,13 +47,29 @@ cmake_ninja_workdir = C$:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-bui
 #############################################
 # Order-only phony target for FIKO_ENGINE
 
-build cmake_object_order_depends_target_FIKO_ENGINE: phony || CMakeFiles/FIKO_ENGINE.dir
+build cmake_object_order_depends_target_FIKO_ENGINE: phony || CMakeFiles\FIKO_ENGINE.dir
 
-build CMakeFiles/FIKO_ENGINE.dir/main.cpp.obj: CXX_COMPILER__FIKO_ENGINE_Debug C$:/Users/KSTOYAN2/Documents/Projects/FikoEngine/main.cpp || cmake_object_order_depends_target_FIKO_ENGINE
-  DEP_FILE = CMakeFiles\FIKO_ENGINE.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++23
+build CMakeFiles\FIKO_ENGINE.dir\src\Application\Application.cpp.obj: CXX_COMPILER__FIKO_ENGINE_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\src\Application\Application.cpp || cmake_object_order_depends_target_FIKO_ENGINE
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd -std:c++latest
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\FIKO_ENGINE -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include
   OBJECT_DIR = CMakeFiles\FIKO_ENGINE.dir
-  OBJECT_FILE_DIR = CMakeFiles\FIKO_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles\FIKO_ENGINE.dir\src\Application
+  TARGET_COMPILE_PDB = CMakeFiles\FIKO_ENGINE.dir\
+  TARGET_PDB = FIKO_ENGINE.pdb
+
+build CMakeFiles\FIKO_ENGINE.dir\src\Core\Window.cpp.obj: CXX_COMPILER__FIKO_ENGINE_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\src\Core\Window.cpp || cmake_object_order_depends_target_FIKO_ENGINE
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd -std:c++latest
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\FIKO_ENGINE -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include
+  OBJECT_DIR = CMakeFiles\FIKO_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles\FIKO_ENGINE.dir\src\Core
+  TARGET_COMPILE_PDB = CMakeFiles\FIKO_ENGINE.dir\
+  TARGET_PDB = FIKO_ENGINE.pdb
+
+build CMakeFiles\FIKO_ENGINE.dir\src\main.cpp.obj: CXX_COMPILER__FIKO_ENGINE_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\src\main.cpp || cmake_object_order_depends_target_FIKO_ENGINE
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd -std:c++latest
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\FIKO_ENGINE -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include
+  OBJECT_DIR = CMakeFiles\FIKO_ENGINE.dir
+  OBJECT_FILE_DIR = CMakeFiles\FIKO_ENGINE.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\FIKO_ENGINE.dir\
   TARGET_PDB = FIKO_ENGINE.pdb
 
@@ -65,44 +81,442 @@ build CMakeFiles/FIKO_ENGINE.dir/main.cpp.obj: CXX_COMPILER__FIKO_ENGINE_Debug C
 #############################################
 # Link the executable FIKO_ENGINE.exe
 
-build FIKO_ENGINE.exe: CXX_EXECUTABLE_LINKER__FIKO_ENGINE_Debug CMakeFiles/FIKO_ENGINE.dir/main.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build FIKO_ENGINE.exe: CXX_EXECUTABLE_LINKER__FIKO_ENGINE_Debug CMakeFiles\FIKO_ENGINE.dir\src\Application\Application.cpp.obj CMakeFiles\FIKO_ENGINE.dir\src\Core\Window.cpp.obj CMakeFiles\FIKO_ENGINE.dir\src\main.cpp.obj | ..\Vendor\glfw\src\Release\glfw3.lib
+  FLAGS = /DWIN32 /D_WINDOWS /EHsc /Zi /Ob0 /Od /RTC1 -MDd
+  LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
+  LINK_LIBRARIES = ..\Vendor\glfw\src\Release\glfw3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
   OBJECT_DIR = CMakeFiles\FIKO_ENGINE.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   TARGET_COMPILE_PDB = CMakeFiles\FIKO_ENGINE.dir\
   TARGET_FILE = FIKO_ENGINE.exe
-  TARGET_IMPLIB = libFIKO_ENGINE.dll.a
+  TARGET_IMPLIB = FIKO_ENGINE.lib
   TARGET_PDB = FIKO_ENGINE.pdb
 
 
 #############################################
 # Utility command for edit_cache
 
-build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
   COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
-build edit_cache: phony CMakeFiles/edit_cache.util
+build edit_cache: phony CMakeFiles\edit_cache.util
 
 
 #############################################
 # Utility command for rebuild_cache
 
-build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
   COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\KSTOYAN2\Documents\Projects\FikoEngine -BC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
 
-build rebuild_cache: phony CMakeFiles/rebuild_cache.util
+build rebuild_cache: phony CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles\install.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles\install\local.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install\local: phony CMakeFiles\install\local.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build Vendor\glfw\uninstall: phony Vendor\glfw\CMakeFiles\uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build Vendor\glfw\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build Vendor\glfw\edit_cache: phony Vendor\glfw\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Vendor\glfw\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\KSTOYAN2\Documents\Projects\FikoEngine -BC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\rebuild_cache: phony Vendor\glfw\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build Vendor\glfw\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build Vendor\glfw\CMakeFiles\install.util: CUSTOM_COMMAND Vendor\glfw\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\install: phony Vendor\glfw\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build Vendor\glfw\CMakeFiles\install\local.util: CUSTOM_COMMAND Vendor\glfw\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\install\local: phony Vendor\glfw\CMakeFiles\install\local.util
+
+
+#############################################
+# Custom command for Vendor\glfw\CMakeFiles\uninstall
+
+build Vendor\glfw\CMakeFiles\uninstall | ${cmake_ninja_workdir}Vendor\glfw\CMakeFiles\uninstall: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -P C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/Vendor/glfw/cmake_uninstall.cmake"
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/Vendor/glfw/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Order-only phony target for glfw
+
+build cmake_object_order_depends_target_glfw: phony || Vendor\glfw\src\CMakeFiles\glfw.dir
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\input.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\platform.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\platform.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\vulkan.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\egl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\osmesa_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\null_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\null_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\null_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\null_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_module.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_time.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_thread.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_init.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_joystick.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_monitor.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\win32_window.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+build Vendor\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_Debug C$:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src\wgl_context.c || cmake_object_order_depends_target_glfw
+  DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
+  FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd /W3
+  INCLUDES = -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\include -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src -IC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  OBJECT_FILE_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target glfw
+
+
+#############################################
+# Link the static library Vendor\glfw\src\glfw3.lib
+
+build Vendor\glfw\src\glfw3.lib: C_STATIC_LIBRARY_LINKER__glfw_Debug Vendor\glfw\src\CMakeFiles\glfw.dir\context.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\init.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\input.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\platform.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\window.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj Vendor\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj
+  LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /Zi /Ob0 /Od /RTC1 -MDd
+  LINK_FLAGS = /machine:x64
+  OBJECT_DIR = Vendor\glfw\src\CMakeFiles\glfw.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_COMPILE_PDB = Vendor\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
+  TARGET_FILE = Vendor\glfw\src\glfw3.lib
+  TARGET_PDB = Vendor\glfw\src\glfw3.pdb
+
+
+#############################################
+# Utility command for update_mappings
+
+build Vendor\glfw\src\update_mappings: phony Vendor\glfw\src\CMakeFiles\update_mappings
+
+
+#############################################
+# Utility command for edit_cache
+
+build Vendor\glfw\src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build Vendor\glfw\src\edit_cache: phony Vendor\glfw\src\CMakeFiles\edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Vendor\glfw\src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\KSTOYAN2\Documents\Projects\FikoEngine -BC:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\src\rebuild_cache: phony Vendor\glfw\src\CMakeFiles\rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build Vendor\glfw\src\list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build Vendor\glfw\src\CMakeFiles\install.util: CUSTOM_COMMAND Vendor\glfw\src\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\src\install: phony Vendor\glfw\src\CMakeFiles\install.util
+
+
+#############################################
+# Utility command for install/local
+
+build Vendor\glfw\src\CMakeFiles\install\local.util: CUSTOM_COMMAND Vendor\glfw\src\all
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\cmake-build-debug\Vendor\glfw\src && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build Vendor\glfw\src\install\local: phony Vendor\glfw\src\CMakeFiles\install\local.util
+
+
+#############################################
+# Custom command for Vendor\glfw\src\CMakeFiles\update_mappings
+
+build Vendor\glfw\src\CMakeFiles\update_mappings | ${cmake_ninja_workdir}Vendor\glfw\src\CMakeFiles\update_mappings: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\KSTOYAN2\Documents\Projects\FikoEngine\Vendor\glfw\src && "C:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -P C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/Vendor/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h"
+  DESC = Updating gamepad mappings from upstream repository
 
 # =============================================================================
 # Target aliases.
 
 build FIKO_ENGINE: phony FIKO_ENGINE.exe
+
+build glfw: phony Vendor\glfw\src\glfw3.lib
+
+build glfw3.lib: phony Vendor\glfw\src\glfw3.lib
+
+build uninstall: phony Vendor\glfw\uninstall
+
+build update_mappings: phony Vendor\glfw\src\update_mappings
 
 # =============================================================================
 # Folder targets.
@@ -112,7 +526,21 @@ build FIKO_ENGINE: phony FIKO_ENGINE.exe
 #############################################
 # Folder: C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug
 
-build all: phony FIKO_ENGINE.exe
+build all: phony FIKO_ENGINE.exe Vendor\glfw\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/Vendor/glfw
+
+build Vendor\glfw\all: phony Vendor\glfw\src\all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-debug/Vendor/glfw/src
+
+build Vendor\glfw\src\all: phony Vendor\glfw\src\glfw3.lib
 
 # =============================================================================
 # Built-in targets
@@ -121,14 +549,14 @@ build all: phony FIKO_ENGINE.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCCompilerABI.c C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCXXCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineRCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeGenericSystem.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeRCCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeRCInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystem.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestRCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-C.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-Determine-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-windres.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeRCCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ..\CMakeLists.txt ..\Vendor\glfw\CMakeLists.txt ..\Vendor\glfw\CMake\cmake_uninstall.cmake.in ..\Vendor\glfw\CMake\glfw3.pc.in ..\Vendor\glfw\CMake\glfw3Config.cmake.in ..\Vendor\glfw\src\CMakeLists.txt C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeDependentOption.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindDoxygen.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\GNUInstallDirs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.22.3\CMakeCCompiler.cmake CMakeFiles\3.22.3\CMakeCXXCompiler.cmake CMakeFiles\3.22.3\CMakeRCCompiler.cmake CMakeFiles\3.22.3\CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCCompilerABI.c C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeCompilerIdDetection.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCXXCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompileFeatures.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompilerABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineCompilerId.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineRCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeDetermineSystem.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeFindBinUtils.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeGenericSystem.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseLibraryArchitecture.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeRCCompiler.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeRCInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystem.cmake.in C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCXXCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestCompilerCommon.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/CMakeTestRCCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-C.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Internal/FeatureTesting.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-Determine-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-windres.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows.cmake C$:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion$ 2022.1.1/bin/cmake/win/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake CMakeCache.txt CMakeFiles/3.22.3/CMakeCCompiler.cmake CMakeFiles/3.22.3/CMakeCXXCompiler.cmake CMakeFiles/3.22.3/CMakeRCCompiler.cmake CMakeFiles/3.22.3/CMakeSystem.cmake: phony
+build ..\CMakeLists.txt ..\Vendor\glfw\CMakeLists.txt ..\Vendor\glfw\CMake\cmake_uninstall.cmake.in ..\Vendor\glfw\CMake\glfw3.pc.in ..\Vendor\glfw\CMake\glfw3Config.cmake.in ..\Vendor\glfw\src\CMakeLists.txt C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCXXInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeCommonLanguageInclude.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeDependentOption.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeGenericSystem.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeInitializeConfigs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeLanguageInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakePackageConfigHelpers.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeRCInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInformation.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CMakeSystemSpecificInitialize.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckCSourceCompiles.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckIncludeFile.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\CheckLibraryExists.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-C.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Compiler\MSVC-CXX.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindDoxygen.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindPackageHandleStandardArgs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindPackageMessage.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\FindThreads.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\GNUInstallDirs.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Internal\CheckSourceCompiles.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-C.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows-MSVC.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\Windows.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\Platform\WindowsPaths.cmake C$:\Users\KSTOYAN2\AppData\Local\JetBrains\CLion$ 2022.1.1\bin\cmake\win\share\cmake-3.22\Modules\WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles\3.22.3\CMakeCCompiler.cmake CMakeFiles\3.22.3\CMakeCXXCompiler.cmake CMakeFiles\3.22.3\CMakeRCCompiler.cmake CMakeFiles\3.22.3\CMakeSystem.cmake: phony
 
 
 #############################################

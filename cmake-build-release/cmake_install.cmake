@@ -32,9 +32,9 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/KSTOYAN2/AppData/Local/JetBrains/CLion 2022.1.1/bin/mingw/bin/objdump.exe")
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("C:/Users/KSTOYAN2/Documents/Projects/FikoEngine/cmake-build-release/Vendor/glfw/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
