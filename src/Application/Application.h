@@ -5,16 +5,13 @@
 
 #include "../FikoEngine.h"
 #include "../Core/Window.h"
+#include "ApplicationSpec.h"
 
 #include <string>
 #include <filesystem>
 
 namespace FikoEngine{
-struct ApplicationSpec{
-  std::string ApplicationName;
-  std::string WorkingDirectory;
-  Version AppVersion;
-};
+
 class Application{
 public:
     Application() = default;
@@ -29,5 +26,6 @@ public:
 private:
     ApplicationSpec m_ApplicationSpec;
     Window* m_Window;
+    Renderer* m_Renderer;
 };
 }

@@ -2,11 +2,12 @@
 // Created by KSTOYAN2 on 6/3/2022.
 //
 #pragma once
-#include "../FikoEngine.h"
+#include "../Core/Definitions.h"
 namespace FikoEngine{
+    ///Struct which specifies a version
     struct Version{
-        uint32 Major;
-        uint32 Minor;
-        uint32 Patch;
+        u32 Major;
+        u32 Minor;
+        u32 Patch;
     };
 }

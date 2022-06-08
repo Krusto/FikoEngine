@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(FIKO_ENGINE)
 
 add_subdirectory(Vendor/glfw)
+add_subdirectory(Vendor/lwlog)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_GENERATOR_PLATFORM x64)
@@ -28,6 +29,11 @@ endforeach(TMP_PATH)
 add_executable(FIKO_ENGINE ${SOURCE_FILES} ${HEADER_FILES})
 
 include_directories(FIKO_ENGINE Vendor/glfw/include)
+include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Include)
+include_directories(FIKO_ENGINE Vendor/lwlog/lwlog/src)
+
+target_link_libraries(FIKO_ENGINE lwlog)
+target_link_libraries(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Lib/vulkan-1.lib)
 
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     message("Debug!")
