@@ -7,6 +7,8 @@ add_subdirectory(Vendor/lwlog)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_GENERATOR_PLATFORM x64)
 
+add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
+
 file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp)
 file(GLOB_RECURSE HEADER_FILES ./src/*.h)
 

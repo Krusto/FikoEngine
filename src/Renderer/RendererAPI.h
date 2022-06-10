@@ -4,7 +4,9 @@
 #pragma once
 
 #include "../Core/Core.h"
-#include "../Application/ApplicationSpec.h"
+#include "Vulkan/Queue.h"
+#include "Window.h"
+
 namespace FikoEngine {
 
 ///Struct which holds renderer specification
@@ -18,5 +20,7 @@ class RendererAPI {
 public:
 ///Function which inits the renderer api
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
+private:
+    static QueueFamilyIndices s_RendererQueueFamilyIndices;
 };
 }

@@ -15,8 +15,5 @@ int main(){
     }
 
     App.Destroy();
-    std::cout << "Hello World\n";
-    char a;
-    std::cin >> a;
     return 0;
 }

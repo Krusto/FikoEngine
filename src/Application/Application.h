@@ -4,11 +4,6 @@
 #pragma once
 
 #include "../FikoEngine.h"
-#include "../Core/Window.h"
-#include "ApplicationSpec.h"
-
-#include <string>
-#include <filesystem>
 
 namespace FikoEngine{
 
@@ -26,6 +21,6 @@ public:
 private:
     ApplicationSpec m_ApplicationSpec;
     Window* m_Window;
-    Renderer* m_Renderer;
+    std::shared_ptr<Renderer> m_Renderer;
 };
 }

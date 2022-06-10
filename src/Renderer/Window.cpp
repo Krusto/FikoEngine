@@ -1,9 +1,21 @@
 #include "Window.h"
-#include <iostream>
+#ifdef _WIN32
+#define VK_USE_PLATFORM_WIN32_KHR
+#endif
+
+#define GLFW_INCLUDE_VULKAN
+
+#include "GLFW/glfw3.h"
+#include "GLFW/glfw3native.h"
+#include <vulkan/vulkan.h>
+#ifdef _WIN32
+#include <vulkan/vulkan_win32.h>
+#endif
+
 namespace FikoEngine {
 Window::Window(WindowSpec spec, int argc, char **argv) {
     if (!glfwInit()) {
-        std::cerr << "GLFW CAN NOT INITIALIZE!!!";
+        LOG_ERROR("GLFW CAN NOT INITALIZE!!!");
         exit(-1);
     }
 
@@ -70,5 +82,16 @@ void Window::OnWindowResize(void(*function)(GLFWwindow *window, int width, int h
 
 void Window::OnWindowClose(void(*function)(GLFWwindow *window)) {
     glfwSetWindowCloseCallback(this->m_Window, function);
+}
+VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
+    VkSurfaceKHR surface;
+    #ifdef _WIN32
+    VkWin32SurfaceCreateInfoKHR createInfo{};
+    createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+    createInfo.hwnd = glfwGetWin32Window(m_Window);
+    createInfo.hinstance = GetModuleHandle(nullptr);
+    vkCreateWin32SurfaceKHR(instance,&createInfo,nullptr,&surface);
+    #endif
+    return surface;
 }
 }

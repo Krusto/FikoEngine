@@ -8,3 +8,6 @@
 #include <string>
 #include <filesystem>
 #include <stdlib.h>
+#include <string_view>
+#include <functional>
+#include <cassert>

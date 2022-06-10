@@ -3,9 +3,12 @@
 //
 #pragma once
 #include <lwlog.h>
+#include "Log.h"
+
 namespace FikoEngine{
-
-    void Log(){
-
+    std::shared_ptr<lwlog::console_logger> Logger::console;
+    void FikoEngine::Logger::Init() {
+        Logger::console = std::make_shared<lwlog::console_logger>("CONSOLE");
+        LWLOG_SET_PATTERN(".br_red([%T]) .green([%l]): .br_cyan(%v)");
     }
 }

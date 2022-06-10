@@ -22,7 +22,7 @@ VkPhysicalDevice SelectPhysicalDevice(VkInstance instance) {
 
     VkPhysicalDeviceProperties properties;
     vkGetPhysicalDeviceProperties(selectedDevice, &properties);
-    std::cout << "Selected " << properties.deviceName << std::flush;
+    LOG("Selected "+std::string(properties.deviceName));
     return selectedDevice;
 }
 }

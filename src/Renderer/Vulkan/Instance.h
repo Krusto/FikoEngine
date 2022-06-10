@@ -3,7 +3,7 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
-#include "../../Application/ApplicationSpec.h"
+#include "../Window.h"
 
 namespace FikoEngine{
 ///Function which creates api instance

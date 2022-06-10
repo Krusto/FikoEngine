@@ -3,14 +3,21 @@
 //
 
 #pragma once
-#include <GLFW/glfw3.h>
-#include <string>
-#include <string_view>
-#include <functional>
-#include "Definitions.h"
-#include "Timestep.h"
+#include "../Core/Core.h"
+#include "../Util/Version.h"
+#include "GLFW/glfw3.h"
+#include "GLFW/glfw3native.h"
+#include <vulkan/vulkan.h>
 
 namespace FikoEngine {
+class Window;
+struct ApplicationSpec {
+    std::string ApplicationName;
+    std::string WorkingDirectory;
+    Version AppVersion;
+    Window* window;
+};
+
 ///Structure which holds window specification
 struct WindowSpec {
     std::string title;
@@ -62,6 +69,7 @@ public:
 
     operator GLFWwindow *() { return m_Window; }
 
+    VkSurfaceKHR CreateSurface(VkInstance instance);
 private:
     GLFWwindow *m_Window;
     WindowSpec m_WindowSpec;
