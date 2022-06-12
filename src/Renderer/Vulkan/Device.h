@@ -2,9 +2,10 @@
 // Created by KSTOYAN2 on 6/7/2022.
 //
 #pragma once
-#include "../../Core/Core.h"
 #include <vulkan/vulkan.h>
+#include "RendererData.h"
+#include "../../Core/Core.h"
 
 namespace FikoEngine{
-    VkDevice CreateDevice(VkInstance instance,VkPhysicalDevice physicalDevice,std::vector<const char*>& extensions);
+    VkDevice CreateDevice(RendererDataAPI& rendererData,std::vector<const char*>& extensions);
 }

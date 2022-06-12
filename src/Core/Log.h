@@ -1,6 +1,6 @@
 #pragma once
-#include <stdlib.h>
 #include <lwlog.h>
+#include <cstdlib>
 
 namespace FikoEngine {
     class Logger {

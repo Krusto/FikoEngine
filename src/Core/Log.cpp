@@ -2,7 +2,6 @@
 // Created by KSTOYAN2 on 6/8/2022.
 //
 #pragma once
-#include <lwlog.h>
 #include "Log.h"
 
 namespace FikoEngine{

@@ -2,14 +2,23 @@
 // Created by KSTOYAN2 on 6/10/2022.
 //
 #pragma once
-#include "../../Core/Core.h"
 #include <vulkan/vulkan.h>
-namespace FikoEngine{
-    struct SwapChainSupportDetails {
-        VkSurfaceCapabilitiesKHR capabilities;
-        std::vector<VkSurfaceFormatKHR> formats;
-        std::vector<VkPresentModeKHR> presentModes;
-    };
-    bool CheckDeviceExtensionSupport(VkPhysicalDevice device,std::string_view extension);
-    bool CheckSwapChainSupport(VkPhysicalDevice physicalDevice);
+#include "SwapchainSpec.h"
+#include "RendererData.h"
+#include "../../Core/Core.h"
+namespace FikoEngine {
+
+    bool CheckDeviceExtensionSupport(RendererDataAPI& rendererData, std::string_view extension);
+
+    bool CheckSwapChainSupport(RendererDataAPI& rendererData);
+
+    SwapChainSupportDetails GetSwapchainSupportDetails(RendererDataAPI& rendererData);
+
+    VkSurfaceFormatKHR ChooseSurfaceFormat(RendererDataAPI& rendererData);
+
+    VkPresentModeKHR ChoosePresentMode(RendererDataAPI& rendererData);
+
+    VkExtent2D ChooseSwapExtent(RendererDataAPI& rendererData,VkExtent2D windowExtent);
+
+    VkSwapchainKHR CreateSwapchain(RendererDataAPI& rendererData,VkExtent2D windowExtent);
 }

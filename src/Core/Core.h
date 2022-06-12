@@ -5,11 +5,11 @@
 
 
 #include "Definitions.h"
-#include "Log.h"
 #include "Timestep.h"
 #include "stdcpp.h"
 #ifdef _WIN32
 #include <Windows.h>
 #endif
+#include "Log.h"
 
 #define VK_CHECK(x) assert(VK_SUCCESS == x)

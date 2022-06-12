@@ -4,7 +4,7 @@
 #include "Device.h"
 #include "Queue.h"
 namespace FikoEngine {
-    VkDevice CreateDevice(VkInstance instance, VkPhysicalDevice physicalDevice, std::vector<const char *> &extensions) {
+    VkDevice CreateDevice(RendererDataAPI& rendererData, std::vector<const char *> &extensions) {
         VkDevice device{};
         VkDeviceCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO};
         createInfo.enabledExtensionCount = extensions.size();
@@ -12,14 +12,14 @@ namespace FikoEngine {
 
         VkDeviceQueueCreateInfo queueCreateInfo{.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO};
         queueCreateInfo.queueCount = 1;
-        queueCreateInfo.queueFamilyIndex = SelectQueueFamily(physicalDevice);
+        queueCreateInfo.queueFamilyIndex = SelectQueueFamily(rendererData);
         const f32 priorities[] = {1};
         queueCreateInfo.pQueuePriorities = priorities;
 
         createInfo.queueCreateInfoCount = 1;
         createInfo.pQueueCreateInfos = &queueCreateInfo;
 
-        VK_CHECK(vkCreateDevice(physicalDevice, &createInfo, nullptr, &device));
+        VK_CHECK(vkCreateDevice(rendererData.physicalDevice, &createInfo, nullptr, &device));
         LOG("Device created successfully!");
 
         return device;

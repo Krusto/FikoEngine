@@ -3,8 +3,9 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
+#include "RendererData.h"
 
 namespace FikoEngine{
 ///Function which selects the correct physical device
-    VkPhysicalDevice SelectPhysicalDevice(VkInstance instance);
+    VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI& rendererData);
 }

@@ -3,8 +3,8 @@
 //
 #pragma once
 
-#include "../Core/Core.h"
 #include "Window.h"
+#include "../Core/Core.h"
 
 namespace FikoEngine {
 
