@@ -2,6 +2,8 @@
 // Created by KSTOYAN2 on 6/12/2022.
 //
 #include "Renderpass.h"
+#include "../Memory.h"
+
 namespace FikoEngine{
     VkRenderPass CreateRenderPass(RendererDataAPI& rendererData){
         VkRenderPass renderPass{};
@@ -32,7 +34,7 @@ namespace FikoEngine{
         createInfo.subpassCount = 1;
         createInfo.pSubpasses = &subpass;
 
-        VK_CHECK(vkCreateRenderPass(rendererData.device,&createInfo,nullptr,&renderPass));
+        VK_CHECK(vkCreateRenderPass(rendererData.device,&createInfo,CreatePAllocator("Renderpass"),&renderPass));
 
         LOG_INFO("RenderPass created successfully!");
 

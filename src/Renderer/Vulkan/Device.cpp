@@ -1,6 +1,7 @@
 //
 // Created by KSTOYAN2 on 6/7/2022.
 //
+#include "../Memory.h"
 #include "Device.h"
 #include "Queue.h"
 namespace FikoEngine {
@@ -19,7 +20,7 @@ namespace FikoEngine {
         createInfo.queueCreateInfoCount = 1;
         createInfo.pQueueCreateInfos = &queueCreateInfo;
 
-        VK_CHECK(vkCreateDevice(rendererData.physicalDevice, &createInfo, nullptr, &device));
+        VK_CHECK(vkCreateDevice(rendererData.physicalDevice, &createInfo, CreatePAllocator("Device"), &device));
         LOG("Device created successfully!");
 
         return device;

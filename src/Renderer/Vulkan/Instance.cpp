@@ -3,6 +3,7 @@
 //
 #include "Instance.h"
 #include "../Platform.h"
+#include "../Memory.h"
 
 namespace FikoEngine{
 
@@ -62,7 +63,7 @@ namespace FikoEngine{
         createInfo.ppEnabledExtensionNames = extensions.data();
 
         createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-        VK_CHECK(vkCreateInstance(&createInfo,nullptr,&instance));
+        VK_CHECK(vkCreateInstance(&createInfo,CreatePAllocator("Instance"),&instance));
         LOG("Instance created successfully!");
 
         VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
@@ -73,7 +74,7 @@ namespace FikoEngine{
         debugCreateInfo.pUserData = nullptr; // Optional
 
         VkDebugUtilsMessengerEXT debug;
-        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,nullptr,&debug);
+        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&debug);
 
         return instance;
     }

@@ -1,5 +1,6 @@
 #include "Swapchain.h"
 #include "Queue.h"
+#include "../Memory.h"
 
 namespace FikoEngine {
     bool CheckDeviceExtensionSupport(RendererDataAPI& rendererData, std::string_view extension) {
@@ -109,7 +110,7 @@ namespace FikoEngine {
         createInfo.clipped = rendererData.swapChainSpec.clipped;
         createInfo.oldSwapchain = VK_NULL_HANDLE;
 
-        VK_CHECK(vkCreateSwapchainKHR(rendererData.device,&createInfo,nullptr,&swapchain));
+        VK_CHECK(vkCreateSwapchainKHR(rendererData.device,&createInfo,CreatePAllocator("Swapchain"),&swapchain));
         LOG_INFO("Swapchain created successfully!");
         return swapchain;
     }

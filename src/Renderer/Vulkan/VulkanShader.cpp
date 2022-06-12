@@ -6,6 +6,7 @@
 #endif
 #include "VulkanShader.h"
 #include "../../Util/File.h"
+#include "../Memory.h"
 #include <vulkan/vulkan.h>
 namespace FikoEngine {
     void CompileShaderFile(RendererDataAPI& rendererData,const char* ShaderPath,ShaderType type){
@@ -24,7 +25,7 @@ namespace FikoEngine {
         createInfo.pCode = reinterpret_cast<const uint32_t*>(data.data());
         VkShaderModule shaderModule{};
 
-        VK_CHECK(vkCreateShaderModule(rendererData.device,&createInfo,nullptr,&shaderModule));
+        VK_CHECK(vkCreateShaderModule(rendererData.device,&createInfo,CreatePAllocator("Shader module"),&shaderModule));
 
         LOG_INFO(std::string(ShaderPath) + " shader module created successfully!");
         return shaderModule;

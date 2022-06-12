@@ -7,6 +7,7 @@
 
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
+#include "Memory.h"
 #include <vulkan/vulkan.h>
 #ifdef _WIN32
 #include <vulkan/vulkan_win32.h>
@@ -90,7 +91,7 @@ VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
     createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
     createInfo.hwnd = glfwGetWin32Window(m_Window);
     createInfo.hinstance = GetModuleHandle(nullptr);
-    vkCreateWin32SurfaceKHR(instance,&createInfo,nullptr,&surface);
+    vkCreateWin32SurfaceKHR(instance,&createInfo,CreatePAllocator("Surface"),&surface);
     #endif
     return surface;
 }

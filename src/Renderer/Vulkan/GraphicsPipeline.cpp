@@ -5,6 +5,7 @@
 #include "../../Core/Core.h"
 #include "GraphicsPipeline.h"
 #include "VulkanShader.h"
+#include "../Memory.h"
 
 namespace FikoEngine{
     VkPipeline CreateGraphicsPipeline(RendererDataAPI& rendererData,const char* shaderPath){
@@ -94,7 +95,7 @@ namespace FikoEngine{
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-        VK_CHECK(vkCreatePipelineLayout(s_RendererData.device,&pipelineLayoutInfo,nullptr,&s_RendererData.pipelineLayout));
+        VK_CHECK(vkCreatePipelineLayout(s_RendererData.device,&pipelineLayoutInfo,CreatePAllocator("Piepeline Layout"),&s_RendererData.pipelineLayout));
         LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
@@ -117,11 +118,11 @@ namespace FikoEngine{
         pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
         pipelineInfo.basePipelineIndex = -1; // Optional
 
-        VK_CHECK(vkCreateGraphicsPipelines(rendererData.device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
+        VK_CHECK(vkCreateGraphicsPipelines(rendererData.device,VK_NULL_HANDLE,1,&pipelineInfo,CreatePAllocator("Graphics Pipeline"),&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
 
-        vkDestroyShaderModule(s_RendererData.device,s_RendererData.vertModule,nullptr);
-        vkDestroyShaderModule(s_RendererData.device,s_RendererData.fragModule,nullptr);
+        vkDestroyShaderModule(s_RendererData.device,s_RendererData.vertModule,CreatePAllocator("Shader module"));
+        vkDestroyShaderModule(s_RendererData.device,s_RendererData.fragModule,CreatePAllocator("Shader module"));
         return pipeline;
     }
 }

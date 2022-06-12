@@ -14,6 +14,7 @@
 #include "Vulkan/RendererData.h"
 #include "Vulkan/GraphicsPipeline.h"
 #include "Vulkan/Renderpass.h"
+#include "Memory.h"
 
 namespace FikoEngine {
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
@@ -35,14 +36,14 @@ namespace FikoEngine {
 
         LOG("Renderer initialized!");
 
-        vkDestroyPipeline(s_RendererData.device,s_RendererData.graphicsPipeline,nullptr);
-        vkDestroyPipelineLayout(s_RendererData.device,s_RendererData.pipelineLayout,nullptr);
-        vkDestroyRenderPass(s_RendererData.device,s_RendererData.renderPass,nullptr);
+        vkDestroyPipeline(s_RendererData.device,s_RendererData.graphicsPipeline,CreatePAllocator("Graphics pipeline"));
+        vkDestroyPipelineLayout(s_RendererData.device,s_RendererData.pipelineLayout,CreatePAllocator("Pipeline layout"));
+        vkDestroyRenderPass(s_RendererData.device,s_RendererData.renderPass,CreatePAllocator("Pipeline layout"));
         for (const auto &view: s_RendererData.imageViews)
-            vkDestroyImageView(s_RendererData.device,view,nullptr);
-        vkDestroySwapchainKHR(s_RendererData.device,s_RendererData.swapchain,nullptr);
-        vkDestroySurfaceKHR(s_RendererData.instance,s_RendererData.surface,nullptr);
-        vkDestroyDevice(s_RendererData.device,nullptr);
-        vkDestroyInstance(s_RendererData.instance,nullptr);
+            vkDestroyImageView(s_RendererData.device,view,CreatePAllocator("Image View"));
+        vkDestroySwapchainKHR(s_RendererData.device,s_RendererData.swapchain,CreatePAllocator("Swapchain"));
+        vkDestroySurfaceKHR(s_RendererData.instance,s_RendererData.surface,CreatePAllocator("Surface"));
+        vkDestroyDevice(s_RendererData.device,CreatePAllocator("Device"));
+        vkDestroyInstance(s_RendererData.instance,CreatePAllocator("Instance"));
     }
 }

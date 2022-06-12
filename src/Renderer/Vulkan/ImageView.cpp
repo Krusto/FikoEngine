@@ -3,6 +3,7 @@
 //
 
 #include "ImageView.h"
+#include "../Memory.h"
 
 namespace FikoEngine{
     std::vector<VkImageView> CreateImageViews(RendererDataAPI& rendererData){
@@ -22,7 +23,7 @@ namespace FikoEngine{
             createInfo.subresourceRange.baseArrayLayer = 0;
             createInfo.subresourceRange.layerCount = 1;
 
-            VK_CHECK(vkCreateImageView(rendererData.device,&createInfo,nullptr,&imageViews[i]));
+            VK_CHECK(vkCreateImageView(rendererData.device,&createInfo,CreatePAllocator("Image View"),&imageViews[i]));
         }
         return imageViews;
     }
