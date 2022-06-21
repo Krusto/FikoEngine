@@ -1,5 +1,6 @@
 #include "Memory.h"
-#include "../Core/Core.h"
+#include "../../Core/Core.h"
+#define LOG_MEMORY_INFO 0
 namespace FikoEngine{
     void* MemoryAllocateFunc( void*                                       pUserData,
                               size_t                                      size,
@@ -8,17 +9,21 @@ namespace FikoEngine{
 
         void* ptr = malloc(size);//_aligned_malloc(size, alignment);
         memset(ptr, 0, size);
+        #if LOG_MEMORY_INFO
         LOG_INFO("pAllocator's allocationFunction: <" + std::format("{}",(const char*)pUserData) + ">, size: " + std::to_string(size) +
                  ", alignment: " + std::to_string(alignment) +
                  ", allocationScope: " + std::to_string(allocationScope) +
                  ", return ptr* : " + std::format("{}",ptr));
+        #endif
         return ptr;
     }
 
     void MemoryFreeFunc(void*                                       pUserData,
                         void*                                       pMemory){
+        #if LOG_MEMORY_INFO
         LOG_INFO("pAllocator's freeFunction: <" + std::format("{}",(const char*)pUserData)+
         "> ptr: " + std::format("{}",pMemory));
+        #endif
         free(pMemory);
     }
     void* reallocationFunction(void*   pUserData,   void*   pOriginal,  size_t  size, size_t  alignment,  VkSystemAllocationScope allocationScope){

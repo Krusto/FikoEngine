@@ -5,7 +5,7 @@
 #include <vulkan/vulkan.h>
 #include "../../Core/Core.h"
 #include "RendererData.h"
-
 namespace FikoEngine{
-    std::vector<VkImageView> CreateImageViews(RendererDataAPI& rendererData);
+    VkFramebuffer CreateFramebuffer(RendererDataAPI& rendererData, u32 index);
+    std::vector<VkFramebuffer> CreateFramebuffers(RendererDataAPI& rendererData);
 }

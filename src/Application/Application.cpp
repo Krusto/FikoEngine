@@ -1,5 +1,5 @@
 //
-// Created by KSTOYAN2 on 6/3/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/3/2022.
 //
 
 #include "Application.h"
@@ -12,10 +12,14 @@ bool FikoEngine::Application::Run() {
     m_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
 
     while(true){
-        m_Window->Begin();
-        m_Window->Loop();
-        m_Window->End();
-    }
+       m_Window->Begin();
+       m_Window->Loop();
+
+       m_Renderer->Draw();
+
+       m_Window->End();
+   }
+    m_Renderer->Destroy();
     delete m_Window;
     return true;
 }

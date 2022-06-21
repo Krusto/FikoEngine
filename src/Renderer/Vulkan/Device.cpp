@@ -1,7 +1,7 @@
 //
-// Created by KSTOYAN2 on 6/7/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
-#include "../Memory.h"
+#include "Memory.h"
 #include "Device.h"
 #include "Queue.h"
 namespace FikoEngine {
@@ -13,7 +13,9 @@ namespace FikoEngine {
 
         VkDeviceQueueCreateInfo queueCreateInfo{.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO};
         queueCreateInfo.queueCount = 1;
-        queueCreateInfo.queueFamilyIndex = SelectQueueFamily(rendererData);
+
+        rendererData.queueFamilyIndex = SelectQueueFamily(rendererData);
+        queueCreateInfo.queueFamilyIndex = rendererData.queueFamilyIndex;
         const f32 priorities[] = {1};
         queueCreateInfo.pQueuePriorities = priorities;
 

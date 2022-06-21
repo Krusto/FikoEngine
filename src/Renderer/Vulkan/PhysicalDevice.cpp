@@ -1,5 +1,5 @@
 //
-// Created by KSTOYAN2 on 6/7/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
 #include "PhysicalDevice.h"
 #include "../../Core/Core.h"
@@ -16,6 +16,7 @@ VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI& rendererData) {
     for (auto device: devices) {
         VkPhysicalDeviceProperties properties;
         vkGetPhysicalDeviceProperties(device, &properties);
+        LOG_INFO("Checking " + std::string(properties.deviceName));
         if (VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU == properties.deviceType)
             selectedDevice = device;
     }

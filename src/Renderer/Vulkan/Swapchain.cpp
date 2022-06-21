@@ -1,6 +1,6 @@
 #include "Swapchain.h"
 #include "Queue.h"
-#include "../Memory.h"
+#include "Memory.h"
 
 namespace FikoEngine {
     bool CheckDeviceExtensionSupport(RendererDataAPI& rendererData, std::string_view extension) {

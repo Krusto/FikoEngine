@@ -1,5 +1,5 @@
 //
-// Created by KSTOYAN2 on 6/7/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
 #pragma once
 
@@ -16,6 +16,8 @@ class RendererAPI {
 public:
 ///Function which inits the renderer api
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
+    static void Draw();
+    static void Destroy();
 private:
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
 };

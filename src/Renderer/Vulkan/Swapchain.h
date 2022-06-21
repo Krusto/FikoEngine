@@ -1,5 +1,5 @@
 //
-// Created by KSTOYAN2 on 6/10/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/10/2022.
 //
 #pragma once
 #include <vulkan/vulkan.h>

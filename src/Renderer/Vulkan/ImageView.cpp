@@ -1,9 +1,9 @@
 //
-// Created by KSTOYAN2 on 6/11/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/11/2022.
 //
 
 #include "ImageView.h"
-#include "../Memory.h"
+#include "Memory.h"
 
 namespace FikoEngine{
     std::vector<VkImageView> CreateImageViews(RendererDataAPI& rendererData){

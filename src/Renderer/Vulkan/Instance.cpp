@@ -1,9 +1,9 @@
 //
-// Created by KSTOYAN2 on 6/7/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
 #include "Instance.h"
-#include "../Platform.h"
-#include "../Memory.h"
+#include "Platform.h"
+#include "Memory.h"
 
 namespace FikoEngine{
 
@@ -33,7 +33,7 @@ namespace FikoEngine{
             return VK_ERROR_EXTENSION_NOT_PRESENT;
         }
     }
-    VkInstance CreateInstance(ApplicationSpec applicationSpec){
+    VkInstance CreateInstance(RendererDataAPI& rendererData,ApplicationSpec applicationSpec){
         VkInstance instance{};
         VkInstanceCreateInfo createInfo{};
         VkApplicationInfo applicationInfo{};
@@ -73,9 +73,7 @@ namespace FikoEngine{
         debugCreateInfo.pfnUserCallback = debugCallback;
         debugCreateInfo.pUserData = nullptr; // Optional
 
-        VkDebugUtilsMessengerEXT debug;
-        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&debug);
-
+        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&rendererData.debug);
         return instance;
     }
 }

@@ -1,12 +1,12 @@
 //
-// Created by KSTOYAN2 on 6/11/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/11/2022.
 //
 #ifdef _WIN32
 #include <Windows.h>
 #endif
 #include "VulkanShader.h"
 #include "../../Util/File.h"
-#include "../Memory.h"
+#include "Memory.h"
 #include <vulkan/vulkan.h>
 namespace FikoEngine {
     void CompileShaderFile(RendererDataAPI& rendererData,const char* ShaderPath,ShaderType type){

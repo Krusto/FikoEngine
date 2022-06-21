@@ -7,7 +7,7 @@
 
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
-#include "Memory.h"
+#include "Vulkan/Memory.h"
 #include <vulkan/vulkan.h>
 #ifdef _WIN32
 #include <vulkan/vulkan_win32.h>

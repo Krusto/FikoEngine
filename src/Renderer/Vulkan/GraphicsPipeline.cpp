@@ -1,11 +1,11 @@
 //
-// Created by KSTOYAN2 on 6/11/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/11/2022.
 //
 #include <vulkan/vulkan.h>
 #include "../../Core/Core.h"
 #include "GraphicsPipeline.h"
 #include "VulkanShader.h"
-#include "../Memory.h"
+#include "Memory.h"
 
 namespace FikoEngine{
     VkPipeline CreateGraphicsPipeline(RendererDataAPI& rendererData,const char* shaderPath){
@@ -125,4 +125,14 @@ namespace FikoEngine{
         vkDestroyShaderModule(s_RendererData.device,s_RendererData.fragModule,CreatePAllocator("Shader module"));
         return pipeline;
     }
+
+    void BindGraphicsPipeline(RendererDataAPI& rendererData,u32 imageIndex){
+        vkCmdBindPipeline(rendererData.commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, rendererData.graphicsPipeline);
+        LOG_INFO("Graphics pipeline bound!");
+    }
+    void GraphicsPipelineDraw(RendererDataAPI& rendererData,u32 imageIndex){
+        vkCmdDraw(rendererData.commandBuffers[imageIndex],3,1,0,0);
+    }
+
+
 }

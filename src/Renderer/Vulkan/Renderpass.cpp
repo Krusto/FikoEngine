@@ -1,8 +1,8 @@
 //
-// Created by KSTOYAN2 on 6/12/2022.
+// Created by Stoyanov, Krusto (K.S.) on 6/12/2022.
 //
 #include "Renderpass.h"
-#include "../Memory.h"
+#include "Memory.h"
 
 namespace FikoEngine{
     VkRenderPass CreateRenderPass(RendererDataAPI& rendererData){
@@ -40,4 +40,23 @@ namespace FikoEngine{
 
         return renderPass;
     }
+    void BeginRenderPass(RendererDataAPI& rendererData, u32 index){
+        VkRenderPassBeginInfo renderPassInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
+        renderPassInfo.renderPass = rendererData.renderPass;
+        renderPassInfo.framebuffer = rendererData.swapChainFramebuffers[index];
+        renderPassInfo.renderArea.offset = {0, 0};
+        renderPassInfo.renderArea.extent = rendererData.swapChainSpec.imageExtent;
+
+        VkClearValue clearColor = {{{0.0f, 0.0f, 0.0f, 1.0f}}};
+        renderPassInfo.clearValueCount = 1;
+        renderPassInfo.pClearValues = &clearColor;
+
+        vkCmdBeginRenderPass(rendererData.commandBuffers[index], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
+        LOG_INFO("Beginning render pass on command buffer " + std::to_string(index) + "!");
+    }
+    void EndRenderPass(RendererDataAPI& rendererData,u32 index){
+        vkCmdEndRenderPass(rendererData.commandBuffers[index]);
+    }
+
+
 }
