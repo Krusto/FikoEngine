@@ -29,6 +29,12 @@ namespace FikoEngine{
         VkCommandPool commandPool;
         std::vector<VkCommandBuffer> commandBuffers;
         u32 currentImageIndex;
+        std::vector<VkSemaphore> imageAvailableSemaphores;
+        std::vector<VkSemaphore> renderFinishedSemaphores;
+        std::vector<VkFence> inFlightFences;
+        u32 maxFramesInFlight = 2;
+        VkQueue presentQueue;
+        VkQueue graphicsQueue;
     };
     inline RendererDataAPI s_RendererData;
 }

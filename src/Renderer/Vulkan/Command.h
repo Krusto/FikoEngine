@@ -9,6 +9,6 @@ namespace FikoEngine{
     VkCommandBuffer CreateCommandBuffer(RendererDataAPI& rendererData);
     std::vector<VkCommandBuffer> CreateCommandBuffers(RendererDataAPI& rendererData,u32 count = 1);
 
-    void RecordCommandBuffer(RendererDataAPI& rendererData,u32 index = {});
+    void BeginCommandBuffer(RendererDataAPI& rendererData,u32 index = {});
     void EndCommandBuffer(RendererDataAPI& rendererData,u32 index = {});
 }

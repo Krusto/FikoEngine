@@ -8,6 +8,7 @@ namespace FikoEngine{
     std::shared_ptr<lwlog::console_logger> Logger::console;
     void FikoEngine::Logger::Init() {
         Logger::console = std::make_shared<lwlog::console_logger>("CONSOLE");
+        console->set_pattern(".br_red([%T]) .green([%l]): .br_cyan(%v)");
         LWLOG_SET_PATTERN(".br_red([%T]) .green([%l]): .br_cyan(%v)");
     }
 }

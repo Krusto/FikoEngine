@@ -18,6 +18,7 @@
 #include "Vulkan/Memory.h"
 #include "Vulkan/Framebuffer.h"
 #include "Vulkan/Command.h"
+#include "Vulkan/Synchronization.h"
 
 namespace FikoEngine {
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
@@ -38,14 +39,82 @@ namespace FikoEngine {
         s_RendererData.swapChainFramebuffers = CreateFramebuffers(s_RendererData);
         s_RendererData.commandPool = CreateCommandPool(s_RendererData);
         s_RendererData.commandBuffers = CreateCommandBuffers(s_RendererData,s_RendererData.imageViews.size());
+
+        s_RendererData.imageAvailableSemaphores = CreateSemaphores(s_RendererData,s_RendererData.maxFramesInFlight);
+        s_RendererData.renderFinishedSemaphores = CreateSemaphores(s_RendererData,s_RendererData.maxFramesInFlight);
+        s_RendererData.inFlightFences = CreateFences(s_RendererData,s_RendererData.maxFramesInFlight);
+
+        vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.graphicsQueue);
+        vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.presentQueue);
+
         LOG("Renderer initialized!");
 
     }
     void RendererAPI::Draw(){
-        GraphicsPipelineDraw(s_RendererData,s_RendererData.currentImageIndex);
+/*        Wait for the previous frame to finish
+        Acquire an image from the swap chain
+        Record a command buffer which draws the scene onto that image
+        Submit the recorded command buffer
+        Present the swap chain image*/
+        vkWaitForFences(s_RendererData.device, 1, &s_RendererData.inFlightFences[s_RendererData.currentImageIndex], VK_TRUE, UINT64_MAX);
+        vkResetFences(s_RendererData.device, 1, &s_RendererData.inFlightFences[s_RendererData.currentImageIndex]);
+
+        uint32_t imageIndex;
+        vkAcquireNextImageKHR(s_RendererData.device, s_RendererData.swapchain, UINT64_MAX, s_RendererData.imageAvailableSemaphores[s_RendererData.currentImageIndex], VK_NULL_HANDLE, &imageIndex);
+
+        vkResetCommandBuffer(s_RendererData.commandBuffers[s_RendererData.currentImageIndex], /*VkCommandBufferResetFlagBits*/ 0);
+
+        BeginCommandBuffer(s_RendererData,s_RendererData.currentImageIndex);
+        BeginRenderPass(s_RendererData,s_RendererData.currentImageIndex);
+            vkCmdBindPipeline(s_RendererData.commandBuffers[s_RendererData.currentImageIndex],VK_PIPELINE_BIND_POINT_GRAPHICS,s_RendererData.graphicsPipeline);
+            GraphicsPipelineDraw(s_RendererData,s_RendererData.currentImageIndex);
+        EndRenderPass(s_RendererData,s_RendererData.currentImageIndex);
+        EndCommandBuffer(s_RendererData,s_RendererData.currentImageIndex);
+
+        VkSubmitInfo submitInfo{};
+        submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+
+        VkSemaphore waitSemaphores[] = {s_RendererData.imageAvailableSemaphores[s_RendererData.currentImageIndex]};
+        VkPipelineStageFlags waitStages[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+        submitInfo.waitSemaphoreCount = 1;
+        submitInfo.pWaitSemaphores = waitSemaphores;
+        submitInfo.pWaitDstStageMask = waitStages;
+
+        submitInfo.commandBufferCount = 1;
+        submitInfo.pCommandBuffers = &s_RendererData.commandBuffers[s_RendererData.currentImageIndex];
+
+        VkSemaphore signalSemaphores[] = {s_RendererData.renderFinishedSemaphores[s_RendererData.currentImageIndex]};
+        submitInfo.signalSemaphoreCount = 1;
+        submitInfo.pSignalSemaphores = signalSemaphores;
+
+        if (vkQueueSubmit(s_RendererData.graphicsQueue, 1, &submitInfo, s_RendererData.inFlightFences[s_RendererData.currentImageIndex]) != VK_SUCCESS) {
+            throw std::runtime_error("failed to submit draw command buffer!");
+        }
+
+        VkPresentInfoKHR presentInfo{};
+        presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+
+        presentInfo.waitSemaphoreCount = 1;
+        presentInfo.pWaitSemaphores = signalSemaphores;
+
+        VkSwapchainKHR swapChains[] = {s_RendererData.swapchain};
+        presentInfo.swapchainCount = 1;
+        presentInfo.pSwapchains = swapChains;
+
+        presentInfo.pImageIndices = &imageIndex;
+
+        vkQueuePresentKHR(s_RendererData.presentQueue, &presentInfo);
+
+        s_RendererData.currentImageIndex = (s_RendererData.currentImageIndex + 1) % s_RendererData.maxFramesInFlight;
     }
     void RendererAPI::Destroy(){
+        vkDeviceWaitIdle(s_RendererData.device);
 
+        for (u32 i = 0; i < s_RendererData.maxFramesInFlight; ++i) {
+            vkDestroySemaphore(s_RendererData.device,s_RendererData.imageAvailableSemaphores[i],CreatePAllocator("Semaphore"));
+            vkDestroySemaphore(s_RendererData.device,s_RendererData.renderFinishedSemaphores[i],CreatePAllocator("Semaphore"));
+            vkDestroyFence(s_RendererData.device,s_RendererData.inFlightFences[i],CreatePAllocator("Fence"));
+        }
         vkDestroyCommandPool(s_RendererData.device,s_RendererData.commandPool, CreatePAllocator("CommandPool"));
         for (const auto &framebuffer: s_RendererData.swapChainFramebuffers)
             vkDestroyFramebuffer(s_RendererData.device,framebuffer,CreatePAllocator("Framebuffer"));
@@ -59,10 +128,6 @@ namespace FikoEngine {
         vkDestroyDevice(s_RendererData.device,CreatePAllocator("Device"));
         DestroyDebugUtilsMessengerEXT(s_RendererData.instance,s_RendererData.debug,CreatePAllocator("Debug Util Messanger"));
         vkDestroyInstance(s_RendererData.instance,CreatePAllocator("Instance"));
-
-        u32 a;
-        LOG_INFO("Press any key to exit!");
-        std::cin >> a;
     }
 
 }

@@ -18,6 +18,7 @@ public:
 
     bool Run();
     void Destroy();
+    static bool ReadyToExit;
 private:
     ApplicationSpec m_ApplicationSpec;
     Window* m_Window;

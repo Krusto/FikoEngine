@@ -30,10 +30,9 @@ namespace FikoEngine {
             buffer = CreateCommandBuffer(rendererData);
         return buffers;
     }
-    void RecordCommandBuffer(RendererDataAPI& rendererData,u32 index){
+    void BeginCommandBuffer(RendererDataAPI& rendererData,u32 index){
         VkCommandBufferBeginInfo beginInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
         VK_CHECK(vkBeginCommandBuffer(rendererData.commandBuffers[index],&beginInfo));
-        LOG_INFO("Begin recording command buffer " + std::to_string(index));
     }
     void EndCommandBuffer(RendererDataAPI& rendererData,u32 index){
         VK_CHECK(vkEndCommandBuffer(rendererData.commandBuffers[index]));

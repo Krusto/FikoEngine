@@ -1,7 +1,10 @@
 //
 // Created by Stoyanov, Krusto (K.S.) on 6/3/2022.
 //
-#include <iostream>
+#include "Core/Core.h"
+#ifdef _WIN32
+#include <conio.h>
+#endif
 #include "Application/Application.h"
 
 int main(){
