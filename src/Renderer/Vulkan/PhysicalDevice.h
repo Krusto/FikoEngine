@@ -7,5 +7,5 @@
 
 namespace FikoEngine{
 ///Function which selects the correct physical device
-    VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI& rendererData);
+    VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI*  rendererData);
 }

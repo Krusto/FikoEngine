@@ -6,6 +6,6 @@
 #include "../../Core/Core.h"
 #include "RendererData.h"
 namespace FikoEngine{
-    VkFramebuffer CreateFramebuffer(RendererDataAPI& rendererData, u32 index);
-    std::vector<VkFramebuffer> CreateFramebuffers(RendererDataAPI& rendererData);
+    VkFramebuffer CreateFramebuffer(RendererDataAPI*  rendererData, u32 index);
+    std::vector<VkFramebuffer> CreateFramebuffers(RendererDataAPI*  rendererData);
 }

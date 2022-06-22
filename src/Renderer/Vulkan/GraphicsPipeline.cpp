@@ -8,18 +8,18 @@
 #include "Memory.h"
 
 namespace FikoEngine{
-    VkPipeline CreateGraphicsPipeline(RendererDataAPI& rendererData,const char* shaderPath){
+    VkPipeline CreateGraphicsPipeline(RendererDataAPI*  rendererData,const char* shaderPath){
 
-        s_RendererData.vertModule = CreateShaderModule(s_RendererData,(std::string(shaderPath) + ".vert").c_str(),ShaderType::Vertex);
-        s_RendererData.fragModule = CreateShaderModule(s_RendererData,(std::string(shaderPath) + ".frag").c_str(),ShaderType::Fragment);
+        rendererData->vertModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".vert").c_str(),ShaderType::Vertex);
+        rendererData->fragModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".frag").c_str(),ShaderType::Fragment);
 
         VkPipelineShaderStageCreateInfo vertShaderStageInfo{.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO};
         vertShaderStageInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
-        vertShaderStageInfo.module = s_RendererData.vertModule;
+        vertShaderStageInfo.module = rendererData->vertModule;
         vertShaderStageInfo.pName = "main";
         VkPipelineShaderStageCreateInfo fragShaderStageInfo{.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO};
         fragShaderStageInfo.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
-        fragShaderStageInfo.module = s_RendererData.fragModule;
+        fragShaderStageInfo.module = rendererData->fragModule;
         fragShaderStageInfo.pName = "main";
 
         VkPipelineShaderStageCreateInfo shaderStages[] = {vertShaderStageInfo, fragShaderStageInfo};
@@ -32,12 +32,12 @@ namespace FikoEngine{
         inputAssembly.primitiveRestartEnable = VK_FALSE;
 
         VkViewport viewport{};
-        viewport.width = (float) s_RendererData.swapChainSpec.imageExtent.width;
-        viewport.height = (float) s_RendererData.swapChainSpec.imageExtent.height;
+        viewport.width = (float) rendererData->swapChainSpec.imageExtent.width;
+        viewport.height = (float) rendererData->swapChainSpec.imageExtent.height;
         viewport.maxDepth = 1.0f;
 
         VkRect2D scissor{};
-        scissor.extent = s_RendererData.swapChainSpec.imageExtent;
+        scissor.extent = rendererData->swapChainSpec.imageExtent;
 
         VkPipelineViewportStateCreateInfo viewportState{.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO};
         viewportState.viewportCount = 1;
@@ -95,7 +95,7 @@ namespace FikoEngine{
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-        VK_CHECK(vkCreatePipelineLayout(s_RendererData.device,&pipelineLayoutInfo,CreatePAllocator("Piepeline Layout"),&s_RendererData.pipelineLayout));
+        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo,CreatePAllocator("Piepeline Layout"),&rendererData->pipelineLayout));
         LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
@@ -112,26 +112,25 @@ namespace FikoEngine{
         pipelineInfo.pDepthStencilState = nullptr; // Optional
         pipelineInfo.pColorBlendState = &colorBlending;
         pipelineInfo.pDynamicState = nullptr; // Optional
-        pipelineInfo.layout = rendererData.pipelineLayout;
-        pipelineInfo.renderPass = rendererData.renderPass;
+        pipelineInfo.layout = rendererData->pipelineLayout;
+        pipelineInfo.renderPass = rendererData->renderPass;
         pipelineInfo.subpass = 0;
         pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
         pipelineInfo.basePipelineIndex = -1; // Optional
 
-        VK_CHECK(vkCreateGraphicsPipelines(rendererData.device,VK_NULL_HANDLE,1,&pipelineInfo,CreatePAllocator("Graphics Pipeline"),&pipeline));
+        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,CreatePAllocator("Graphics Pipeline"),&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
 
-        vkDestroyShaderModule(s_RendererData.device,s_RendererData.vertModule,CreatePAllocator("Shader module"));
-        vkDestroyShaderModule(s_RendererData.device,s_RendererData.fragModule,CreatePAllocator("Shader module"));
+        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,CreatePAllocator("Shader module"));
+        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,CreatePAllocator("Shader module"));
         return pipeline;
     }
 
-    void BindGraphicsPipeline(RendererDataAPI& rendererData,u32 imageIndex){
-        vkCmdBindPipeline(rendererData.commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, rendererData.graphicsPipeline);
-        LOG_INFO("Graphics pipeline bound!");
+    void BindGraphicsPipeline(RendererDataAPI*  rendererData,u32 imageIndex){
+        vkCmdBindPipeline(rendererData->commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, rendererData->graphicsPipeline);
     }
-    void GraphicsPipelineDraw(RendererDataAPI& rendererData,u32 imageIndex){
-        vkCmdDraw(rendererData.commandBuffers[imageIndex],3,1,0,0);
+    void GraphicsPipelineDraw(RendererDataAPI*  rendererData,u32 imageIndex){
+        vkCmdDraw(rendererData->commandBuffers[imageIndex],3,1,0,0);
     }
 
 

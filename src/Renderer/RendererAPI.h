@@ -18,6 +18,7 @@ public:
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
     static void Draw();
     static void Destroy();
+    static void ResizeFramebuffer(Extent2D size);
 private:
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
 };

@@ -6,5 +6,5 @@
 #include "RendererData.h"
 #include "../../Core/Core.h"
 namespace FikoEngine{
-    std::vector<VkImage> GetSwapchainImages(RendererDataAPI& rendererData);
+    std::vector<VkImage> GetSwapchainImages(RendererDataAPI*  rendererData);
 }

@@ -19,9 +19,10 @@ public:
     bool Run();
     void Destroy();
     static bool ReadyToExit;
+
+    static std::shared_ptr<Renderer> s_Renderer;
 private:
     ApplicationSpec m_ApplicationSpec;
     Window* m_Window;
-    std::shared_ptr<Renderer> m_Renderer;
 };
 }

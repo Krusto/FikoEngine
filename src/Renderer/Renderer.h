@@ -11,8 +11,7 @@ namespace FikoEngine {
 ///Struct which holds renderer specification
 struct RendererSpec {
 public:
-    u32 SurfaceWidth;
-    u32 SurfaceHeight;
+    Extent2D SurfaceSize;
     std::vector<const char*> extensions;
 };
 class Renderer {
@@ -22,6 +21,7 @@ public:
     void Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec);
     void Draw();
     void Destroy();
+    void ResizeFramebuffer(Extent2D size);
 private:
     RendererSpec m_RendererSpec;
 };

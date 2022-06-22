@@ -35,6 +35,8 @@ namespace FikoEngine{
         u32 maxFramesInFlight = 2;
         VkQueue presentQueue;
         VkQueue graphicsQueue;
+        std::string shaderPath;
+        Extent2D framebufferSize;
+        bool framebufferResized;
     };
-    inline RendererDataAPI s_RendererData;
 }

@@ -10,5 +10,5 @@ namespace FikoEngine{
     VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pDebugMessenger);
     void DestroyDebugUtilsMessengerEXT(VkInstance instance, VkDebugUtilsMessengerEXT debugMessenger, const VkAllocationCallbacks* pAllocator);
 ///Function which creates api instance
-    VkInstance CreateInstance(RendererDataAPI& rendererData,ApplicationSpec applicationSpec);
+    VkInstance CreateInstance(RendererDataAPI*  rendererData,ApplicationSpec applicationSpec);
 }

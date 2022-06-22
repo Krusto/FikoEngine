@@ -6,12 +6,12 @@
 #include <iostream>
 
 namespace FikoEngine {
-VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI& rendererData) {
+VkPhysicalDevice SelectPhysicalDevice(RendererDataAPI*  rendererData) {
 
     u32 count{};
-    vkEnumeratePhysicalDevices(rendererData.instance, &count, nullptr);
+    vkEnumeratePhysicalDevices(rendererData->instance, &count, nullptr);
     std::vector<VkPhysicalDevice> devices(count);
-    vkEnumeratePhysicalDevices(rendererData.instance, &count, devices.data());
+    vkEnumeratePhysicalDevices(rendererData->instance, &count, devices.data());
     VkPhysicalDevice selectedDevice = devices[0];
     for (auto device: devices) {
         VkPhysicalDeviceProperties properties;

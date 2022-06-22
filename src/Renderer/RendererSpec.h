@@ -3,8 +3,7 @@
 namespace FikoEngine{
     ///Struct which holds renderer specification
     struct RendererSpecAPI {
-        u32 SurfaceWidth;
-        u32 SurfaceHeight;
+        Extent2D SurfaceSize;
         std::vector<const char*> extensions;
     };
 }

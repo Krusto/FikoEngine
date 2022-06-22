@@ -33,7 +33,7 @@ namespace FikoEngine{
             return VK_ERROR_EXTENSION_NOT_PRESENT;
         }
     }
-    VkInstance CreateInstance(RendererDataAPI& rendererData,ApplicationSpec applicationSpec){
+    VkInstance CreateInstance(RendererDataAPI*  rendererData,ApplicationSpec applicationSpec){
         VkInstance instance{};
         VkInstanceCreateInfo createInfo{};
         VkApplicationInfo applicationInfo{};
@@ -73,7 +73,7 @@ namespace FikoEngine{
         debugCreateInfo.pfnUserCallback = debugCallback;
         debugCreateInfo.pUserData = nullptr; // Optional
 
-        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&rendererData.debug);
+        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&rendererData->debug);
         return instance;
     }
 }

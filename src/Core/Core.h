@@ -5,6 +5,7 @@
 
 
 #include "Definitions.h"
+#include "Extent2D.h"
 #include "Timestep.h"
 #include "stdcpp.h"
 #ifdef _WIN32
