@@ -4,7 +4,7 @@
 #include "Instance.h"
 #include "Platform.h"
 #include "Memory.h"
-
+#include <vulkan/vulkan.h>
 namespace FikoEngine{
 
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
@@ -63,7 +63,7 @@ namespace FikoEngine{
         createInfo.ppEnabledExtensionNames = extensions.data();
 
         createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-        VK_CHECK(vkCreateInstance(&createInfo,CreatePAllocator("Instance"),&instance));
+        VK_CHECK(vkCreateInstance(&createInfo,nullptr,&instance));
         LOG("Instance created successfully!");
 
         VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
@@ -73,7 +73,7 @@ namespace FikoEngine{
         debugCreateInfo.pfnUserCallback = debugCallback;
         debugCreateInfo.pUserData = nullptr; // Optional
 
-        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,CreatePAllocator("Debug Util Messanger"),&rendererData->debug);
+        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,nullptr,&rendererData->debug);
         return instance;
     }
 }

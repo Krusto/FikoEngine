@@ -11,7 +11,7 @@ namespace FikoEngine{
 
         for (int i = 0; i < count; ++i) {
             VkSemaphoreCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
-            VK_CHECK(vkCreateSemaphore(rendererData->device,&createInfo,CreatePAllocator("Semaphore"),&semaphores[i]));
+            VK_CHECK(vkCreateSemaphore(rendererData->device,&createInfo,nullptr,&semaphores[i]));
             LOG_INFO("Created Semaphore!");
         }
 
@@ -24,7 +24,7 @@ namespace FikoEngine{
             VkFenceCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO};
             createInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
-            VK_CHECK(vkCreateFence(rendererData->device,&createInfo,CreatePAllocator("Fence"),&fences[i]));
+            VK_CHECK(vkCreateFence(rendererData->device,&createInfo,nullptr,&fences[i]));
             LOG_INFO("Created Fence!");
         }
 

@@ -11,7 +11,7 @@ namespace FikoEngine {
         createInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
         createInfo.queueFamilyIndex = rendererData->queueFamilyIndex;
 
-        VK_CHECK(vkCreateCommandPool(rendererData->device,&createInfo,CreatePAllocator("CommandPool"),&pool));
+        VK_CHECK(vkCreateCommandPool(rendererData->device,&createInfo,nullptr,&pool));
         LOG_INFO("Created Command Pool");
         return pool;
     }

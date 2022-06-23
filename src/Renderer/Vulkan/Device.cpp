@@ -22,7 +22,7 @@ namespace FikoEngine {
         createInfo.queueCreateInfoCount = 1;
         createInfo.pQueueCreateInfos = &queueCreateInfo;
 
-        VK_CHECK(vkCreateDevice(rendererData->physicalDevice, &createInfo, CreatePAllocator("Device"), &device));
+        VK_CHECK(vkCreateDevice(rendererData->physicalDevice, &createInfo, nullptr, &device));
         LOG("Device created successfully!");
 
         return device;

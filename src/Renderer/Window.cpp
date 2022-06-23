@@ -91,7 +91,7 @@ VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
     createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
     createInfo.hwnd = glfwGetWin32Window(m_Window);
     createInfo.hinstance = GetModuleHandle(nullptr);
-    vkCreateWin32SurfaceKHR(instance,&createInfo,CreatePAllocator("Surface"),&surface);
+    vkCreateWin32SurfaceKHR(instance,&createInfo,nullptr,&surface);
     #endif
     return surface;
 }

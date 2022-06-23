@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(FIKO_ENGINE)
 
 add_subdirectory(Vendor/glfw)
-add_subdirectory(Vendor/VulkanMemoryAllocator)
+#add_subdirectory(Vendor/VulkanMemoryAllocator)
 
 
 option(USE_LWLOG "Use LWLOG" OFF)
@@ -47,19 +47,11 @@ if(USE_LWLOG)
 endif()
 
 include_directories(FIKO_ENGINE Vendor/glfw/include)
-include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Include)
-include_directories(FIKO_ENGINE Vendor/VulkanMemoryAllocator/src)
+include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.216.0/Include)
+#include_directories(FIKO_ENGINE Vendor/VulkanMemoryAllocator/src)
 include_directories(FIKO_ENGINE Vendor/glm)
 
 target_link_libraries(FIKO_ENGINE glm)
-target_link_libraries(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Lib/vulkan-1.lib)
-target_link_libraries(FIKO_ENGINE VulkanMemoryAllocator)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message("Debug!")
-    target_link_libraries(FIKO_ENGINE glfw)
-endif()
-if (CMAKE_BUILD_TYPE STREQUAL "Release")
-    message("Release!")
-    target_link_libraries(FIKO_ENGINE glfw)
-endif()
+target_link_libraries(FIKO_ENGINE C:/VulkanSDK/1.3.216.0/Lib/vulkan-1.lib)
+#target_link_libraries(FIKO_ENGINE VulkanMemoryAllocator)
+target_link_libraries(FIKO_ENGINE glfw)

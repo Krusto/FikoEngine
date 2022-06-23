@@ -85,16 +85,16 @@ namespace FikoEngine {
         vkDeviceWaitIdle(s_RendererData.device);
 
         for (u32 i = 0; i < s_RendererData.maxFramesInFlight; ++i) {
-            vkDestroySemaphore(s_RendererData.device,s_RendererData.imageAvailableSemaphores[i],CreatePAllocator("Semaphore"));
-            vkDestroySemaphore(s_RendererData.device,s_RendererData.renderFinishedSemaphores[i],CreatePAllocator("Semaphore"));
-            vkDestroyFence(s_RendererData.device,s_RendererData.inFlightFences[i],CreatePAllocator("Fence"));
+            vkDestroySemaphore(s_RendererData.device,s_RendererData.imageAvailableSemaphores[i],nullptr);
+            vkDestroySemaphore(s_RendererData.device,s_RendererData.renderFinishedSemaphores[i],nullptr);
+            vkDestroyFence(s_RendererData.device,s_RendererData.inFlightFences[i],nullptr);
         }
-        vkDestroyCommandPool(s_RendererData.device,s_RendererData.commandPool, CreatePAllocator("CommandPool"));
+        vkDestroyCommandPool(s_RendererData.device,s_RendererData.commandPool, nullptr);
         SwapchainCleanup(&s_RendererData);
-        vkDestroySurfaceKHR(s_RendererData.instance,s_RendererData.surface,CreatePAllocator("Surface"));
-        vkDestroyDevice(s_RendererData.device,CreatePAllocator("Device"));
-        DestroyDebugUtilsMessengerEXT(s_RendererData.instance,s_RendererData.debug,CreatePAllocator("Debug Util Messanger"));
-        vkDestroyInstance(s_RendererData.instance,CreatePAllocator("Instance"));
+        vkDestroySurfaceKHR(s_RendererData.instance,s_RendererData.surface,nullptr);
+        vkDestroyDevice(s_RendererData.device,nullptr);
+        DestroyDebugUtilsMessengerEXT(s_RendererData.instance,s_RendererData.debug,nullptr);
+        vkDestroyInstance(s_RendererData.instance,nullptr);
     }
 
     void RendererAPI::ResizeFramebuffer(Extent2D size) {

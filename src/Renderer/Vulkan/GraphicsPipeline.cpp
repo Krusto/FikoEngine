@@ -98,7 +98,7 @@ namespace FikoEngine{
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo,CreatePAllocator("Piepeline Layout"),&rendererData->pipelineLayout));
+        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo,nullptr,&rendererData->pipelineLayout));
         LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
@@ -126,11 +126,11 @@ namespace FikoEngine{
         vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
         vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
-        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,CreatePAllocator("Graphics Pipeline"),&pipeline));
+        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
 
-        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,CreatePAllocator("Shader module"));
-        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,CreatePAllocator("Shader module"));
+        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,nullptr);
+        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,nullptr);
         return pipeline;
     }
 
