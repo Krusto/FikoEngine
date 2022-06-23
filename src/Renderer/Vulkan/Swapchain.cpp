@@ -6,6 +6,7 @@
 #include "Renderpass.h"
 #include "GraphicsPipeline.h"
 #include "Framebuffer.h"
+#include "../Vertex.h"
 
 namespace FikoEngine {
     bool CheckDeviceExtensionSupport(RendererDataAPI*  rendererData, std::string_view extension) {
@@ -129,7 +130,7 @@ namespace FikoEngine {
         rendererData->swapchainImages = GetSwapchainImages(rendererData);
         rendererData->imageViews = CreateImageViews(rendererData);
         rendererData->renderPass = CreateRenderPass(rendererData);
-        rendererData->graphicsPipeline = CreateGraphicsPipeline(rendererData,ShaderPath);
+        rendererData->graphicsPipeline = CreateGraphicsPipeline(rendererData,Vertex::GetBindingDescription(),Vertex::GetAttributeDescriptions(),ShaderPath);
         rendererData->swapChainFramebuffers = CreateFramebuffers(rendererData);
 
     }

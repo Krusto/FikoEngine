@@ -3,6 +3,7 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
+#include <optional>
 #include "../../Core/Core.h"
 #include "RendererData.h"
 

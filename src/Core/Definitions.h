@@ -13,6 +13,5 @@
 #define u8 uint8_t
 #define i8 int8_t
 #define s8 sint8_t
-#define f32 float
 
 

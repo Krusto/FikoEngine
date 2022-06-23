@@ -16,7 +16,7 @@ namespace FikoEngine {
 
         rendererData->queueFamilyIndex = SelectQueueFamily(rendererData);
         queueCreateInfo.queueFamilyIndex = rendererData->queueFamilyIndex;
-        const f32 priorities[] = {1};
+        const float priorities[] = {1};
         queueCreateInfo.pQueuePriorities = priorities;
 
         createInfo.queueCreateInfoCount = 1;

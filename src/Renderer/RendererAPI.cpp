@@ -2,21 +2,16 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
 #include <vulkan/vulkan.h>
-#include <lwlog.h>
-#include <iostream>
 #include "RendererAPI.h"
 #include "Window.h"
 #include "Vulkan/Instance.h"
 #include "Vulkan/PhysicalDevice.h"
 #include "Vulkan/Device.h"
 #include "Vulkan/Swapchain.h"
-#include "Vulkan/ImageView.h"
-#include "Vulkan/Image.h"
 #include "Vulkan/RendererData.h"
 #include "Vulkan/GraphicsPipeline.h"
 #include "Vulkan/Renderpass.h"
 #include "Vulkan/Memory.h"
-#include "Vulkan/Framebuffer.h"
 #include "Vulkan/Command.h"
 #include "Vulkan/Synchronization.h"
 
@@ -37,6 +32,9 @@ namespace FikoEngine {
         SwapchainRecreate(&s_RendererData,rendererSpec.SurfaceSize,s_RendererData.shaderPath.c_str());
 
         s_RendererData.commandPool = CreateCommandPool(&s_RendererData);
+
+//        s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData);
+
         s_RendererData.commandBuffers = CreateCommandBuffers(&s_RendererData,s_RendererData.imageViews.size());
 
         s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);

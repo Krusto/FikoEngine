@@ -8,7 +8,10 @@
 #include "Memory.h"
 
 namespace FikoEngine{
-    VkPipeline CreateGraphicsPipeline(RendererDataAPI*  rendererData,const char* shaderPath){
+    VkPipeline CreateGraphicsPipeline(RendererDataAPI*  rendererData,
+                                      VkVertexInputBindingDescription bindingDescription,
+                                      std::vector<VkVertexInputAttributeDescription> attributeDescriptions,
+                                      const char* shaderPath){
 
         rendererData->vertModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".vert").c_str(),ShaderType::Vertex);
         rendererData->fragModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".frag").c_str(),ShaderType::Fragment);
@@ -117,6 +120,11 @@ namespace FikoEngine{
         pipelineInfo.subpass = 0;
         pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
         pipelineInfo.basePipelineIndex = -1; // Optional
+
+        vertexInputInfo.vertexBindingDescriptionCount = 1;
+        vertexInputInfo.vertexAttributeDescriptionCount = static_cast<u32>(attributeDescriptions.size());
+        vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
+        vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
         VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,CreatePAllocator("Graphics Pipeline"),&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
