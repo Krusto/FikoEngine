@@ -23,7 +23,7 @@ namespace FikoEngine{
             createInfo.subresourceRange.baseArrayLayer = 0;
             createInfo.subresourceRange.layerCount = 1;
 
-            VK_CHECK(vkCreateImageView(rendererData->device,&createInfo,nullptr,&imageViews[i]));
+            VK_CHECK(vkCreateImageView(rendererData->device,&createInfo, rendererData->allocator,&imageViews[i]));
         }
         return imageViews;
     }

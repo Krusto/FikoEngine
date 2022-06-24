@@ -44,7 +44,7 @@ namespace FikoEngine{
         createInfo.dependencyCount = 1;
         createInfo.pDependencies = &dependency;
 
-        VK_CHECK(vkCreateRenderPass(rendererData->device,&createInfo,nullptr,&renderPass));
+        VK_CHECK(vkCreateRenderPass(rendererData->device,&createInfo, rendererData->allocator,&renderPass));
 
         LOG_INFO("RenderPass created successfully!");
 

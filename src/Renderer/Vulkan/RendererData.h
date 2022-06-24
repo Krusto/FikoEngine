@@ -6,6 +6,8 @@
 #include "../RendererSpec.h"
 #include "SwapchainSpec.h"
 #include "../../Core/Core.h"
+#include "Buffer.h"
+
 namespace FikoEngine{
     struct RendererDataAPI{
         VkInstance instance;
@@ -35,8 +37,13 @@ namespace FikoEngine{
         u32 maxFramesInFlight = 2;
         VkQueue presentQueue;
         VkQueue graphicsQueue;
-        std::string shaderPath;
+        std::vector<std::string> shaders;
+        u32 selectedShaderID;
+        std::string selectedShader;
         Extent2D framebufferSize;
         bool framebufferResized;
+        Buffer vertexBuffer;
+        Buffer indexBuffer;
+        VkAllocationCallbacks* allocator;
     };
 }

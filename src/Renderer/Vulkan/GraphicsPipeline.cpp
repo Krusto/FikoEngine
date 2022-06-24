@@ -98,7 +98,7 @@ namespace FikoEngine{
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo,nullptr,&rendererData->pipelineLayout));
+        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo, rendererData->allocator,&rendererData->pipelineLayout));
         LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
@@ -126,11 +126,11 @@ namespace FikoEngine{
         vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
         vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
 
-        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
+        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo, rendererData->allocator,&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
 
-        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,nullptr);
-        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,nullptr);
+        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,rendererData->allocator);
+        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,rendererData->allocator);
         return pipeline;
     }
 
@@ -139,6 +139,21 @@ namespace FikoEngine{
     }
     void GraphicsPipelineDraw(RendererDataAPI*  rendererData,u32 imageIndex){
         vkCmdDraw(rendererData->commandBuffers[imageIndex],3,1,0,0);
+    }
+    void GraphicsPipelineDrawIndexed(RendererDataAPI*  rendererData,Buffer& vertexBuffer,Buffer& indexBuffer,u32 imageIndex){
+        VkBuffer vertexBuffers[] = {vertexBuffer.buffer};
+        VkDeviceSize offsets[] = {0};
+        vkCmdBindVertexBuffers(rendererData->commandBuffers[imageIndex], 0, 1, vertexBuffers, offsets);
+        vkCmdBindIndexBuffer(rendererData->commandBuffers[imageIndex], indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+
+        vkCmdDrawIndexed(rendererData->commandBuffers[imageIndex],indexBuffer.length,1,0,0,0);
+    }
+    void GraphicsPipelineDrawArrays(RendererDataAPI*  rendererData,Buffer& vertexBuffer,u32 imageIndex){
+        VkBuffer vertexBuffers[] = {vertexBuffer.buffer};
+        VkDeviceSize offsets[] = {0};
+        vkCmdBindVertexBuffers(rendererData->commandBuffers[imageIndex], 0, 1, vertexBuffers, offsets);
+
+        vkCmdDraw(rendererData->commandBuffers[imageIndex],vertexBuffer.length,1,0,0);
     }
 
 

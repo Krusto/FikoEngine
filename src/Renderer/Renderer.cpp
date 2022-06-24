@@ -17,5 +17,8 @@ namespace FikoEngine {
     void Renderer::ResizeFramebuffer(Extent2D size){
         RendererAPI::ResizeFramebuffer(size);
     }
+    void Renderer::Update(){
+        RendererAPI::Update();
+    }
 
 }

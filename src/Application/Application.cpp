@@ -28,7 +28,7 @@ bool FikoEngine::Application::Run() {
     while(!Application::ReadyToExit){
        m_Window->Begin();
        m_Window->Loop();
-
+       s_Renderer->Update();
        s_Renderer->Draw();
 
        m_Window->End();

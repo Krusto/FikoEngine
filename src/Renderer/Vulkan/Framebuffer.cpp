@@ -17,7 +17,7 @@ namespace FikoEngine {
         framebufferInfo.height = rendererData->framebufferSize.y;
         framebufferInfo.layers = 1;
 
-        VK_CHECK(vkCreateFramebuffer(rendererData->device, &framebufferInfo, nullptr, &framebuffer));
+        VK_CHECK(vkCreateFramebuffer(rendererData->device, &framebufferInfo,  rendererData->allocator, &framebuffer));
         LOG_INFO("Created framebuffer with index: " + std::to_string(index));
         return framebuffer;
     }

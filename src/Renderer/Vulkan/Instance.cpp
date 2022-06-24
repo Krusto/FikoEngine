@@ -63,7 +63,7 @@ namespace FikoEngine{
         createInfo.ppEnabledExtensionNames = extensions.data();
 
         createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
-        VK_CHECK(vkCreateInstance(&createInfo,nullptr,&instance));
+        VK_CHECK(vkCreateInstance(&createInfo, rendererData->allocator,&instance));
         LOG("Instance created successfully!");
 
         VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
@@ -73,7 +73,7 @@ namespace FikoEngine{
         debugCreateInfo.pfnUserCallback = debugCallback;
         debugCreateInfo.pUserData = nullptr; // Optional
 
-        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo,nullptr,&rendererData->debug);
+        CreateDebugUtilsMessengerEXT(instance,&debugCreateInfo, rendererData->allocator,&rendererData->debug);
         return instance;
     }
 }

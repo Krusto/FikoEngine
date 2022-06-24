@@ -10,7 +10,7 @@ namespace FikoEngine{
         glm::vec3 pos;
         glm::vec3 color;
 
-        static VertexLayout GetLayout() { return {{"Position",ShaderType::vec3},{"Color",ShaderType::vec3}};}
+        static VertexLayout GetLayout() { return {{"Position",ShaderDataType::ShaderType::vec3},{"Color",ShaderDataType::ShaderType::vec3}};}
         static VkVertexInputBindingDescription GetBindingDescription();
 
         static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();

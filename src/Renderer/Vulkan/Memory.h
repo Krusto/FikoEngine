@@ -13,4 +13,6 @@ namespace FikoEngine{
                         void*                                       pMemory);
 
     VkAllocationCallbacks* CreatePAllocator(const char* info);
+
+
 }

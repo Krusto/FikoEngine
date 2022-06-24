@@ -9,7 +9,7 @@ namespace FikoEngine{
     struct VertexAttribute {
     public:
         std::string_view name{};
-        ShaderType type;
+        ShaderDataType::ShaderType type;
         u32 offset{};
     };
 

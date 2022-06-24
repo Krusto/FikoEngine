@@ -1,4 +1,5 @@
 #pragma once
+//#define DISABLE_LOG
 
 #ifdef LWLOG
 #include <lwlog.h>
@@ -17,7 +18,13 @@ namespace FikoEngine {
 #endif
     };
 }
-
+#ifdef DISABLE_LOG
+#define LOG_INFO(...)
+#define LOG_ERROR(...)
+#define LOG_DEBUG(...)
+#define LOG(...)
+#define LOG_WARNING(...)
+#else
 #ifdef LWLOG
 #define LOG_INFO(...) LWLOG_INFO(__VA_ARGS__);fflush( stdout )
 #define LOG_ERROR(...) LWLOG_ERROR(__VA_ARGS__);fflush( stdout )
@@ -30,4 +37,5 @@ namespace FikoEngine {
 #define LOG_DEBUG(...) std::cout<<(__VA_ARGS__)<<'\n';fflush( stdout )
 #define LOG(...) std::cout<<(__VA_ARGS__)<<'\n';fflush( stdout )
 #define LOG_WARNING(...) std::cout<<(__VA_ARGS__)<<'\n';fflush(stdout)
+#endif
 #endif

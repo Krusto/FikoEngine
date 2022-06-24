@@ -22,6 +22,7 @@ public:
     void Draw();
     void Destroy();
     void ResizeFramebuffer(Extent2D size);
+    void Update();
 private:
     RendererSpec m_RendererSpec;
 };

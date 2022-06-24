@@ -25,7 +25,7 @@ namespace FikoEngine {
         createInfo.pCode = reinterpret_cast<const uint32_t*>(data.data());
         VkShaderModule shaderModule{};
 
-        VK_CHECK(vkCreateShaderModule(rendererData->device,&createInfo,nullptr,&shaderModule));
+        VK_CHECK(vkCreateShaderModule(rendererData->device,&createInfo,rendererData->allocator,&shaderModule));
 
         LOG_INFO(std::string(ShaderPath) + " shader module created successfully!");
         return shaderModule;

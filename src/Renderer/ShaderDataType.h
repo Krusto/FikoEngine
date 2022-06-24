@@ -5,9 +5,9 @@
 #include <vulkan/vulkan.h>
 
 namespace FikoEngine{
-    enum class ShaderType {vec1,vec2, vec3, vec4, };
     struct ShaderDataType {
     public:
+        enum class ShaderType {vec1,vec2, vec3, vec4, };
         static size_t Size(ShaderType Type) {
             switch (Type) {
                 case ShaderType::vec2:

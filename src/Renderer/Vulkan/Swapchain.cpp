@@ -116,7 +116,7 @@ namespace FikoEngine {
         createInfo.clipped = rendererData->swapChainSpec.clipped;
         createInfo.oldSwapchain = VK_NULL_HANDLE;
 
-        VK_CHECK(vkCreateSwapchainKHR(rendererData->device,&createInfo,nullptr,&swapchain));
+        VK_CHECK(vkCreateSwapchainKHR(rendererData->device,&createInfo, rendererData->allocator,&swapchain));
         LOG_INFO("Swapchain created successfully!");
         return swapchain;
     }
@@ -136,13 +136,13 @@ namespace FikoEngine {
     }
     void SwapchainCleanup(RendererDataAPI*  rendererData){
         for (const auto &framebuffer: rendererData->swapChainFramebuffers)
-            vkDestroyFramebuffer(rendererData->device,framebuffer,nullptr);
-        vkDestroyPipeline(rendererData->device,rendererData->graphicsPipeline,nullptr);
-        vkDestroyPipelineLayout(rendererData->device,rendererData->pipelineLayout,nullptr);
-        vkDestroyRenderPass(rendererData->device,rendererData->renderPass,nullptr);
+            vkDestroyFramebuffer(rendererData->device,framebuffer,rendererData->allocator);
+        vkDestroyPipeline(rendererData->device,rendererData->graphicsPipeline,rendererData->allocator);
+        vkDestroyPipelineLayout(rendererData->device,rendererData->pipelineLayout,rendererData->allocator);
+        vkDestroyRenderPass(rendererData->device,rendererData->renderPass,rendererData->allocator);
         for (const auto &view: rendererData->imageViews)
-            vkDestroyImageView(rendererData->device,view,nullptr);
-        vkDestroySwapchainKHR(rendererData->device,rendererData->swapchain,nullptr);
+            vkDestroyImageView(rendererData->device,view,rendererData->allocator);
+        vkDestroySwapchainKHR(rendererData->device,rendererData->swapchain,rendererData->allocator);
     }
     VkResult SwapchainAcquireNextImage(RendererDataAPI*  rendererData,u32& imageIndex,u32 commandBufferIndex){
         return vkAcquireNextImageKHR(rendererData->device,

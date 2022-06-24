@@ -19,6 +19,7 @@ public:
     static void Draw();
     static void Destroy();
     static void ResizeFramebuffer(Extent2D size);
+    static void Update();
 private:
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
 };
