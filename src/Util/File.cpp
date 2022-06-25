@@ -5,49 +5,52 @@
 #include <fstream>
 namespace FikoEngine{
 
-    File::File(const char *path,FileFormat format){
-        this->m_Path = path;
-        this->m_FileFormat = format;
-    }
+    File::File(std::string_view path, FileFormat format)
+        : m_Path{ path }
+        , m_FileFormat{ format }
+    {}
 
-    std::vector<u8> FikoEngine::File::ReadBinaryData() {
-        if(!m_Opened){
-            std::fstream file(m_Path,std::ios::in | std::ios::binary);
-            if(file.good()) {
-                m_Opened = true;
-            }else{
-                return {};
-            }
+    std::vector<u8> File::ReadBinaryData() 
+    {
+        if(!m_IsOpened)
+        {
+            std::fstream file(m_Path, std::ios::in | std::ios::binary);
+            file.good() ? m_IsOpened = true : return {};
+            
             file.seekg(0, std::ios::end);
-            size_t length = file.tellg();
+            const std::size_t length = file.tellg();
             file.seekg(0, std::ios::beg);
+            
             std::vector<u8> buffer(length);
-            file.read((char*)buffer.data(), length);
+            file.read(static_cast<char*>(buffer.data()), length); // Doesn't need to be casted because the underlying type 
+            //of the vector is an std::uint8_t*, esentially the same as the type we are trying to cast to. Redundant
             file.close();
-            m_Opened = false;
-
+            
+            m_IsOpened = false;
             return buffer;
         }
         return {};
     }
-    auto FikoEngine::File::ReadTextData() {
-        if(!m_Opened){
-            std::fstream file(m_Path,std::ios::in);
-            if(file.good()) {
-                m_Opened = true;
-            }else{
-                return std::vector<char>();
-            }
+    
+    std::vector<u8> File::ReadTextData() 
+    {
+        if(!m_IsOpened)
+        {
+            std::fstream file(m_Path, std::ios::in);
+            file.good() ? m_IsOpened = true : return {};
+            
             file.seekg(0, std::ios::end);
-            size_t length = file.tellg();
+            const std::size_t length = file.tellg();
             file.seekg(0, std::ios::beg);
-            std::vector<char> buffer(length);
+            
+            std::vector<u8> buffer(length);
             file.read(buffer.data(), length);
             file.close();
-            m_Opened = false;
+            
+            m_IsOpened = false;
 
             return buffer;
         }
-        return std::vector<char>();
+        return {};
     }
 }
