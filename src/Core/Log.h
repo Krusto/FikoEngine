@@ -14,7 +14,7 @@ namespace FikoEngine {
 
     private:
 #ifdef LWLOG
-        static std::shared_ptr<lwlog::console_logger> console;
+        inline static std::shared_ptr<lwlog::console_logger> console{};
 #endif
     };
 }
