@@ -5,20 +5,23 @@
 #include <string>
 #include "../Core/Definitions.h"
 
-namespace FikoEngine{
-    enum class FileFormat{
-        Regular,
-        Binary
-    };
-    class File{
+namespace FikoEngine
+{
+    enum class FileFormat { Regular, Binary };
+
+    class File
+    {
     public:
         File() = default;
-        File(const char* path,FileFormat format);
+        File(std::string_view path, FileFormat format);
+
+    public:
         std::vector<u8> ReadBinaryData();
-        auto ReadTextData();
+        std::vector<u8> ReadTextData();
+
     private:
-        bool m_Opened{};
-        FileFormat m_FileFormat;
-        std::string m_Path{};
+        bool m_IsOpened{};
+        FileFormat m_FileFormat{};
+        std::string_view m_Path;
     };
 }
