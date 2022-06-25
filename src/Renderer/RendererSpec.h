@@ -1,8 +1,11 @@
 #pragma once
 #include "../Core/Core.h"
-namespace FikoEngine{
+
+namespace FikoEngine
+{
     ///Struct which holds renderer specification
-    struct RendererSpecAPI {
+    struct RendererSpecAPI 
+    {
         Extent2D SurfaceSize;
         std::vector<const char*> extensions;
     };
