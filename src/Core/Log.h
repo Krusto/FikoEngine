@@ -7,17 +7,21 @@
 #include <iostream>
 #include <cstdlib>
 #endif
-namespace FikoEngine {
-    class Logger {
+
+namespace FikoEngine 
+{
+#ifdef LWLOG
+    class Logger 
+    {
     public:
         static void Init();
 
     private:
-#ifdef LWLOG
-        static std::shared_ptr<lwlog::console_logger> console;
-#endif
+        static std::shared_ptr<lwlog::console_logger> m_Console;
     };
+#endif
 }
+
 #ifdef DISABLE_LOG
 #define LOG_INFO(...)
 #define LOG_ERROR(...)
