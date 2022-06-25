@@ -5,14 +5,17 @@
 #include <glm/glm.hpp>
 #include "VertexLayout.h"
 
-namespace FikoEngine{
-    struct Vertex{
-        glm::vec3 pos;
-        glm::vec3 color;
-
-        static VertexLayout GetLayout() { return {{"Position",ShaderDataType::ShaderType::vec3},{"Color",ShaderDataType::ShaderType::vec3}};}
-        static VkVertexInputBindingDescription GetBindingDescription();
-
-        static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
+namespace FikoEngine
+{
+    class Vertex // Shouldn't be a struct, since it's not a POD
+    {
+        public:
+            static VertexLayout GetLayout();
+            static VkVertexInputBindingDescription GetBindingDescription();
+            static std::vector<VkVertexInputAttributeDescription> GetAttributeDescriptions();
+        
+        public:
+            glm::vec3 pos;
+            glm::vec3 color;
     };
 }
