@@ -8,18 +8,17 @@
 #include "Window.h"
 #include "RendererSpec.h"
 
-namespace FikoEngine {
-
-
-///Class interfacing the renderer with the api
-class RendererAPI {
+namespace FikoEngine 
+{
+class RendererAPI 
+{
 public:
-///Function which inits the renderer api
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
     static void Draw();
     static void Destroy();
     static void ResizeFramebuffer(Extent2D size);
     static void Update();
+    
 private:
     static QueueFamilyIndices s_RendererQueueFamilyIndices;
 };
