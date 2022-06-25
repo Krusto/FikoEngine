@@ -3,22 +3,32 @@
 //
 #include "Renderer.h"
 #include "RendererAPI.h"
-namespace FikoEngine {
-    void Renderer::Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec) {
+
+namespace FikoEngine 
+{
+    void Renderer::Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec) 
+    {
         m_RendererSpec = rendererSpec;
-        RendererAPI::Init({rendererSpec.SurfaceSize.x, rendererSpec.SurfaceSize.y}, applicationSpec);
+        RendererAPI::Init({ rendererSpec.SurfaceSize.x, rendererSpec.SurfaceSize.y }, applicationSpec);
     }
-    void Renderer::Draw(){
+    
+    void Renderer::Draw()
+    {
         RendererAPI::Draw();
     }
-    void Renderer::Destroy(){
+    
+    void Renderer::Destroy()
+    {
         RendererAPI::Destroy();
     }
-    void Renderer::ResizeFramebuffer(Extent2D size){
+    
+    void Renderer::ResizeFramebuffer(Extent2D size)
+    {
         RendererAPI::ResizeFramebuffer(size);
     }
-    void Renderer::Update(){
+    
+    void Renderer::Update()
+    {
         RendererAPI::Update();
     }
-
 }
