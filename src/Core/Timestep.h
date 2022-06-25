@@ -1,20 +1,25 @@
 #pragma once
 
-#include "Definitions.h"
+#include "Definitions.h" // Isn't needed
 
-class Timestep {
-public:
-    Timestep() = default;
-    Timestep(float time) : mTime(time) {}
-    float toMillis() const { return mTime * (float)1000; }
-    float toMicros() const { return mTime * (float)1000000; }
-    float Time() const { return mTime; }
-    Timestep operator-(Timestep& other) {
-        return Timestep(this->Time() - other.Time());
-    }
-    void setTime(float time) {
-        mTime = time;
-    }
-private:
-    float mTime{};
-};
+namespace FikoEngine
+{
+	class Timestep
+	{
+	public:
+		Timestep() = default;
+		Timestep(float time);
+
+	public:
+		void setTime(float time);
+		float ToMillis() const;
+		float ToMicros() const;
+		float Time() const;
+
+	public:
+		Timestep operator-(const Timestep& other);
+
+	private:
+		float m_Time{};
+	};
+}
