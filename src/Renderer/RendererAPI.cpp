@@ -18,10 +18,12 @@
 #include "Vulkan/VertexBuffer.h"
 #include "Vulkan/IndexBuffer.h"
 
-namespace FikoEngine {
+namespace FikoEngine 
+{
     inline RendererDataAPI s_RendererData;
 
-    void RendererAPI::Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec) {
+    void RendererAPI::Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec) 
+    {
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.allocator = CreatePAllocator("Allocator");
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
@@ -49,6 +51,7 @@ namespace FikoEngine {
                 {{0.5f, 0.5f,0.0f}, {0.0f, 0.0f, 1.0f}},
                 {{-0.5f, 0.5f,0.0f}, {1.0f, 1.0f, 1.0f}}
         };
+        
         std::vector<u32> indices = {0,1,2,2,3,0};
         s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData,vertices.data(),Vertex::GetLayout(),vertices.size());
         s_RendererData.indexBuffer = CreateIndexBuffer(&s_RendererData,indices.data(),indices.size());
@@ -59,22 +62,25 @@ namespace FikoEngine {
         s_RendererData.renderFinishedSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.inFlightFences = CreateFences(&s_RendererData,s_RendererData.maxFramesInFlight);
 
-
         LOG("Renderer initialized!");
 
     }
-    void RendererAPI::Update(){
+    
+    void RendererAPI::Update()
+    {
         s_RendererData.selectedShader = s_RendererData.shaders[s_RendererData.selectedShaderID];
     }
-    void RendererAPI::Draw() {
-
+    
+    void RendererAPI::Draw() 
+    {
         WaitFence(&s_RendererData, s_RendererData.currentImageIndex);
 
-        uint32_t imageIndex;
+        u32 imageIndex;
         VkResult result;
 
         result = SwapchainAcquireNextImage(&s_RendererData, imageIndex, s_RendererData.currentImageIndex);
-        if (result == VK_ERROR_OUT_OF_DATE_KHR) {
+        if (result == VK_ERROR_OUT_OF_DATE_KHR) 
+        {
             SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.selectedShader.c_str());
         }
 
@@ -95,17 +101,21 @@ namespace FikoEngine {
         QueueSubmit(&s_RendererData, s_RendererData.currentImageIndex);
 
         result = QueuePresent(&s_RendererData, imageIndex, s_RendererData.currentImageIndex);
-        if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || s_RendererData.framebufferResized) {
+        if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || s_RendererData.framebufferResized) 
+        {
             SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.selectedShader.c_str());
             s_RendererData.framebufferResized = 0;
         }
 
         s_RendererData.currentImageIndex = (s_RendererData.currentImageIndex + 1) % s_RendererData.maxFramesInFlight;
     }
-    void RendererAPI::Destroy(){
+    
+    void RendererAPI::Destroy()
+    {
         vkDeviceWaitIdle(s_RendererData.device);
 
-        for (u32 i = 0; i < s_RendererData.maxFramesInFlight; ++i) {
+        for (u32 i = 0; i < s_RendererData.maxFramesInFlight; ++i) 
+        {
             vkDestroySemaphore(s_RendererData.device,s_RendererData.imageAvailableSemaphores[i],s_RendererData.allocator);
             vkDestroySemaphore(s_RendererData.device,s_RendererData.renderFinishedSemaphores[i],s_RendererData.allocator);
             vkDestroyFence(s_RendererData.device,s_RendererData.inFlightFences[i],s_RendererData.allocator);
@@ -124,7 +134,8 @@ namespace FikoEngine {
         vkDestroyInstance(s_RendererData.instance,s_RendererData.allocator);
     }
 
-    void RendererAPI::ResizeFramebuffer(Extent2D size) {
+    void RendererAPI::ResizeFramebuffer(Extent2D size) 
+    {
         s_RendererData.framebufferResized = true;
         s_RendererData.framebufferSize = size;
     }
