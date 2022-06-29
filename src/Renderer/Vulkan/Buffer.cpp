@@ -7,7 +7,7 @@
 namespace FikoEngine{
 
     Buffer Buffer::Create(VkPhysicalDevice physicalDevice,VkDevice device, VkAllocationCallbacks* allocationCallbacks,uint32_t size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties) {
-        Buffer buffer{VK_NULL_HANDLE,BufferType::None,VK_NULL_HANDLE,size};
+        Buffer buffer{VK_NULL_HANDLE,BufferType::None,VK_NULL_HANDLE,size,0};
         VkBufferCreateInfo bufferInfo{};
         bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
         bufferInfo.size = size;

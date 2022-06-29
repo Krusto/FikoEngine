@@ -54,7 +54,7 @@ namespace FikoEngine{
         rasterizer.polygonMode = VK_POLYGON_MODE_FILL;
         rasterizer.lineWidth = 1.0f;
         rasterizer.cullMode = VK_CULL_MODE_BACK_BIT;
-        rasterizer.frontFace = VK_FRONT_FACE_CLOCKWISE;
+        rasterizer.frontFace = VK_FRONT_FACE_COUNTER_CLOCKWISE;
 
         VkPipelineMultisampleStateCreateInfo multisampling{.sType = VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO};
         multisampling.rasterizationSamples = VK_SAMPLE_COUNT_1_BIT;
@@ -93,8 +93,8 @@ namespace FikoEngine{
 
         VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
         pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-        pipelineLayoutInfo.setLayoutCount = 0; // Optional
-        pipelineLayoutInfo.pSetLayouts = nullptr; // Optional
+        pipelineLayoutInfo.setLayoutCount = 1;
+        pipelineLayoutInfo.pSetLayouts = &rendererData->descriptorSetLayout;
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
@@ -154,6 +154,21 @@ namespace FikoEngine{
         vkCmdBindVertexBuffers(rendererData->commandBuffers[imageIndex], 0, 1, vertexBuffers, offsets);
 
         vkCmdDraw(rendererData->commandBuffers[imageIndex],vertexBuffer.length,1,0,0);
+    }
+    void GraphicsPipelineDrawIndexedU(RendererDataAPI*  rendererData,Buffer& vertexBuffer,Buffer& indexBuffer,Buffer& uniformBuffer,u32 imageIndex){
+        VkBuffer vertexBuffers[] = {vertexBuffer.buffer};
+        VkDeviceSize offsets[] = {0};
+        vkCmdBindVertexBuffers(rendererData->commandBuffers[imageIndex], 0, 1, vertexBuffers, offsets);
+        vkCmdBindIndexBuffer(rendererData->commandBuffers[imageIndex], indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+        vkCmdBindDescriptorSets(rendererData->commandBuffers[imageIndex],
+                                VK_PIPELINE_BIND_POINT_GRAPHICS,
+                                rendererData->pipelineLayout,
+                                0,
+                                1,
+                                &rendererData->descriptorSets[imageIndex],
+                                0,
+                                nullptr);
+        vkCmdDrawIndexed(rendererData->commandBuffers[imageIndex],indexBuffer.length,1,0,0,0);
     }
 
 

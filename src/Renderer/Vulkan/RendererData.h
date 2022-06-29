@@ -45,5 +45,9 @@ namespace FikoEngine{
         Buffer vertexBuffer;
         Buffer indexBuffer;
         VkAllocationCallbacks* allocator;
+        VkDescriptorPool descriptorPool;
+        VkDescriptorSetLayout descriptorSetLayout;
+        std::vector<Buffer> uniformBuffers;
+        std::vector<VkDescriptorSet> descriptorSets;
     };
 }

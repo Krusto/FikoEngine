@@ -7,6 +7,7 @@
 #include "GraphicsPipeline.h"
 #include "Framebuffer.h"
 #include "../Vertex.h"
+#include "DescriptorSet.h"
 
 namespace FikoEngine {
     bool CheckDeviceExtensionSupport(RendererDataAPI*  rendererData, std::string_view extension) {

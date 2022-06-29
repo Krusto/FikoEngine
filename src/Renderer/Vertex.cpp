@@ -19,7 +19,7 @@ namespace FikoEngine
     {
         VkVertexInputBindingDescription bindingDescription{};
         bindingDescription.binding = 0;
-        bindingDescription.stride = this->GetLayout().stride;
+        bindingDescription.stride = Vertex::GetLayout().stride;
         bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
 
         return bindingDescription;
@@ -27,14 +27,14 @@ namespace FikoEngine
 
     std::vector<VkVertexInputAttributeDescription> Vertex::GetAttributeDescriptions() 
     {
-        std::vector<VkVertexInputAttributeDescription> attributeDescriptions(this->GetLayout().attributes.size());
+        std::vector<VkVertexInputAttributeDescription> attributeDescriptions(Vertex::GetLayout().attributes.size());
 
         for (u32 i = 0; i < attributeDescriptions.size(); ++i) 
         {
             attributeDescriptions[i].binding = 0;
             attributeDescriptions[i].location = i;
-            attributeDescriptions[i].format = ShaderDataType::Format(this->GetLayout().attributes[i].type);
-            attributeDescriptions[i].offset = this->GetLayout().attributes[i].offset;
+            attributeDescriptions[i].format = ShaderDataType::Format(Vertex::GetLayout().attributes[i].type);
+            attributeDescriptions[i].offset = Vertex::GetLayout().attributes[i].offset;
         }
 
         return attributeDescriptions;

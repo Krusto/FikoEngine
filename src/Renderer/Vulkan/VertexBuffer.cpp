@@ -13,8 +13,10 @@ Buffer CreateVertexBuffer(RendererDataAPI *rendererData, Vertex* data,VertexLayo
                                           bufferSize,
                                           VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
                                           VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
-    stagingBuffer.length = vertexCount;
     stagingBuffer.type = BufferType::Staging;
+    stagingBuffer.length = vertexCount;
+    stagingBuffer.size = bufferSize;
+
     void* _data{};
     vkMapMemory(rendererData->device, stagingBuffer.memory, 0, bufferSize, 0, &_data);
     memcpy(_data, data, (size_t) bufferSize);
@@ -26,8 +28,10 @@ Buffer CreateVertexBuffer(RendererDataAPI *rendererData, Vertex* data,VertexLayo
                                          bufferSize,
                                          VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_VERTEX_BUFFER_BIT,
                                          VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
-    vertexBuffer.length = vertexCount;
     vertexBuffer.type = BufferType::Vertex;
+    vertexBuffer.length = vertexCount;
+    vertexBuffer.size = bufferSize;
+
     Buffer::Copy(rendererData->device,rendererData->commandPool,rendererData->graphicsQueue,stagingBuffer, vertexBuffer, bufferSize);
 
     vkDestroyBuffer(rendererData->device, stagingBuffer.buffer, rendererData->allocator);

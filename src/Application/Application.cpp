@@ -9,8 +9,8 @@ std::shared_ptr<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
 void OnWindowClose(GLFWwindow* window){
     FikoEngine::Application::ReadyToExit = true;
 }
-void OnWindowResize(GLFWwindow* window, i32 width, i32 height){
-    FikoEngine::Application::s_Renderer->ResizeFramebuffer({(u32)width,(u32)height});
+void OnWindowResize(GLFWwindow* window, FikoEngine::i32 width, FikoEngine::i32 height){
+    FikoEngine::Application::s_Renderer->ResizeFramebuffer({(FikoEngine::u32)width,(FikoEngine::u32)height});
 }
 bool FikoEngine::Application::ReadyToExit{};
 

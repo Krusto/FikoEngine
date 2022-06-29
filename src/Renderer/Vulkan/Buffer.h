@@ -18,8 +18,8 @@ namespace FikoEngine{
     public:
         Buffer() = default;
         Buffer(const Buffer&) = default;
-        Buffer(VkBuffer buffer,BufferType type,VkDeviceMemory memory,u32 length)
-            :buffer(buffer),type(type),memory(memory),length(length){}
+        Buffer(VkBuffer buffer,BufferType type,VkDeviceMemory memory,u32 size,u32 length)
+            :buffer(buffer),type(type),memory(memory),size(size),length(length){}
 
         static Buffer Create(VkPhysicalDevice physicalDevice,VkDevice device,VkAllocationCallbacks* allocationCallbacks,u32 size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties);
         static void Copy(VkDevice device,VkCommandPool commandPool,VkQueue queue,Buffer src,Buffer dst,u32 size);
@@ -29,6 +29,7 @@ namespace FikoEngine{
         BufferType type{};
         VkDeviceMemory memory{};
         u32 length{};
+        u32 size{};
     };
 
 }

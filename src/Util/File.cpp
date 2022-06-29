@@ -14,16 +14,20 @@ namespace FikoEngine{
     {
         if(!m_IsOpened)
         {
-            std::fstream file(m_Path, std::ios::in | std::ios::binary);
-            file.good() ? m_IsOpened = true : return {};
-            
+            std::fstream file(m_Path.data(), std::ios::in | std::ios::binary);
+            if(file.good()){
+                m_IsOpened = true;
+            }else{
+                return {};
+            }
+
             file.seekg(0, std::ios::end);
             const std::size_t length = file.tellg();
             file.seekg(0, std::ios::beg);
             
             std::vector<u8> buffer(length);
-            file.read(static_cast<char*>(buffer.data()), length); // Doesn't need to be casted because the underlying type 
-            //of the vector is an std::uint8_t*, esentially the same as the type we are trying to cast to. Redundant
+            file.read(reinterpret_cast<char *>(buffer.data()), length);
+
             file.close();
             
             m_IsOpened = false;
@@ -36,15 +40,19 @@ namespace FikoEngine{
     {
         if(!m_IsOpened)
         {
-            std::fstream file(m_Path, std::ios::in);
-            file.good() ? m_IsOpened = true : return {};
+            std::fstream file(m_Path.data(), std::ios::in);
+            if(file.good()){
+                m_IsOpened = true;
+            }else{
+                return {};
+            }
             
             file.seekg(0, std::ios::end);
             const std::size_t length = file.tellg();
             file.seekg(0, std::ios::beg);
             
             std::vector<u8> buffer(length);
-            file.read(buffer.data(), length);
+            file.read(reinterpret_cast<char *>(buffer.data()), length);
             file.close();
             
             m_IsOpened = false;

@@ -13,8 +13,9 @@ namespace FikoEngine{
                                               bufferSize,
                                               VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
                                               VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
-        stagingBuffer.length = count;
         stagingBuffer.type = BufferType::Staging;
+        stagingBuffer.length = count;
+        stagingBuffer.size = bufferSize;
 
         void* _data{};
         vkMapMemory(rendererData->device, stagingBuffer.memory, 0, bufferSize, 0, &_data);
@@ -27,8 +28,10 @@ namespace FikoEngine{
                                              bufferSize,
                                              VK_BUFFER_USAGE_TRANSFER_DST_BIT | VK_BUFFER_USAGE_INDEX_BUFFER_BIT,
                                              VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
-        indexBuffer.length = count;
         indexBuffer.type = BufferType::Index;
+        indexBuffer.size = bufferSize;
+        indexBuffer.length = count;
+
         Buffer::Copy(rendererData->device,rendererData->commandPool,rendererData->graphicsQueue,stagingBuffer, indexBuffer, bufferSize);
 
         vkDestroyBuffer(rendererData->device, stagingBuffer.buffer, rendererData->allocator);

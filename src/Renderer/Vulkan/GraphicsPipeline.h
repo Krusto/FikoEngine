@@ -13,4 +13,5 @@ namespace FikoEngine{
     void GraphicsPipelineDraw(RendererDataAPI*  rendererData,u32 imageIndex = {});
     void GraphicsPipelineDrawArrays(RendererDataAPI*  rendererData,Buffer& vertexBuffer,u32 imageIndex = {});
     void GraphicsPipelineDrawIndexed(RendererDataAPI*  rendererData,Buffer& vertexBuffer,Buffer& indexBuffer,u32 imageIndex = {});
+    void GraphicsPipelineDrawIndexedU(RendererDataAPI*  rendererData,Buffer& vertexBuffer,Buffer& indexBuffer,Buffer& uniformBuffer,u32 imageIndex = {});
 }

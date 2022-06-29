@@ -23,7 +23,7 @@ namespace FikoEngine
             return 0;
         }
         
-        static VkFormat Format(ShaderType Typtypee) 
+        static VkFormat Format(ShaderType type)
         {
             switch (type) 
             {

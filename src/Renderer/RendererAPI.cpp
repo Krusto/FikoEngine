@@ -17,7 +17,10 @@
 #include "Vertex.h"
 #include "Vulkan/VertexBuffer.h"
 #include "Vulkan/IndexBuffer.h"
-
+#include "Vulkan/UniformBuffer.h"
+#include "Vulkan/DescriptorSet.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 namespace FikoEngine 
 {
     inline RendererDataAPI s_RendererData;
@@ -34,10 +37,9 @@ namespace FikoEngine
         s_RendererData.surface = applicationSpec.window->CreateSurface(s_RendererData.instance);
         s_RendererData.framebufferSize = rendererSpec.SurfaceSize;
 
-        s_RendererData.shaders.emplace_back("assets/flat2D");
-        s_RendererData.shaders.emplace_back("assets/basic");
+        s_RendererData.shaders.emplace_back("assets/flat3D");
         s_RendererData.selectedShader = s_RendererData.shaders[s_RendererData.selectedShaderID];
-
+        s_RendererData.descriptorSetLayout = CreateDescriptorSetLayout(&s_RendererData);
         SwapchainRecreate(&s_RendererData,rendererSpec.SurfaceSize,s_RendererData.selectedShader.c_str());
 
         s_RendererData.commandPool = CreateCommandPool(&s_RendererData);
@@ -55,7 +57,10 @@ namespace FikoEngine
         std::vector<u32> indices = {0,1,2,2,3,0};
         s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData,vertices.data(),Vertex::GetLayout(),vertices.size());
         s_RendererData.indexBuffer = CreateIndexBuffer(&s_RendererData,indices.data(),indices.size());
+        s_RendererData.uniformBuffers = CreateUniformBuffers(&s_RendererData,MVPUniform::GetLayout(),s_RendererData.maxFramesInFlight);
 
+        s_RendererData.descriptorPool = CreateDescriptorPool(&s_RendererData);
+        s_RendererData.descriptorSets = CreateDescriptorSets(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.commandBuffers = CreateCommandBuffers(&s_RendererData,s_RendererData.imageViews.size());
 
         s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
@@ -84,6 +89,22 @@ namespace FikoEngine
             SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.selectedShader.c_str());
         }
 
+        static auto startTime = std::chrono::high_resolution_clock::now();
+
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        float time = std::chrono::duration<float, std::chrono::seconds::period>(currentTime - startTime).count();
+
+        MVPUniform ubo{};
+        ubo.model = glm::rotate(glm::mat4(1.0f), time * glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.view = glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        ubo.projection = glm::perspective(glm::radians(45.0f), s_RendererData.framebufferSize.x / (float) s_RendererData.framebufferSize.y, 0.1f, 10.0f);
+        ubo.projection[1][1] *= -1;
+
+        void* data;
+        vkMapMemory(s_RendererData.device, s_RendererData.uniformBuffers[s_RendererData.currentImageIndex].memory, 0, sizeof(ubo), 0, &data);
+        memcpy(data, &ubo, sizeof(ubo));
+        vkUnmapMemory(s_RendererData.device, s_RendererData.uniformBuffers[s_RendererData.currentImageIndex].memory);
+
 
         ResetFence(&s_RendererData, s_RendererData.currentImageIndex);
 
@@ -93,7 +114,10 @@ namespace FikoEngine
         BeginRenderPass(&s_RendererData, s_RendererData.currentImageIndex);
 
         BindGraphicsPipeline(&s_RendererData, s_RendererData.currentImageIndex);
-        GraphicsPipelineDrawIndexed(&s_RendererData,s_RendererData.vertexBuffer,s_RendererData.indexBuffer,s_RendererData.currentImageIndex);
+        GraphicsPipelineDrawIndexedU(&s_RendererData,s_RendererData.vertexBuffer,
+                                     s_RendererData.indexBuffer,
+                                     s_RendererData.uniformBuffers[s_RendererData.currentImageIndex],
+                                     s_RendererData.currentImageIndex);
 
         EndRenderPass(&s_RendererData, s_RendererData.currentImageIndex);
         EndCommandBuffer(&s_RendererData, s_RendererData.currentImageIndex);

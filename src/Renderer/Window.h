@@ -60,7 +60,7 @@ public:
     WindowSpec& GetSpec();
 
 public:
-    operator GLFWwindow*();
+    operator GLFWwindow*(){return m_Window;};
     
 private:
     GLFWwindow* m_Window{ nullptr };

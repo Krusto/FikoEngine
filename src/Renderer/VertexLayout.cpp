@@ -8,10 +8,11 @@ namespace FikoEngine{
     FikoEngine::VertexLayout::VertexLayout(std::initializer_list<VertexAttribute> attributes) 
         : attributes{ attributes }
     {
-        for (auto& [name, type, offset] : attributes)
+
+        for (u32 i = 0; i < this->attributes.size(); ++i)
         {
-            offset = stride;
-            stride += static_cast<u32>(ShaderDataType::Size(type));
+            this->attributes[i].offset = stride;
+            stride += static_cast<u32>(ShaderDataType::Size(this->attributes[i].type));
         }
     }
 }
