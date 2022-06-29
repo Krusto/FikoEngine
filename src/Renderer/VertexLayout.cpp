@@ -5,11 +5,13 @@
 
 namespace FikoEngine{
 
-    FikoEngine::VertexLayout::VertexLayout(std::initializer_list<VertexAttribute> attributes) : attributes(attributes){
-        for (auto& [name,type,offset] : this->attributes)
+    FikoEngine::VertexLayout::VertexLayout(std::initializer_list<VertexAttribute> attributes) 
+        : attributes{ attributes }
+    {
+        for (auto& [name, type, offset] : attributes)
         {
             offset = stride;
-            stride += (u32)ShaderDataType::Size(type);
+            stride += static_cast<u32>(ShaderDataType::Size(type));
         }
     }
 }
