@@ -141,5 +141,9 @@ WindowSpec& Window::GetSpec()
 { 
     return m_WindowSpec; 
 }
- 
+    
+Window::operator GLFWwindow*()
+{
+    return m_Window;
+}
 }
