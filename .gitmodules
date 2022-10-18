@@ -10,3 +10,9 @@
 [submodule "Vendor/VulkanMemoryAllocator"]
 	path = Vendor/VulkanMemoryAllocator
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
+[submodule "Vendor/entt"]
+	path = Vendor/entt
+	url = https://github.com/skypjack/entt.git
+[submodule "Vendor/imgui"]
+	path = Vendor/imgui
+	url = https://github.com/ocornut/imgui.git
