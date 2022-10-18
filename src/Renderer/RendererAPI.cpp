@@ -14,9 +14,9 @@
 #include "Vulkan/Memory.h"
 #include "Vulkan/Command.h"
 #include "Vulkan/Synchronization.h"
+#include "Vulkan/Queue.h"
 
 namespace FikoEngine {
-    inline RendererDataAPI s_RendererData;
 
     void RendererAPI::Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec) {
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
@@ -24,18 +24,33 @@ namespace FikoEngine {
         s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
         rendererSpec.extensions.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
 
-        s_RendererData.device = CreateDevice(&s_RendererData,rendererSpec.extensions);
+        s_RendererData.device = CreateDevice(s_RendererData.physicalDevice,s_RendererData.queueFamilyIndex,rendererSpec.extensions);
+
+        s_RendererData.swapchain.swapchain = CreateSwapchain(s_RendererData.physicalDevice,
+                                                   s_RendererData.device,
+                                                   s_RendererData.swapChainSpec,
+                                                   s_RendererData.swapchain.Surface,
+                                                   s_RendererData.queueFamilyIndex,
+                                                   rendererSpec.SurfaceSize
+
+        );
+
         s_RendererData.surface = applicationSpec.window->CreateSurface(s_RendererData.instance);
-        s_RendererData.framebufferSize = rendererSpec.SurfaceSize;
+        s_RendererData.swapchain.FrameSize = rendererSpec.SurfaceSize;
 
         s_RendererData.shaderPath = "assets/basic";
-        SwapchainRecreate(&s_RendererData,rendererSpec.SurfaceSize,s_RendererData.shaderPath.c_str());
+        SwapchainRecreate(s_RendererData.swapchain,
+                          s_RendererData.physicalDevice,
+                          s_RendererData.device,
+                          s_RendererData.swapchain.FrameSize,
+                          s_RendererData.workingDir,
+                          s_RendererData.shaderPath.c_str());
 
-        s_RendererData.commandPool = CreateCommandPool(&s_RendererData);
+        s_RendererData.commandPool = CreateCommandPool(s_RendererData.device,s_RendererData.swapchain.QueueFamilyIndex);
 
 //        s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData);
 
-        s_RendererData.commandBuffers = CreateCommandBuffers(&s_RendererData,s_RendererData.imageViews.size());
+        s_RendererData.commandBuffers = CreateCommandBuffers(s_RendererData.device,s_RendererData.commandPool,s_RendererData.imageViews.size());
 
         s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.renderFinishedSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
@@ -54,28 +69,28 @@ namespace FikoEngine {
         uint32_t imageIndex;
         VkResult result;
 
-        result = SwapchainAcquireNextImage(&s_RendererData, imageIndex, s_RendererData.currentImageIndex);
+        result = SwapchainAcquireNextImage(s_RendererData.device,s_RendererData.swapchain,s_RendererData.imageAvailableSemaphores[s_RendererData.currentImageIndex], imageIndex, s_RendererData.currentImageIndex);
         if (result == VK_ERROR_OUT_OF_DATE_KHR) {
-            SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.shaderPath.c_str());
+            SwapchainRecreate(s_RendererData.swapchain,s_RendererData.physicalDevice,s_RendererData.device, s_RendererData.swapchain.FrameSize,s_RendererData.workingDir, s_RendererData.shaderPath);
         }
 
 
         ResetFence(&s_RendererData, s_RendererData.currentImageIndex);
 
-        ResetCommandBuffer(&s_RendererData, s_RendererData.currentImageIndex);
+        ResetCommandBuffer(s_RendererData.commandBuffers, s_RendererData.currentImageIndex);
 
-        BeginCommandBuffer(&s_RendererData, s_RendererData.currentImageIndex);
-        BeginRenderPass(&s_RendererData, s_RendererData.currentImageIndex);
-        BindGraphicsPipeline(&s_RendererData, s_RendererData.currentImageIndex);
-        GraphicsPipelineDraw(&s_RendererData, s_RendererData.currentImageIndex);
-        EndRenderPass(&s_RendererData, s_RendererData.currentImageIndex);
-        EndCommandBuffer(&s_RendererData, s_RendererData.currentImageIndex);
+        BeginCommandBuffer(s_RendererData.commandBuffers, s_RendererData.currentImageIndex);
+        BeginRenderPass(s_RendererData.commandBuffers,s_RendererData.swapchain, s_RendererData.currentImageIndex);
+        BindGraphicsPipeline(s_RendererData.commandBuffers,s_RendererData.swapchain, s_RendererData.currentImageIndex);
+        GraphicsPipelineDraw(s_RendererData.commandBuffers, s_RendererData.currentImageIndex);
+        EndRenderPass(s_RendererData.commandBuffers, s_RendererData.currentImageIndex);
+        EndCommandBuffer(s_RendererData.commandBuffers, s_RendererData.currentImageIndex);
 
         QueueSubmit(&s_RendererData, s_RendererData.currentImageIndex);
 
         result = QueuePresent(&s_RendererData, imageIndex, s_RendererData.currentImageIndex);
         if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || s_RendererData.framebufferResized) {
-            SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.shaderPath.c_str());
+            SwapchainRecreate(s_RendererData.swapchain,s_RendererData.physicalDevice,s_RendererData.device, s_RendererData.framebufferSize,s_RendererData.workingDir, s_RendererData.shaderPath.c_str());
             s_RendererData.framebufferResized = 0;
         }
 
@@ -90,17 +105,17 @@ namespace FikoEngine {
             vkDestroyFence(s_RendererData.device,s_RendererData.inFlightFences[i],nullptr);
         }
         vkDestroyCommandPool(s_RendererData.device,s_RendererData.commandPool, nullptr);
-        SwapchainCleanup(&s_RendererData);
+        SwapchainCleanup(s_RendererData.device,s_RendererData.swapchain);
         vkDestroySurfaceKHR(s_RendererData.instance,s_RendererData.surface,nullptr);
         vkDestroyDevice(s_RendererData.device,nullptr);
         DestroyDebugUtilsMessengerEXT(s_RendererData.instance,s_RendererData.debug,nullptr);
         vkDestroyInstance(s_RendererData.instance,nullptr);
     }
 
-    void RendererAPI::ResizeFramebuffer(Extent2D size) {
+    void RendererAPI::ResizeFramebuffer(ViewportSize size) {
 //        SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.shaderPath.c_str());
         s_RendererData.framebufferResized = true;
-        s_RendererData.framebufferSize = size;
+        s_RendererData.swapchain.FrameSize = size;
     }
 
 }

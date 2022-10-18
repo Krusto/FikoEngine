@@ -8,13 +8,11 @@
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
 #include <vulkan/vulkan.h>
-
-namespace FikoEngine {
 class Window;
 struct ApplicationSpec {
     std::string ApplicationName;
     std::string WorkingDirectory;
-    Version AppVersion;
+    FikoEngine::Version AppVersion;
     Window* window;
 };
 
@@ -77,4 +75,3 @@ private:
 };
 
 typedef Window *WindowHandle;
-}

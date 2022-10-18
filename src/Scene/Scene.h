@@ -7,60 +7,73 @@
 #include <Renderer/Shader.h>
 #include <Renderer/Material.h>
 
-class Entity;
+namespace FikoEngine {
+    class Entity;
 
-class Scene{
-public:
-	Scene();
+    class Scene {
+    public:
+        Scene();
 
-	void OnUpdate(float dt);
-	
-	Entity AddEntity(std::string name = "Unnamed");
-	Entity CreateEntity(std::string name = "Unnamed");
-	Entity RemoveEntity(UUID uuid);
-	Entity RemoveEntity(Entity entity);
+        void OnUpdate(float dt);
 
-	auto data() { return m_Registry.data(); }
+        Entity AddEntity(std::string name = "Unnamed");
 
-	Entity GetHandle();
+        Entity CreateEntity(std::string name = "Unnamed");
 
-	template <typename ...Component>
-	auto GetEntitiesWith() {
-		return m_Registry.view<Component...>();
-	}
+        Entity RemoveEntity(UUID uuid);
 
-	auto HasUUID(UUID uuid) {
-		return m_EntityMap.contains(uuid);
-	}
-	Entity GetEntity(UUID uuid);
-	Entity FindEntity(const std::string& name);
+        Entity RemoveEntity(Entity entity);
 
-	Entity GetSelectedEntity();
-	Entity SetSelectedEntity(const Entity& entity);
+        auto data() { return m_Registry.data(); }
 
-	auto GetID() { return m_SceneID; }
-	ViewportSize GetViewport() { return { m_ViewportWidth,m_ViewportHeight }; }
+        Entity GetHandle();
 
-	Ref<Material> GetMaterial(std::string_view name);
-	void AddMaterial(Ref<Material> material);
+        template<typename ...Component>
+        auto GetEntitiesWith() {
+            return m_Registry.view<Component...>();
+        }
 
-	Ref<Shader> GetShader(std::string_view name);
-	void AddShader(std::string_view name, Ref<Shader> shader);
+        bool HasUUID(UUID uuid) {
+            return m_EntityMap.contains(uuid);
+        }
 
-	auto& GetMaterials() { return m_MaterialLibrary; }
-	auto& GetShaders() { return m_ShaderLibrary; }
-private:
-	entt::entity m_SceneEntity;
-	entt::entity m_SelectedEntity{};
-	UUID m_SceneID;
+        Entity GetEntity(UUID uuid);
 
-	std::unordered_map<UUID,Entity> m_EntityMap;
+        Entity FindEntity(const std::string &name);
 
-	entt::registry m_Registry;
-	uint32_t m_ViewportWidth, m_ViewportHeight;
+        Entity GetSelectedEntity();
 
-	std::unordered_map<std::string, Ref<Material>> m_MaterialLibrary;
-	std::unordered_map<std::string, Ref<Shader>> m_ShaderLibrary;
+        Entity SetSelectedEntity(const Entity &entity);
 
-	friend class Entity;
-};
+        auto GetID() { return m_SceneID; }
+
+        ViewportSize GetViewport() { return {m_ViewportWidth, m_ViewportHeight}; }
+
+        Ref<Material> GetMaterial(std::string_view name);
+
+        void AddMaterial(Ref<Material> material);
+
+        Ref<Shader> GetShader(std::string_view name);
+
+        void AddShader(std::string_view name, Ref<Shader> shader);
+
+        auto &GetMaterials() { return m_MaterialLibrary; }
+
+        auto &GetShaders() { return m_ShaderLibrary; }
+
+    private:
+        entt::entity m_SceneEntity;
+        entt::entity m_SelectedEntity{};
+        UUID m_SceneID;
+
+        std::unordered_map<UUID, Entity> m_EntityMap;
+
+        entt::registry m_Registry;
+        uint32_t m_ViewportWidth, m_ViewportHeight;
+
+        std::unordered_map<std::string, Ref<Material>> m_MaterialLibrary;
+        std::unordered_map<std::string, Ref<Shader>> m_ShaderLibrary;
+
+        friend class Entity;
+    };
+}

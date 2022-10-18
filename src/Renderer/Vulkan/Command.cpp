@@ -5,40 +5,45 @@
 #include "../../Core/Core.h"
 #include "Memory.h"
 namespace FikoEngine {
-    VkCommandPool CreateCommandPool(RendererDataAPI*  rendererData){
+    VkCommandPool CreateCommandPool(VkDevice device, uint32_t queueFamilyIndex) {
         VkCommandPool pool{};
         VkCommandPoolCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO};
         createInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;
-        createInfo.queueFamilyIndex = rendererData->queueFamilyIndex;
+        createInfo.queueFamilyIndex = queueFamilyIndex;
 
-        VK_CHECK(vkCreateCommandPool(rendererData->device,&createInfo,nullptr,&pool));
+        VK_CHECK(vkCreateCommandPool(device,&createInfo,nullptr,&pool));
         LOG_INFO("Created Command Pool");
         return pool;
     }
-    VkCommandBuffer CreateCommandBuffer(RendererDataAPI*  rendererData){
+    VkCommandBuffer CreateCommandBuffer(VkDevice device, VkCommandPool commandPool) {
         VkCommandBuffer buffer{};
         VkCommandBufferAllocateInfo createInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO};
-        createInfo.commandPool = rendererData->commandPool;
+        createInfo.commandPool = commandPool;
         createInfo.commandBufferCount = 1;
         createInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-        VK_CHECK(vkAllocateCommandBuffers(rendererData->device,&createInfo,&buffer));
+        VK_CHECK(vkAllocateCommandBuffers(device,&createInfo,&buffer));
         return buffer;
     }
-    std::vector<VkCommandBuffer> CreateCommandBuffers(RendererDataAPI*  rendererData,u32 count){
+
+    std::vector<VkCommandBuffer> CreateCommandBuffers(VkDevice device,VkCommandPool commandPool,u32 count){
         std::vector<VkCommandBuffer> buffers(count);
         for (auto &buffer: buffers)
-            buffer = CreateCommandBuffer(rendererData);
+            buffer = CreateCommandBuffer(device,commandPool);
         return buffers;
     }
-    void BeginCommandBuffer(RendererDataAPI*  rendererData,u32 index){
+
+    void BeginCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index){
         VkCommandBufferBeginInfo beginInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
-        VK_CHECK(vkBeginCommandBuffer(rendererData->commandBuffers[index],&beginInfo));
+        VK_CHECK(vkBeginCommandBuffer(commandBuffers[index],&beginInfo));
     }
-    void EndCommandBuffer(RendererDataAPI*  rendererData,u32 index){
-        VK_CHECK(vkEndCommandBuffer(rendererData->commandBuffers[index]));
+    void EndCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index){
+        VK_CHECK(vkEndCommandBuffer(commandBuffers[index]));
     }
-    void ResetCommandBuffer(RendererDataAPI*  rendererData,u32 index){
-        VK_CHECK(vkResetCommandBuffer(rendererData->commandBuffers[index], /*VkCommandBufferResetFlagBits*/ 0));
+    void ResetCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index){
+        VK_CHECK(vkResetCommandBuffer(commandBuffers[index], /*VkCommandBufferResetFlagBits*/ 0));
     }
+
+
+
 
 }

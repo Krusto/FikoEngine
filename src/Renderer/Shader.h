@@ -2,9 +2,11 @@
 #include <string>
 #include <unordered_map>
 #include <cstdint>
+#include <vector>
 #include <glm/glm.hpp>
 #include <Core/Ref.h>
 #include <Renderer/ShaderUniform.h>
+#include "ShaderDataType.h"
 
 namespace FikoEngine {
     enum class ShaderType {
@@ -13,10 +15,6 @@ namespace FikoEngine {
         Fragment,
         Compute,
         Other
-    };
-    enum class ShaderUniformType {
-        None = 0, Bool, Int, UInt, Float, Vec2, Vec3, Vec4, Mat3, Mat4,
-        IVec2, IVec3, IVec4
     };
 
     class ShaderUniform {

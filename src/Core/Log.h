@@ -1,5 +1,4 @@
 #pragma once
-
 #ifdef LWLOG
 #include <lwlog.h>
 #else
@@ -11,7 +10,6 @@ namespace FikoEngine {
     public:
         static void Init();
 
-    private:
 #ifdef LWLOG
         static std::shared_ptr<lwlog::console_logger> console;
 #endif
@@ -19,11 +17,12 @@ namespace FikoEngine {
 }
 
 #ifdef LWLOG
-#define LOG_INFO(...) LWLOG_INFO(__VA_ARGS__);fflush( stdout )
-#define LOG_ERROR(...) LWLOG_ERROR(__VA_ARGS__);fflush( stdout )
-#define LOG_DEBUG(...) LWLOG_DEBUG(__VA_ARGS__);fflush( stdout )
-#define LOG(...) LWLOG_INFO(__VA_ARGS__);fflush( stdout )
-#define LOG_WARNING(...) LWLOG_WARNING(__VA_ARGS__);fflush(stdout)
+#define LOG(...) FikoEngine::Logger::console->info(__VA_ARGS__)
+#define LOG_INFO(...) FikoEngine::Logger::console->info(__VA_ARGS__)
+#define LOG_ERROR(...) FikoEngine::Logger::console->error(__VA_ARGS__)
+#define LOG_DEBUG(...) FikoEngine::Logger::console->debug(__VA_ARGS__)
+#define LOG_WARNING(...) FikoEngine::Logger::console->warning(__VA_ARGS__)
+#define LOG_CRITICAL(...) FikoEngine::Logger::console->critical(__VA_ARGS__)
 #else
 #define LOG_INFO(...) std::cout<<(__VA_ARGS__)<<'\n';fflush( stdout )
 #define LOG_ERROR(...) std::cout<<(__VA_ARGS__)<<'\n';fflush( stdout )

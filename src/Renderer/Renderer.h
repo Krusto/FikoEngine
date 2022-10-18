@@ -5,6 +5,7 @@
 
 #include "Window.h"
 #include "../Core/Core.h"
+#include "Viewport.h"
 
 namespace FikoEngine {
 
@@ -21,7 +22,7 @@ public:
     void Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec);
     void Draw();
     void Destroy();
-    void ResizeFramebuffer(Extent2D size);
+    void ResizeFramebuffer(ViewportSize size);
 private:
     RendererSpec m_RendererSpec;
 };

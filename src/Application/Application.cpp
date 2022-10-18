@@ -3,6 +3,7 @@
 //
 
 #include "Application.h"
+#include "Editor/EditorLayer.h"
 
 std::shared_ptr<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
 
@@ -25,8 +26,12 @@ bool FikoEngine::Application::Run() {
     m_ApplicationSpec.window = m_Window;
     s_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
 
+    LayerStack::PushLayer(Ref<EditorLayer>::Create());
+    LayerStack::GetLayer("Editor")->Init(m_Window);
+
     while(!Application::ReadyToExit){
        m_Window->Begin();
+       LayerStack::GetLayer("Editor")->OnUpdate(1.0);
        m_Window->Loop();
 
        s_Renderer->Draw();

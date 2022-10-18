@@ -11,6 +11,6 @@ namespace FikoEngine{
         Fragment,
         Compute
     };
-    void CompileShaderFile(RendererDataAPI*  rendererData,const char* ShaderPath,ShaderType type);
-    VkShaderModule CreateShaderModule(RendererDataAPI*  rendererData,const char* ShaderPath, ShaderType type);
+    void CompileShaderFile(std::string_view workingDir,std::string_view ShaderPath,ShaderType type);
+    VkShaderModule CreateShaderModule(VkDevice device, std::string_view workingDir,std::string_view ShaderPath, ShaderType type);
 }

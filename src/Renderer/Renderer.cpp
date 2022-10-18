@@ -14,7 +14,7 @@ namespace FikoEngine {
     void Renderer::Destroy(){
         RendererAPI::Destroy();
     }
-    void Renderer::ResizeFramebuffer(Extent2D size){
+    void Renderer::ResizeFramebuffer(ViewportSize size){
         RendererAPI::ResizeFramebuffer(size);
     }
 

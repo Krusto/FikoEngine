@@ -2,31 +2,34 @@
 #include <Scene/Entity.h>
 #include <Scene/Component.h>
 
-DrawableComponent DrawableComponent::Generate(Entity entity) {
-	const auto& mesh = entity.GetComponent<MeshComponent>().mesh;
+namespace FikoEngine {
+    DrawableComponent DrawableComponent::Generate(Entity entity) {
+        const auto &mesh = entity.GetComponent<MeshComponent>().mesh;
 
-	DrawableComponent output;
-	output.va = VertexArray::Create((uint32_t)mesh.indices.size());
-	output.va->Bind();
-	auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float*)mesh.vertices.data(), (uint32_t)mesh.vertices.size());
-	auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t)mesh.indices.size());
-	output.va->Unbind();
+        DrawableComponent output;
+        output.va = VertexArray::Create((uint32_t) mesh.indices.size());
+        output.va->Bind();
+        auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float *) mesh.vertices.data(),
+                                       (uint32_t) mesh.vertices.size());
+        auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t) mesh.indices.size());
+        output.va->Unbind();
 
-	return output;
-}
+        return output;
+    }
 
-MeshComponent MeshComponent::Generate(Entity entity, MeshType type)
-{
-	const auto& mesh = MeshBuilder::CreateMesh(type);
+    MeshComponent MeshComponent::Generate(Entity entity, MeshType type) {
+        const auto &mesh = MeshBuilder::CreateMesh(type);
 
-	MeshComponent output;
-	output.type = type;
+        MeshComponent output;
+        output.type = type;
 
-	output.va = VertexArray::Create((uint32_t)mesh.indices.size());
-	output.va->Bind();
-	auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float*)mesh.vertices.data(), (uint32_t)mesh.vertices.size());
-	auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t)mesh.indices.size());
-	output.va->Unbind();
+        output.va = VertexArray::Create((uint32_t) mesh.indices.size());
+        output.va->Bind();
+        auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float *) mesh.vertices.data(),
+                                       (uint32_t) mesh.vertices.size());
+        auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t) mesh.indices.size());
+        output.va->Unbind();
 
-	return output;
+        return output;
+    }
 }

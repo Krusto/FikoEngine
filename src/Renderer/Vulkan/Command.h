@@ -5,11 +5,12 @@
 #include "RendererData.h"
 
 namespace FikoEngine{
-    VkCommandPool CreateCommandPool(RendererDataAPI*  rendererData);
-    VkCommandBuffer CreateCommandBuffer(RendererDataAPI*  rendererData);
-    std::vector<VkCommandBuffer> CreateCommandBuffers(RendererDataAPI*  rendererData,u32 count = 1);
+    VkCommandPool CreateCommandPool(VkDevice device, u32 queueFamilyIndex);
+    VkCommandBuffer CreateCommandBuffer(VkDevice device, VkCommandPool commandPool);
 
-    void BeginCommandBuffer(RendererDataAPI*  rendererData,u32 index = {});
-    void EndCommandBuffer(RendererDataAPI*  rendererData,u32 index = {});
-    void ResetCommandBuffer(RendererDataAPI*  rendererData,u32 index = {});
+    std::vector<VkCommandBuffer> CreateCommandBuffers(VkDevice device,VkCommandPool commandPool,u32 count = 1);
+
+    void BeginCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index = {});
+    void EndCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index = {});
+    void ResetCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index = {});
 }

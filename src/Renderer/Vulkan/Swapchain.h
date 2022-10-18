@@ -3,28 +3,61 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
+#include <Core/Core.h>
 #include "SwapchainSpec.h"
-#include "RendererData.h"
-#include "../../Core/Core.h"
+#include "Renderer/Viewport.h"
+
 namespace FikoEngine {
 
-    bool CheckDeviceExtensionSupport(RendererDataAPI*  rendererData, std::string_view extension);
+    class Swapchain{
+    public:
+        Swapchain() = default;
+        Swapchain& operator=(Swapchain&) = default;
 
-    bool CheckSwapChainSupport(RendererDataAPI*  rendererData);
 
-    SwapChainSupportDetails GetSwapchainSupportDetails(RendererDataAPI*  rendererData);
 
-    VkSurfaceFormatKHR ChooseSurfaceFormat(RendererDataAPI*  rendererData);
+        u32 FramesCount;
+        VkSwapchainKHR swapchain;
+        std::vector<VkFramebuffer> Framebuffers;
+        std::vector<VkImage> Images;
+        std::vector<VkImageView> ImageViews;
+        VkRenderPass Renderpass;
+        ViewportSize FrameSize;
+        SwapChainSpec SwapchainSpec;
+        VkSurfaceKHR Surface;
+        VkPipelineLayout PipelineLayout;
+        VkPipeline GraphicsPipeline;
 
-    VkPresentModeKHR ChoosePresentMode(RendererDataAPI*  rendererData);
+        u32 QueueFamilyIndex;
 
-    VkExtent2D ChooseSwapExtent(RendererDataAPI*  rendererData,VkExtent2D windowExtent);
+        operator VkSwapchainKHR(){
+            return swapchain;
+        }
+    };
 
-    VkSwapchainKHR CreateSwapchain(RendererDataAPI*  rendererData,Extent2D windowExtent);
+    bool CheckDeviceExtensionSupport(VkPhysicalDevice physicalDevice, std::string_view extension);
 
-    VkResult SwapchainAcquireNextImage(RendererDataAPI*  rendererData,u32& imageIndex,u32 commandBufferIndex);
+    bool CheckSwapChainSupport(VkPhysicalDevice physicalDevice);
 
-    void SwapchainRecreate(RendererDataAPI*  rendererData,Extent2D size,const char* ShaderPath);
+    SwapChainSupportDetails GetSwapchainSupportDetails(VkPhysicalDevice physicalDevice,VkSurfaceKHR surface);
 
-    void SwapchainCleanup(RendererDataAPI*  rendererData);
+    VkSurfaceFormatKHR ChooseSurfaceFormat(SwapChainSpec& spec);
+
+    VkPresentModeKHR ChoosePresentMode(SwapChainSpec& spec);
+
+    VkExtent2D ChooseSwapExtent(SwapChainSpec& spec,VkExtent2D windowExtent);
+
+    VkSwapchainKHR CreateSwapchain(VkPhysicalDevice physicalDevice,VkDevice device,SwapChainSpec& spec,VkSurfaceKHR surface,u32 queueFamilyIndex,ViewportSize windowExtent);
+
+    VkResult SwapchainAcquireNextImage(VkDevice device,Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex);
+
+    void SwapchainRecreate(Swapchain& swapchain,VkPhysicalDevice physicalDevice,VkDevice device,ViewportSize size,std::string_view workingDir,std::string_view shaderPath);
+
+    void SwapchainCleanup(VkDevice device,Swapchain& swapchain);
+
+    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers,Swapchain& swapchain, u32 index);
+    void EndRenderPass(std::vector<VkCommandBuffer> commandBuffers,u32 index);
+
+    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Swapchain& swapchain,u32 imageIndex);
+    void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers,u32 imageIndex);
 }

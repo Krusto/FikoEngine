@@ -8,21 +8,25 @@
 #include "Memory.h"
 
 namespace FikoEngine{
-    VkPipeline CreateGraphicsPipeline(RendererDataAPI*  rendererData,
+    VkPipeline CreateGraphicsPipeline(VkDevice device,
+                                      SwapChainSpec& spec,
+                                      VkPipelineLayout& layout,
+                                      VkRenderPass renderPass,
                                       VkVertexInputBindingDescription bindingDescription,
                                       std::vector<VkVertexInputAttributeDescription> attributeDescriptions,
-                                      const char* shaderPath){
+                                      std::string_view workingDir,
+                                      std::string_view shaderPath){
 
-        rendererData->vertModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".vert").c_str(),ShaderType::Vertex);
-        rendererData->fragModule = CreateShaderModule(rendererData,(std::string(shaderPath) + ".frag").c_str(),ShaderType::Fragment);
+        VkShaderModule vertModule = CreateShaderModule(device,workingDir,(std::string(shaderPath) + ".vert").c_str(),ShaderType::Vertex);
+        VkShaderModule fragModule = CreateShaderModule(device,workingDir,(std::string(shaderPath) + ".frag").c_str(),ShaderType::Fragment);
 
         VkPipelineShaderStageCreateInfo vertShaderStageInfo{.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO};
         vertShaderStageInfo.stage = VK_SHADER_STAGE_VERTEX_BIT;
-        vertShaderStageInfo.module = rendererData->vertModule;
+        vertShaderStageInfo.module = vertModule;
         vertShaderStageInfo.pName = "main";
         VkPipelineShaderStageCreateInfo fragShaderStageInfo{.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO};
         fragShaderStageInfo.stage = VK_SHADER_STAGE_FRAGMENT_BIT;
-        fragShaderStageInfo.module = rendererData->fragModule;
+        fragShaderStageInfo.module = fragModule;
         fragShaderStageInfo.pName = "main";
 
         VkPipelineShaderStageCreateInfo shaderStages[] = {vertShaderStageInfo, fragShaderStageInfo};
@@ -35,12 +39,12 @@ namespace FikoEngine{
         inputAssembly.primitiveRestartEnable = VK_FALSE;
 
         VkViewport viewport{};
-        viewport.width = (float) rendererData->swapChainSpec.imageExtent.width;
-        viewport.height = (float) rendererData->swapChainSpec.imageExtent.height;
+        viewport.width = (float) spec.imageExtent.width;
+        viewport.height = (float) spec.imageExtent.height;
         viewport.maxDepth = 1.0f;
 
         VkRect2D scissor{};
-        scissor.extent = rendererData->swapChainSpec.imageExtent;
+        scissor.extent = spec.imageExtent;
 
         VkPipelineViewportStateCreateInfo viewportState{.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO};
         viewportState.viewportCount = 1;
@@ -98,7 +102,7 @@ namespace FikoEngine{
         pipelineLayoutInfo.pushConstantRangeCount = 0; // Optional
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
-        VK_CHECK(vkCreatePipelineLayout(rendererData->device,&pipelineLayoutInfo,nullptr,&rendererData->pipelineLayout));
+        VK_CHECK(vkCreatePipelineLayout(device,&pipelineLayoutInfo,nullptr,&layout));
         LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
@@ -115,31 +119,29 @@ namespace FikoEngine{
         pipelineInfo.pDepthStencilState = nullptr; // Optional
         pipelineInfo.pColorBlendState = &colorBlending;
         pipelineInfo.pDynamicState = nullptr; // Optional
-        pipelineInfo.layout = rendererData->pipelineLayout;
-        pipelineInfo.renderPass = rendererData->renderPass;
+        pipelineInfo.layout = layout;
+        pipelineInfo.renderPass = renderPass;
         pipelineInfo.subpass = 0;
         pipelineInfo.basePipelineHandle = VK_NULL_HANDLE; // Optional
         pipelineInfo.basePipelineIndex = -1; // Optional
 
-        vertexInputInfo.vertexBindingDescriptionCount = 1;
+        /*
+        Validation Error: [ VUID-VkSwapchainCreateInfoKHR-surface-01270 ] Object 0: handle = 0x1a30f492ad0, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xa183744d | vkCreateSwapchainKHR(): pCreateInfo->surface is not known at this time to be supported for presentation by this device. The vkGetPhysicalDeviceSurfaceSupportKHR() must be called beforehand, and it must return VK_TRUE support with this surface for at least one queue family of this device. The Vulkan spec states: surface must be a surface that is supported by the device as determined using vkGetPhysicalDeviceSurfaceSupportKHR (https://vulkan.lunarg.com/doc/view/1.2.170.0/windows/1.2-extensions/vkspec.html#VUID-VkSwapchainCreateInfoKHR-surface-01270)
+        */
+       /* vertexInputInfo.vertexBindingDescriptionCount = 1;
         vertexInputInfo.vertexAttributeDescriptionCount = static_cast<u32>(attributeDescriptions.size());
         vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
-        vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
+        vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();*/
 
-        VK_CHECK(vkCreateGraphicsPipelines(rendererData->device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
+        VK_CHECK(vkCreateGraphicsPipelines(device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
         LOG_INFO("Graphics pipeline created successfully!");
 
-        vkDestroyShaderModule(rendererData->device,rendererData->vertModule,nullptr);
-        vkDestroyShaderModule(rendererData->device,rendererData->fragModule,nullptr);
+        vkDestroyShaderModule(device,vertModule,nullptr);
+        vkDestroyShaderModule(device,fragModule,nullptr);
         return pipeline;
     }
 
-    void BindGraphicsPipeline(RendererDataAPI*  rendererData,u32 imageIndex){
-        vkCmdBindPipeline(rendererData->commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, rendererData->graphicsPipeline);
-    }
-    void GraphicsPipelineDraw(RendererDataAPI*  rendererData,u32 imageIndex){
-        vkCmdDraw(rendererData->commandBuffers[imageIndex],3,1,0,0);
-    }
+
 
 
 }

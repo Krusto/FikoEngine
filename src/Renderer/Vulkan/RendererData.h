@@ -6,6 +6,8 @@
 #include "../RendererSpec.h"
 #include "SwapchainSpec.h"
 #include "../../Core/Core.h"
+#include "Swapchain.h"
+
 namespace FikoEngine{
     struct RendererDataAPI{
         VkInstance instance;
@@ -13,7 +15,6 @@ namespace FikoEngine{
         VkPhysicalDevice physicalDevice;
         VkDevice device;
         VkSurfaceKHR surface;
-        VkSwapchainKHR swapchain;
         std::vector<VkImage> swapchainImages;
         std::vector<VkImageView> imageViews;
         u32 queueFamilyIndex;
@@ -38,5 +39,8 @@ namespace FikoEngine{
         std::string shaderPath;
         Extent2D framebufferSize;
         bool framebufferResized;
+
+        Swapchain swapchain;
     };
+    inline RendererDataAPI s_RendererData;
 }

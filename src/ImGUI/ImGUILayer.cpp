@@ -84,7 +84,7 @@ void ImGUILayer::Init(Window* window)
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
     static std::string glsl_version = "#version 150";
-    ImGui_ImplGlfw_InitForOpenGL(window->GetHandle(), true);
+    ImGui_ImplGlfw_InitForOpenGL(window->getHandle(), true);
     ImGui_ImplOpenGL3_Init(glsl_version.c_str());
 
 

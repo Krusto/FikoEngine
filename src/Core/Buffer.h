@@ -2,6 +2,8 @@
 #include <cstdint>
 #include <memory>
 #include <cassert>
+#include <cstring>
+
 using byte = uint8_t;
 struct Buffer
 {

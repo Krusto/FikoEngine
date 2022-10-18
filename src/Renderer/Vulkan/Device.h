@@ -7,5 +7,5 @@
 #include "../../Core/Core.h"
 
 namespace FikoEngine{
-    VkDevice CreateDevice(RendererDataAPI*  rendererData,std::vector<const char*>& extensions);
+    VkDevice CreateDevice(VkPhysicalDevice physicalDevice,u32& queueFamilyIndex,std::vector<const char*>& extensions);
 }

@@ -1,16 +1,8 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.21)
 project(FIKO_ENGINE)
 
 add_subdirectory(Vendor/glfw)
 #add_subdirectory(Vendor/VulkanMemoryAllocator)
-
-
-option(USE_LWLOG "Use LWLOG" OFF)
-
-if(USE_LWLOG)
-    add_definitions(-DLWLOG)
-    add_subdirectory(Vendor/lwlog)
-endif()
 
 add_subdirectory(Vendor/glm)
 
@@ -19,8 +11,8 @@ set(CMAKE_GENERATOR_PLATFORM x64)
 
 add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
 
-file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp)
-file(GLOB_RECURSE HEADER_FILES ./src/*.h)
+file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp ./Vendor/imgui/src/*.cpp)
+file(GLOB_RECURSE HEADER_FILES ./src/*. ./Vendor/imgui/src/*.h)
 
 message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -40,12 +32,15 @@ endforeach(TMP_PATH)
 
 add_executable(FIKO_ENGINE ${SOURCE_FILES} ${HEADER_FILES})
 target_compile_options(FIKO_ENGINE PRIVATE -static-libstdc++)
-
-if(USE_LWLOG)
+target_compile_options(FIKO_ENGINE PRIVATE -Wno-volatile)
+target_compile_options(FIKO_ENGINE PRIVATE -Wno-delete-incomplete)
+#if(USE_LWLOG)
     include_directories(FIKO_ENGINE Vendor/lwlog/lwlog/src)
-    target_link_libraries(FIKO_ENGINE lwlog)
-endif()
+#endif()
 
+include_directories(FIKO_ENGINE Vendor/imgui)
+include_directories(FIKO_ENGINE Vendor/entt/single_include)
+include_directories(FIKO_ENGINE ./src)
 include_directories(FIKO_ENGINE Vendor/glfw/include)
 include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.216.0/Include)
 #include_directories(FIKO_ENGINE Vendor/VulkanMemoryAllocator/src)

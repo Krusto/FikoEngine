@@ -1,9 +1,11 @@
 #pragma once
 #include "../Core/Core.h"
+#include "Viewport.h"
+
 namespace FikoEngine{
     ///Struct which holds renderer specification
     struct RendererSpecAPI {
-        Extent2D SurfaceSize;
+        ViewportSize SurfaceSize;
         std::vector<const char*> extensions;
     };
 }

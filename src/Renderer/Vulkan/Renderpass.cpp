@@ -5,13 +5,13 @@
 #include "Memory.h"
 
 namespace FikoEngine{
-    VkRenderPass CreateRenderPass(RendererDataAPI*  rendererData){
+    VkRenderPass CreateRenderPass(VkDevice device,SwapChainSpec& spec){
         VkRenderPass renderPass{};
 
         VkRenderPassCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
 
         VkAttachmentDescription colorAttachment{};
-        colorAttachment.format = rendererData->swapChainSpec.imageFormat;
+        colorAttachment.format = spec.imageFormat;
         colorAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
         colorAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
         colorAttachment.storeOp = VK_ATTACHMENT_STORE_OP_STORE;
@@ -44,28 +44,13 @@ namespace FikoEngine{
         createInfo.dependencyCount = 1;
         createInfo.pDependencies = &dependency;
 
-        VK_CHECK(vkCreateRenderPass(rendererData->device,&createInfo,nullptr,&renderPass));
+        VK_CHECK(vkCreateRenderPass(device,&createInfo,nullptr,&renderPass));
 
         LOG_INFO("RenderPass created successfully!");
 
         return renderPass;
     }
-    void BeginRenderPass(RendererDataAPI*  rendererData, u32 index){
-        VkRenderPassBeginInfo renderPassInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
-        renderPassInfo.renderPass = rendererData->renderPass;
-        renderPassInfo.framebuffer = rendererData->swapChainFramebuffers[index];
-        renderPassInfo.renderArea.offset = {0, 0};
-        renderPassInfo.renderArea.extent = {rendererData->framebufferSize.x,rendererData->framebufferSize.y};
 
-        VkClearValue clearColor = {{{0.0f, 0.0f, 0.0f, 1.0f}}};
-        renderPassInfo.clearValueCount = 1;
-        renderPassInfo.pClearValues = &clearColor;
-
-        vkCmdBeginRenderPass(rendererData->commandBuffers[index], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
-    }
-    void EndRenderPass(RendererDataAPI*  rendererData,u32 index){
-        vkCmdEndRenderPass(rendererData->commandBuffers[index]);
-    }
 
 
 }

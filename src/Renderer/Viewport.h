@@ -5,6 +5,7 @@ struct ViewportSize {
     uint32_t width{};
     uint32_t height{};
 
+    ViewportSize& operator=(ViewportSize&) = default;
     bool operator==(const ViewportSize& other) {
         return (other.width == width) && (other.height == height);
     }

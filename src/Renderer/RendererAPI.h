@@ -4,12 +4,11 @@
 #pragma once
 
 #include "../Core/Core.h"
-#include "Vulkan/Queue.h"
 #include "Window.h"
 #include "RendererSpec.h"
+#include "Viewport.h"
 
 namespace FikoEngine {
-
 
 ///Class interfacing the renderer with the api
 class RendererAPI {
@@ -18,8 +17,18 @@ public:
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
     static void Draw();
     static void Destroy();
-    static void ResizeFramebuffer(Extent2D size);
+    static void ResizeFramebuffer(ViewportSize size);
+
+    enum API{
+        None,
+        OpenGL,
+        Vulkan
+    };
+
+    static RendererAPI::API Current(){return RendererAPI::s_api;}
+
+    inline static API s_api = API::Vulkan;
 private:
-    static QueueFamilyIndices s_RendererQueueFamilyIndices;
+
 };
 }

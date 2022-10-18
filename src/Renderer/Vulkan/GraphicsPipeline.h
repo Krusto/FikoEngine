@@ -5,10 +5,14 @@
 #include <vulkan/vulkan.h>
 #include "RendererData.h"
 namespace FikoEngine{
-    VkPipeline CreateGraphicsPipeline(RendererDataAPI*  rendererData,
+    VkPipeline CreateGraphicsPipeline(VkDevice device,
+                                      SwapChainSpec& spec,
+                                      VkPipelineLayout& layout,
+                                      VkRenderPass renderPass,
                                       VkVertexInputBindingDescription bindingDescription,
                                       std::vector<VkVertexInputAttributeDescription> attributeDescriptions,
-                                      const char* shaderPath);
+                                      std::string_view workingDir,
+                                      std::string_view shaderPath);
     void BindGraphicsPipeline(RendererDataAPI*  rendererData,u32 imageIndex = {});
     void GraphicsPipelineDraw(RendererDataAPI*  rendererData,u32 imageIndex = {});
 }

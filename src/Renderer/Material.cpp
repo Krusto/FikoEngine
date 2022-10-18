@@ -1,15 +1,17 @@
-#include <Renderer/RendererApi.h>
-#include <Renderer/OpenGL/OpenGlMaterial.h>
+#include <Renderer/RendererAPI.h>
 #include "Material.h"
-Ref<Material> Material::Create(const Ref<Shader>& shader, const std::string& name)
-{
-    switch (RendererApi::Current()) {
-        case RendererApi::API::OpenGL:
-            return Ref<OpenGLMaterial>::Create(shader,name);
-            break;
-        default:
-            assert(0);
+#include "Renderer/Vulkan/Material.h"
+
+namespace FikoEngine {
+    Ref<Material> Material::Create(const Ref<Shader> &shader, const std::string &name) {
+        switch (RendererAPI::Current()) {
+            case RendererAPI::API::Vulkan:
+                return Ref<VulkanMaterial>::Create(shader, name);
+                break;
+            default:
+                assert(0);
+        }
+        assert(0);
+        return {};
     }
-    assert(0);
-    return {};
 }
