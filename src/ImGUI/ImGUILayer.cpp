@@ -3,7 +3,7 @@
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <glm\ext\vector_float4.hpp>
-void ImGUILayer::Init(Window* window)
+void ImGUILayer::Init(FikoEngine::Window* window)
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();

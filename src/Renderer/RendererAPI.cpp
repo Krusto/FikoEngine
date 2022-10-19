@@ -90,7 +90,7 @@ namespace FikoEngine {
 
         result = QueuePresent(&s_RendererData, imageIndex, s_RendererData.currentImageIndex);
         if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || s_RendererData.framebufferResized) {
-            SwapchainRecreate(s_RendererData.swapchain,s_RendererData.physicalDevice,s_RendererData.device, s_RendererData.framebufferSize,s_RendererData.workingDir, s_RendererData.shaderPath.c_str());
+            SwapchainRecreate(s_RendererData.swapchain,s_RendererData.physicalDevice,s_RendererData.device, s_RendererData.swapchain.FrameSize,s_RendererData.workingDir, s_RendererData.shaderPath.c_str());
             s_RendererData.framebufferResized = 0;
         }
 
@@ -116,6 +116,10 @@ namespace FikoEngine {
 //        SwapchainRecreate(&s_RendererData, s_RendererData.framebufferSize, s_RendererData.shaderPath.c_str());
         s_RendererData.framebufferResized = true;
         s_RendererData.swapchain.FrameSize = size;
+    }
+
+    void RendererAPI::ClearColor(glm::vec4 color) {
+        //TODO
     }
 
 }

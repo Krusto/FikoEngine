@@ -5,6 +5,7 @@
 #include <Editor/InspectorPanel.h>
 #include <Scene/Scene.h>
 #include <Renderer/Shader.h>
+#include "Renderer/Framebuffer.h"
 
 namespace FikoEngine {
     class Window;

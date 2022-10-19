@@ -9,7 +9,7 @@ namespace FikoEngine {
     void HierarchyPanel::OnImGUIRender() {
         ImGui::Begin("Hierarchy");
         {
-            if (ImGui::BeginPopupContextWindow(0, 1, false)) {
+            if (ImGui::BeginPopupContextWindow()) {
                 if (ImGui::BeginMenu("Create")) {
                     if (ImGui::MenuItem("Empty Entity")) {
                         m_SelectedEntity = m_Scene->AddEntity("Empty Entity");

@@ -3,6 +3,11 @@
 #include <Core/Ref.h>
 #include <Renderer/Mesh.h>
 #include <Renderer/Renderer.h>
+#include "Renderer/Camera.h"
+#include "Renderer/Material.h"
+#include "Renderer/VertexArray.h"
+
+#include <glm/gtc/matrix_transform.hpp>
 
 namespace FikoEngine{
         class Entity;
@@ -71,23 +76,7 @@ namespace FikoEngine{
             Ref<VertexArray> va;
             UUID m_id;
         };
-        struct Mesh2DComponent
-        {
-            public:
-            Mesh2D mesh;
-            Mesh2DComponent() =
-            default;
-            Mesh2DComponent(
-            const Mesh2DComponent &other) = default;
-            Mesh2DComponent(
-            const Mesh2D &mesh) :
-            mesh(mesh)
-            {}
-            UUID id() { return m_id; }
-            private:
 
-            UUID m_id;
-        };
         struct MaterialComponent {
             public:
             Ref<Material> material;

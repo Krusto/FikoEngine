@@ -3,6 +3,7 @@
 //
 #pragma once
 
+#include <glm/vec4.hpp>
 #include "../Core/Core.h"
 #include "Window.h"
 #include "RendererSpec.h"
@@ -26,6 +27,8 @@ public:
     };
 
     static RendererAPI::API Current(){return RendererAPI::s_api;}
+
+    static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
 
     inline static API s_api = API::Vulkan;
 private:

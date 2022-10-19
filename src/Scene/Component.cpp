@@ -1,6 +1,8 @@
-#pragma once
 #include <Scene/Entity.h>
 #include <Scene/Component.h>
+#include "Renderer/VertexBuffer.h"
+#include "Renderer/IndexBuffer.h"
+#include "Renderer/MeshBuilder.h"
 
 namespace FikoEngine {
     DrawableComponent DrawableComponent::Generate(Entity entity) {

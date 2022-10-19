@@ -2,10 +2,11 @@
 #include <Layer/Layer.h>
 #include <Renderer/Window.h>
 #include <memory>
-class ImGUILayer : public Layer {
+
+class ImGUILayer : public FikoEngine::Layer {
 public:
     ImGUILayer() { m_Name = "IMGUI LAYER"; }
-    void Init(Window* window) override;
+    void Init(FikoEngine::Window* window) override;
     void OnAttach() override;
     void OnDetach() override;
     void OnUpdate(float dt) override;
@@ -18,7 +19,7 @@ public:
     void OnWindowResizeEvent(int width, int height) override {};
     void OnWindowShouldCloseEvent() override { SetShouldExit(true); };
 protected:
-    Window* window = nullptr;
+    FikoEngine::Window* window = nullptr;
 };
 namespace ImGui {
     static inline int currentID = 0;

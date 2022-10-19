@@ -9,7 +9,7 @@ namespace FikoEngine {
 
 
             if (selectedEntity.IsValid()) {
-                if (ImGui::BeginPopupContextWindow(0, 1, false)) {
+                if (ImGui::BeginPopupContextWindow()) {
                     if (ImGui::BeginMenu("Add")) {
                         if (ImGui::MenuItem("Add Transform")) {
                             if (!selectedEntity.HasComponent<TransformComponent>())

@@ -90,7 +90,7 @@ namespace FikoEngine {
         spec.minImageCount = spec.details.capabilities.minImageCount;
         spec.imageFormat = ChooseSurfaceFormat(spec).format;
         spec.imageColorSpace = ChooseSurfaceFormat(spec).colorSpace;
-        spec.imageExtent = ChooseSwapExtent(spec,{windowExtent.x,windowExtent.y});
+        spec.imageExtent = ChooseSwapExtent(spec,{windowExtent.width,windowExtent.height});
         spec.imageArrayLayers = 1;
         spec.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
         spec.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -151,7 +151,7 @@ namespace FikoEngine {
                                                             Vertex::GetAttributeDescriptions(),
                                                             workingDir,
                                                             shaderPath);
-        swapchain.Framebuffers = CreateFramebuffers(device,swapchain,size.x,size.y);
+        swapchain.Framebuffers = CreateFramebuffers(device,swapchain,size.width,size.height);
 
     }
     void SwapchainCleanup(VkDevice device,Swapchain& swapchain){

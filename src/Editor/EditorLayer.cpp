@@ -17,12 +17,11 @@ namespace FikoEngine {
         m_CurrentScene = new Scene();
         m_HierarchyPanel = HierarchyPanel(m_CurrentScene);
         m_InspectorPanel = InspectorPanel(m_CurrentScene);
-        m_Framebuffer = Framebuffer::Create(window->width, window->height);
+        m_Framebuffer = Framebuffer::Create(window->GetSpec().width,window->GetSpec().height);
 
         m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/FlatShader"));
 
-        m_CurrentScene->AddMaterial(
-                Material::FikoEngine::Shader(m_CurrentScene->GetShader("FlatShader"), "example_material"));
+        m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "example_material"));
         m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "TestObjectMaterial"));
 
 
@@ -57,7 +56,7 @@ namespace FikoEngine {
     void EditorLayer::OnUpdate(float dt) {
         Entity primaryCamera;
         for (auto &camera: m_CurrentScene->GetEntitiesWith<CameraComponent>()) {
-            if ((Entity{camera, m_CurrentScene}).GetComponent<CameraComponent>().primary == true) {
+            if ((Entity{camera, m_CurrentScene}).GetComponent<CameraComponent>().primary) {
                 primaryCamera = Entity{camera, m_CurrentScene};
                 std::string Tag = primaryCamera.GetComponent<TagComponent>().Tag;
             }
@@ -71,7 +70,7 @@ namespace FikoEngine {
             camera->Update();
 
             m_Framebuffer->Bind();
-            Renderer::ClearColor({0.0, 0.0, 0.0, 1.0});
+            Renderer::ClearColor(glm::vec4{0.0, 0.0, 0.0, 1.0});
 
             for (auto &drawable: m_CurrentScene->GetEntitiesWith<MeshComponent>()) {
                 Entity entity = {drawable, m_CurrentScene};
