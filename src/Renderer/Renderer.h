@@ -23,6 +23,7 @@ public:
     Renderer() = default;
 ///Function which inits the whole renderer
     static void Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec);
+    static void InitImGUI();
     static void Draw();
     static void Destroy();
     static void ResizeFramebuffer(ViewportSize size);

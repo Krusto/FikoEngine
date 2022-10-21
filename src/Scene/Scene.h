@@ -66,7 +66,7 @@ namespace FikoEngine {
         entt::entity m_SelectedEntity{};
         UUID m_SceneID;
 
-        std::unordered_map<UUID, Entity> m_EntityMap;
+        std::unordered_map<UUID, Ref<Entity>> m_EntityMap;
 
         entt::registry m_Registry;
         uint32_t m_ViewportWidth, m_ViewportHeight;
@@ -76,4 +76,6 @@ namespace FikoEngine {
 
         friend class Entity;
     };
+
+
 }

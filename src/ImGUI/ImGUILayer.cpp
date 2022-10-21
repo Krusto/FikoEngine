@@ -1,6 +1,7 @@
 #include "ImGUILayer.h"
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
+
 #include <imgui_impl_opengl3.h>
 #include <glm\ext\vector_float4.hpp>
 void ImGUILayer::Init(FikoEngine::Window* window)
@@ -86,7 +87,6 @@ void ImGUILayer::Init(FikoEngine::Window* window)
     static std::string glsl_version = "#version 150";
     ImGui_ImplGlfw_InitForOpenGL(window->getHandle(), true);
     ImGui_ImplOpenGL3_Init(glsl_version.c_str());
-
 
     this->window = window;
 }

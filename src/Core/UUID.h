@@ -15,6 +15,10 @@ namespace FikoEngine {
 
         operator const uint64_t() const { return m_UUID; }
 
+        uint64_t GetID() { return m_UUID;}
+
+        uint64_t GetID() const  { return m_UUID;}
+
     private:
         uint64_t m_UUID;
     };
@@ -31,6 +35,9 @@ namespace FikoEngine {
 
         operator const uint32_t() const { return m_UUID; }
 
+        uint32_t GetID() { return m_UUID;}
+
+        uint32_t GetID() const { return m_UUID;}
     private:
         uint32_t m_UUID;
     };
@@ -41,13 +48,13 @@ namespace std {
 
     template<> struct hash<FikoEngine::UUID> {
         std::size_t operator()(const FikoEngine::UUID &uuid) const {
-            return hash<uint64_t>()((uint64_t) uuid);
+            return hash<uint64_t>()((uint64_t) uuid.GetID());
         }
     };
 
     template<> struct hash<FikoEngine::UUID32> {
         std::size_t operator()(const FikoEngine::UUID32 &uuid) const {
-            return hash<uint32_t>()((uint32_t) uuid);
+            return hash<uint32_t>()((uint32_t) uuid.GetID());
         }
     };
 }

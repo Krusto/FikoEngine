@@ -18,7 +18,7 @@
 #include <Renderer/VertexLayout.h>
 #include <Renderer/Light.h>
 #include <Renderer/Viewport.h>
-
+#include <Scene/Entity.h>
 namespace FikoEngine {
     void Renderer::Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec) {
         Renderer::s_RendererSpec = rendererSpec;
@@ -45,6 +45,10 @@ namespace FikoEngine {
 
     void Renderer::Flush() {
         //TODO
+    }
+
+    void Renderer::InitImGUI() {
+        RendererAPI::InitImGUI();
     }
 
 }

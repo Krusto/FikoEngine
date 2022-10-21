@@ -24,5 +24,6 @@ namespace FikoEngine {
         virtual uint32_t height() = 0;
 
         virtual ViewportSize GetViewportSize() = 0;
+
     };
 }

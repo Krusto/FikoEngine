@@ -10,5 +10,6 @@ namespace FikoEngine {
                 exit(-1);
                 break;
         }
+        exit(-1);
     }
 }

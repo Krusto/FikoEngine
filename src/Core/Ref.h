@@ -163,6 +163,8 @@ public:
 
         return *m_Instance == *other.m_Instance;
     }
+    operator T*() { return m_Instance; }
+    operator T*() const { return m_Instance; }
 private:
     void IncRef() const
     {

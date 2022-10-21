@@ -4,6 +4,8 @@
 #include <vulkan/vulkan.h>
 #include "RendererAPI.h"
 #include "Window.h"
+
+#include "Vulkan/VulkanContext.h"
 #include "Vulkan/Instance.h"
 #include "Vulkan/PhysicalDevice.h"
 #include "Vulkan/Device.h"
@@ -15,10 +17,18 @@
 #include "Vulkan/Command.h"
 #include "Vulkan/Synchronization.h"
 #include "Vulkan/Queue.h"
-
 namespace FikoEngine {
 
     void RendererAPI::Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec) {
+        switch (RendererAPI::Current()) {
+            case RendererAPI::API::Vulkan:
+                VulkanContext::Init(rendererSpec,applicationSpec);
+                break;
+            default:
+                exit(-1);
+                break;
+        }
+
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
         s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
@@ -120,6 +130,17 @@ namespace FikoEngine {
 
     void RendererAPI::ClearColor(glm::vec4 color) {
         //TODO
+    }
+
+    void RendererAPI::InitImGUI() {
+        switch (RendererAPI::Current()) {
+            case RendererAPI::API::Vulkan:
+                VulkanContext::InitImGUI();
+                break;
+            default:
+                exit(-1);
+                break;
+        }
     }
 
 }

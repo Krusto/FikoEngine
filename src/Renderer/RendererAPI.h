@@ -16,10 +16,11 @@ class RendererAPI {
 public:
 ///Function which inits the renderer api
     static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
+    static void InitImGUI();
+
     static void Draw();
     static void Destroy();
     static void ResizeFramebuffer(ViewportSize size);
-
     enum API{
         None,
         OpenGL,

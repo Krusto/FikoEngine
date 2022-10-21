@@ -1,9 +1,10 @@
 ﻿#pragma once
 #include <entt/entt.hpp>
+#include <Core/Ref.h>
 #include <Scene/Component.h>
 #include <Scene/Scene.h>
 namespace FikoEngine {
-    class Entity {
+    class Entity : public RefCounted {
     public:
         Entity() = default;
 
@@ -12,6 +13,8 @@ namespace FikoEngine {
 
         Entity(entt::entity entityHandle, Scene *scene) :
                 m_EntityHandle(entityHandle), m_Scene(scene) {}
+
+        Entity(const Entity& entity):m_EntityHandle(entity.m_EntityHandle),m_Scene(entity.m_Scene){}
 
         template<typename T>
         T &GetComponent() {
@@ -51,14 +54,14 @@ namespace FikoEngine {
         }
 
         template<typename T>
-        Entity AddComponent() {
+        Entity& AddComponent() {
             m_Scene->m_Registry.emplace<T>(m_EntityHandle);
             return *this;
 
         }
 
         template<typename ...T>
-        Entity AddComponents() {
+        Entity& AddComponents() {
             m_Scene->m_Registry.emplace<T...>(m_EntityHandle);
             return *this;
         }
@@ -67,7 +70,7 @@ namespace FikoEngine {
             return m_Scene->m_Registry.get<RelationshipComponent>(m_EntityHandle).ParentHandle != 0;
         }
 
-        Entity AddChild(Entity entity) {
+        Entity& AddChild(Entity entity) {
             entity.GetComponent<RelationshipComponent>().ParentHandle = GetComponent<IDComponent>().ID;
             GetComponent<RelationshipComponent>().Children.emplace_back(entity.GetComponent<IDComponent>().ID);
             return *this;
@@ -99,6 +102,11 @@ namespace FikoEngine {
 
         operator bool() { return (m_EntityHandle != entt::null) && m_Scene; }
 
+        Entity& operator=(const Entity& other) {
+            this->m_EntityHandle = other.m_EntityHandle;
+            this->m_Scene = other.m_Scene;
+            return *this;
+        }
         bool operator==(const Entity &other) const {
             return (m_EntityHandle == other.m_EntityHandle) && m_Scene == other.m_Scene;
         }

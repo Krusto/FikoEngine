@@ -8,13 +8,21 @@ add_subdirectory(Vendor/glm)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_GENERATOR_PLATFORM x64)
+message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
 
 add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
 
-file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp ./Vendor/imgui/src/*.cpp)
-file(GLOB_RECURSE HEADER_FILES ./src/*. ./Vendor/imgui/src/*.h)
+file(GLOB_RECURSE IMGUI_SOURCE_FILES imgui_impl_vulkan.cpp imgui_impl_glfw.cpp imgui.cpp imgui_draw.cpp imgui_tables.cpp imgui_widgets.cpp )
+file(GLOB_RECURSE IMGUI_HEADER_FILES imgui_impl_vulkan.h   imgui_impl_glfw.h   imgui.h imconfig.h imgui_internal.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h)
 
-message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
+message(${IMGUI_SOURCE_FILES})
+message(${IMGUI_HEADER_FILES})
+
+file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp)
+file(GLOB_RECURSE HEADER_FILES ./src/*.h)
+
+message(${SOURCE_FILES})
+message(${HEADER_FILES})
 
 set (EXCLUDE_DIR "/Vendor/")
 foreach (TMP_PATH ${SOURCE_FILES})
@@ -30,15 +38,17 @@ foreach (TMP_PATH ${HEADER_FILES})
     endif ()
 endforeach(TMP_PATH)
 
-add_executable(FIKO_ENGINE ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(FIKO_ENGINE ${SOURCE_FILES} ${HEADER_FILES} ${IMGUI_SOURCE_FILES} ${IMGUI_HEADER_FILES})
 target_compile_options(FIKO_ENGINE PRIVATE -static-libstdc++)
 target_compile_options(FIKO_ENGINE PRIVATE -Wno-volatile)
 target_compile_options(FIKO_ENGINE PRIVATE -Wno-delete-incomplete)
+target_compile_options(FIKO_ENGINE PRIVATE -Wno-int-to-pointer-cast)
 #if(USE_LWLOG)
     include_directories(FIKO_ENGINE Vendor/lwlog/lwlog/src)
 #endif()
 
 include_directories(FIKO_ENGINE Vendor/imgui)
+include_directories(FIKO_ENGINE Vendor/imgui/backends)
 include_directories(FIKO_ENGINE Vendor/entt/single_include)
 include_directories(FIKO_ENGINE ./src)
 include_directories(FIKO_ENGINE Vendor/glfw/include)

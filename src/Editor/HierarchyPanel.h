@@ -10,7 +10,14 @@ namespace FikoEngine {
         HierarchyPanel() = default;
 
         HierarchyPanel(Scene *scene) : m_Scene(scene) {}
+        HierarchyPanel(const HierarchyPanel& other) = default;
 
+        HierarchyPanel& operator=(const HierarchyPanel& other){
+            this->m_Scene = other.m_Scene;
+            this->m_SelectedEntity = other.m_SelectedEntity;
+
+            return *this;
+        };
         void OnImGUIRender();
 
     private:

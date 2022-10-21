@@ -32,7 +32,7 @@ namespace FikoEngine {
         entity.GetComponent<RelationshipComponent>().ParentHandle = m_SceneID;
 
         GetHandle().AddChild(entity);
-        m_EntityMap.emplace(std::pair(id, entity));
+        m_EntityMap.emplace(std::pair(id, Ref<Entity>::Create(entity)));
         return entity;
     }
 
@@ -46,13 +46,13 @@ namespace FikoEngine {
         entity.GetComponent<IDComponent>().ID = id;
         entity.GetComponent<TagComponent>().Tag = name;
 
-        m_EntityMap.emplace(std::pair(id, entity));
+        m_EntityMap.emplace(std::pair(id, Ref<Entity>::Create(entity)));
         return entity;
     }
 
     Entity Scene::RemoveEntity(UUID uuid) {
         if (HasUUID(uuid)) {
-            m_Registry.destroy(m_EntityMap[uuid]);
+            m_Registry.destroy(*(m_EntityMap[uuid].Raw()));
             m_EntityMap.erase(uuid);
         }
         return {m_SceneEntity, this};
@@ -61,7 +61,7 @@ namespace FikoEngine {
     Entity Scene::RemoveEntity(Entity entity) {
         auto uuid = entity.GetUUID();
         if (HasUUID(uuid)) {
-            m_Registry.destroy(m_EntityMap[uuid]);
+            m_Registry.destroy(*(m_EntityMap[uuid].Raw()));
             m_EntityMap.erase(uuid);
         }
         return {m_SceneEntity, this};
@@ -73,15 +73,15 @@ namespace FikoEngine {
 
     Entity Scene::GetEntity(UUID uuid) {
         if (m_EntityMap.contains(uuid))
-            return m_EntityMap.at(uuid);
+            return *m_EntityMap.at(uuid).Raw();
         return Entity{(uint32_t) entt::null, this};
     }
 
     Entity Scene::FindEntity(const std::string &name) {
         for (auto&[uuid, entity]: m_EntityMap) {
-            if (entity.HasComponent<TagComponent>()) {
-                if (entity.GetComponent<TagComponent>().Tag == name) {
-                    return entity;
+            if ((*entity.Raw()).HasComponent<TagComponent>()) {
+                if ((*entity.Raw()).GetComponent<TagComponent>().Tag == name) {
+                    return *entity.Raw();
                 }
             }
         }
