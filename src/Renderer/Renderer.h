@@ -14,7 +14,7 @@ namespace FikoEngine {
 ///Struct which holds renderer specification
 struct RendererSpec {
 public:
-    Extent2D SurfaceSize;
+    ViewportSize SurfaceSize;
     std::vector<const char*> extensions;
 };
 class Entity;
@@ -28,8 +28,9 @@ public:
     static void Destroy();
     static void ResizeFramebuffer(ViewportSize size);
     static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
-    static void SubmitEntity(Entity entity, Ref<Camera> camera);
+    static void SubmitEntity(Entity entity, Ref<Camera> camera, Ref<Shader> shader);
     static void Flush();
+    static void SetActiveWindow(Window* window);
 private:
     inline static RendererSpec s_RendererSpec;
 };

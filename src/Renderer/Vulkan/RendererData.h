@@ -7,40 +7,43 @@
 #include "SwapchainSpec.h"
 #include "../../Core/Core.h"
 #include "Swapchain.h"
+#include "GLFW/glfw3.h"
+#include "Renderer/Shader.h"
+#include "VulkanShader.h"
+#include "Renderer/Renderer.h"
 
 namespace FikoEngine{
     struct RendererDataAPI{
+        GLFWwindow* window;
         VkInstance instance;
         VkDebugUtilsMessengerEXT debug;
         VkPhysicalDevice physicalDevice;
         VkDevice device;
-        VkSurfaceKHR surface;
-        std::vector<VkImage> swapchainImages;
-        std::vector<VkImageView> imageViews;
+
         u32 queueFamilyIndex;
-        RendererSpecAPI rendererSpec;
-        SwapChainSpec swapChainSpec;
-        VkRenderPass renderPass;
-        VkPipeline graphicsPipeline;
-        VkPipelineLayout pipelineLayout;
-        std::string workingDir;
-        VkShaderModule vertModule;
-        VkShaderModule fragModule;
-        std::vector<VkFramebuffer> swapChainFramebuffers;
+
+        RendererSpec rendererSpec;
+        VkSurfaceKHR surface;
+
+        Ref<VulkanShader> imguiShader;
+        Ref<VulkanShader> defaultShader;
+
         VkCommandPool commandPool;
         std::vector<VkCommandBuffer> commandBuffers;
+
         u32 currentImageIndex;
+        u32 maxFramesInFlight = 2;
         std::vector<VkSemaphore> imageAvailableSemaphores;
         std::vector<VkSemaphore> renderFinishedSemaphores;
         std::vector<VkFence> inFlightFences;
-        u32 maxFramesInFlight = 2;
+
         VkQueue presentQueue;
         VkQueue graphicsQueue;
+
         std::string shaderPath;
-        Extent2D framebufferSize;
+        std::string workingDir;
+
         bool framebufferResized;
 
-        Swapchain swapchain;
     };
-    inline RendererDataAPI s_RendererData;
 }

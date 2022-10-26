@@ -17,9 +17,11 @@
 #include "Vulkan/Command.h"
 #include "Vulkan/Synchronization.h"
 #include "Vulkan/Queue.h"
+#include "Renderer.h"
+
 namespace FikoEngine {
 
-    void RendererAPI::Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec) {
+    void RendererAPI::Init(RendererSpec rendererSpec, ApplicationSpec applicationSpec) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 VulkanContext::Init(rendererSpec,applicationSpec);
@@ -29,58 +31,26 @@ namespace FikoEngine {
                 break;
         }
 
-        s_RendererData.workingDir = applicationSpec.WorkingDirectory;
-        s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
-        s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
-        rendererSpec.extensions.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
-
-        s_RendererData.device = CreateDevice(s_RendererData.physicalDevice,s_RendererData.queueFamilyIndex,rendererSpec.extensions);
-
-        s_RendererData.swapchain.swapchain = CreateSwapchain(s_RendererData.physicalDevice,
-                                                   s_RendererData.device,
-                                                   s_RendererData.swapChainSpec,
-                                                   s_RendererData.swapchain.Surface,
-                                                   s_RendererData.queueFamilyIndex,
-                                                   rendererSpec.SurfaceSize
-
-        );
-
-        s_RendererData.surface = applicationSpec.window->CreateSurface(s_RendererData.instance);
-        s_RendererData.swapchain.FrameSize = rendererSpec.SurfaceSize;
-
-        s_RendererData.shaderPath = "assets/basic";
-        SwapchainRecreate(s_RendererData.swapchain,
-                          s_RendererData.physicalDevice,
-                          s_RendererData.device,
-                          s_RendererData.swapchain.FrameSize,
-                          s_RendererData.workingDir,
-                          s_RendererData.shaderPath.c_str());
-
-        s_RendererData.commandPool = CreateCommandPool(s_RendererData.device,s_RendererData.swapchain.QueueFamilyIndex);
-
-//        s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData);
-
-        s_RendererData.commandBuffers = CreateCommandBuffers(s_RendererData.device,s_RendererData.commandPool,s_RendererData.imageViews.size());
-
-        s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
-        s_RendererData.renderFinishedSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
-        s_RendererData.inFlightFences = CreateFences(&s_RendererData,s_RendererData.maxFramesInFlight);
-
-        vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.graphicsQueue);
-        vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.presentQueue);
-
         LOG("Renderer initialized!");
-
     }
     void RendererAPI::Draw() {
 
-        WaitFence(&s_RendererData, s_RendererData.currentImageIndex);
+        WaitFence(VulkanContext::s_RendererData.inFlightFences,VulkanContext::s_RendererData.currentImageIndex);
 
         uint32_t imageIndex;
         VkResult result;
 
-        result = SwapchainAcquireNextImage(s_RendererData.device,s_RendererData.swapchain,s_RendererData.imageAvailableSemaphores[s_RendererData.currentImageIndex], imageIndex, s_RendererData.currentImageIndex);
+        result = SwapchainAcquireNextImage(VulkanContext::s_RendererData.defaultShader->getSwapchain(),
+                                           VulkanContext::s_RendererData.imageAvailableSemaphores[VulkanContext::s_RendererData.currentImageIndex],
+                                           imageIndex,
+                                           VulkanContext::s_RendererData.currentImageIndex);
         if (result == VK_ERROR_OUT_OF_DATE_KHR) {
+            SwapchainRecreate(VulkanContext::s_RendererData.defaultShader->getSwapchain(),
+                              VulkanContext::s_RendererData.physicalDevice,
+                              VulkanContext::s_RendererData.device,
+                              VulkanContext::s_RendererData.defaultShader->getSwapchain().FrameSize,
+                              VulkanContext::s_RendererData.workingDir,
+                              VulkanContext::s_RendererData.defaultShader->getSwapchain().);
             SwapchainRecreate(s_RendererData.swapchain,s_RendererData.physicalDevice,s_RendererData.device, s_RendererData.swapchain.FrameSize,s_RendererData.workingDir, s_RendererData.shaderPath);
         }
 
@@ -141,6 +111,21 @@ namespace FikoEngine {
                 exit(-1);
                 break;
         }
+    }
+
+    void RendererAPI::SetActiveWindow(Window *window) {
+        switch (RendererAPI::Current()) {
+            case RendererAPI::API::Vulkan:
+                VulkanContext::s_RendererData.window = window->getHandle();
+                break;
+            default:
+                exit(-1);
+                break;
+        }
+    }
+
+    void RendererAPI::AddShader(Ref<Shader> shader) {
+        RendererAPI::s_Shaders.try_emplace(shader.Raw()->GetName(),shader);
     }
 
 }

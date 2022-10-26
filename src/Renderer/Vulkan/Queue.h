@@ -13,6 +13,6 @@ namespace FikoEngine{
         std::optional<u32> presentFamily;
     };
     u32 SelectQueueFamily(VkPhysicalDevice physicalDevice);
-    void QueueSubmit(RendererDataAPI*  rendererData,u32 index = {});
-    VkResult QueuePresent(RendererDataAPI*  rendererData,u32 imageIndex,u32 commandBufferIndex = {});
+    void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& imageFinishedSemaphores,std::vector<VkFence>& fences,u32 index = {});
+    VkResult QueuePresent(VkQueue queue,Swapchain& swapchain,std::vector<VkSemaphore>& imageFinishedSemaphores,std::vector<VkFence>& fences, uint32_t index,u32 imageIndex,u32 commandBufferIndex = {});
 }

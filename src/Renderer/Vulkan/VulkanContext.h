@@ -4,9 +4,19 @@
 
 #pragma once
 
+#include "Renderer/Window.h"
+#include "RendererData.h"
+#include "Renderer/Renderer.h"
+
 namespace FikoEngine {
     class VulkanContext {
-        static void Init(RendererSpecAPI rendererSpec, ApplicationSpec applicationSpec);
+    public:
+
+        static void Init(RendererSpec& rendererSpec, ApplicationSpec applicationSpec);
         static void InitImGUI();
+
+        inline static RendererDataAPI s_RendererData;
+    private:
+        inline static VkDescriptorPool s_ImGUI_Descriptorpool;
     };
 }

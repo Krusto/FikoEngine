@@ -9,6 +9,6 @@ namespace FikoEngine{
     std::vector<VkSemaphore> CreateSemaphores(RendererDataAPI*  rendererData,u32 count = 1);
     std::vector<VkFence> CreateFences(RendererDataAPI*  rendererData,u32 count = 1);
 
-    void WaitFence(RendererDataAPI*   rendererData,u32 index = {});
-    void ResetFence(RendererDataAPI*  rendererData,u32 index = {});
+    void WaitFence(std::vector<VkFence>& fences,u32 index = {});
+    void ResetFence(std::vector<VkFence>& fences,u32 index = {});
 }

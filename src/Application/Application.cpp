@@ -24,6 +24,8 @@ bool FikoEngine::Application::Run() {
 
     s_Renderer = std::make_shared<Renderer>();
     m_ApplicationSpec.window = m_Window;
+
+    s_Renderer->SetActiveWindow(m_Window);
     s_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
 
     LayerStack::PushLayer(Ref<EditorLayer>::Create());

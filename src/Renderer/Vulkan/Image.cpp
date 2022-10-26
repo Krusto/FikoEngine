@@ -6,9 +6,9 @@
 namespace FikoEngine {
     std::vector<VkImage> GetSwapchainImages(VkDevice device,Swapchain& swapchain){
         u32 count{};
-        VK_CHECK(vkGetSwapchainImagesKHR(device,swapchain,&count,nullptr));
+        VK_CHECK(vkGetSwapchainImagesKHR(device,swapchain.swapchain,&count,nullptr));
         std::vector<VkImage> output(count);
-        VK_CHECK(vkGetSwapchainImagesKHR(device,swapchain,&count,output.data()));
+        VK_CHECK(vkGetSwapchainImagesKHR(device,swapchain.swapchain,&count,output.data()));
 
         return output;
     }

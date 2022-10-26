@@ -14,8 +14,6 @@ namespace FikoEngine {
         Swapchain() = default;
         Swapchain& operator=(Swapchain&) = default;
 
-
-
         u32 FramesCount;
         VkSwapchainKHR swapchain;
         std::vector<VkFramebuffer> Framebuffers;
@@ -31,6 +29,9 @@ namespace FikoEngine {
         u32 QueueFamilyIndex;
 
         operator VkSwapchainKHR(){
+            return swapchain;
+        }
+        operator VkSwapchainKHR&(){
             return swapchain;
         }
     };
@@ -49,7 +50,7 @@ namespace FikoEngine {
 
     VkSwapchainKHR CreateSwapchain(VkPhysicalDevice physicalDevice,VkDevice device,SwapChainSpec& spec,VkSurfaceKHR surface,u32 queueFamilyIndex,ViewportSize windowExtent);
 
-    VkResult SwapchainAcquireNextImage(VkDevice device,Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex);
+    VkResult SwapchainAcquireNextImage(Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex);
 
     void SwapchainRecreate(Swapchain& swapchain,VkPhysicalDevice physicalDevice,VkDevice device,ViewportSize size,std::string_view workingDir,std::string_view shaderPath);
 

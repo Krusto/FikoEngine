@@ -22,7 +22,7 @@
 namespace FikoEngine {
     void Renderer::Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec) {
         Renderer::s_RendererSpec = rendererSpec;
-        RendererAPI::Init({rendererSpec.SurfaceSize.x, rendererSpec.SurfaceSize.y}, applicationSpec);
+        RendererAPI::Init(rendererSpec, applicationSpec);
     }
     void Renderer::Draw(){
         RendererAPI::Draw();
@@ -38,7 +38,7 @@ namespace FikoEngine {
         RendererAPI::ClearColor(color);
     }
 
-    void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera) {
+    void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera,Ref<Shader> shader) {
         //TODO
 
     }
@@ -49,6 +49,10 @@ namespace FikoEngine {
 
     void Renderer::InitImGUI() {
         RendererAPI::InitImGUI();
+    }
+
+    void Renderer::SetActiveWindow(Window* window) {
+        RendererAPI:SetActiveWindow(window);
     }
 
 }

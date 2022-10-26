@@ -7,6 +7,7 @@
 #include "GraphicsPipeline.h"
 #include "Framebuffer.h"
 #include "../Vertex.h"
+#include "VulkanContext.h"
 
 namespace FikoEngine {
     bool CheckDeviceExtensionSupport(VkPhysicalDevice physicalDevice, std::string_view extension) {
@@ -162,11 +163,11 @@ namespace FikoEngine {
         vkDestroyRenderPass(device,swapchain.Renderpass,nullptr);
         for (const auto &view: swapchain.ImageViews)
             vkDestroyImageView(device,view,nullptr);
-        vkDestroySwapchainKHR(device,swapchain,nullptr);
+        vkDestroySwapchainKHR(device,swapchain.swapchain,nullptr);
     }
-    VkResult SwapchainAcquireNextImage(VkDevice device,Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex){
-        return vkAcquireNextImageKHR(device,
-                                       swapchain,
+    VkResult SwapchainAcquireNextImage(Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex){
+        return vkAcquireNextImageKHR(VulkanContext::s_RendererData.device,
+                                       swapchain.swapchain,
                                        UINT64_MAX,
                                        semaphore,
                                        VK_NULL_HANDLE,

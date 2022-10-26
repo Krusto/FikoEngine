@@ -35,12 +35,14 @@ namespace FikoEngine{
         virtual uint32_t height() override;
 
         virtual ViewportSize GetViewportSize() override;
+
     private:
         u32 m_width{};
         u32 m_height{};
         u32 m_fbo{};
         u32 m_color_texture{};
         u32 m_depth_texture{};
+        void* m_Swapchain;
     };
 
     std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Swapchain& swapchain,u32 width, u32 height);

@@ -79,6 +79,8 @@ namespace FikoEngine {
 
         virtual const std::string &GetName() const = 0;
 
+        virtual const std::string &GetPath() const = 0;
+
         virtual void Reload(bool forceCompile = true) = 0;
 
         virtual void Bind() = 0;

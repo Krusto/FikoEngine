@@ -5,23 +5,9 @@
 #include "Framebuffer.h"
 #include "Memory.h"
 #include "RendererData.h"
+#include "VulkanContext.h"
 
 namespace FikoEngine {
-    VkFramebuffer CreateFramebuffer(RendererDataAPI* rendererData, u32 index) {
-        VkFramebuffer framebuffer{};
-
-        VkFramebufferCreateInfo framebufferInfo{.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO};
-        framebufferInfo.renderPass = rendererData->renderPass;
-        framebufferInfo.attachmentCount = 1;
-        framebufferInfo.pAttachments = &rendererData->imageViews[index];
-        framebufferInfo.width = rendererData->framebufferSize.x;
-        framebufferInfo.height = rendererData->framebufferSize.y;
-        framebufferInfo.layers = 1;
-
-        VK_CHECK(vkCreateFramebuffer(rendererData->device, &framebufferInfo, nullptr, &framebuffer));
-        LOG_INFO("Created framebuffer with index: " + std::to_string(index));
-        return framebuffer;
-    }
 
     std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Swapchain& swapchain,u32 width, u32 height) {
         std::vector<VkFramebuffer> framebuffers(swapchain.FramesCount);
@@ -84,6 +70,6 @@ namespace FikoEngine {
          m_width = width;
          m_height = height;
 
-         s_RendererData.swapchain.Framebuffers = CreateFramebuffers(s_RendererData.device,s_RendererData.swapchain,width,height);
+         static_cast<Swapchain*>(m_Swapchain)->Framebuffers = CreateFramebuffers(VulkanContext::s_RendererData.device,*static_cast<Swapchain*>(m_Swapchain),width,height);
     }
 }
