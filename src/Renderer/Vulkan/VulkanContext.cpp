@@ -19,6 +19,7 @@ namespace FikoEngine{
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
         s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
+        s_RendererData.window = applicationSpec.window->getHandle();
 
         rendererSpec.extensions.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
 

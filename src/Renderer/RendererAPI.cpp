@@ -38,7 +38,6 @@ namespace FikoEngine {
     }
     void RendererAPI::Draw() {
         WaitFence(VulkanContext::s_RendererData.inFlightFences,VulkanContext::s_RendererData.currentFrameIndex);
-        ResetFence(VulkanContext::s_RendererData.inFlightFences, VulkanContext::s_RendererData.currentFrameIndex);
 
         uint32_t imageIndex;
         VkResult result = SwapchainAcquireNextImage(VulkanContext::s_RendererData.swapchain,
@@ -46,61 +45,63 @@ namespace FikoEngine {
                                            imageIndex);
 
         if (result == VK_ERROR_OUT_OF_DATE_KHR) {
-
-            VulkanContext::s_RendererData.framebuffer->Resize(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec().frameSize.width,
-                                                              VulkanContext::s_RendererData.swapchain->GetSwapchainSpec().frameSize.height);
-            VulkanContext::s_RendererData.swapchain->Recreate();
-
-            vkDestroyRenderPass(VulkanContext::s_RendererData.device,VulkanContext::s_RendererData.renderPass,nullptr);
-            VulkanContext::s_RendererData.renderPass = CreateRenderPass(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec());
-
+            uint32_t width,height;
+            glfwGetWindowSize(VulkanContext::s_RendererData.window,(int*)&width,(int*)&height);
+            RendererAPI::ResizeFramebuffer(ViewportSize{width,height});
 
         }else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
             throw std::runtime_error("failed to acquire swap chain image!");
         }
 
+        if(true){ //record command buffer
+            BeginCommandBuffer(VulkanContext::s_RendererData.commandBuffers,
+                               VulkanContext::s_RendererData.currentFrameIndex);
 
-        ResetCommandBuffer(VulkanContext::s_RendererData.commandBuffers, VulkanContext::s_RendererData.currentFrameIndex);
+            auto &swapchain = VulkanContext::s_RendererData.swapchain;
 
-        BeginCommandBuffer(VulkanContext::s_RendererData.commandBuffers, VulkanContext::s_RendererData.currentFrameIndex);
+            BeginRenderPass(VulkanContext::s_RendererData.commandBuffers,
+                            swapchain,
+                            imageIndex);
 
-        auto& swapchain = VulkanContext::s_RendererData.swapchain;
+            for (auto &[materialName, virtualMaterial]: s_Materials) {
+                auto vulkanMaterial = static_cast<Ref<VulkanMaterial>>(virtualMaterial);
+                auto vulkanShader = static_cast<Ref<VulkanShader>>(vulkanMaterial->GetShader());
 
-        BeginRenderPass(VulkanContext::s_RendererData.commandBuffers,
-                        swapchain,
-                        imageIndex);
+                BindGraphicsPipeline(VulkanContext::s_RendererData.commandBuffers,
+                                     vulkanShader,
+                                     VulkanContext::s_RendererData.currentFrameIndex);
 
-        for(auto& [materialName,virtualMaterial] : s_Materials) {
-            auto vulkanMaterial = static_cast<Ref<VulkanMaterial>>(virtualMaterial);
-            auto vulkanShader = static_cast<Ref<VulkanShader>>(vulkanMaterial->GetShader());
+                VkViewport viewport{};
+                viewport.x = 0.0f;
+                viewport.y = 0.0f;
+                viewport.width = (float) swapchain->GetSwapchainSpec().frameSize.width;
+                viewport.height = (float) swapchain->GetSwapchainSpec().frameSize.height;
+                viewport.minDepth = 0.0f;
+                viewport.maxDepth = 1.0f;
+                vkCmdSetViewport(
+                        VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
+                        0, 1, &viewport);
 
-            BindGraphicsPipeline(VulkanContext::s_RendererData.commandBuffers,
-                                 vulkanShader,
-                                 VulkanContext::s_RendererData.currentFrameIndex);
+                VkRect2D scissor{};
+                scissor.offset = {0, 0};
+                scissor.extent = swapchain->GetSwapchainSpec().imageExtent;
+                vkCmdSetScissor(
+                        VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
+                        0, 1, &scissor);
 
-            VkViewport viewport{};
-            viewport.x = 0.0f;
-            viewport.y = 0.0f;
-            viewport.width = (float) swapchain->GetSwapchainSpec().frameSize.width;
-            viewport.height = (float) swapchain->GetSwapchainSpec().frameSize.height;
-            viewport.minDepth = 0.0f;
-            viewport.maxDepth = 1.0f;
-            vkCmdSetViewport(VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex], 0, 1, &viewport);
+                GraphicsPipelineDraw(VulkanContext::s_RendererData.commandBuffers,
+                                     VulkanContext::s_RendererData.currentFrameIndex);
+            }
 
-            VkRect2D scissor{};
-            scissor.offset = {0, 0};
-            scissor.extent = swapchain->GetSwapchainSpec().imageExtent;
-            vkCmdSetScissor(VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex], 0, 1, &scissor);
+            EndRenderPass(VulkanContext::s_RendererData.commandBuffers,
+                          VulkanContext::s_RendererData.currentFrameIndex);
 
-            GraphicsPipelineDraw(VulkanContext::s_RendererData.commandBuffers,
-                                 VulkanContext::s_RendererData.currentFrameIndex);
+            EndCommandBuffer(VulkanContext::s_RendererData.commandBuffers,
+                             VulkanContext::s_RendererData.currentFrameIndex);
+
         }
 
-        EndRenderPass(VulkanContext::s_RendererData.commandBuffers,
-                      VulkanContext::s_RendererData.currentFrameIndex);
-
-        EndCommandBuffer(VulkanContext::s_RendererData.commandBuffers,
-                         VulkanContext::s_RendererData.currentFrameIndex);
+        ResetFence(VulkanContext::s_RendererData.inFlightFences, VulkanContext::s_RendererData.currentFrameIndex);
 
         QueueSubmit(VulkanContext::s_RendererData.graphicsQueue,
                     VulkanContext::s_RendererData.imageAvailableSemaphores,
@@ -116,14 +117,9 @@ namespace FikoEngine {
                               VulkanContext::s_RendererData.currentFrameIndex);
 
         if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || VulkanContext::s_RendererData.framebufferResized) {
-            VulkanContext::s_RendererData.framebufferResized = false;
-            RendererAPI::ResizeFramebuffer();
-            VulkanContext::s_RendererData.swapchain->Recreate();
-            VulkanContext::s_RendererData.framebuffer->Resize(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec().frameSize.width,
-                                                              VulkanContext::s_RendererData.swapchain->GetSwapchainSpec().frameSize.height);
-
-            vkDestroyRenderPass(VulkanContext::s_RendererData.device,VulkanContext::s_RendererData.renderPass,nullptr);
-            VulkanContext::s_RendererData.renderPass = CreateRenderPass(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec());
+            uint32_t width,height;
+            glfwGetWindowSize(VulkanContext::s_RendererData.window,(int*)&width,(int*)&height);
+            RendererAPI::ResizeFramebuffer(ViewportSize{width,height});
         }
 
         VulkanContext::s_RendererData.currentFrameIndex = (VulkanContext::s_RendererData.currentFrameIndex + 1) % VulkanContext::s_RendererData.maxFramesInFlight;

@@ -6,6 +6,7 @@
 #include <Core/Ref.h>
 #include <Renderer/RendererAPI.h>
 #include "Editor/EditorLayer.h"
+#include "ImGUI/ImGUILayer.h"
 
 Ref<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
 
@@ -29,20 +30,27 @@ bool FikoEngine::Application::Run() {
 
     FikoEngine::RendererAPI::SetActiveWindow(m_Window);
     s_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
+    //s_Renderer->InitImGUI();
 
+    LayerStack::PushLayer(Ref<ImGUILayer>::Create());
     LayerStack::PushLayer(Ref<EditorLayer>::Create());
 
-    auto editor = LayerStack::GetLayer("Editor");
-    editor->Init(m_Window);
+    for(auto&[name,layer] : LayerStack::data())
+        layer->Init(m_Window);
 
     while(!Application::ReadyToExit){
-       m_Window->Begin();
-       editor->OnUpdate(1.0);
-       m_Window->Loop();
+        m_Window->Begin();
 
-       s_Renderer->Draw();
+        //static_cast<Ref<ImGUILayer>>(LayerStack::GetLayer("ImGUILayer"))->Begin();
 
-       m_Window->End();
+        for(auto&[name,layer] : LayerStack::data())
+            layer->OnUpdate(1.0);
+
+        //static_cast<Ref<ImGUILayer>>(LayerStack::GetLayer("ImGUILayer"))->End();
+
+        s_Renderer->Draw();
+
+        m_Window->End();
     }
 
     return true;

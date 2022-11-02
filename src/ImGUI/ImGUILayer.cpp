@@ -5,8 +5,6 @@
 //#include <imgui_impl_opengl3.h>/**/
 namespace FikoEngine {
     void ImGUILayer::Init(FikoEngine::Window *window) {
-
-
         this->window = window;
     }
 

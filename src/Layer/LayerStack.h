@@ -19,7 +19,7 @@ namespace FikoEngine {
             }
         }
 
-        static Layer *GetLayer(std::string name) { return LayerStack::m_Layers[name]; }
+        static Ref<Layer> GetLayer(std::string name) { return LayerStack::m_Layers[name]; }
 
         static auto end() { return LayerStack::m_Layers.end(); }
 
