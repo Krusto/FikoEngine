@@ -3,10 +3,12 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/VulkanMemoryAllocator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Vendor/assimp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/entt" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/glfw" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/imgui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/lwlog" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Vendor/stb" vcs="Git" />
   </component>
 </project>

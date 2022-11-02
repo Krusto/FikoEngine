@@ -1,4 +1,6 @@
 #include "Swapchain.h"
+#include "VulkanContext.h"
+
 #include "Queue.h"
 #include "Memory.h"
 #include "Image.h"
@@ -7,9 +9,78 @@
 #include "GraphicsPipeline.h"
 #include "Framebuffer.h"
 #include "../Vertex.h"
-#include "VulkanContext.h"
 
 namespace FikoEngine {
+    void Swapchain::Create() {
+        m_SwapchainSpec.details = GetSwapchainSupportDetails(VulkanContext::s_RendererData.physicalDevice,
+                                                             VulkanContext::s_RendererData.surface);
+        m_SwapchainSpec.minImageCount = m_SwapchainSpec.details.capabilities.minImageCount;
+        m_SwapchainSpec.imageFormat = ChooseSurfaceFormat(m_SwapchainSpec).format;
+        m_SwapchainSpec.imageColorSpace = ChooseSurfaceFormat(m_SwapchainSpec).colorSpace;
+        m_SwapchainSpec.imageExtent = ChooseSwapExtent(m_SwapchainSpec,
+                                                       {VulkanContext::s_RendererData.rendererSpec.SurfaceSize.width,
+                                                        VulkanContext::s_RendererData.rendererSpec.SurfaceSize.height});
+        m_SwapchainSpec.imageArrayLayers = 1;
+        m_SwapchainSpec.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
+        m_SwapchainSpec.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
+        m_SwapchainSpec.preTransform = m_SwapchainSpec.details.capabilities.currentTransform;
+        m_SwapchainSpec.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
+        m_SwapchainSpec.presentMode = ChoosePresentMode(m_SwapchainSpec);
+        m_SwapchainSpec.clipped = VK_TRUE;
+
+        m_Swapchain = CreateSwapchain(VulkanContext::s_RendererData.physicalDevice,
+                                      VulkanContext::s_RendererData.device,
+                                      m_SwapchainSpec,
+                                      VulkanContext::s_RendererData.surface,
+                                      VulkanContext::s_RendererData.queueFamilyIndex,
+                                      m_SwapchainSpec .frameSize);
+
+        m_Images = GetSwapchainImages(VulkanContext::s_RendererData.device,m_Swapchain);
+        m_ImageViews = CreateImageViews(VulkanContext::s_RendererData.device,this);
+    }
+
+    void Swapchain::Recreate(){
+        vkDeviceWaitIdle(VulkanContext::s_RendererData.device);
+
+        Cleanup();
+
+        Create();
+    }
+    void Swapchain::Cleanup(){
+        for (const auto &view: m_ImageViews)
+            vkDestroyImageView(VulkanContext::s_RendererData.device,view,nullptr);
+        vkDestroySwapchainKHR(VulkanContext::s_RendererData.device,m_Swapchain,nullptr);
+
+    }
+
+    VkSwapchainKHR& Swapchain::GetSwapchain() {
+        return m_Swapchain;
+    }
+
+    const std::vector<VkImage> &Swapchain::GetImages() const {
+        return m_Images;
+    }
+
+    const std::vector<VkImageView> &Swapchain::GetImageViews() const {
+        return m_ImageViews;
+    }
+
+    const SwapChainSpec &Swapchain::GetSwapchainSpec() const {
+        return m_SwapchainSpec;
+    }
+
+    SwapChainSpec &Swapchain::GetSwapchainSpec(){
+        return m_SwapchainSpec;
+    }
+
+    const VkSurfaceKHR *Swapchain::GetSurface() const {
+        return &m_Surface;
+    }
+
+    void Swapchain::SetSurface(VkSurfaceKHR surface) {
+        m_Surface = surface;
+    }
+
     bool CheckDeviceExtensionSupport(VkPhysicalDevice physicalDevice, std::string_view extension) {
         uint32_t extensionCount{};
         vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &extensionCount, nullptr);
@@ -87,20 +158,6 @@ namespace FikoEngine {
 
     VkSwapchainKHR CreateSwapchain(VkPhysicalDevice physicalDevice,VkDevice device,SwapChainSpec& spec,VkSurfaceKHR surface,u32 queueFamilyIndex,ViewportSize windowExtent) {
 
-        spec.details = GetSwapchainSupportDetails(physicalDevice,surface);
-        spec.minImageCount = spec.details.capabilities.minImageCount;
-        spec.imageFormat = ChooseSurfaceFormat(spec).format;
-        spec.imageColorSpace = ChooseSurfaceFormat(spec).colorSpace;
-        spec.imageExtent = ChooseSwapExtent(spec,{windowExtent.width,windowExtent.height});
-        spec.imageArrayLayers = 1;
-        spec.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
-        spec.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
-        spec.preTransform = spec.details.capabilities.currentTransform;
-        spec.compositeAlpha = VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR;
-        spec.presentMode = ChoosePresentMode(spec);
-        spec.clipped = VK_TRUE;
-
-
         VkSwapchainKHR swapchain{};
         VkSwapchainCreateInfoKHR createInfo{.sType = VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR};
         VkBool32 supported{};
@@ -126,48 +183,12 @@ namespace FikoEngine {
         createInfo.oldSwapchain = VK_NULL_HANDLE;
 
         VK_CHECK(vkCreateSwapchainKHR(device,&createInfo,nullptr,&swapchain));
-        LOG_INFO("Swapchain created successfully!");
         return swapchain;
     }
 
-    void SwapchainRecreate(Swapchain& swapchain,VkPhysicalDevice physicalDevice,VkDevice device,ViewportSize size,std::string_view workingDir,std::string_view shaderPath){
-        vkDeviceWaitIdle(device);
-
-        SwapchainCleanup(device,swapchain);
-
-        swapchain.swapchain = CreateSwapchain(physicalDevice,
-                                              device,
-                                              swapchain.SwapchainSpec,
-                                              swapchain.Surface,
-                                              swapchain.QueueFamilyIndex,
-                                              size);
-        swapchain.Images = GetSwapchainImages(device,swapchain);
-        swapchain.ImageViews = CreateImageViews(device,swapchain);
-        swapchain.Renderpass = CreateRenderPass(device,swapchain.SwapchainSpec);
-        swapchain.GraphicsPipeline = CreateGraphicsPipeline(device,
-                                                            swapchain.SwapchainSpec,
-                                                            swapchain.PipelineLayout,
-                                                            swapchain.Renderpass,
-                                                            Vertex::GetBindingDescription(),
-                                                            Vertex::GetAttributeDescriptions(),
-                                                            workingDir,
-                                                            shaderPath);
-        swapchain.Framebuffers = CreateFramebuffers(device,swapchain,size.width,size.height);
-
-    }
-    void SwapchainCleanup(VkDevice device,Swapchain& swapchain){
-        for (const auto &framebuffer: swapchain.Framebuffers)
-            vkDestroyFramebuffer(device,framebuffer,nullptr);
-        vkDestroyPipeline(device,swapchain.GraphicsPipeline,nullptr);
-        vkDestroyPipelineLayout(device,swapchain.PipelineLayout,nullptr);
-        vkDestroyRenderPass(device,swapchain.Renderpass,nullptr);
-        for (const auto &view: swapchain.ImageViews)
-            vkDestroyImageView(device,view,nullptr);
-        vkDestroySwapchainKHR(device,swapchain.swapchain,nullptr);
-    }
-    VkResult SwapchainAcquireNextImage(Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex){
+    VkResult SwapchainAcquireNextImage(Ref<Swapchain> swapchain,VkSemaphore semaphore,u32& imageIndex){
         return vkAcquireNextImageKHR(VulkanContext::s_RendererData.device,
-                                       swapchain.swapchain,
+                                       swapchain->GetSwapchain(),
                                        UINT64_MAX,
                                        semaphore,
                                        VK_NULL_HANDLE,
@@ -175,12 +196,12 @@ namespace FikoEngine {
 
     }
 
-    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers, Swapchain &swapchain, uint32_t index) {
+    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers, Ref<Swapchain> swapchain, uint32_t index) {
         VkRenderPassBeginInfo renderPassInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
-        renderPassInfo.renderPass = swapchain.Renderpass;
-        renderPassInfo.framebuffer = swapchain.Framebuffers[index];
+        renderPassInfo.renderPass = VulkanContext::s_RendererData.renderPass;
+        renderPassInfo.framebuffer = VulkanContext::s_RendererData.framebuffer->VulkanData()[index];
         renderPassInfo.renderArea.offset = {0, 0};
-        renderPassInfo.renderArea.extent = {swapchain.FrameSize.width,swapchain.FrameSize.height};
+        renderPassInfo.renderArea.extent = {swapchain->GetSwapchainSpec().frameSize.width,swapchain->GetSwapchainSpec().frameSize.height};
 
         VkClearValue clearColor = {{{0.0f, 0.0f, 0.0f, 1.0f}}};
         renderPassInfo.clearValueCount = 1;
@@ -193,12 +214,13 @@ namespace FikoEngine {
         vkCmdEndRenderPass(commandBuffers[index]);
     }
 
-    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Swapchain& swapchain, uint32_t imageIndex) {
-        vkCmdBindPipeline(commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, swapchain.GraphicsPipeline);
+    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Ref<VulkanShader> shader, uint32_t imageIndex) {
+        vkCmdBindPipeline(commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->getPipeline());
     }
 
     void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers, uint32_t imageIndex) {
         vkCmdDraw(commandBuffers[imageIndex],3,1,0,0);
     }
+
 
 }

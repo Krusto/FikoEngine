@@ -6,7 +6,7 @@ add_subdirectory(Vendor/glfw)
 
 add_subdirectory(Vendor/glm)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_GENERATOR_PLATFORM x64)
 message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
 
@@ -15,14 +15,8 @@ add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
 file(GLOB_RECURSE IMGUI_SOURCE_FILES imgui_impl_vulkan.cpp imgui_impl_glfw.cpp imgui.cpp imgui_draw.cpp imgui_tables.cpp imgui_widgets.cpp )
 file(GLOB_RECURSE IMGUI_HEADER_FILES imgui_impl_vulkan.h   imgui_impl_glfw.h   imgui.h imconfig.h imgui_internal.h imstb_rectpack.h imstb_textedit.h imstb_truetype.h)
 
-message(${IMGUI_SOURCE_FILES})
-message(${IMGUI_HEADER_FILES})
-
 file(GLOB_RECURSE SOURCE_FILES ./src/*.cpp)
 file(GLOB_RECURSE HEADER_FILES ./src/*.h)
-
-message(${SOURCE_FILES})
-message(${HEADER_FILES})
 
 set (EXCLUDE_DIR "/Vendor/")
 foreach (TMP_PATH ${SOURCE_FILES})
@@ -52,11 +46,11 @@ include_directories(FIKO_ENGINE Vendor/imgui/backends)
 include_directories(FIKO_ENGINE Vendor/entt/single_include)
 include_directories(FIKO_ENGINE ./src)
 include_directories(FIKO_ENGINE Vendor/glfw/include)
-include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.216.0/Include)
+include_directories(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Include)
 #include_directories(FIKO_ENGINE Vendor/VulkanMemoryAllocator/src)
 include_directories(FIKO_ENGINE Vendor/glm)
 
 target_link_libraries(FIKO_ENGINE glm)
-target_link_libraries(FIKO_ENGINE C:/VulkanSDK/1.3.216.0/Lib/vulkan-1.lib)
+target_link_libraries(FIKO_ENGINE C:/VulkanSDK/1.3.211.0/Lib/vulkan-1.lib)
 #target_link_libraries(FIKO_ENGINE VulkanMemoryAllocator)
 target_link_libraries(FIKO_ENGINE glfw)

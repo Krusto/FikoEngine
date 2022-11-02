@@ -3,14 +3,15 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
-#include "../RendererSpec.h"
-#include "SwapchainSpec.h"
-#include "../../Core/Core.h"
-#include "Swapchain.h"
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
+#include <Core/Core.h>
+#include <Renderer/Renderer.h>
+#include <Renderer/RendererSpec.h>
 #include "Renderer/Shader.h"
-#include "VulkanShader.h"
-#include "Renderer/Renderer.h"
+#include <Renderer/Vulkan/SwapchainSpec.h>
+#include <Renderer/Vulkan/Swapchain.h>
+#include <Renderer/Vulkan/VulkanShader.h>
+#include <Renderer/Vulkan/Framebuffer.h>
 
 namespace FikoEngine{
     struct RendererDataAPI{
@@ -25,13 +26,17 @@ namespace FikoEngine{
         RendererSpec rendererSpec;
         VkSurfaceKHR surface;
 
-        Ref<VulkanShader> imguiShader;
+        SwapChainSpec swapchainSpec;
+        Ref<Swapchain> swapchain;
+        VkRenderPass renderPass;
+
         Ref<VulkanShader> defaultShader;
+        Ref<VulkanFramebuffer> framebuffer;
 
         VkCommandPool commandPool;
         std::vector<VkCommandBuffer> commandBuffers;
 
-        u32 currentImageIndex;
+        u32 currentFrameIndex;
         u32 maxFramesInFlight = 2;
         std::vector<VkSemaphore> imageAvailableSemaphores;
         std::vector<VkSemaphore> renderFinishedSemaphores;

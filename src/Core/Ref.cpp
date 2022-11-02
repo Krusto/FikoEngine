@@ -2,7 +2,6 @@
 #include <unordered_set>
 #include <mutex>
 
-
 static std::unordered_set<void*> s_LiveReferences;
 static std::mutex s_LiveReferenceMutex;
 

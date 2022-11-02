@@ -19,7 +19,7 @@ namespace FikoEngine {
         return index;
     }
 
-    void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& imageFinishedSemaphores,std::vector<VkFence>& fences, uint32_t index) {
+    void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, uint32_t index) {
         VkSubmitInfo submitInfo{.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO};
 
         VkSemaphore waitSemaphores[] = {imageAvailableSemaphores[index]};
@@ -29,7 +29,7 @@ namespace FikoEngine {
         submitInfo.pWaitDstStageMask = waitStages;
 
         submitInfo.commandBufferCount = 1;
-        submitInfo.pCommandBuffers = &VulkanContext::s_RndererData.commandBuffers[index];
+        submitInfo.pCommandBuffers = &VulkanContext::s_RendererData.commandBuffers[index];
 
         VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[index]};
         submitInfo.signalSemaphoreCount = 1;
@@ -37,14 +37,14 @@ namespace FikoEngine {
 
         VK_CHECK(vkQueueSubmit(queue, 1, &submitInfo, fences[index]));
     }
-    VkResult QueuePresent(VkQueue queue,Swapchain& swapchain,std::vector<VkSemaphore>& imageFinishedSemaphores,std::vector<VkFence>& fences, uint32_t index,u32 imageIndex,u32 commandBufferIndex){
+    VkResult QueuePresent(VkQueue queue,Ref<Swapchain> swapchain,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, uint32_t imageIndex, uint32_t currentFrameIndex){
         VkPresentInfoKHR presentInfo{};
         presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-        VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[commandBufferIndex]};
+        VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[currentFrameIndex]};
         presentInfo.waitSemaphoreCount = 1;
         presentInfo.pWaitSemaphores = signalSemaphores;
 
-        VkSwapchainKHR swapChains[] = {swapchain.swapchain};
+        VkSwapchainKHR swapChains[] = {swapchain->GetSwapchain()};
         presentInfo.swapchainCount = 1;
         presentInfo.pSwapchains = swapChains;
 

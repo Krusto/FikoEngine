@@ -3,6 +3,7 @@
 //
 #pragma once
 
+#include <Core/Ref.h>
 #include "../FikoEngine.h"
 
 namespace FikoEngine{
@@ -20,7 +21,7 @@ public:
     void Destroy();
     static bool ReadyToExit;
 
-    static std::shared_ptr<Renderer> s_Renderer;
+    static Ref<Renderer> s_Renderer;
 private:
     ApplicationSpec m_ApplicationSpec;
     Window* m_Window;

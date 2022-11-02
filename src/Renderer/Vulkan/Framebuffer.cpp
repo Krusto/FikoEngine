@@ -9,23 +9,22 @@
 
 namespace FikoEngine {
 
-    std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Swapchain& swapchain,u32 width, u32 height) {
-        std::vector<VkFramebuffer> framebuffers(swapchain.FramesCount);
+    std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Ref<Swapchain> swapchain,VkRenderPass renderPass) {
+        std::vector<VkFramebuffer> framebuffers(swapchain->FramesCount);
+        swapchain->GetSwapchainSpec().frameSize.width = swapchain->GetSwapchainSpec().imageExtent.width;
+        swapchain->GetSwapchainSpec().frameSize.height = swapchain->GetSwapchainSpec().imageExtent.height;
 
         for (u32 i = 0; i < framebuffers.size(); ++i) {
             VkFramebufferCreateInfo framebufferInfo{.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO};
-            framebufferInfo.renderPass = swapchain.Renderpass;
+            framebufferInfo.renderPass = renderPass;
             framebufferInfo.attachmentCount = 1;
-            framebufferInfo.pAttachments = &swapchain.ImageViews[i];
-            framebufferInfo.width = swapchain.FrameSize.width;
-            framebufferInfo.height = swapchain.FrameSize.height;
+            framebufferInfo.pAttachments = &swapchain->GetImageViews()[i];
+            framebufferInfo.width = swapchain->GetSwapchainSpec().frameSize.width;
+            framebufferInfo.height = swapchain->GetSwapchainSpec().frameSize.height;
             framebufferInfo.layers = 1;
 
             VK_CHECK(vkCreateFramebuffer(device, &framebufferInfo, nullptr, &framebuffers[i]));
-            LOG_INFO("Created framebuffer with index: " + std::to_string(i));
         }
-        LOG_INFO("Successfully created framebuffers with size [" +
-        std::to_string(width) + "," + std::to_string(height) + "]!");
 
         return framebuffers;
     }
@@ -39,15 +38,18 @@ namespace FikoEngine {
     }
 
     void VulkanFramebuffer::Resize(uint32_t width, uint32_t height) {
+        Destroy();
 
+        Init(width,height);
     }
 
     void VulkanFramebuffer::Destroy() {
-
+        for (auto& buffer : m_Framebuffers)
+            vkDestroyFramebuffer(VulkanContext::s_RendererData.device,buffer,nullptr);
     }
 
     void VulkanFramebuffer::Bind() {
-
+        VulkanContext::s_RendererData.framebuffer = Ref<VulkanFramebuffer>(this);
     }
 
     void VulkanFramebuffer::Unbind() {
@@ -69,7 +71,7 @@ namespace FikoEngine {
     void VulkanFramebuffer::Init(u32 width, u32 height) {
          m_width = width;
          m_height = height;
+         m_Framebuffers = CreateFramebuffers(VulkanContext::s_RendererData.device,VulkanContext::s_RendererData.swapchain,VulkanContext::s_RendererData.renderPass);
 
-         static_cast<Swapchain*>(m_Swapchain)->Framebuffers = CreateFramebuffers(VulkanContext::s_RendererData.device,*static_cast<Swapchain*>(m_Swapchain),width,height);
     }
 }

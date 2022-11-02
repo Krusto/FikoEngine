@@ -28,7 +28,7 @@ namespace FikoEngine {
 
         virtual void OnWindowShouldCloseEvent() = 0;
 
-        std::string_view GetName() { return m_Name; }
+        std::string GetName() { return std::string(m_Name); }
 
         bool ShouldExit() { return shouldExit; }
 

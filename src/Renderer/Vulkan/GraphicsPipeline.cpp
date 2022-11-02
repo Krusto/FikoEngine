@@ -87,7 +87,7 @@ namespace FikoEngine{
 
         std::vector<VkDynamicState> dynamicStates = {
                 VK_DYNAMIC_STATE_VIEWPORT,
-                VK_DYNAMIC_STATE_LINE_WIDTH
+                VK_DYNAMIC_STATE_SCISSOR
         };
 
         VkPipelineDynamicStateCreateInfo dynamicState{};
@@ -103,7 +103,6 @@ namespace FikoEngine{
         pipelineLayoutInfo.pPushConstantRanges = nullptr; // Optional
 
         VK_CHECK(vkCreatePipelineLayout(device,&pipelineLayoutInfo,nullptr,&layout));
-        LOG_INFO("Graphics pipeline layout created successfully!");
 
         VkPipeline pipeline{};
 
@@ -118,7 +117,7 @@ namespace FikoEngine{
         pipelineInfo.pMultisampleState = &multisampling;
         pipelineInfo.pDepthStencilState = nullptr; // Optional
         pipelineInfo.pColorBlendState = &colorBlending;
-        pipelineInfo.pDynamicState = nullptr; // Optional
+        pipelineInfo.pDynamicState = &dynamicState; // Optional
         pipelineInfo.layout = layout;
         pipelineInfo.renderPass = renderPass;
         pipelineInfo.subpass = 0;
@@ -134,7 +133,6 @@ namespace FikoEngine{
         vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();*/
 
         VK_CHECK(vkCreateGraphicsPipelines(device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
-        LOG_INFO("Graphics pipeline created successfully!");
 
         vkDestroyShaderModule(device,vertModule,nullptr);
         vkDestroyShaderModule(device,fragModule,nullptr);

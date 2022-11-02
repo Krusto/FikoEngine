@@ -13,7 +13,6 @@ namespace FikoEngine{
         for (int i = 0; i < count; ++i) {
             VkSemaphoreCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO};
             VK_CHECK(vkCreateSemaphore(rendererData->device,&createInfo,nullptr,&semaphores[i]));
-            LOG_INFO("Created Semaphore!");
         }
 
         return semaphores;
@@ -26,7 +25,6 @@ namespace FikoEngine{
             createInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
             VK_CHECK(vkCreateFence(rendererData->device,&createInfo,nullptr,&fences[i]));
-            LOG_INFO("Created Fence!");
         }
 
         return fences;

@@ -12,7 +12,6 @@ namespace FikoEngine {
         createInfo.queueFamilyIndex = queueFamilyIndex;
 
         VK_CHECK(vkCreateCommandPool(device,&createInfo,nullptr,&pool));
-        LOG_INFO("Created Command Pool");
         return pool;
     }
     VkCommandBuffer CreateCommandBuffer(VkDevice device, VkCommandPool commandPool) {
@@ -34,6 +33,8 @@ namespace FikoEngine {
 
     void BeginCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index){
         VkCommandBufferBeginInfo beginInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};
+        beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+
         VK_CHECK(vkBeginCommandBuffer(commandBuffers[index],&beginInfo));
     }
     void EndCommandBuffer(std::vector<VkCommandBuffer> commandBuffers,u32 index){

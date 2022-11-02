@@ -18,15 +18,19 @@ namespace FikoEngine {
         m_HierarchyPanel = HierarchyPanel(m_CurrentScene);
         m_InspectorPanel = InspectorPanel(m_CurrentScene);
         m_Framebuffer = Framebuffer::Create(window->GetSpec().width,window->GetSpec().height);
+        m_Framebuffer->Bind();
 
-        m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/FlatShader"));
+        m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/basic"));
 
         m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "example_material"));
-        m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "TestObjectMaterial"));
 
 
-        m_CurrentScene->GetMaterial("TestObjectMaterial")
-                ->Set("u_DiffuseColor", glm::vec4(1, 1, 1, 1));
+
+        //m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "TestObjectMaterial"));
+
+        Renderer::AddMaterial(m_CurrentScene->GetMaterial("example_material"));
+        /*m_CurrentScene->GetMaterial("example_material")
+                ->Set("u_DiffuseColor", glm::vec4(1, 1, 1, 1));*/
 
 
         m_CurrentScene->AddEntity("EditorCamera")
@@ -37,14 +41,14 @@ namespace FikoEngine {
 
         m_CurrentScene->FindEntity("EditorCamera").GetComponent<CameraComponent>().primary = true;
 
-        auto testObject = m_CurrentScene->AddEntity("Test Object");
+       /* auto testObject = m_CurrentScene->AddEntity("Test Object");
         testObject.AddComponent<MeshComponent>();
         testObject.AddComponent<MaterialComponent>();
         testObject.AddComponent<TransformComponent>();
 
         testObject.GetComponent<MeshComponent>() = MeshComponent::Generate(testObject, MeshType::Quad);
         testObject.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("TestObjectMaterial");
-
+*/
     }
 
     void EditorLayer::OnAttach() {

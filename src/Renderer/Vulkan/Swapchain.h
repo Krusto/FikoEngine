@@ -4,36 +4,58 @@
 #pragma once
 #include <vulkan/vulkan.h>
 #include <Core/Core.h>
+#include "Core/Ref.h"
 #include "SwapchainSpec.h"
 #include "Renderer/Viewport.h"
+#include "VulkanShader.h"
 
 namespace FikoEngine {
 
-    class Swapchain{
+    class Swapchain : public RefCounted{
     public:
-        Swapchain() = default;
+        Swapchain(){ Create(); };
         Swapchain& operator=(Swapchain&) = default;
 
-        u32 FramesCount;
-        VkSwapchainKHR swapchain;
-        std::vector<VkFramebuffer> Framebuffers;
-        std::vector<VkImage> Images;
-        std::vector<VkImageView> ImageViews;
-        VkRenderPass Renderpass;
-        ViewportSize FrameSize;
-        SwapChainSpec SwapchainSpec;
-        VkSurfaceKHR Surface;
-        VkPipelineLayout PipelineLayout;
-        VkPipeline GraphicsPipeline;
+    public:
+        void Recreate();
+        void Cleanup();
 
+    public:
+        u32 FramesCount;
         u32 QueueFamilyIndex;
 
+    private:
+        VkSwapchainKHR m_Swapchain;
+
+        std::vector<VkImage> m_Images;
+        std::vector<VkImageView> m_ImageViews;
+        SwapChainSpec m_SwapchainSpec;
+        VkSurfaceKHR m_Surface;
+
+    public:
+        VkSwapchainKHR& GetSwapchain();
+
+        const std::vector<VkImage> &GetImages() const;
+
+        const std::vector<VkImageView> &GetImageViews() const;
+
+        const SwapChainSpec &GetSwapchainSpec() const;
+        SwapChainSpec &GetSwapchainSpec();
+
+        const VkSurfaceKHR *GetSurface() const;
+
+        void SetSurface(VkSurfaceKHR surface);
+
+    public:
         operator VkSwapchainKHR(){
-            return swapchain;
+            return m_Swapchain;
         }
         operator VkSwapchainKHR&(){
-            return swapchain;
+            return m_Swapchain;
         }
+
+    private:
+        void Create();
     };
 
     bool CheckDeviceExtensionSupport(VkPhysicalDevice physicalDevice, std::string_view extension);
@@ -50,15 +72,11 @@ namespace FikoEngine {
 
     VkSwapchainKHR CreateSwapchain(VkPhysicalDevice physicalDevice,VkDevice device,SwapChainSpec& spec,VkSurfaceKHR surface,u32 queueFamilyIndex,ViewportSize windowExtent);
 
-    VkResult SwapchainAcquireNextImage(Swapchain& swapchain,VkSemaphore semaphore,u32& imageIndex,u32 commandBufferIndex);
+    VkResult SwapchainAcquireNextImage(Ref<Swapchain> swapchain,VkSemaphore semaphore,u32& imageIndex);
 
-    void SwapchainRecreate(Swapchain& swapchain,VkPhysicalDevice physicalDevice,VkDevice device,ViewportSize size,std::string_view workingDir,std::string_view shaderPath);
-
-    void SwapchainCleanup(VkDevice device,Swapchain& swapchain);
-
-    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers,Swapchain& swapchain, u32 index);
+    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers,Ref<Swapchain> swapchain, u32 index);
     void EndRenderPass(std::vector<VkCommandBuffer> commandBuffers,u32 index);
 
-    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Swapchain& swapchain,u32 imageIndex);
+    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Ref<VulkanShader> shader,u32 imageIndex);
     void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers,u32 imageIndex);
 }

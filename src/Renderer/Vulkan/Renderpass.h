@@ -6,5 +6,5 @@
 #include "RendererData.h"
 
 namespace FikoEngine{
-    VkRenderPass CreateRenderPass(VkDevice device,SwapChainSpec& spec);
+    VkRenderPass CreateRenderPass(SwapChainSpec& spec);
 }

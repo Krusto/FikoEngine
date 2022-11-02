@@ -8,12 +8,17 @@
 #include "../../Util/File.h"
 #include "Memory.h"
 #include "VulkanContext.h"
+#include "Renderer/Vertex.h"
+#include "GraphicsPipeline.h"
 #include <vulkan/vulkan.h>
+#include <filesystem>
 namespace FikoEngine {
     void CompileShaderFile(std::string_view workingDir,std::string_view ShaderPath,ShaderType type){
+
         #ifdef _WIN32
-            auto workDir = std::string(workingDir) + "/" + std::string(ShaderPath);
-            std::string command = "glslc " + workDir + " -o " + workDir + ".spv";
+    //       auto file = std::string(workingDir) + "/" + std::string(ShaderPath);
+            auto file = std::filesystem::current_path().string() + "/" + std::string(ShaderPath);
+            std::string command = "glslc " + file + " -o " + file + ".spv";
             system(command.data());
         #endif
     }
@@ -28,38 +33,22 @@ namespace FikoEngine {
 
         VK_CHECK(vkCreateShaderModule(device,&createInfo,nullptr,&shaderModule));
 
-        LOG_INFO(std::string(ShaderPath) + " shader module created successfully!");
         return shaderModule;
     }
     VulkanShader::VulkanShader(const std::string &path) {
-
-        m_Swapchain.swapchain = CreateSwapchain(VulkanContext::s_RendererData.physicalDevice,
-                                                VulkanContext::s_RendererData.device,
-                                                m_Swapchain.SwapchainSpec,
-                                                m_Swapchain.Surface,
-                                                VulkanContext::s_RendererData.queueFamilyIndex,
-                                                VulkanContext::s_RendererData.rendererSpec.SurfaceSize
-
-        );
-
-        m_Swapchain.FrameSize = VulkanContext::s_RendererData.rendererSpec.SurfaceSize;
         m_Path = path;
-        SwapchainRecreate(m_Swapchain,
-                          VulkanContext::s_RendererData.physicalDevice,
-                          VulkanContext::s_RendererData.device,
-                          m_Swapchain.FrameSize,
-                          VulkanContext::s_RendererData.workingDir,
-                          m_Path);
-
-        s_RendererData.commandPool = CreateCommandPool(s_RendererData.device,s_RendererData.queueFamilyIndex);
-
-//        s_RendererData.vertexBuffer = CreateVertexBuffer(&s_RendererData);
-
-        s_RendererData.commandBuffers = CreateCommandBuffers(s_RendererData.device,s_RendererData.commandPool,s_RendererData.imageViews.size());
-
+        m_Pipeline = CreateGraphicsPipeline(
+                VulkanContext::s_RendererData.device,
+                VulkanContext::s_RendererData.swapchainSpec,
+                m_PipelineLayout,
+                VulkanContext::s_RendererData.renderPass,
+                Vertex::GetBindingDescription(),
+                Vertex::GetAttributeDescriptions(),
+                VulkanContext::s_RendererData.workingDir,
+                m_Path);
     }
     std::unordered_map<std::string, ShaderBuffer> &VulkanShader::GetShaderBuffers() {
-        return {};
+        return m_Buffers;
     }
 
     const std::unordered_map<std::string, ShaderResourceDeclaration> &VulkanShader::GetResources() const {

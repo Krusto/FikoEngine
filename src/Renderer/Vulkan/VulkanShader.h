@@ -2,7 +2,6 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/11/2022.
 //
 #include "Renderer/Shader.h"
-#include "Swapchain.h"
 #include <vulkan/vulkan.h>
 #pragma once
 namespace FikoEngine{
@@ -53,30 +52,18 @@ namespace FikoEngine{
 
         virtual void SetUniform(const std::string &fullname, const glm::mat4 &value) override;
 
-
-        const Swapchain& getSwapchain() const { return m_Swapchain;}
-        Swapchain& getSwapchain() { return m_Swapchain;}
-        void setSwapchain(Swapchain swapchain) { m_Swapchain = swapchain; }
-
         const VkPipeline& getPipeline() const { return m_Pipeline; }
         VkPipeline& getPipeline() { return m_Pipeline; }
 
         const VkPipelineLayout& getPipelineLayout() const { return m_PipelineLayout; }
         VkPipelineLayout& getPipelineLayout() { return m_PipelineLayout; }
 
-        const VkCommandPool& getCommandPool() const { return m_CommandPool; }
-        VkCommandPool& getCommandPool() { return m_CommandPool; }
-
-        const std::vector<VkCommandBuffer>& getCommandBuffers() const { return m_CommandBuffers; }
-        std::vector<VkCommandBuffer>& getCommandBuffers() { return m_CommandBuffers; }
-
     private:
+        std::unordered_map<std::string, ShaderBuffer> m_Buffers;
+
         std::string m_Name;
         std::string m_Path;
 
-        Swapchain m_Swapchain;
-        VkCommandPool m_CommandPool;
-        std::vector<VkCommandBuffer> m_CommandBuffers;
         VkPipeline m_Pipeline;
         VkPipelineLayout m_PipelineLayout;
     };

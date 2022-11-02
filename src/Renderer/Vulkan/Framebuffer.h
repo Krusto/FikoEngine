@@ -9,7 +9,6 @@
 #include <Renderer/Framebuffer.h>
 #include <Renderer/Viewport.h>
 
-#include "RendererData.h"
 #include "Swapchain.h"
 
 namespace FikoEngine{
@@ -36,14 +35,16 @@ namespace FikoEngine{
 
         virtual ViewportSize GetViewportSize() override;
 
+        auto& VulkanData() { return m_Framebuffers; }
     private:
         u32 m_width{};
         u32 m_height{};
         u32 m_fbo{};
         u32 m_color_texture{};
         u32 m_depth_texture{};
-        void* m_Swapchain;
+
+        std::vector<VkFramebuffer> m_Framebuffers;
     };
 
-    std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Swapchain& swapchain,u32 width, u32 height);
+    std::vector<VkFramebuffer> CreateFramebuffers(VkDevice device,Ref<Swapchain> swapchain,VkRenderPass renderPass);
 }

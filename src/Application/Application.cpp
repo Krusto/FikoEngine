@@ -3,9 +3,11 @@
 //
 
 #include "Application.h"
+#include <Core/Ref.h>
+#include <Renderer/RendererAPI.h>
 #include "Editor/EditorLayer.h"
 
-std::shared_ptr<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
+Ref<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
 
 void OnWindowClose(GLFWwindow* window){
     FikoEngine::Application::ReadyToExit = true;
@@ -22,18 +24,20 @@ bool FikoEngine::Application::Run() {
     m_Window->OnWindowClose(OnWindowClose);
     m_Window->OnWindowResize(OnWindowResize);
 
-    s_Renderer = std::make_shared<Renderer>();
+    s_Renderer = Ref<Renderer>::Create();
     m_ApplicationSpec.window = m_Window;
 
-    s_Renderer->SetActiveWindow(m_Window);
+    FikoEngine::RendererAPI::SetActiveWindow(m_Window);
     s_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
 
     LayerStack::PushLayer(Ref<EditorLayer>::Create());
-    LayerStack::GetLayer("Editor")->Init(m_Window);
+
+    auto editor = LayerStack::GetLayer("Editor");
+    editor->Init(m_Window);
 
     while(!Application::ReadyToExit){
        m_Window->Begin();
-       LayerStack::GetLayer("Editor")->OnUpdate(1.0);
+       editor->OnUpdate(1.0);
        m_Window->Loop();
 
        s_Renderer->Draw();

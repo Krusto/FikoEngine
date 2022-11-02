@@ -3,9 +3,10 @@
 //
 #include "Renderpass.h"
 #include "Memory.h"
+#include "VulkanContext.h"
 
 namespace FikoEngine{
-    VkRenderPass CreateRenderPass(VkDevice device,SwapChainSpec& spec){
+    VkRenderPass CreateRenderPass(SwapChainSpec& spec){
         VkRenderPass renderPass{};
 
         VkRenderPassCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO};
@@ -44,9 +45,7 @@ namespace FikoEngine{
         createInfo.dependencyCount = 1;
         createInfo.pDependencies = &dependency;
 
-        VK_CHECK(vkCreateRenderPass(device,&createInfo,nullptr,&renderPass));
-
-        LOG_INFO("RenderPass created successfully!");
+        VK_CHECK(vkCreateRenderPass(VulkanContext::s_RendererData.device,&createInfo,nullptr,&renderPass));
 
         return renderPass;
     }

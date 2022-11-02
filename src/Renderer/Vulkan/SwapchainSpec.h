@@ -3,7 +3,8 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
-#include "../../Core/Core.h"
+#include <Core/Core.h>
+#include <Renderer/Viewport.h>
 
 namespace FikoEngine{
     struct SwapChainSupportDetails {
@@ -24,6 +25,8 @@ namespace FikoEngine{
         VkCompositeAlphaFlagBitsKHR      compositeAlpha;
         VkPresentModeKHR                 presentMode;
         VkBool32                         clipped = VK_TRUE;
-        SwapChainSupportDetails details;
+        SwapChainSupportDetails          details;
+        ViewportSize                     frameSize;
+
     };
 }

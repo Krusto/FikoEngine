@@ -11,6 +11,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_vulkan.h"
+#include "Renderpass.h"
 
 namespace FikoEngine{
 
@@ -18,6 +19,7 @@ namespace FikoEngine{
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
         s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
+
         rendererSpec.extensions.push_back(VK_KHR_SWAPCHAIN_EXTENSION_NAME);
 
         s_RendererData.device = CreateDevice(s_RendererData.physicalDevice,s_RendererData.queueFamilyIndex,rendererSpec.extensions);
@@ -27,7 +29,13 @@ namespace FikoEngine{
 
         s_RendererData.surface = applicationSpec.window->CreateSurface(s_RendererData.instance);
 
-        s_RendererData.defaultShader = Ref<VulkanShader>::Create("assets/basic");
+        s_RendererData.commandPool = CreateCommandPool(s_RendererData.device,
+                                                       s_RendererData.queueFamilyIndex);
+        s_RendererData.commandBuffers = CreateCommandBuffers(s_RendererData.device,
+                                                             s_RendererData.commandPool,2);
+
+        s_RendererData.swapchain = Ref<Swapchain>::Create();
+        s_RendererData.renderPass = CreateRenderPass(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec());
 
         s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.renderFinishedSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
@@ -146,11 +154,11 @@ namespace FikoEngine{
         init_info.PipelineCache = VK_NULL_HANDLE;
         init_info.DescriptorPool = s_ImGUI_Descriptorpool;
         init_info.Subpass = 0;
-        init_info.MinImageCount = s_RendererData.defaultShader->getSwapchain().FramesCount;
-        init_info.ImageCount = s_RendererData.defaultShader->getSwapchain().FramesCount;
+        init_info.MinImageCount = s_RendererData.swapchain->FramesCount;
+        init_info.ImageCount = s_RendererData.swapchain->FramesCount;
         init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
         init_info.Allocator = nullptr;
         init_info.CheckVkResultFn = nullptr;
-        ImGui_ImplVulkan_Init(&init_info, s_RendererData.defaultShader->getSwapchain().Renderpass);
+        ImGui_ImplVulkan_Init(&init_info, s_RendererData.renderPass);
     }
 }

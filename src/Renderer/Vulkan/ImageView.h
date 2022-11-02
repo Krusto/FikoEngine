@@ -7,5 +7,5 @@
 #include "RendererData.h"
 
 namespace FikoEngine{
-    std::vector<VkImageView> CreateImageViews(VkDevice device,Swapchain& swapchain);
+    std::vector<VkImageView> CreateImageViews(VkDevice device,Swapchain* swapchain);
 }

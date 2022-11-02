@@ -8,6 +8,7 @@
 #include "../Core/Core.h"
 #include "Viewport.h"
 #include "Camera.h"
+#include "Material.h"
 
 namespace FikoEngine {
 
@@ -18,7 +19,7 @@ public:
     std::vector<const char*> extensions;
 };
 class Entity;
-class Renderer {
+class Renderer : public RefCounted{
 public:
     Renderer() = default;
 ///Function which inits the whole renderer
@@ -28,10 +29,13 @@ public:
     static void Destroy();
     static void ResizeFramebuffer(ViewportSize size);
     static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
-    static void SubmitEntity(Entity entity, Ref<Camera> camera, Ref<Shader> shader);
+    static void SubmitEntity(Entity entity, Ref<Camera> camera);
     static void Flush();
     static void SetActiveWindow(Window* window);
+
+    static void AddMaterial(Ref<Material> material);
 private:
+
     inline static RendererSpec s_RendererSpec;
 };
 }

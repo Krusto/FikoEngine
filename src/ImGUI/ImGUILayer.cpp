@@ -1,8 +1,8 @@
 #include "ImGUILayer.h"
 #include <imgui.h>
+#include <Renderer/Renderer.h>
 #include <imgui_impl_glfw.h>
-
-#include <imgui_impl_opengl3.h>
+//#include <imgui_impl_opengl3.h>/**/
 namespace FikoEngine {
     void ImGUILayer::Init(FikoEngine::Window *window) {
 
@@ -18,9 +18,6 @@ namespace FikoEngine {
         (void) io;
 
         io.Fonts->ClearFonts();
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplGlfw_Shutdown();
-        ImGui::DestroyContext();
     }
 
     void ImGUILayer::OnUpdate(float dt) {
@@ -31,8 +28,8 @@ namespace FikoEngine {
     }
 
     void ImGUILayer::Begin() {
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplGlfw_NewFrame();
+//        ImGui_ImplOpenGL3_NewFrame();
+//        ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
         bool p_open = true;
@@ -83,7 +80,7 @@ namespace FikoEngine {
     void ImGUILayer::End() {
         ImGui::End();
         ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         if (ImGui::GetIO().ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
             GLFWwindow *backup_current_context = glfwGetCurrentContext();

@@ -38,9 +38,15 @@ namespace FikoEngine {
         RendererAPI::ClearColor(color);
     }
 
-    void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera,Ref<Shader> shader) {
+    void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera) {
         //TODO
+        Ref<Material> material = entity.GetComponent<MaterialComponent>().material;
 
+
+    }
+
+    void Renderer::AddMaterial(Ref<Material> material){
+        RendererAPI::AddMaterial(material);
     }
 
     void Renderer::Flush() {
