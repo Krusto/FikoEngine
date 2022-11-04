@@ -2,6 +2,7 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/24/2022.
 //
 #include"VertexBuffer.h"
+#include "VulkanContext.h"
 
 namespace FikoEngine{
 
@@ -47,13 +48,39 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
     return vertexBuffer;
 }
 
-    VulkanVertexBuffer::VulkanVertexBuffer(Ref <VertexArray> va, const VertexLayout &layout, float *data,
+    VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, float *data,
                                            uint32_t length) {
-
+        m_Buffer = CreateVertexBuffer(VulkanContext::s_RendererData.physicalDevice,
+                                      VulkanContext::s_RendererData.device,
+                                      nullptr,
+                                      VulkanContext::s_RendererData.graphicsQueue,
+                                      VulkanContext::s_RendererData.commandPool,
+                                      (Vertex*)data,
+                                      layout,
+                                      length);
+        m_Length = length;
     }
 
-    VulkanVertexBuffer::VulkanVertexBuffer(Ref<VertexArray> va, const VertexLayout &layout, Vertex *data,
+    VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, Vertex *data,
                                            uint32_t length) {
+        m_Buffer = CreateVertexBuffer(VulkanContext::s_RendererData.physicalDevice,
+                                      VulkanContext::s_RendererData.device,
+                                      nullptr,
+                                      VulkanContext::s_RendererData.graphicsQueue,
+                                      VulkanContext::s_RendererData.commandPool,
+                                      data,
+                                      layout,
+                                      length);
+        m_Length = length;
+    }
 
+    void VulkanVertexBuffer::Bind() const {
+        VkDeviceSize offsets[] = {0};
+        vkCmdBindVertexBuffers(
+                VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
+                0,
+                1,
+                &m_Buffer.buffer,
+                offsets);
     }
 }

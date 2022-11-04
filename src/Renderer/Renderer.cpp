@@ -25,7 +25,7 @@ namespace FikoEngine {
         RendererAPI::Init(rendererSpec, applicationSpec);
     }
     void Renderer::Draw(){
-        RendererAPI::Draw();
+        RendererAPI::Draw({});
     }
     void Renderer::Destroy(){
         RendererAPI::Destroy();
@@ -39,10 +39,6 @@ namespace FikoEngine {
     }
 
     void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera) {
-        //TODO
-        Ref<Material> material = entity.GetComponent<MaterialComponent>().material;
-
-
     }
 
     void Renderer::AddMaterial(Ref<Material> material){
@@ -59,6 +55,10 @@ namespace FikoEngine {
 
     void Renderer::SetActiveWindow(Window* window) {
         RendererAPI:SetActiveWindow(window);
+    }
+
+    void Renderer::DrawEntity(Entity entity) {
+        RendererAPI::Draw(entity);
     }
 
 }

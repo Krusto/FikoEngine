@@ -6,7 +6,7 @@ namespace FikoEngine {
     public:
         VulkanVertexArray() = default;
 
-        explicit VulkanVertexArray(uint32_t indexCount);
+        VulkanVertexArray(uint32_t indexCount);
 
         static VulkanVertexArray Create(uint32_t indexCount);
 

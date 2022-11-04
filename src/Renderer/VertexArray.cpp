@@ -14,4 +14,12 @@ namespace FikoEngine {
                 break;
         }
     }
+    void VertexArray::AddVertexBuffer(Ref<VertexBuffer> vertexBuffer){
+        m_VertexBuffer = vertexBuffer;
+    }
+
+    void VertexArray::AddIndexBuffer(Ref<IndexBuffer> indexBuffer){
+    m_IndexBuffer = indexBuffer;
+    }
+
 }

@@ -21,6 +21,7 @@
 #include "Vertex.h"
 #include "Renderer/Vulkan/Framebuffer.h"
 #include "Renderer/Vulkan/Material.h"
+#include <Scene/Entity.h>
 
 namespace FikoEngine {
 
@@ -36,7 +37,7 @@ namespace FikoEngine {
 
         LOG("Renderer initialized!");
     }
-    void RendererAPI::Draw() {
+    void RendererAPI::Draw(Entity entity) {
         WaitFence(VulkanContext::s_RendererData.inFlightFences,VulkanContext::s_RendererData.currentFrameIndex);
 
         uint32_t imageIndex;
@@ -63,7 +64,9 @@ namespace FikoEngine {
                             swapchain,
                             imageIndex);
 
-            for (auto &[materialName, virtualMaterial]: s_Materials) {
+            if(entity.IsValid() && entity.HasComponent<MaterialComponent>()) {
+                auto va = entity.GetComponent<MeshComponent>().GetVA();
+                auto virtualMaterial = entity.GetComponent<MaterialComponent>().material;
                 auto vulkanMaterial = static_cast<Ref<VulkanMaterial>>(virtualMaterial);
                 auto vulkanShader = static_cast<Ref<VulkanShader>>(vulkanMaterial->GetShader());
 
@@ -89,10 +92,11 @@ namespace FikoEngine {
                         VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
                         0, 1, &scissor);
 
+
+                va->Bind();
                 GraphicsPipelineDraw(VulkanContext::s_RendererData.commandBuffers,
                                      VulkanContext::s_RendererData.currentFrameIndex);
             }
-
             EndRenderPass(VulkanContext::s_RendererData.commandBuffers,
                           VulkanContext::s_RendererData.currentFrameIndex);
 

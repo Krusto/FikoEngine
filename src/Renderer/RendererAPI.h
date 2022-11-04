@@ -10,9 +10,9 @@
 #include "Viewport.h"
 #include "Renderer.h"
 #include "Material.h"
-
 namespace FikoEngine {
 
+class Entity;
 ///Class interfacing the renderer with the api
 class RendererAPI {
 public:
@@ -36,7 +36,7 @@ public:
     static void SetActiveWindow(Window* window);
     static void AddMaterial(Ref<Material> material);
 
-    static void Draw();
+    static void Draw(Entity entity);
 
 private:
     inline static std::unordered_map<std::string_view,Ref<Material>> s_Materials;

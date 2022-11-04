@@ -2,6 +2,9 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/25/2022.
 //
 #include"VertexBuffer.h"
+#include "IndexBuffer.h"
+#include "VulkanContext.h"
+
 
 namespace FikoEngine{
 
@@ -10,7 +13,7 @@ namespace FikoEngine{
                              VkAllocationCallbacks* allocator,
                              VkQueue graphicsQueue,
                              VkCommandPool commandPool,
-                             u32* data,
+                             const u32* data,
                              u32 count) {
         u32 bufferSize = sizeof(u32) * count;
         Buffer stagingBuffer = Buffer::Create(physicalDevice,
@@ -44,5 +47,23 @@ namespace FikoEngine{
         vkFreeMemory(device, stagingBuffer.memory, allocator);
 
         return indexBuffer;
+    }
+
+    FikoEngine::VulkanIndexBuffer::VulkanIndexBuffer(const u32 *data, u32 length) {
+            m_Length = length;
+            m_Buffer = CreateIndexBuffer(VulkanContext::s_RendererData.physicalDevice,
+                                         VulkanContext::s_RendererData.device,
+                                         nullptr,
+                                         VulkanContext::s_RendererData.graphicsQueue,
+                                         VulkanContext::s_RendererData.commandPool,
+                                         data,
+                                         length);
+    }
+
+    void VulkanIndexBuffer::Bind() const {
+        vkCmdBindIndexBuffer(VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
+                             m_Buffer.buffer,
+                             0,
+                             VK_INDEX_TYPE_UINT32);
     }
 }

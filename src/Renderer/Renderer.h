@@ -26,6 +26,7 @@ public:
     static void Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec);
     static void InitImGUI();
     static void Draw();
+    static void DrawEntity(Entity entity);
     static void Destroy();
     static void ResizeFramebuffer(ViewportSize size);
     static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});

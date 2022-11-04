@@ -14,10 +14,12 @@ namespace FikoEngine {
 
     class VulkanIndexBuffer : public IndexBuffer{
     public:
-        VulkanIndexBuffer(Ref<VertexArray> va, const uint32_t *data, uint32_t length);
+        VulkanIndexBuffer(const u32 *data, u32 length);
 
         virtual void Bind() const override;
-
+    private:
+        Buffer m_Buffer;
+        u32 m_Length;
     };
 
     Buffer CreateIndexBuffer(VkPhysicalDevice physicalDevice,
@@ -25,6 +27,6 @@ namespace FikoEngine {
                              VkAllocationCallbacks* allocator,
                              VkQueue graphicsQueue,
                              VkCommandPool commandPool,
-                             u32* data,
+                             const u32* data,
                              u32 count);
 }

@@ -20,7 +20,7 @@ namespace FikoEngine {
         m_Framebuffer = Framebuffer::Create(window->GetSpec().width,window->GetSpec().height);
         m_Framebuffer->Bind();
 
-        m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/basic"));
+        m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/flat2D"));
 
         m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader("FlatShader"), "example_material"));
 
@@ -41,14 +41,14 @@ namespace FikoEngine {
 
         m_CurrentScene->FindEntity("EditorCamera").GetComponent<CameraComponent>().primary = true;
 
-       /* auto testObject = m_CurrentScene->AddEntity("Test Object");
+        auto testObject = m_CurrentScene->AddEntity("Test Object");
         testObject.AddComponent<MeshComponent>();
         testObject.AddComponent<MaterialComponent>();
         testObject.AddComponent<TransformComponent>();
 
         testObject.GetComponent<MeshComponent>() = MeshComponent::Generate(testObject, MeshType::Quad);
-        testObject.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("TestObjectMaterial");
-*/
+        testObject.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("example_material");
+
     }
 
     void EditorLayer::OnAttach() {
@@ -78,7 +78,7 @@ namespace FikoEngine {
 
             for (auto &drawable: m_CurrentScene->GetEntitiesWith<MeshComponent>()) {
                 Entity entity = {drawable, m_CurrentScene};
-                Renderer::SubmitEntity(entity, primaryCamera.GetComponent<CameraComponent>().camera);
+                Renderer::DrawEntity(entity);
             }
 
             Renderer::Flush();
