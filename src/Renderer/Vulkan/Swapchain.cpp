@@ -221,6 +221,8 @@ namespace FikoEngine {
     void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers, uint32_t imageIndex) {
         vkCmdDraw(commandBuffers[imageIndex],3,1,0,0);
     }
-
+    void GraphicsPipelineDrawIndexed(std::vector<VkCommandBuffer> commandBuffers, uint32_t imageIndex,u32 indexCount) {
+        vkCmdDrawIndexed(commandBuffers[imageIndex],indexCount,0,0,0,0);
+    }
 
 }

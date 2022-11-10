@@ -79,4 +79,5 @@ namespace FikoEngine {
 
     void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Ref<VulkanShader> shader,u32 imageIndex);
     void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers,u32 imageIndex);
+    void GraphicsPipelineDrawIndexed(std::vector<VkCommandBuffer> commandBuffers,u32 imageIndex,u32 indexCount);
 }

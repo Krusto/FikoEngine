@@ -94,8 +94,12 @@ namespace FikoEngine {
 
 
                 va->Bind();
-                GraphicsPipelineDraw(VulkanContext::s_RendererData.commandBuffers,
-                                     VulkanContext::s_RendererData.currentFrameIndex);
+                GraphicsPipelineDrawIndexed(VulkanContext::s_RendererData.commandBuffers,
+                                            VulkanContext::s_RendererData.currentFrameIndex,
+                                            va->IndexCount);
+
+                //GraphicsPipelineDraw(VulkanContext::s_RendererData.commandBuffers,
+                //                     VulkanContext::s_RendererData.currentFrameIndex);
             }
             EndRenderPass(VulkanContext::s_RendererData.commandBuffers,
                           VulkanContext::s_RendererData.currentFrameIndex);
