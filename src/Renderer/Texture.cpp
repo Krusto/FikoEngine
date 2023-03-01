@@ -1,4 +1,5 @@
 ﻿#include "Texture.h"
+#include "Renderer/OpenGL/OpenGLTexture.h"
 #include <Renderer/RendererAPI.h>
 #include <Renderer/Vulkan/Texture.h>
 namespace FikoEngine {
@@ -6,9 +7,10 @@ namespace FikoEngine {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanTexture>::Create(Path);
+            case RendererAPI::API::OpenGL:
+                return Ref<OpenGLTexture>::Create(Path);
             default:
-                exit(-1);
-                break;
+                return nullptr;
         }
     }
 
@@ -16,9 +18,10 @@ namespace FikoEngine {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanTexture>::Create(data, channels, width, height);
+            case RendererAPI::API::OpenGL:
+                return Ref<OpenGLTexture>::Create(data, channels, width, height);
             default:
-                exit(-1);
-                break;
+                return nullptr;
         }
     }
 }

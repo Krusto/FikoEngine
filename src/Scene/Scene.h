@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <unordered_map>
 #include <entt/entt.hpp>
 #include <Core/Ref.h>
@@ -50,16 +50,18 @@ namespace FikoEngine {
         ViewportSize GetViewport() { return {m_ViewportWidth, m_ViewportHeight}; }
 
         Ref<Material> GetMaterial(std::string_view name);
-
         void AddMaterial(Ref<Material> material);
 
         Ref<Shader> GetShader(std::string_view name);
-
         void AddShader(std::string_view name, Ref<Shader> shader);
 
-        auto &GetMaterials() { return m_MaterialLibrary; }
+        Ref<Texture> GetTexture(std::string_view name);
+        void AddTexture(std::string_view name, Ref<Texture> texture);
+        void RemoveTexture(std::string_view name);
 
-        auto &GetShaders() { return m_ShaderLibrary; }
+        auto& GetMaterials() { return m_MaterialLibrary; }
+        auto& GetShaders() { return m_ShaderLibrary; }
+        auto& GetTextures() { return m_TextureLibrary; }
 
     private:
         entt::entity m_SceneEntity;
@@ -73,6 +75,7 @@ namespace FikoEngine {
 
         std::unordered_map<std::string, Ref<Material>> m_MaterialLibrary;
         std::unordered_map<std::string, Ref<Shader>> m_ShaderLibrary;
+        std::unordered_map<std::string, Ref<Texture>> m_TextureLibrary;
 
         friend class Entity;
     };

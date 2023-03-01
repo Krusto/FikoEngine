@@ -51,6 +51,12 @@ namespace FikoEngine {
 
         virtual glm::mat4 &GetMatrix4(const std::string &name) override;
 
+        virtual void Set(const std::string& name, const Ref<Texture>& texture) override{}
+        virtual void Set(const std::string& name, const Ref<Texture>& texture, uint32_t arrayIndex) override{}
+
+        virtual Ref<Texture> GetTexture(const std::string& name) override;
+        virtual Ref<Texture> TryGetTexture(const std::string& name) override;
+
         template<typename T>
         void Set(const std::string &name, const T &value, ShaderUniformType type, uint32_t size) {
             auto &shaderBuffer = m_Shader->GetShaderBuffers()["shaderBuffer"];
@@ -90,13 +96,21 @@ namespace FikoEngine {
 
         virtual Ref<Shader> GetShader() override { return m_Shader; }
 
+        virtual void SetShader(Ref<Shader> shader) override { m_Shader = shader;}
+
         virtual const std::string &GetName() const override { return m_Name; }
 
         Buffer GetUniformStorageBuffer() { return m_UniformStorageBuffer; }
 
         virtual void UpdateForRendering() override;
 
-        virtual Buffer &GetBuffer() override { return m_UniformStorageBuffer; };
+        virtual Buffer &GetBuffer() override { return m_UniformStorageBuffer; }
+
+        virtual void Reset() override { m_Shader->Reload(); };
+
+        virtual bool HasDiffuseTexture() override{return false;}
+
+        virtual bool HasSpecularTexture() override{return false;}
 
     private:
         void AllocateStorage();
@@ -115,6 +129,8 @@ namespace FikoEngine {
         uint32_t offset = 0;
 
         Buffer m_UniformStorageBuffer;
+
+        std::vector<Ref<Texture>> m_Textures;
     };
 }
 

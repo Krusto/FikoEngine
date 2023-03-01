@@ -3,7 +3,7 @@
 //
 #include "Renderpass.h"
 #include "Memory.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 
 namespace FikoEngine{
     VkRenderPass CreateRenderPass(SwapChainSpec& spec){
@@ -45,7 +45,7 @@ namespace FikoEngine{
         createInfo.dependencyCount = 1;
         createInfo.pDependencies = &dependency;
 
-        VK_CHECK(vkCreateRenderPass(VulkanContext::s_RendererData.device,&createInfo,nullptr,&renderPass));
+        VK_CHECK(vkCreateRenderPass(VulkanRenderer::s_RendererData.device,&createInfo,nullptr,&renderPass));
 
         return renderPass;
     }

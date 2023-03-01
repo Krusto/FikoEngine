@@ -61,8 +61,7 @@ namespace FikoEngine {
 
         void Rotate(glm::vec3 rot);
 
-        void
-        Upload(Ref<Shader> shader, std::string_view uProjection = "u_Projection", std::string_view uView = "u_View");
+        void Upload(Ref<Shader> shader,std::string_view uProjection = "camera.projection", std::string_view uView = "camera.view" , std::string_view uPosition = "camera.position");
 
         glm::vec3 GetVectorUP() { return m_VectorUP; }
 

@@ -9,6 +9,9 @@
     <mapping directory="$PROJECT_DIR$/Vendor/glm" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/imgui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/lwlog" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Vendor/shaderc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Vendor/shaderc/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Vendor/shaderc/src/third_party/effcee" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Vendor/stb" vcs="Git" />
   </component>
 </project>

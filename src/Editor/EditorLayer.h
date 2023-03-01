@@ -5,16 +5,17 @@
 #include <Editor/InspectorPanel.h>
 #include <Scene/Scene.h>
 #include <Renderer/Shader.h>
-#include "Renderer/Framebuffer.h"
+#include <Renderer/Framebuffer.h>
+#include <Editor/AssetsPanel.hpp>
 
 namespace FikoEngine {
     class Window;
 
     class EditorLayer : public Layer {
     public:
-        EditorLayer();
+        EditorLayer(ApplicationSpec spec);
 
-        void Init(Window *window) override;
+        void Init(Ref<Window> window) override;
 
         void OnAttach() override;
 
@@ -34,10 +35,9 @@ namespace FikoEngine {
 
         void OnWindowShouldCloseEvent() override {
             SetShouldExit(true);
-            window->Close();
         };
     protected:
-        Window *window = nullptr;
+        Ref<Window> m_Window;
         ViewportSize windowSize;
 
         Scene *m_CurrentScene;
@@ -50,6 +50,9 @@ namespace FikoEngine {
 
         HierarchyPanel m_HierarchyPanel;
         InspectorPanel m_InspectorPanel;
+        AssetsPanel m_AssetsPanel;
+
+        ApplicationSpec m_AppSpec;
 
         Entity m_SelectedEntity;
     };

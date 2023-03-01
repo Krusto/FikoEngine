@@ -5,7 +5,7 @@
 #include "Framebuffer.h"
 #include "Memory.h"
 #include "RendererData.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 
 namespace FikoEngine {
 
@@ -45,11 +45,11 @@ namespace FikoEngine {
 
     void VulkanFramebuffer::Destroy() {
         for (auto& buffer : m_Framebuffers)
-            vkDestroyFramebuffer(VulkanContext::s_RendererData.device,buffer,nullptr);
+            vkDestroyFramebuffer(VulkanRenderer::s_RendererData.device,buffer,nullptr);
     }
 
     void VulkanFramebuffer::Bind() {
-        VulkanContext::s_RendererData.framebuffer = Ref<VulkanFramebuffer>(this);
+        VulkanRenderer::s_RendererData.framebuffer = Ref<VulkanFramebuffer>(this);
     }
 
     void VulkanFramebuffer::Unbind() {
@@ -71,7 +71,7 @@ namespace FikoEngine {
     void VulkanFramebuffer::Init(u32 width, u32 height) {
          m_width = width;
          m_height = height;
-         m_Framebuffers = CreateFramebuffers(VulkanContext::s_RendererData.device,VulkanContext::s_RendererData.swapchain,VulkanContext::s_RendererData.renderPass);
+         m_Framebuffers = CreateFramebuffers(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.swapchain,VulkanRenderer::s_RendererData.renderPass);
 
     }
 }

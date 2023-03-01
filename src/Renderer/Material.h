@@ -3,6 +3,8 @@
 #include <Core/Buffer.h>
 #include <Core/UUID.h>
 #include <Renderer/Shader.h>
+#include "Texture.h"
+
 namespace FikoEngine {
     class Material : public RefCounted {
     public:
@@ -34,8 +36,9 @@ namespace FikoEngine {
 
         virtual void Set(const std::string &name, const glm::mat4 &value) = 0;
 
-        //virtual void Set(const std::string& name, const Ref<Texture>& texture) = 0;
-        //virtual void Set(const std::string& name, const Ref<Texture>& texture, uint32_t arrayIndex) = 0;
+        virtual void Set(const std::string& name, const Ref<Texture>& texture) = 0;
+
+        virtual void Set(const std::string& name, const Ref<Texture>& texture, uint32_t arrayIndex) = 0;
 
         virtual float &GetFloat(const std::string &name) = 0;
 
@@ -55,15 +58,25 @@ namespace FikoEngine {
 
         virtual glm::mat4 &GetMatrix4(const std::string &name) = 0;
 
-        //virtual Ref<Texture> GetTexture(const std::string& name) = 0;
-        //virtual Ref<Texture> TryGetTexture(const std::string& name) = 0;
+        virtual Ref<Texture> GetTexture(const std::string& name) = 0;
+
+        virtual Ref<Texture> TryGetTexture(const std::string& name) = 0;
 
         virtual Ref<Shader> GetShader() = 0;
+
+        virtual void SetShader(Ref<Shader> shader) = 0;
 
         virtual const std::string &GetName() const = 0;
 
         virtual void UpdateForRendering() = 0;
 
         virtual Buffer &GetBuffer() = 0;
+
+        virtual void Reset() = 0;
+
+        virtual bool HasDiffuseTexture() = 0;
+        
+        virtual bool HasSpecularTexture() = 0;
+
     };
 }

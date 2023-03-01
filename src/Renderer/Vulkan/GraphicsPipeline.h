@@ -11,6 +11,7 @@ namespace FikoEngine{
                                       VkRenderPass renderPass,
                                       VkVertexInputBindingDescription bindingDescription,
                                       std::vector<VkVertexInputAttributeDescription> attributeDescriptions,
+                                      VkDescriptorSetLayout& descriptorSetLayout,
                                       std::string_view workingDir,
                                       std::string_view shaderPath);
     void BindGraphicsPipeline(RendererDataAPI*  rendererData,u32 imageIndex = {});

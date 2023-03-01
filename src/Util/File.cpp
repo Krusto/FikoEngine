@@ -9,7 +9,10 @@ namespace FikoEngine{
         this->m_Path = path;
         this->m_FileFormat = format;
     }
-
+    void File::Init(const char* path, FileFormat format){
+        m_Path = path;
+        m_FileFormat = format;
+    }
     std::vector<u8> FikoEngine::File::ReadBinaryData() {
         if(!m_Opened){
             std::fstream file(m_Path,std::ios::in | std::ios::binary);
@@ -30,24 +33,24 @@ namespace FikoEngine{
         }
         return {};
     }
-    auto FikoEngine::File::ReadTextData() {
+    std::string FikoEngine::File::ReadTextData() {
         if(!m_Opened){
             std::fstream file(m_Path,std::ios::in);
             if(file.good()) {
                 m_Opened = true;
             }else{
-                return std::vector<char>();
+                return std::string();
             }
             file.seekg(0, std::ios::end);
             size_t length = file.tellg();
             file.seekg(0, std::ios::beg);
-            std::vector<char> buffer(length);
-            file.read(buffer.data(), length);
+            std::string buffer;
+            buffer.resize(length);
+            file.read(&buffer[0], length);
             file.close();
             m_Opened = false;
-
             return buffer;
         }
-        return std::vector<char>();
+        return std::string();
     }
 }

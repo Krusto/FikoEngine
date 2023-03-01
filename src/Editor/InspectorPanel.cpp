@@ -6,10 +6,8 @@ namespace FikoEngine {
     void InspectorPanel::OnImGUIRender(Entity selectedEntity) {
         ImGui::Begin("Inspector");
         {
-
-
             if (selectedEntity.IsValid()) {
-                if (ImGui::BeginPopupContextWindow()) {
+                if (ImGui::BeginPopupContextWindow(nullptr, 1)) {
                     if (ImGui::BeginMenu("Add")) {
                         if (ImGui::MenuItem("Add Transform")) {
                             if (!selectedEntity.HasComponent<TransformComponent>())
@@ -28,6 +26,14 @@ namespace FikoEngine {
                             if (!selectedEntity.HasComponent<CameraComponent>())
                                 selectedEntity.AddComponent<CameraComponent>();
                         }
+                        if (ImGui::MenuItem("Add Light Component")) {
+                            if (!selectedEntity.HasComponent<LightComponent>())
+                                selectedEntity.AddComponent<LightComponent>();
+                        }
+                        if (ImGui::MenuItem("Add Texture Component")) {
+                            if (!selectedEntity.HasComponent<TextureComponent>())
+                                selectedEntity.AddComponent<TextureComponent>();
+                        }
                         ImGui::EndMenu();
                     }
                     ImGui::EndPopup();
@@ -36,6 +42,7 @@ namespace FikoEngine {
                 bool deleted = false;
                 bool opened = false;
                 if (selectedEntity.HasComponent<TagComponent>()) {
+                    ImGui::Separator();
                     ComponentView::ShowProperties(selectedEntity, selectedEntity.GetComponent<TagComponent>());
                 }
                 if (selectedEntity.HasComponent<TransformComponent>()) {
@@ -94,6 +101,7 @@ namespace FikoEngine {
                     }
                 }
                 if (selectedEntity.HasComponent<MeshComponent>()) {
+                    ImGui::Separator();
                     opened = ImGui::TreeNodeEx("Mesh Component",
                                                ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen);
                     if (ImGui::BeginPopupContextItem()) {
@@ -107,6 +115,42 @@ namespace FikoEngine {
                     }
                     if (deleted) {
                         selectedEntity.RemoveComponent<MeshComponent>();
+                        deleted = false;
+                    }
+                }
+                if (selectedEntity.HasComponent<LightComponent>()) {
+                    ImGui::Separator();
+                    opened = ImGui::TreeNodeEx("Light Component",
+                                               ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen);
+                    if (ImGui::BeginPopupContextItem()) {
+                        if (ImGui::MenuItem("Delete"))
+                            deleted = true;
+                        ImGui::EndPopup();
+                    }
+                    if (opened) {
+                        ComponentView::ShowProperties(selectedEntity, selectedEntity.GetComponent<LightComponent>());
+                        ImGui::TreePop();
+                    }
+                    if (deleted) {
+                        selectedEntity.RemoveComponent<LightComponent>();
+                        deleted = false;
+                    }
+                }
+                if (selectedEntity.HasComponent<TextureComponent>()) {
+                    ImGui::Separator();
+                    opened = ImGui::TreeNodeEx("Texture Component",
+                                               ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen);
+                    if (ImGui::BeginPopupContextItem()) {
+                        if (ImGui::MenuItem("Delete"))
+                            deleted = true;
+                        ImGui::EndPopup();
+                    }
+                    if (opened) {
+                        ComponentView::ShowProperties(selectedEntity, selectedEntity.GetComponent<TextureComponent>());
+                        ImGui::TreePop();
+                    }
+                    if (deleted) {
+                        selectedEntity.RemoveComponent<TextureComponent>();
                         deleted = false;
                     }
                 }

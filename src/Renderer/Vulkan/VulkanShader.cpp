@@ -7,7 +7,7 @@
 #include "VulkanShader.h"
 #include "../../Util/File.h"
 #include "Memory.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 #include "Renderer/Vertex.h"
 #include "GraphicsPipeline.h"
 #include <vulkan/vulkan.h>
@@ -38,13 +38,14 @@ namespace FikoEngine {
     VulkanShader::VulkanShader(const std::string &path) {
         m_Path = path;
         m_Pipeline = CreateGraphicsPipeline(
-                VulkanContext::s_RendererData.device,
-                VulkanContext::s_RendererData.swapchainSpec,
+                VulkanRenderer::s_RendererData.device,
+                VulkanRenderer::s_RendererData.swapchainSpec,
                 m_PipelineLayout,
-                VulkanContext::s_RendererData.renderPass,
+                VulkanRenderer::s_RendererData.renderPass,
                 Vertex::GetBindingDescription(),
                 Vertex::GetAttributeDescriptions(),
-                VulkanContext::s_RendererData.workingDir,
+                VulkanRenderer::s_RendererData.descriptorSetLayout,
+                VulkanRenderer::s_RendererData.workingDir,
                 m_Path);
     }
     std::unordered_map<std::string, ShaderBuffer> &VulkanShader::GetShaderBuffers() {
@@ -68,7 +69,7 @@ namespace FikoEngine {
     }
 
     void VulkanShader::Bind() {
-
+        VulkanRenderer::s_RendererData.currentShader = Ref<Shader>(this);
     }
 
     void VulkanShader::SetUniformBuffer(const std::string &name, const void *data, uint32_t size) {

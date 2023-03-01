@@ -1,5 +1,6 @@
 ﻿#include "Shader.h"
 #include "Renderer/Vulkan/VulkanShader.h"
+#include "Renderer/OpenGL/OpenGLShader.h"
 #include <Renderer/RendererAPI.h>
 namespace FikoEngine {
 
@@ -7,11 +8,10 @@ namespace FikoEngine {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanShader>::Create(path);
-                break;
+            case RendererAPI::API::OpenGL:
+                return Ref<OpenGLShader>::Create(path,false);
             default:
-                exit(-1);
-                break;
+                return nullptr;
         }
-        exit(-1);
     }
 }

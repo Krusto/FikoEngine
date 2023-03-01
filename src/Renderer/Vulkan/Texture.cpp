@@ -13,15 +13,4 @@ namespace FikoEngine {
 
     void VulkanTexture::Destroy(){}
 
-    uint32_t VulkanTexture::ID(){ return {};}
-
-    uint32_t VulkanTexture::width(){ return {};}
-
-    uint32_t VulkanTexture::height(){ return {};}
-
-    uint32_t VulkanTexture::channels(){ return {};}
-
-    TextureType VulkanTexture::GetType(){ return {};}
-
-    const TextureType VulkanTexture::GetType() const{ return {};}
 }

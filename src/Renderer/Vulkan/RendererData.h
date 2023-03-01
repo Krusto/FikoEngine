@@ -3,7 +3,6 @@
 //
 #pragma once
 #include <vulkan/vulkan.h>
-#include <GLFW/glfw3.h>
 #include <Core/Core.h>
 #include <Renderer/Renderer.h>
 #include <Renderer/RendererSpec.h>
@@ -30,13 +29,14 @@ namespace FikoEngine{
         Ref<Swapchain> swapchain;
         VkRenderPass renderPass;
 
-        Ref<VulkanShader> defaultShader;
+        Ref<Shader> currentShader;
         Ref<VulkanFramebuffer> framebuffer;
 
         VkCommandPool commandPool;
         std::vector<VkCommandBuffer> commandBuffers;
 
         u32 currentFrameIndex;
+        u32 currentImageIndex;
         u32 maxFramesInFlight = 2;
         std::vector<VkSemaphore> imageAvailableSemaphores;
         std::vector<VkSemaphore> renderFinishedSemaphores;
@@ -50,5 +50,6 @@ namespace FikoEngine{
 
         bool framebufferResized;
 
+        VkDescriptorSetLayout descriptorSetLayout;
     };
 }

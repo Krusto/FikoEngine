@@ -14,8 +14,18 @@ namespace FikoEngine{
     public:
         File() = default;
         File(const char* path,FileFormat format);
+
+    public:
+        void Init(const char* path,FileFormat format);
         std::vector<u8> ReadBinaryData();
-        auto ReadTextData();
+        std::string ReadTextData();
+
+    public:
+        enum class Type {
+            None = 0,
+            Directory,
+            Generic
+        };
     private:
         bool m_Opened{};
         FileFormat m_FileFormat;

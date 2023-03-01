@@ -1,12 +1,35 @@
 //
 // Created by Stoyanov, Krusto (K.S.) on 6/25/2022.
 //
+<<<<<<< HEAD
+#include "IndexBuffer.h"
+#include "VulkanRenderer.h"
+=======
 #include"VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VulkanContext.h"
 
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
 namespace FikoEngine{
+
+    VulkanIndexBuffer::VulkanIndexBuffer(const u32 *data, u32 length) {
+        m_Length = length;
+        m_Buffer = CreateIndexBuffer(VulkanRenderer::s_RendererData.physicalDevice,
+                                     VulkanRenderer::s_RendererData.device,
+                                     nullptr,
+                                     VulkanRenderer::s_RendererData.graphicsQueue,
+                                     VulkanRenderer::s_RendererData.commandPool,
+                                     data,
+                                     length);
+    }
+
+    void VulkanIndexBuffer::Bind() const {
+        vkCmdBindIndexBuffer(VulkanRenderer::s_RendererData.commandBuffers[VulkanRenderer::s_RendererData.currentFrameIndex],
+                             m_Buffer.buffer,
+                             0,
+                             VK_INDEX_TYPE_UINT32);
+    }
 
     Buffer CreateIndexBuffer(VkPhysicalDevice physicalDevice,
                              VkDevice device,

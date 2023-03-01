@@ -5,7 +5,7 @@
 #include "RendererAPI.h"
 #include "Window.h"
 
-#include "Vulkan/VulkanContext.h"
+#include "Vulkan/VulkanRenderer.h"
 #include "Vulkan/Instance.h"
 #include "Vulkan/PhysicalDevice.h"
 #include "Vulkan/Device.h"
@@ -25,6 +25,9 @@
 
 namespace FikoEngine {
 
+<<<<<<< HEAD
+/*
+=======
     void RendererAPI::Init(RendererSpec rendererSpec, ApplicationSpec applicationSpec) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
@@ -150,27 +153,24 @@ namespace FikoEngine {
         vkDestroyInstance(VulkanContext::s_RendererData.instance,nullptr);
     }
 
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
     void RendererAPI::ResizeFramebuffer(ViewportSize size) {
-        VulkanContext::s_RendererData.framebufferResized = false;
-        VulkanContext::s_RendererData.swapchainSpec.imageExtent = VkExtent2D{size.width,size.height};
-        VulkanContext::s_RendererData.swapchainSpec.frameSize = ViewportSize{size.width,size.height};
+        VulkanRenderer::s_RendererData.framebufferResized = false;
+        VulkanRenderer::s_RendererData.swapchainSpec.imageExtent = VkExtent2D{size.width,size.height};
+        VulkanRenderer::s_RendererData.swapchainSpec.frameSize = ViewportSize{size.width,size.height};
 
-        VulkanContext::s_RendererData.swapchain->Recreate();
+        VulkanRenderer::s_RendererData.swapchain->Recreate();
 
-        vkDestroyRenderPass(VulkanContext::s_RendererData.device,VulkanContext::s_RendererData.renderPass,nullptr);
-        VulkanContext::s_RendererData.renderPass = CreateRenderPass(VulkanContext::s_RendererData.swapchainSpec);
+        vkDestroyRenderPass(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.renderPass,nullptr);
+        VulkanRenderer::s_RendererData.renderPass = CreateRenderPass(VulkanRenderer::s_RendererData.swapchainSpec);
 
-        VulkanContext::s_RendererData.framebuffer->Resize(size.width,size.height);
-    }
-
-    void RendererAPI::ClearColor(glm::vec4 color) {
-        //TODO
+        VulkanRenderer::s_RendererData.framebuffer->Resize(size.width,size.height);
     }
 
     void RendererAPI::InitImGUI() {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
-                VulkanContext::InitImGUI();
+                VulkanRenderer::InitImGUI();
                 break;
             default:
                 exit(-1);
@@ -181,7 +181,7 @@ namespace FikoEngine {
     void RendererAPI::SetActiveWindow(Window *window) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
-                VulkanContext::s_RendererData.window = window->getHandle();
+                VulkanRenderer::s_RendererData.window = window->getHandle();
                 break;
             default:
                 exit(-1);
@@ -192,5 +192,6 @@ namespace FikoEngine {
     void RendererAPI::AddMaterial(Ref<Material> material) {
         RendererAPI::s_Materials.try_emplace(material->GetName(),material);
     }
+*/
 
 }

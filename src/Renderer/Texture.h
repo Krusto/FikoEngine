@@ -7,7 +7,11 @@ namespace FikoEngine {
     enum class TextureType {
         None, Texture2D, TextureCube
     };
-
+    enum class TextureState{
+        None = 0,
+        Loaded,
+        Unloaded
+    };
     class Texture : public RefCounted {
     public:
         static Ref<Texture> Create(std::string_view Path);
@@ -22,16 +26,30 @@ namespace FikoEngine {
 
         virtual void Destroy() = 0;
 
-        virtual uint32_t ID() = 0;
+        std::string GetName() { return m_Name; };
 
-        virtual uint32_t width() = 0;
+        TextureState GetState() { return m_State;};
 
-        virtual uint32_t height() = 0;
+        void SetState(TextureState state) { m_State = state; }
 
-        virtual uint32_t channels() = 0;
+        uint32_t &ID() { return m_id; };
 
-        virtual TextureType GetType() = 0;
+        uint32_t width() { return m_width; }
 
-        virtual const TextureType GetType() const = 0;
+        uint32_t height() { return m_height; }
+
+        uint32_t channels() { return m_channels; }
+
+        TextureType GetType() { return TextureType::Texture2D; }
+
+        const TextureType GetType() const { return TextureType::Texture2D; };
+
+    protected:
+        std::string m_Name;
+        TextureState m_State = TextureState::Unloaded;
+        uint32_t m_id;
+        int m_width;
+        int m_height;
+        int m_channels;
     };
 }

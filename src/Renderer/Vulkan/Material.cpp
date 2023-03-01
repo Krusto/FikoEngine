@@ -212,4 +212,16 @@ namespace FikoEngine {
         }*/
 
     }
+
+    Ref<Texture> VulkanMaterial::GetTexture(const std::string &name) {
+        auto decl = FindResourceDeclaration(name);
+        assert(decl);// "Could not find uniform with name 'x'");
+        uint32_t slot = decl->GetRegister();
+        assert((slot < m_Textures.size()));// "Texture slot is invalid");
+        return m_Textures[slot];
+    }
+
+    Ref<Texture> VulkanMaterial::TryGetTexture(const std::string &name) {
+        return TryGetResource<Texture>(name);
+    }
 }

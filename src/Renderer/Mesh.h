@@ -6,6 +6,7 @@
 
 namespace FikoEngine {
     enum class MeshType {
+        Cube,
         Quad,
         Triangle,
         Custom,
@@ -14,18 +15,16 @@ namespace FikoEngine {
 
     static inline std::string MeshTypeToString(MeshType type) {
         switch (type) {
+            case MeshType::Cube:
+                return "Cube";
             case MeshType::Quad:
                 return "Quad";
-                break;
             case MeshType::Triangle:
                 return "Triangle";
-                break;
             case MeshType::Custom:
                 return "Custom";
-                break;
             case MeshType::None:
                 return "None";
-                break;
         }
         return "Unknown";
     }
