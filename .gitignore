@@ -417,3 +417,4 @@ CMakeDoxyfile.in
 CMakeDoxygenDefaults.cmake
 CMakeFiles/*
 cmake_install.cmake
+.idea
