@@ -23,7 +23,11 @@ namespace FikoEngine {
     protected:
         Ref<VertexBuffer> m_VertexBuffer;
         Ref<IndexBuffer> m_IndexBuffer;
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
         uint32_t m_ID{};
     };
 }

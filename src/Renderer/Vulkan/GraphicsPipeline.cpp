@@ -141,7 +141,14 @@ namespace FikoEngine{
         /*
         Validation Error: [ VUID-VkSwapchainCreateInfoKHR-surface-01270 ] Object 0: handle = 0x1a30f492ad0, type = VK_OBJECT_TYPE_DEVICE; | MessageID = 0xa183744d | vkCreateSwapchainKHR(): pCreateInfo->surface is not known at this time to be supported for presentation by this device. The vkGetPhysicalDeviceSurfaceSupportKHR() must be called beforehand, and it must return VK_TRUE support with this surface for at least one queue family of this device. The Vulkan spec states: surface must be a surface that is supported by the device as determined using vkGetPhysicalDeviceSurfaceSupportKHR (https://vulkan.lunarg.com/doc/view/1.2.170.0/windows/1.2-extensions/vkspec.html#VUID-VkSwapchainCreateInfoKHR-surface-01270)
         */
+<<<<<<< HEAD
 
+=======
+        vertexInputInfo.vertexBindingDescriptionCount = 1;
+        vertexInputInfo.vertexAttributeDescriptionCount = static_cast<u32>(attributeDescriptions.size());
+        vertexInputInfo.pVertexBindingDescriptions = &bindingDescription;
+        vertexInputInfo.pVertexAttributeDescriptions = attributeDescriptions.data();
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
         VK_CHECK(vkCreateGraphicsPipelines(device,VK_NULL_HANDLE,1,&pipelineInfo,nullptr,&pipeline));
 

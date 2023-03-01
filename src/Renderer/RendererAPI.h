@@ -9,10 +9,18 @@
 #include "RendererSpec.h"
 #include "Viewport.h"
 #include "Renderer.h"
+<<<<<<< HEAD
 
 namespace FikoEngine {
 
 class VertexArray;
+=======
+#include "Material.h"
+namespace FikoEngine {
+
+class Entity;
+///Class interfacing the renderer with the api
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 class RendererAPI {
 public:
     enum API{
@@ -39,5 +47,21 @@ public:
     virtual void DrawIndexed(Ref<VertexArray>& va) = 0;
     virtual void DrawQuad2D(glm::vec2 position, glm::vec2 size, glm::vec3 color) = 0;
 
+<<<<<<< HEAD
+=======
+    static void Init(FikoEngine::RendererSpec rendererSpec, ApplicationSpec applicationSpec);
+    static void InitImGUI();
+    static void Destroy();
+
+    static void ResizeFramebuffer(ViewportSize size);
+    static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
+    static void SetActiveWindow(Window* window);
+    static void AddMaterial(Ref<Material> material);
+
+    static void Draw(Entity entity);
+
+private:
+    inline static std::unordered_map<std::string_view,Ref<Material>> s_Materials;
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 };
 }

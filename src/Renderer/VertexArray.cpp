@@ -15,6 +15,7 @@ namespace FikoEngine {
                 return nullptr;
         }
     }
+<<<<<<< HEAD
 
     void VertexArray::AddVertexBuffer(Ref<VertexBuffer> vertexBuffer) {
         Bind();
@@ -24,4 +25,14 @@ namespace FikoEngine {
     void VertexArray::AddIndexBuffer(Ref<IndexBuffer> indexBuffer) {
         m_IndexBuffer = indexBuffer;
     }
+=======
+    void VertexArray::AddVertexBuffer(Ref<VertexBuffer> vertexBuffer){
+        m_VertexBuffer = vertexBuffer;
+    }
+
+    void VertexArray::AddIndexBuffer(Ref<IndexBuffer> indexBuffer){
+    m_IndexBuffer = indexBuffer;
+    }
+
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 }

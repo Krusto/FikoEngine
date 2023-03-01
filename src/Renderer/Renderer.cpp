@@ -12,6 +12,7 @@
 #include <iostream>
 
 namespace FikoEngine {
+<<<<<<< HEAD
     static RendererAPI *s_RendererAPI = nullptr;
 
     static RendererAPI *InitRendererAPI() {
@@ -22,16 +23,42 @@ namespace FikoEngine {
                 return new VulkanRenderer();
         }
         return nullptr;
+=======
+    void Renderer::Init(RendererSpec rendererSpec,ApplicationSpec applicationSpec) {
+        Renderer::s_RendererSpec = rendererSpec;
+        RendererAPI::Init(rendererSpec, applicationSpec);
+    }
+    void Renderer::Draw(){
+        RendererAPI::Draw({});
+    }
+    void Renderer::Destroy(){
+        RendererAPI::Destroy();
+    }
+    void Renderer::ResizeFramebuffer(ViewportSize size){
+        RendererAPI::ResizeFramebuffer(size);
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
     }
 
     RendererAPI *Renderer::GetAPI(){
         return s_RendererAPI;
     }
 
+<<<<<<< HEAD
     void Renderer::Init(RendererSpec& rendererSpec, ApplicationSpec applicationSpec) {
         s_RendererAPI = InitRendererAPI();
 
         s_RendererAPI->Init(rendererSpec,applicationSpec);
+=======
+    void Renderer::SubmitEntity(Entity entity, Ref<Camera> camera) {
+    }
+
+    void Renderer::AddMaterial(Ref<Material> material){
+        RendererAPI::AddMaterial(material);
+    }
+
+    void Renderer::Flush() {
+        //TODO
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
     }
 
     void Renderer::InitImGUI() {
@@ -45,6 +72,7 @@ namespace FikoEngine {
         s_RendererAPI->DrawIndexed(va);
     }
 
+<<<<<<< HEAD
     void Renderer::DrawMesh(Mesh &mesh) {
         auto va = VertexArray::Create((uint32_t) mesh.indices.size());
         va->Bind();
@@ -114,4 +142,10 @@ namespace FikoEngine {
             }
         });
     }
+=======
+    void Renderer::DrawEntity(Entity entity) {
+        RendererAPI::Draw(entity);
+    }
+
+>>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 }
