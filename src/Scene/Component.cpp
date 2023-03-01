@@ -12,20 +12,11 @@ namespace FikoEngine {
         DrawableComponent output;
         output.va = VertexArray::Create((uint32_t) mesh.indices.size());
         output.va->Bind();
-<<<<<<< HEAD
 
         output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
 //        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
         output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
 //        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
-=======
-        auto vb = VertexBuffer::Create(Vertex::GetLayout(), (float *) mesh.vertices.data(),
-                                       (uint32_t) mesh.vertices.size());
-        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
-
-        output.va->AddVertexBuffer(vb);
-        output.va->AddIndexBuffer(ib);
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
         output.va->Unbind();
 
@@ -40,19 +31,11 @@ namespace FikoEngine {
 
         output.va = VertexArray::Create((uint32_t) mesh.indices.size());
         output.va->Bind();
-<<<<<<< HEAD
 
         output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
         output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
 //        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
 //        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
-=======
-        Ref<VertexBuffer> vb = Ref<VulkanVertexBuffer>::Create(Vertex::GetLayout(),  (float *) &mesh.vertices[0], (u32) mesh.vertices.size());
-        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
-
-        output.va->AddVertexBuffer(vb);
-        output.va->AddIndexBuffer(ib);
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
         output.va->Unbind();
 

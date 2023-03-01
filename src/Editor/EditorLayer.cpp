@@ -10,7 +10,7 @@
 
 namespace FikoEngine {
     EditorLayer::EditorLayer(ApplicationSpec spec) {
-        m_Name = "Editor";
+        m_Name = "Editor Layer";
         m_AppSpec = spec;
     }
 
@@ -23,11 +23,7 @@ namespace FikoEngine {
         m_Framebuffer = Framebuffer::Create(window->GetSpec().width,window->GetSpec().height);
         m_Framebuffer->Bind();
 
-<<<<<<< HEAD
         std::vector<std::string> shader_materials = {"BlinnPhongTextured","BlinnPhongDiffuseTextured","BlinnPhongFlat","Light"};
-=======
-        m_CurrentScene->AddShader("FlatShader", Shader::Load("./assets/flat2D"));
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
         for(auto& name : shader_materials){
             m_CurrentScene->AddShader(name,Shader::Load(m_AppSpec.WorkingDirectory+"/assets/Shaders/"+name));
@@ -64,7 +60,6 @@ namespace FikoEngine {
         m_CurrentScene->FindEntity("EditorCamera").GetComponent<TransformComponent>().size = { 0.2,0.2,0.2};
         m_CurrentScene->FindEntity("EditorCamera").GetComponent<CameraComponent>().primary = true;
 
-<<<<<<< HEAD
         auto light = m_CurrentScene->AddEntity("Light Source")
                 .AddComponent<TransformComponent>()
                 .AddComponent<MeshComponent>()
@@ -91,16 +86,6 @@ namespace FikoEngine {
         entity.GetComponent<MaterialComponent>().isLightDependent = true;
         entity.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("BlinnPhongFlat");
         entity.GetComponent<MeshComponent>() = MeshComponent::Generate(entity, MeshType::Cube);
-=======
-        auto testObject = m_CurrentScene->AddEntity("Test Object");
-        testObject.AddComponent<MeshComponent>();
-        testObject.AddComponent<MaterialComponent>();
-        testObject.AddComponent<TransformComponent>();
-
-        testObject.GetComponent<MeshComponent>() = MeshComponent::Generate(testObject, MeshType::Quad);
-        testObject.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("example_material");
-
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
     }
 
     void EditorLayer::OnAttach() {
@@ -132,13 +117,9 @@ namespace FikoEngine {
 
             for (auto &drawable: m_CurrentScene->GetEntitiesWith<MeshComponent>()) {
                 Entity entity = {drawable, m_CurrentScene};
-<<<<<<< HEAD
                 //entity.GetComponent<MaterialComponent>().material->GetShader()->Bind();
                 //Renderer::DrawIndexed(entity.GetComponent<MeshComponent>().GetVA());
                 Renderer::SubmitEntity(entity, primaryCamera.GetComponent<CameraComponent>().camera);
-=======
-                Renderer::DrawEntity(entity);
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
             }
 
             Renderer::Flush();

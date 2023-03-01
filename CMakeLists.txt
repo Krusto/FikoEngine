@@ -1,14 +1,22 @@
 cmake_minimum_required(VERSION 3.21)
-project(FIKO_ENGINE)
 
-#add_subdirectory(Vendor/glm)
-add_subdirectory(Vendor/glfw)
-add_subdirectory(Vendor/assimp)
-#add_subdirectory(Vendor/VulkanMemoryAllocator)
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/scripts/vcpkg-master/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/scripts/vcpkg-master/installed/x64-windows/share")
+
+project(FIKO_ENGINE)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_GENERATOR_PLATFORM x64)
 message("Compiler Version: ${CMAKE_CXX_COMPILER_VERSION}")
+
+message("Finding assimp...")
+find_package(assimp REQUIRED)
+message("Finding glfw3...")
+find_package(glfw3 CONFIG REQUIRED)
+
+#add_subdirectory(Vendor/glfw)
+
+message("Done")
 
 add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
 add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
@@ -36,7 +44,7 @@ foreach (TMP_PATH ${HEADER_FILES})
     endif ()
 endforeach(TMP_PATH)
 
-add_compile_definitions(ASSIMP_BUILD_NO_OPENGEX_IMPORTER)
+#add_compile_definitions(ASSIMP_BUILD_NO_OPENGEX_IMPORTER)
 
 add_executable(FikoEngine ${SOURCE_FILES} ${HEADER_FILES})
 
@@ -51,7 +59,7 @@ endif()
     include_directories(FIKO_ENGINE Vendor/lwlog/lwlog/src)
 #endif()
 
-set(ASSIMP_INCLUDE_DIR 	       "./vendor/assimp")
+#set(ASSIMP_INCLUDE_DIR 	       "./vendor/assimp")
 set(GLFW_INCLUDE_DIR           "./vendor/glfw/include")
 set(GLAD_INCLDUE_DIR           "./vendor/glad/include")
 set(VULKAN_INCLUDE_DIR         "C:/VulkanSDK/1.3.216.0/Include")
@@ -64,7 +72,7 @@ file(GLOB_RECURSE GLM_SOURCES ${GLM_INCLUDE_DIR}/glm/*.cpp)
 file(GLOB_RECURSE GLM_HEADER ${GLM_INCLUDE_DIR}/glm/*.cpp)
 file(GLOB_RECURSE GLM_INLINE ${GLM_INCLUDE_DIR}/glm/*.cpp)
 
-add_library(imgui SHARED ${IMGUI_SOURCE_FILES} ${IMGUI_HEADER_FILES})
+add_library(imgui STATIC ${IMGUI_SOURCE_FILES} ${IMGUI_HEADER_FILES})
 add_library(glad SHARED ${GLAD_SOURCE_FILES} ${GLAD_HEADER_FILES})
 add_library(glm SHARED ${GLM_SOURCES} ${GLM_HEADER} ${GLM_INLINE})
 
@@ -90,10 +98,10 @@ target_link_libraries(imgui PRIVATE C:/VulkanSDK/1.3.216.0/Lib/vulkan-1.lib)
 target_link_libraries(imgui PRIVATE glfw)
 target_link_libraries(imgui PRIVATE glad)
 
-target_link_libraries(FikoEngine PRIVATE glm)
 target_link_libraries(FikoEngine PRIVATE C:/VulkanSDK/1.3.216.0/Lib/vulkan-1.lib)
+target_link_libraries(FikoEngine PRIVATE glm)
 target_link_libraries(FikoEngine PRIVATE glfw)
-target_link_libraries(FikoEngine PRIVATE assimp)
+target_link_libraries(FikoEngine PRIVATE assimp::assimp)
 target_link_libraries(FikoEngine PRIVATE imgui)
 target_link_libraries(FikoEngine PRIVATE glad)
 #target_link_libraries(FikoEngine VulkanMemoryAllocator)

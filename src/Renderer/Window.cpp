@@ -62,6 +62,11 @@ Window::Window(WindowSpec& spec) {
             break;
     }
 
+    int major,minor,rev;
+    glfwGetVersion(&major,&minor,&rev);
+
+    std::cout<<"GLFW VERSION:" << major<<"."<<minor<<"."<<rev<<'\n';
+
     s_Window = glfwCreateWindow(spec.width,spec.height,spec.title.c_str(),nullptr,nullptr);
     if (this->Good())
     {

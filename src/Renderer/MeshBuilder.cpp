@@ -6,15 +6,9 @@ namespace FikoEngine {
         Mesh output;
 
         output.vertices = std::vector<Vertex>({
-<<<<<<< HEAD
                                                       Vertex{glm::vec3{-0.5,-0.5,0},glm::vec3{0,1,0},glm::vec2{0,0} },
                                                       Vertex{glm::vec3{ 0.5, 0,0},glm::vec3{0,1,0},glm::vec2{0,0} },
                                                       Vertex{glm::vec3{ 0.5,-0.5,0},glm::vec3{0,1,0},glm::vec2{0,0} }
-=======
-                                                      Vertex{glm::vec3{-0.5, -0.5, 0}, glm::vec3{0, 1, 0}}, //glm::vec2{0, 0}},
-                                                      Vertex{glm::vec3{ 0.5,    0, 0}, glm::vec3{0, 1, 0}}, //glm::vec2{0, 0}},
-                                                      Vertex{glm::vec3{ 0.5, -0.5, 0}, glm::vec3{0, 1, 0}}, //glm::vec2{0, 0}}
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
                                               });
         output.indices = { 2,3,0 };
 
@@ -26,17 +20,10 @@ namespace FikoEngine {
         Mesh output;
 
         output.vertices = std::vector<Vertex>({
-<<<<<<< HEAD
                                                       Vertex{glm::vec3{-0.5,-0.5,0},glm::vec3{0,1,0},glm::vec2{0,0} },
                                                       Vertex{glm::vec3{-0.5, 0.5,0},glm::vec3{0,1,0},glm::vec2{0,1} },
                                                       Vertex{glm::vec3{ 0.5, 0.5,0},glm::vec3{0,1,0},glm::vec2{1,1} },
                                                       Vertex{glm::vec3{ 0.5,-0.5,0},glm::vec3{0,1,0},glm::vec2{1,0} }
-=======
-                                                      Vertex{glm::vec3{-0.5, -0.5, 0}, glm::vec3{0, 1, 0}},//,glm::vec2{0, 0}},
-                                                      Vertex{glm::vec3{-0.5,  0.5, 0}, glm::vec3{0, 1, 0}},//glm::vec2{0, 0}},
-                                                      Vertex{glm::vec3{ 0.5,  0.5, 0}, glm::vec3{0, 1, 0}},//glm::vec2{0, 0}},
-                                                      Vertex{glm::vec3{ 0.5, -0.5, 0}, glm::vec3{0, 1, 0}},//glm::vec2{0, 0}}
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
                                               });
         output.indices = { 0,1,2,2,3,0 };
 

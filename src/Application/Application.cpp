@@ -29,7 +29,6 @@ bool FikoEngine::Application::Run() {
         layer.second->Init(m_Window);
     }
 
-    bool shouldExit = 0;
     float dt = 0,before = 0,after = 0;
     while (!m_Window->ShouldClose()) {
         imguiLayer->Begin();
@@ -55,8 +54,10 @@ bool FikoEngine::Application::Run() {
         layer.second->Destroy();
     }
 
-    LayerStack::PopLayer("Editor");
-    LayerStack::PopLayer("IMGUI LAYER");
+    LayerStack::PopLayer("Editor Layer");
+    LayerStack::PopLayer("ImGui Layer");
+
+    Renderer::Shutdown();
 
     glfwDestroyWindow(m_Window->GetHandle());
     glfwTerminate();

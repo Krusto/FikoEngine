@@ -6,7 +6,7 @@
 namespace FikoEngine {
     class ImGUILayer : public FikoEngine::Layer {
     public:
-        ImGUILayer(ApplicationSpec) { m_Name = "ImGUILayer"; }
+        ImGUILayer(ApplicationSpec) { m_Name = "ImGui Layer"; }
 
         void Init(Ref<Window> window) override;
 

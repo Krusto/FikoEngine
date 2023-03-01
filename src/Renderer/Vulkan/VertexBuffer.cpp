@@ -2,11 +2,7 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/24/2022.
 //
 #include"VertexBuffer.h"
-<<<<<<< HEAD
 #include "VulkanRenderer.h"
-=======
-#include "VulkanContext.h"
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
 namespace FikoEngine{
 
@@ -54,19 +50,11 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
 
     VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, float *data,
                                            uint32_t length) {
-<<<<<<< HEAD
         m_Buffer = CreateVertexBuffer(VulkanRenderer::s_RendererData.physicalDevice,
                                       VulkanRenderer::s_RendererData.device,
                                       nullptr,
                                       VulkanRenderer::s_RendererData.graphicsQueue,
                                       VulkanRenderer::s_RendererData.commandPool,
-=======
-        m_Buffer = CreateVertexBuffer(VulkanContext::s_RendererData.physicalDevice,
-                                      VulkanContext::s_RendererData.device,
-                                      nullptr,
-                                      VulkanContext::s_RendererData.graphicsQueue,
-                                      VulkanContext::s_RendererData.commandPool,
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
                                       (Vertex*)data,
                                       layout,
                                       length);
@@ -75,19 +63,11 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
 
     VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, Vertex *data,
                                            uint32_t length) {
-<<<<<<< HEAD
         m_Buffer = CreateVertexBuffer(VulkanRenderer::s_RendererData.physicalDevice,
                                       VulkanRenderer::s_RendererData.device,
                                       nullptr,
                                       VulkanRenderer::s_RendererData.graphicsQueue,
                                       VulkanRenderer::s_RendererData.commandPool,
-=======
-        m_Buffer = CreateVertexBuffer(VulkanContext::s_RendererData.physicalDevice,
-                                      VulkanContext::s_RendererData.device,
-                                      nullptr,
-                                      VulkanContext::s_RendererData.graphicsQueue,
-                                      VulkanContext::s_RendererData.commandPool,
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
                                       data,
                                       layout,
                                       length);
@@ -97,11 +77,7 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
     void VulkanVertexBuffer::Bind() const {
         VkDeviceSize offsets[] = {0};
         vkCmdBindVertexBuffers(
-<<<<<<< HEAD
                 VulkanRenderer::s_RendererData.commandBuffers[VulkanRenderer::s_RendererData.currentFrameIndex],
-=======
-                VulkanContext::s_RendererData.commandBuffers[VulkanContext::s_RendererData.currentFrameIndex],
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
                 0,
                 1,
                 &m_Buffer.buffer,

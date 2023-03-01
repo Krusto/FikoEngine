@@ -28,8 +28,7 @@ public:
     Renderer() = default;
     static void Init(RendererSpec& rendererSpec, ApplicationSpec applicationSpec);
     static void InitImGUI();
-<<<<<<< HEAD
-    static void Shutdown() {}
+    static void Shutdown();
     static void BeginFrame() {};
     static void EndFrame() {};
     static void ClearColor(glm::vec4 color);
@@ -38,16 +37,6 @@ public:
     static void DrawMaterialMesh(Mesh mesh, Ref<Material> material);
     static Ref<GraphicsContext> CreateGraphicsContext(GLFWwindow* handle);
     static RendererAPI* GetAPI();
-=======
-    static void Draw();
-    static void DrawEntity(Entity entity);
-    static void Destroy();
-    static void ResizeFramebuffer(ViewportSize size);
-    static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
-    static void SubmitEntity(Entity entity, Ref<Camera> camera);
-    static void Flush();
-    static void SetActiveWindow(Window* window);
->>>>>>> 4336de227144d7684ff5a4dc60e689d80c1bb650
 
     static void SubmitEntity(Entity entity, Ref<Camera> camera);
 
