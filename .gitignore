@@ -418,3 +418,4 @@ CMakeDoxygenDefaults.cmake
 CMakeFiles/*
 cmake_install.cmake
 .idea
+.cmake
