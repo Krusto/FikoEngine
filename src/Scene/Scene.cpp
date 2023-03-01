@@ -114,4 +114,21 @@ namespace FikoEngine {
     void Scene::AddShader(std::string_view name, Ref<Shader> shader) {
         m_ShaderLibrary.try_emplace(std::string(name), shader);
     }
+
+    Ref<Texture> Scene::GetTexture(std::string_view name)
+    {
+        if(m_TextureLibrary.contains(name.data()))
+            return m_TextureLibrary.at(name.data());
+        return Ref<Texture>();
+    }
+
+    void Scene::AddTexture(std::string_view name, Ref<Texture> texture)
+    {
+        m_TextureLibrary.try_emplace(std::string(name), texture);
+    }
+
+    void Scene::RemoveTexture(std::string_view name)
+    {
+        GetTexture(name)->Destroy();
+    }
 }

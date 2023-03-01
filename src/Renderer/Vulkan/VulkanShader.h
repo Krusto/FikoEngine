@@ -58,6 +58,8 @@ namespace FikoEngine{
         const VkPipelineLayout& getPipelineLayout() const { return m_PipelineLayout; }
         VkPipelineLayout& getPipelineLayout() { return m_PipelineLayout; }
 
+        virtual void AddResource(std::string_view name, ShaderResourceDeclaration resource) override{};
+
     private:
         std::unordered_map<std::string, ShaderBuffer> m_Buffers;
 

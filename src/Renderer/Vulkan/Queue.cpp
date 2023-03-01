@@ -2,7 +2,7 @@
 // Created by Stoyanov, Krusto (K.S.) on 6/7/2022.
 //
 #include "Queue.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 #include <vector>
 namespace FikoEngine {
     u32 SelectQueueFamily(VkPhysicalDevice physicalDevice) {
@@ -29,7 +29,7 @@ namespace FikoEngine {
         submitInfo.pWaitDstStageMask = waitStages;
 
         submitInfo.commandBufferCount = 1;
-        submitInfo.pCommandBuffers = &VulkanContext::s_RendererData.commandBuffers[index];
+        submitInfo.pCommandBuffers = &VulkanRenderer::s_RendererData.commandBuffers[index];
 
         VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[index]};
         submitInfo.signalSemaphoreCount = 1;

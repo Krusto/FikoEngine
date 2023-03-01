@@ -12,5 +12,8 @@
 #include <Windows.h>
 #endif
 #include "Log.h"
+#include <vulkan/vulkan.h>
 
-#define VK_CHECK(x) assert(VK_SUCCESS == x)
+void VK_CHECK(auto x) {
+    assert(VK_SUCCESS == x);
+}

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <entt/entt.hpp>
 #include <Core/Ref.h>
 #include <Scene/Component.h>

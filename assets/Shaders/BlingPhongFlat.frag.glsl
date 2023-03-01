@@ -28,8 +28,6 @@ layout(location = 0) in Material material;
 layout(location = 4) in Light light;
 layout(location = 9) in VertexData vertexData;
 
-layout(binding = 0) uniform sampler2D diffuseTexture;
-layout(binding = 1) uniform sampler2D specularTexture;
 void main()
 {
 
@@ -51,7 +49,7 @@ void main()
     // specular color
     vec3 specular =  light.specular * (spec * material.specular);  
         
-    vec3 outColor = vec3(1,1,1);//light.intensity * (specular + diffuse + ambient);
+    vec3 outColor = light.intensity * (specular + diffuse + ambient);
 
     FragColor = vec4(outColor,1.0);
 }

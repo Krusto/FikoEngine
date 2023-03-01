@@ -8,55 +8,69 @@
 #include "Editor/EditorLayer.h"
 #include "ImGUI/ImGUILayer.h"
 
-Ref<FikoEngine::Renderer> FikoEngine::Application::s_Renderer;
-
-void OnWindowClose(GLFWwindow* window){
-    FikoEngine::Application::ReadyToExit = true;
-}
-void OnWindowResize(GLFWwindow* window, i32 width, i32 height){
-    FikoEngine::Application::s_Renderer->ResizeFramebuffer({(u32)width,(u32)height});
-}
-bool FikoEngine::Application::ReadyToExit{};
+FikoEngine::Application FikoEngine::Application::s_Application;
 
 bool FikoEngine::Application::Run() {
     Logger::Init();
 
-    m_Window = Window::Create({"FIKO_ENGINE",1280,720});
-    m_Window->OnWindowClose(OnWindowClose);
-    m_Window->OnWindowResize(OnWindowResize);
+    m_Window = Window::Create({m_ApplicationSpec.ApplicationName,1280,720});
 
-    s_Renderer = Ref<Renderer>::Create();
-    m_ApplicationSpec.window = m_Window;
+    RendererSpec rendererSpec;
+    rendererSpec.SurfaceSize = {1280,720};
 
-    FikoEngine::RendererAPI::SetActiveWindow(m_Window);
-    s_Renderer->Init({m_Window->GetSpec().width,m_Window->GetSpec().height},m_ApplicationSpec);
-    //s_Renderer->InitImGUI();
+    Renderer::Init(rendererSpec,m_ApplicationSpec);
 
-    LayerStack::PushLayer(Ref<ImGUILayer>::Create());
-    LayerStack::PushLayer(Ref<EditorLayer>::Create());
+    auto imguiLayer = Ref<ImGUILayer>::Create(m_ApplicationSpec);
+    auto editorLayer = Ref<EditorLayer>::Create(m_ApplicationSpec);
+    LayerStack::PushLayer(editorLayer);
+    LayerStack::PushLayer(imguiLayer);
 
-    for(auto&[name,layer] : LayerStack::data())
-        layer->Init(m_Window);
-
-    while(!Application::ReadyToExit){
-        m_Window->Begin();
-
-        //static_cast<Ref<ImGUILayer>>(LayerStack::GetLayer("ImGUILayer"))->Begin();
-
-        for(auto&[name,layer] : LayerStack::data())
-            layer->OnUpdate(1.0);
-
-        //static_cast<Ref<ImGUILayer>>(LayerStack::GetLayer("ImGUILayer"))->End();
-
-        s_Renderer->Draw();
-
-        m_Window->End();
+    for (auto layer : LayerStack::data()) {
+        layer.second->Init(m_Window);
     }
+
+    bool shouldExit = 0;
+    float dt = 0,before = 0,after = 0;
+    while (!m_Window->ShouldClose()) {
+        imguiLayer->Begin();
+        for (auto& [layerName, layer] : LayerStack::data()) {
+            before = (float)glfwGetTime();
+            layer->OnImGuiDraw();
+            layer->OnUpdate(dt);
+            if (layer->ShouldExit()) {
+                glfwSetWindowShouldClose(m_Window->GetHandle(), GLFW_TRUE);
+                break;
+            }
+            after = (float)glfwGetTime();
+            dt = after - before;
+        }
+        imguiLayer->End();
+
+        m_Window->Update();
+    }
+
+    m_Window->Close();
+
+    for (auto& layer : LayerStack::data()) {
+        layer.second->Destroy();
+    }
+
+    LayerStack::PopLayer("Editor");
+    LayerStack::PopLayer("IMGUI LAYER");
+
+    glfwDestroyWindow(m_Window->GetHandle());
+    glfwTerminate();
+
+    m_Window.Reset();
 
     return true;
 }
 
+void FikoEngine::Application::Init(const FikoEngine::ApplicationSpec &spec) {
+    m_ApplicationSpec = spec;
+    m_ApplicationSpec.WorkingDirectory = std::filesystem::absolute(spec.WorkingDirectory).string();
+}
+
 void FikoEngine::Application::Destroy() {
-    s_Renderer->Destroy();
-    delete m_Window;
+    Renderer::Shutdown();
 }

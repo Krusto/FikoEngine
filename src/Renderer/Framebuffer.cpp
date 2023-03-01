@@ -1,5 +1,6 @@
 ﻿#include <Core/Ref.h>
 #include <Renderer/RendererAPI.h>
+#include <Renderer/OpenGL/OpenGLFramebuffer.h>
 #include <Renderer/Vulkan/Framebuffer.h>
 #include "Framebuffer.h"
 
@@ -8,11 +9,10 @@ namespace FikoEngine {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanFramebuffer>::Create(width,height);
-                break;
+            case RendererAPI::API::OpenGL:
+                return Ref<OpenGLFramebuffer>::Create(width,height);
             default:
-                assert(0);
+                return nullptr;
         }
-        assert(0);
-        return {};
     }
 }

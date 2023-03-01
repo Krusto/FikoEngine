@@ -7,92 +7,112 @@
 
 #include "GLFW/glfw3.h"
 #include "GLFW/glfw3native.h"
+
 #include "Vulkan/Memory.h"
 #include <vulkan/vulkan.h>
+
 #ifdef _WIN32
 #include <vulkan/vulkan_win32.h>
 #endif
 
+#include <Renderer/RendererAPI.h>
+
+void GLAPIENTRY
+MessageCallback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam )
+{
+    if(severity!=GL_DEBUG_SEVERITY_NOTIFICATION)
+        fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+                 ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
+                 type, severity, message );
+}
+
+
+void ErrorCallback(int, const char* err_str)
+{
+    std::cout << "GLFW Error: " << err_str << std::endl;
+}
+
 namespace FikoEngine {
-Window::Window(WindowSpec spec, int argc, char **argv) {
+Window::Window(WindowSpec& spec) {
+    this->spec = spec;
+
     if (!glfwInit()) {
         LOG_ERROR("GLFW CAN NOT INITALIZE!!!");
         exit(-1);
     }
 
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
-    this->m_Window = glfwCreateWindow(spec.width, spec.height, spec.title.data(), nullptr, nullptr);
-    glfwMakeContextCurrent(m_Window);
-    glfwSwapInterval(0);
-    glfwSetWindowShouldClose(m_Window, 0);
-    m_WindowSpec = spec;
-}
+    switch(RendererAPI::s_api){
+        case RendererAPI::API::OpenGL:
+            glfwWindowHint(GLFW_CLIENT_API,GLFW_OPENGL_API);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_ANY_PROFILE);
+            break;
+        case RendererAPI::API::Vulkan:
+            glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+            glfwWindowHint(GLFW_DOUBLEBUFFER, GL_FALSE);
+            break;
+        case RendererAPI::None:
+            break;
+    }
 
-Window *Window::Create(WindowSpec spec, int argc, char **argv) {
-    return new Window(spec, argc, argv);
-}
+    s_Window = glfwCreateWindow(spec.width,spec.height,spec.title.c_str(),nullptr,nullptr);
+    if (this->Good())
+    {
+        std::cout << "Failed to create GLFW window!\n";
+        glfwTerminate();
+        exit(-1);
+    }
 
-Window::~Window() {
-    glfwDestroyWindow(m_Window);
-}
+    glfwMakeContextCurrent(s_Window);
 
-void Window::Begin() {
-    glfwPollEvents();
+    GraphicsContext::s_Context = Renderer::CreateGraphicsContext(s_Window);
+    GraphicsContext::s_Context->Init();
+
+    switch(RendererAPI::s_api){
+        case RendererAPI::API::OpenGL:
+            glEnable              ( GL_DEBUG_OUTPUT );
+            glDebugMessageCallback( MessageCallback, 0 );
+            break;
+        default:
+            break;
+    }
+    glfwSetErrorCallback(ErrorCallback);
+    glfwSetWindowCloseCallback(this->s_Window,closeCallback);
+    glfwSetWindowSizeCallback(this->s_Window,windowSizeCallback);
+    glfwSetKeyCallback(this->s_Window,windowKeyCallback);
+    glfwSetCursorPosCallback(this->s_Window, windowMouseMoveCallback);
+//    glfwSetInputMode(this->s_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 void Window::Loop() {
-
-/*sf::Event event;
-while (m_Window.pollEvent(event)) {
-    switch (event.type) {
-    case sf::Event::EventType::MouseMoved:
-        (*this->onMouseMove)(mDT, event.mouseMove.x, event.mouseMove.y);
-        break;
-    case sf::Event::EventType::KeyPressed:
-        (*this->onKeyboard)(event.key.code , event.mouseMove.x,event.mouseMove.y);
-        break;
-    case sf::Event::EventType::Resized:
-        (*this->onWindowResize)(event.size.width, event.size.height);
-    case sf::Event::EventType::Closed:
-        this->m_Window.close();
-    }
+    this->spec.width = s_ViewportSize.width;
+    this->spec.height = s_ViewportSize.height;;
 }
 
-(*this->onRender)(mDT);*/
-
-}
-
-void Window::End() {
-}
-
-void Window::OnRender(void(*function)(Timestep &dt)) {
-}
-
-void Window::OnMouseMove(void(*function)(GLFWwindow *window, double xpos, double ypos)) {
-    glfwSetCursorPosCallback(this->m_Window, *function);
-}
-
-void Window::OnKeyboard(void(*function)(GLFWwindow *window, int key, int scancode, int action, int mods)) {
-    glfwSetKeyCallback(this->m_Window, function);
-}
-
-void Window::OnWindowResize(void(*function)(GLFWwindow *window, int width, int height)) {
-    glfwSetWindowSizeCallback(this->m_Window, function);
-}
-
-void Window::OnWindowClose(void(*function)(GLFWwindow *window)) {
-    glfwSetWindowCloseCallback(this->m_Window, function);
-}
 VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
     VkSurfaceKHR surface;
     #ifdef _WIN32
     VkWin32SurfaceCreateInfoKHR createInfo{};
     createInfo.sType = VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
-    createInfo.hwnd = glfwGetWin32Window(m_Window);
+    createInfo.hwnd = glfwGetWin32Window(s_Window);
     createInfo.hinstance = GetModuleHandle(nullptr);
     vkCreateWin32SurfaceKHR(instance,&createInfo,nullptr,&surface);
     #endif
     return surface;
 }
+
+    void Window::Update() {
+        GraphicsContext::s_Context->SwapBuffers();
+    }
+
+    void Window::Clear(float r, float g, float b, float a) {
+        Renderer::ClearColor(glm::vec4{ r,g,b,a });
+    }
 }

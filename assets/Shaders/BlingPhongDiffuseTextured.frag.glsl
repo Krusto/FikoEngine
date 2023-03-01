@@ -4,8 +4,8 @@ layout(location = 0) out vec4 FragColor;
 
 struct Material {
     float shininess;
-    vec3 ambient;
     vec3 specular;
+    vec3 ambient;
 }; 
   
 struct Light {
@@ -31,7 +31,7 @@ layout(binding = 0) uniform sampler2D diffuseTexture;
 void main()
 {
 
-    vec3 ambient = (light.ambient + material.ambient) * vec3(texture(diffuseTexture, vertexData.texCoord));
+    vec3 ambient  =  light.ambient + material.ambient;
 
   	vec3 norm = normalize(vertexData.vertNormal);
     vec3 lightDir = normalize(light.position - vertexData.worldPos);
@@ -44,12 +44,12 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess);
     
     // diffuse color
-    vec3 diffuse  = light.diffuse * (diff * vec3(texture(diffuseTexture, vertexData.texCoord)));  
+    vec3 diffuse  = light.diffuse * (diff * texture(vertexData.texCoord,diffuseTexture));  
     
     // specular color
-    vec3 specular =  light.specular * (spec * (vec3(1.0) - material.specular);  
+    vec3 specular =  light.specular * (spec * material.specular);  
         
-    vec3 outColor = vec3(1,1,1);//light.intensity * (specular + diffuse + ambient);
+    vec3 outColor = light.intensity * (specular + diffuse + ambient);
 
     FragColor = vec4(outColor,1.0);
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 #include <Core/Ref.h>
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 namespace FikoEngine {
 
@@ -16,7 +18,12 @@ namespace FikoEngine {
 
         uint32_t id() { return m_ID; }
 
+        void AddVertexBuffer(Ref<VertexBuffer> vertexBuffer);
+        void AddIndexBuffer(Ref<IndexBuffer> indexBuffer);
     protected:
+        Ref<VertexBuffer> m_VertexBuffer;
+        Ref<IndexBuffer> m_IndexBuffer;
+
         uint32_t m_ID{};
     };
 }

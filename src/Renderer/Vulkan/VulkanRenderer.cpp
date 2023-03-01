@@ -2,7 +2,7 @@
 // Created by Krusto on 21-Oct-22.
 //
 
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 #include "Instance.h"
 #include "PhysicalDevice.h"
 #include "Device.h"
@@ -13,10 +13,11 @@
 #include "imgui_impl_vulkan.h"
 #include "Renderpass.h"
 #include "Application/Application.h"
+#include "Queue.h"
 
 namespace FikoEngine{
 
-    void VulkanContext::Init(RendererSpec& rendererSpec, ApplicationSpec applicationSpec) {
+    void VulkanRenderer::Init(RendererSpec rendererSpec, ApplicationSpec applicationSpec) {
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
         s_RendererData.physicalDevice = SelectPhysicalDevice(&s_RendererData);
@@ -29,7 +30,7 @@ namespace FikoEngine{
         vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.graphicsQueue);
         vkGetDeviceQueue(s_RendererData.device, s_RendererData.queueFamilyIndex, 0, &s_RendererData.presentQueue);
 
-        s_RendererData.surface = Window()->CreateSurface(s_RendererData.instance);
+        s_RendererData.surface = Application::Get().WindowHandle()->CreateSurface(s_RendererData.instance);
 
         s_RendererData.commandPool = CreateCommandPool(s_RendererData.device,
                                                        s_RendererData.queueFamilyIndex);
@@ -37,14 +38,17 @@ namespace FikoEngine{
                                                              s_RendererData.commandPool,2);
 
         s_RendererData.swapchain = Ref<Swapchain>::Create();
-        s_RendererData.renderPass = CreateRenderPass(VulkanContext::s_RendererData.swapchain->GetSwapchainSpec());
+        s_RendererData.renderPass = CreateRenderPass(VulkanRenderer::s_RendererData.swapchain->GetSwapchainSpec());
 
         s_RendererData.imageAvailableSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.renderFinishedSemaphores = CreateSemaphores(&s_RendererData,s_RendererData.maxFramesInFlight);
         s_RendererData.inFlightFences = CreateFences(&s_RendererData,s_RendererData.maxFramesInFlight);
 
+        LOG("Renderer initialized!");
+
     }
-    void VulkanContext::InitImGUI() {
+    void VulkanRenderer::InitImGUI() {
+
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO &io = ImGui::GetIO();
@@ -124,43 +128,124 @@ namespace FikoEngine{
             style.Colors[ImGuiCol_WindowBg].w = 1.0f;
         }
 
-        VkDescriptorPoolSize pool_sizes[] =
-                {
-                        { VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
-                        { VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
-                        { VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
-                        { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
-                        { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
-                        { VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
-                };
-        VkDescriptorPoolCreateInfo pool_info = {};
-        pool_info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-        pool_info.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
-        pool_info.maxSets = 1000 * IM_ARRAYSIZE(pool_sizes);
-        pool_info.poolSizeCount = (uint32_t)IM_ARRAYSIZE(pool_sizes);
-        pool_info.pPoolSizes = pool_sizes;
-        VK_CHECK(vkCreateDescriptorPool(s_RendererData.device, &pool_info, nullptr, &s_ImGUI_Descriptorpool));
+        ImGui_ImplGlfw_InitForVulkan(GraphicsContext::s_Context->window, true);
 
-        ImGui_ImplGlfw_InitForVulkan(s_RendererData.window, true);
         ImGui_ImplVulkan_InitInfo init_info = {};
         init_info.Instance = s_RendererData.instance;
         init_info.PhysicalDevice = s_RendererData.physicalDevice;
         init_info.Device = s_RendererData.device;
         init_info.QueueFamily = s_RendererData.queueFamilyIndex;
         init_info.Queue = s_RendererData.graphicsQueue;
-        init_info.PipelineCache = VK_NULL_HANDLE;
-        init_info.DescriptorPool = s_ImGUI_Descriptorpool;
+        init_info.PipelineCache = NULL;
+        init_info.DescriptorPool = NULL;
         init_info.Subpass = 0;
         init_info.MinImageCount = s_RendererData.swapchain->FramesCount;
         init_info.ImageCount = s_RendererData.swapchain->FramesCount;
         init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
         init_info.Allocator = nullptr;
-        init_info.CheckVkResultFn = nullptr;
+        init_info.CheckVkResultFn = VK_CHECK;
         ImGui_ImplVulkan_Init(&init_info, s_RendererData.renderPass);
+
+    }
+
+    void VulkanRenderer::BeginFrame(){
+        WaitFence(VulkanRenderer::s_RendererData.inFlightFences,VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        VkResult result = SwapchainAcquireNextImage(VulkanRenderer::s_RendererData.swapchain,
+                                                    VulkanRenderer::s_RendererData.imageAvailableSemaphores[VulkanRenderer::s_RendererData.currentFrameIndex],
+                                                    VulkanRenderer::s_RendererData.currentImageIndex);
+
+        if (result == VK_ERROR_OUT_OF_DATE_KHR) {
+            uint32_t width,height;
+            glfwGetWindowSize(VulkanRenderer::s_RendererData.window,(int*)&width,(int*)&height);
+
+        }else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
+            throw std::runtime_error("failed to acquire swap chain image!");
+        }
+    }
+    void VulkanRenderer::EndFrame() {
+        ResetFence(VulkanRenderer::s_RendererData.inFlightFences, VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        QueueSubmit(VulkanRenderer::s_RendererData.graphicsQueue,
+                    VulkanRenderer::s_RendererData.imageAvailableSemaphores,
+                    VulkanRenderer::s_RendererData.renderFinishedSemaphores,
+                    VulkanRenderer::s_RendererData.inFlightFences,
+                    VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        VkResult result = QueuePresent(VulkanRenderer::s_RendererData.graphicsQueue,
+                              VulkanRenderer::s_RendererData.swapchain,
+                              VulkanRenderer::s_RendererData.renderFinishedSemaphores,
+                              VulkanRenderer::s_RendererData.inFlightFences,
+                              VulkanRenderer::s_RendererData.currentImageIndex,
+                              VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || VulkanRenderer::s_RendererData.framebufferResized) {
+            uint32_t width,height;
+            glfwGetWindowSize(VulkanRenderer::s_RendererData.window,(int*)&width,(int*)&height);
+        }
+
+        VulkanRenderer::s_RendererData.currentFrameIndex = (VulkanRenderer::s_RendererData.currentFrameIndex + 1) % VulkanRenderer::s_RendererData.maxFramesInFlight;
+    }
+    void VulkanRenderer::DrawIndexed(Ref<VertexArray>& va) {
+        BeginCommandBuffer(VulkanRenderer::s_RendererData.commandBuffers,
+                               VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        auto &swapchain = VulkanRenderer::s_RendererData.swapchain;
+
+        BeginRenderPass(VulkanRenderer::s_RendererData.commandBuffers,
+                            swapchain,
+                            imageIndex);
+
+        BindGraphicsPipeline(VulkanRenderer::s_RendererData.commandBuffers,
+                             VulkanRenderer::s_RendererData.currentShader,
+                             VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        VkViewport viewport{};
+        viewport.x = 0.0f;
+        viewport.y = 0.0f;
+        viewport.width = (float) swapchain->GetSwapchainSpec().frameSize.width;
+        viewport.height = (float) swapchain->GetSwapchainSpec().frameSize.height;
+        viewport.minDepth = 0.0f;
+        viewport.maxDepth = 1.0f;
+        vkCmdSetViewport(
+                VulkanRenderer::s_RendererData.commandBuffers[VulkanRenderer::s_RendererData.currentFrameIndex],
+                0, 1, &viewport);
+
+        VkRect2D scissor{};
+        scissor.offset = {0, 0};
+        scissor.extent = swapchain->GetSwapchainSpec().imageExtent;
+        vkCmdSetScissor(
+                VulkanRenderer::s_RendererData.commandBuffers[VulkanRenderer::s_RendererData.currentFrameIndex],
+                0, 1, &scissor);
+        va->Bind();
+        vkCmdDrawIndexed(VulkanRenderer::s_RendererData.commandBuffers[VulkanRenderer::s_RendererData.currentFrameIndex],
+                         va->IndexCount,1,0,0,0);
+
+       // GraphicsPipelineDraw(VulkanRenderer::s_RendererData.commandBuffers,
+       //                      VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        EndRenderPass(VulkanRenderer::s_RendererData.commandBuffers,
+                      VulkanRenderer::s_RendererData.currentFrameIndex);
+
+        EndCommandBuffer(VulkanRenderer::s_RendererData.commandBuffers,
+                         VulkanRenderer::s_RendererData.currentFrameIndex);
+    }
+
+    void VulkanRenderer::Shutdown() {
+        vkDeviceWaitIdle(VulkanRenderer::s_RendererData.device);
+
+        for (u32 i = 0; i < VulkanRenderer::s_RendererData.maxFramesInFlight; ++i) {
+            vkDestroySemaphore(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.imageAvailableSemaphores[i],nullptr);
+            vkDestroySemaphore(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.renderFinishedSemaphores[i],nullptr);
+            vkDestroyFence(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.inFlightFences[i],nullptr);
+        }
+        vkDestroyCommandPool(VulkanRenderer::s_RendererData.device,VulkanRenderer::s_RendererData.commandPool, nullptr);
+
+        VulkanRenderer::s_RendererData.swapchain->Cleanup();
+
+        vkDestroySurfaceKHR(VulkanRenderer::s_RendererData.instance,VulkanRenderer::s_RendererData.surface,nullptr);
+        vkDestroyDevice(VulkanRenderer::s_RendererData.device,nullptr);
+        DestroyDebugUtilsMessengerEXT(VulkanRenderer::s_RendererData.instance,VulkanRenderer::s_RendererData.debug,nullptr);
+        vkDestroyInstance(VulkanRenderer::s_RendererData.instance,nullptr);
     }
 }

@@ -8,7 +8,7 @@ namespace FikoEngine {
 
     class Layer : public RefCounted {
     public:
-        virtual void Init(FikoEngine::Window *window) = 0;
+        virtual void Init(Ref<Window> window) = 0;
 
         virtual void OnAttach() = 0;
 

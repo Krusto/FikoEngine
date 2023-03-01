@@ -1,5 +1,5 @@
 #include "Swapchain.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 
 #include "Queue.h"
 #include "Memory.h"
@@ -12,14 +12,14 @@
 
 namespace FikoEngine {
     void Swapchain::Create() {
-        m_SwapchainSpec.details = GetSwapchainSupportDetails(VulkanContext::s_RendererData.physicalDevice,
-                                                             VulkanContext::s_RendererData.surface);
+        m_SwapchainSpec.details = GetSwapchainSupportDetails(VulkanRenderer::s_RendererData.physicalDevice,
+                                                             VulkanRenderer::s_RendererData.surface);
         m_SwapchainSpec.minImageCount = m_SwapchainSpec.details.capabilities.minImageCount;
         m_SwapchainSpec.imageFormat = ChooseSurfaceFormat(m_SwapchainSpec).format;
         m_SwapchainSpec.imageColorSpace = ChooseSurfaceFormat(m_SwapchainSpec).colorSpace;
         m_SwapchainSpec.imageExtent = ChooseSwapExtent(m_SwapchainSpec,
-                                                       {VulkanContext::s_RendererData.rendererSpec.SurfaceSize.width,
-                                                        VulkanContext::s_RendererData.rendererSpec.SurfaceSize.height});
+                                                       {VulkanRenderer::s_RendererData.rendererSpec.SurfaceSize.width,
+                                                        VulkanRenderer::s_RendererData.rendererSpec.SurfaceSize.height});
         m_SwapchainSpec.imageArrayLayers = 1;
         m_SwapchainSpec.imageUsage = VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
         m_SwapchainSpec.imageSharingMode = VK_SHARING_MODE_EXCLUSIVE;
@@ -28,19 +28,19 @@ namespace FikoEngine {
         m_SwapchainSpec.presentMode = ChoosePresentMode(m_SwapchainSpec);
         m_SwapchainSpec.clipped = VK_TRUE;
 
-        m_Swapchain = CreateSwapchain(VulkanContext::s_RendererData.physicalDevice,
-                                      VulkanContext::s_RendererData.device,
+        m_Swapchain = CreateSwapchain(VulkanRenderer::s_RendererData.physicalDevice,
+                                      VulkanRenderer::s_RendererData.device,
                                       m_SwapchainSpec,
-                                      VulkanContext::s_RendererData.surface,
-                                      VulkanContext::s_RendererData.queueFamilyIndex,
+                                      VulkanRenderer::s_RendererData.surface,
+                                      VulkanRenderer::s_RendererData.queueFamilyIndex,
                                       m_SwapchainSpec .frameSize);
 
-        m_Images = GetSwapchainImages(VulkanContext::s_RendererData.device,m_Swapchain);
-        m_ImageViews = CreateImageViews(VulkanContext::s_RendererData.device,this);
+        m_Images = GetSwapchainImages(VulkanRenderer::s_RendererData.device,m_Swapchain);
+        m_ImageViews = CreateImageViews(VulkanRenderer::s_RendererData.device,this);
     }
 
     void Swapchain::Recreate(){
-        vkDeviceWaitIdle(VulkanContext::s_RendererData.device);
+        vkDeviceWaitIdle(VulkanRenderer::s_RendererData.device);
 
         Cleanup();
 
@@ -48,8 +48,8 @@ namespace FikoEngine {
     }
     void Swapchain::Cleanup(){
         for (const auto &view: m_ImageViews)
-            vkDestroyImageView(VulkanContext::s_RendererData.device,view,nullptr);
-        vkDestroySwapchainKHR(VulkanContext::s_RendererData.device,m_Swapchain,nullptr);
+            vkDestroyImageView(VulkanRenderer::s_RendererData.device,view,nullptr);
+        vkDestroySwapchainKHR(VulkanRenderer::s_RendererData.device,m_Swapchain,nullptr);
 
     }
 
@@ -187,7 +187,7 @@ namespace FikoEngine {
     }
 
     VkResult SwapchainAcquireNextImage(Ref<Swapchain> swapchain,VkSemaphore semaphore,u32& imageIndex){
-        return vkAcquireNextImageKHR(VulkanContext::s_RendererData.device,
+        return vkAcquireNextImageKHR(VulkanRenderer::s_RendererData.device,
                                        swapchain->GetSwapchain(),
                                        UINT64_MAX,
                                        semaphore,
@@ -198,8 +198,8 @@ namespace FikoEngine {
 
     void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers, Ref<Swapchain> swapchain, uint32_t index) {
         VkRenderPassBeginInfo renderPassInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
-        renderPassInfo.renderPass = VulkanContext::s_RendererData.renderPass;
-        renderPassInfo.framebuffer = VulkanContext::s_RendererData.framebuffer->VulkanData()[index];
+        renderPassInfo.renderPass = VulkanRenderer::s_RendererData.renderPass;
+        renderPassInfo.framebuffer = VulkanRenderer::s_RendererData.framebuffer->VulkanData()[index];
         renderPassInfo.renderArea.offset = {0, 0};
         renderPassInfo.renderArea.extent = {swapchain->GetSwapchainSpec().frameSize.width,swapchain->GetSwapchainSpec().frameSize.height};
 

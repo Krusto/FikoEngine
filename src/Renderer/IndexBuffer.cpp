@@ -1,15 +1,17 @@
 ﻿#include "IndexBuffer.h"
+#include "Renderer/OpenGL/OpenGLIndexBuffer.h"
 #include <Core/Ref.h>
 #include <Renderer/RendererAPI.h>
 #include <Renderer/Vulkan/IndexBuffer.h>
 
 namespace FikoEngine {
 
-    Ref<IndexBuffer> IndexBuffer::Create(Ref<VertexArray> va, const uint32_t *data, uint32_t length) {
+    Ref<IndexBuffer> IndexBuffer::Create(const uint32_t *data, uint32_t length) {
         switch (RendererAPI::Current()) {
+            case RendererAPI::API::OpenGL:
+                return Ref<OpenGLIndexBuffer>::Create(data, length);
             case RendererAPI::API::Vulkan:
-                assert(0);
-                //return Ref<VulkanIndexBuffer>::Create(va, data, length);
+                return Ref<VulkanIndexBuffer>::Create(data, length);
                 break;
             default:
                 assert(0);

@@ -6,9 +6,9 @@
 namespace FikoEngine {
     class ImGUILayer : public FikoEngine::Layer {
     public:
-        ImGUILayer() { m_Name = "ImGUILayer"; }
+        ImGUILayer(ApplicationSpec) { m_Name = "ImGUILayer"; }
 
-        void Init(FikoEngine::Window *window) override;
+        void Init(Ref<Window> window) override;
 
         void OnAttach() override;
 
@@ -32,7 +32,7 @@ namespace FikoEngine {
 
         void OnWindowShouldCloseEvent() override { SetShouldExit(true); };
     protected:
-        FikoEngine::Window *window = nullptr;
+        GLFWwindow *window = nullptr;
     };
 }
 namespace ImGui {

@@ -34,6 +34,10 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+cmake-build-debug/
+cmake-build-minsizerel/
+cmake-build-release/
+cmake-build-relwithdebinfo/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -379,13 +383,19 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+#JetBrains
+./idea/
+
 # VS Code files for those working on multiple tools
-.vscode/*
+./.vscode/*
+./vs/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+./.cmake/
 
 # Local History for Visual Studio Code
 .history/

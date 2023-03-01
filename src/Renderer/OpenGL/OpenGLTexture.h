@@ -7,55 +7,44 @@
 #include <vector>
 #include <Renderer/Texture.h>
 
+namespace FikoEngine {
+    class OpenGLTexture : public Texture {
+    public:
+        ~OpenGLTexture() {}
 
-class OpenGLTexture : public Texture {
-public:
-    virtual ~OpenGLTexture() override{}
-    OpenGLTexture(std::string_view Path) { Load(Path); }
-    OpenGLTexture(unsigned char* data, uint32_t channels, uint32_t width, uint32_t height, uint32_t xOffset = 0, uint32_t yOffset = 0) { this->Load(data, channels, width, height,xOffset,yOffset); }
-    virtual void Load(std::string_view Path) override;
-    virtual void Load(unsigned char* data, uint32_t channels, uint32_t width, uint32_t height, uint32_t xOffset = 0, uint32_t yOffset = 0) override;
-    virtual void Bind(uint32_t slot = 0) const override;
-    virtual void Destroy() override;
+        OpenGLTexture(std::string_view Path) { Load(Path); }
 
-    virtual uint32_t& ID() override{ return m_id; };
-    virtual uint32_t width() override{ return m_width; }
-    virtual uint32_t height() override { return m_height; }
-    virtual uint32_t channels() override { return m_channels; }
+        OpenGLTexture(char *data, uint32_t channels, uint32_t width, uint32_t height)
+        { this->Load(data, channels, width, height); }
 
-    virtual TextureType GetType() override { return TextureType::Texture2D; }
-    virtual const TextureType GetType() const override { return TextureType::Texture2D; };
+        virtual void Load(std::string_view Path) override;
 
-    virtual std::string GetName() override { return m_name; };
+        virtual void Load(char *data, uint32_t channels, uint32_t width, uint32_t height) override;
 
-    virtual TextureState GetState() override { return m_State; }
-    virtual void SetState(TextureState state) { m_State = state; }
+        virtual void Bind(uint32_t slot = 0) const override;
 
-protected:
-    uint32_t m_id;
-    int m_width;
-    int m_height;
-    int m_channels;
-    std::string m_name;
-    TextureState m_State = TextureState::Unloaded;
-};
+        virtual void Destroy() override;
 
-class OpenGLSkyboxTexture {
-public:
-    OpenGLSkyboxTexture() = default;
-    explicit OpenGLSkyboxTexture(std::string_view Path);
+    };
 
-    static OpenGLSkyboxTexture Create(std::string_view Path){return OpenGLSkyboxTexture{Path};}
+    class OpenGLSkyboxTexture {
+    public:
+        OpenGLSkyboxTexture() = default;
 
-    void Load(std::vector<std::string> Path);
+        explicit OpenGLSkyboxTexture(std::string_view Path);
 
-    void Bind() const;
+        static OpenGLSkyboxTexture Create(std::string_view Path) { return OpenGLSkyboxTexture{Path}; }
 
-    void Destroy();
+        void Load(std::vector<std::string> Path);
 
-    uint32_t id{};
-    int width{};
-    int height{};
-    int channels{};
-private:
-};
+        void Bind() const;
+
+        void Destroy();
+
+        uint32_t id{};
+        int width{};
+        int height{};
+        int channels{};
+    private:
+    };
+}

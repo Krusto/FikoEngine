@@ -47,10 +47,13 @@ namespace FikoEngine {
         Update();
     }
 
-    void Camera::Upload(Ref<Shader> shader, std::string_view uProjection, std::string_view uView) {
+    void Camera::Upload(Ref<Shader> shader, std::string_view uProjection, std::string_view uView, std::string_view uPosition) {
         Update();
         shader->SetUniform(uProjection.data(), m_Projection);
         shader->SetUniform(uView.data(), m_View);
+        shader->SetUniform(uProjection.data(), m_Projection);
+        shader->SetUniform(uView.data(),m_View);
+        shader->SetUniform(uPosition.data(), m_Position);
     }
 
     void Camera::ProcessMouseMovement(float xoffset, float yoffset, float dt, bool constrainPitch) {

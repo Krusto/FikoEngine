@@ -44,7 +44,6 @@ namespace FikoEngine {
                     ImGui::ColorEdit4(uniform.first.c_str(), &value.r, ImGuiColorEditFlags_NoAlpha);
                 }
                 if (type == ShaderUniformType::Vec4) {
-
                     auto &value = component.material->GetVector4(uniform.first);
                     ImGui::Text("%s", uniform.first.c_str());
                     ImGui::SameLine();
@@ -54,24 +53,33 @@ namespace FikoEngine {
 
             ImGui::Checkbox("Is Light Dependent", &component.isLightDependent);
 
-            uint32_t textureCount = 2;
-            std::string textureTypes[] = {"Diffuse", "Specular", "Emissive"};
-
-            for (uint32_t i = 0; i < textureCount; i++) {
-                auto texture = component.material->TryGetTexture(textureTypes[i]);
-                bool textureLoadNeeded = false;
-
-                int state = LoadAndDrawTexture(entity, textureTypes[i] + " Texture", texture);
-
+            if(component.material->HasDiffuseTexture()){
+                auto texture = component.material->TryGetTexture("Diffuse");
+                int state = LoadAndDrawTexture(entity, "Diffuse texture", texture);
                 switch (state) {
-                    case 0:
-                        break;
                     case 1:
-                        component.material->Set(textureTypes[i], texture);
+                        component.material->Set("Diffuse", texture);
                         break;
                     case 2:
                         texture.Reset();
-                        component.material->Set(textureTypes[i], Ref<Texture>{});
+                        component.material->Set("Diffuse", Ref<Texture>{});
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if(component.material->HasSpecularTexture()){
+                auto texture = component.material->TryGetTexture("Specular");
+                int state = LoadAndDrawTexture(entity, "Specular texture", texture);
+                switch (state) {
+                    case 1:
+                        component.material->Set("Specular", texture);
+                        break;
+                    case 2:
+                        texture.Reset();
+                        component.material->Set("Specular", Ref<Texture>{});
+                        break;
+                    default:
                         break;
                 }
             }
@@ -149,7 +157,7 @@ namespace FikoEngine {
         ImGui::ColorEdit3("Diffuse", &component.diffuseColor.r);
         ImGui::ColorEdit3("Specular", &component.specularColor.r);
 
-        ImGui::DragFloat("Intensity", &component.intensity, 0.02, 0.0f, 1.0f, "%f");
+        ImGui::DragFloat("Intensity", &component.intensity, 0.02, 0.0f, 100.0f, "%f");
 
         entity.GetComponent<TransformComponent>().position = component.position;
 

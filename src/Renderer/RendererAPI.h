@@ -3,17 +3,16 @@
 //
 #pragma once
 
-#include <glm/vec4.hpp>
-#include "../Core/Core.h"
+#include <Core/Core.h>
+#include <glm/glm.hpp>
 #include "Window.h"
 #include "RendererSpec.h"
 #include "Viewport.h"
 #include "Renderer.h"
-#include "Material.h"
 
 namespace FikoEngine {
 
-///Class interfacing the renderer with the api
+class VertexArray;
 class RendererAPI {
 public:
     enum API{
@@ -23,22 +22,22 @@ public:
     };
 
     static RendererAPI::API Current(){return RendererAPI::s_api;}
-    inline static API s_api = API::Vulkan;
+    static void SetApi(API api) { RendererAPI::s_api = api; }
+
+    inline static API s_api = API::OpenGL;
 
 public:
+    virtual void Init(RendererSpec rendererSpec, ApplicationSpec applicationSpec) = 0;
+    virtual void InitImGUI() = 0;
+    virtual void Shutdown() = 0;
+    virtual void BeginFrame() = 0;
+    virtual void EndFrame() = 0;
+    virtual void RenderQuad() = 0;
+    virtual void RenderMesh() = 0;
+    virtual void RenderMeshWithMaterial() = 0;
+    virtual void ClearColor(glm::vec4 color) = 0;
+    virtual void DrawIndexed(Ref<VertexArray>& va) = 0;
+    virtual void DrawQuad2D(glm::vec2 position, glm::vec2 size, glm::vec3 color) = 0;
 
-    static void Init(FikoEngine::RendererSpec rendererSpec, ApplicationSpec applicationSpec);
-    static void InitImGUI();
-    static void Destroy();
-
-    static void ResizeFramebuffer(ViewportSize size);
-    static void ClearColor(glm::vec4 color = {0.0f,0.0f,0.0f,1.0f});
-    static void SetActiveWindow(Window* window);
-    static void AddMaterial(Ref<Material> material);
-
-    static void Draw();
-
-private:
-    inline static std::unordered_map<std::string_view,Ref<Material>> s_Materials;
 };
 }

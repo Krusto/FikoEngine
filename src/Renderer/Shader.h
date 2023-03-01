@@ -72,49 +72,28 @@ namespace FikoEngine {
     public:
 
         static Ref<Shader> Load(const std::string &path);
-
         virtual std::unordered_map<std::string, ShaderBuffer> &GetShaderBuffers() = 0;
-
         virtual const std::unordered_map<std::string, ShaderResourceDeclaration> &GetResources() const = 0;
-
         virtual const std::string &GetName() const = 0;
-
         virtual const std::string &GetPath() const = 0;
-
         virtual void Reload(bool forceCompile = true) = 0;
-
         virtual void Bind() = 0;
-
         virtual void SetUniformBuffer(const std::string &name, const void *data, uint32_t size) = 0;
-
         virtual void SetStorageBuffer(const std::string &name, const void *data, uint32_t size) = 0;
-
         virtual void ResizeStorageBuffer(uint32_t bindingPoint, uint32_t newSize) = 0;
-
         virtual void SetUniform(const std::string &fullname, float value) = 0;
-
         virtual void SetUniform(const std::string &fullname, int value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::ivec2 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::ivec3 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::ivec4 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, uint32_t value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::vec2 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::vec3 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::vec4 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::mat3 &value) = 0;
-
         virtual void SetUniform(const std::string &fullname, const glm::mat4 &value) = 0;
-
+        virtual void AddResource(std::string_view name, ShaderResourceDeclaration resource) = 0;
         uint32_t offset = 0;
-    protected:
     };
 
 }

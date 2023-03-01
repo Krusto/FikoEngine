@@ -3,6 +3,7 @@
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/IndexBuffer.h"
 #include "Renderer/MeshBuilder.h"
+#include "Renderer/Vulkan/VertexBuffer.h"
 
 namespace FikoEngine {
     DrawableComponent DrawableComponent::Generate(Entity entity) {
@@ -11,25 +12,31 @@ namespace FikoEngine {
         DrawableComponent output;
         output.va = VertexArray::Create((uint32_t) mesh.indices.size());
         output.va->Bind();
-        auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float *) mesh.vertices.data(),
-                                       (uint32_t) mesh.vertices.size());
-        auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t) mesh.indices.size());
+
+        output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
+//        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
+        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
+//        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
+
         output.va->Unbind();
 
         return output;
     }
 
     MeshComponent MeshComponent::Generate(Entity entity, MeshType type) {
-        const auto &mesh = MeshBuilder::CreateMesh(type);
+        auto mesh = MeshBuilder::CreateMesh(type);
 
         MeshComponent output;
         output.type = type;
 
         output.va = VertexArray::Create((uint32_t) mesh.indices.size());
         output.va->Bind();
-        auto vb = VertexBuffer::Create(output.va, Vertex::GetLayout(), (float *) mesh.vertices.data(),
-                                       (uint32_t) mesh.vertices.size());
-        auto ib = IndexBuffer::Create(output.va, mesh.indices.data(), (uint32_t) mesh.indices.size());
+
+        output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
+        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
+//        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
+//        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
+
         output.va->Unbind();
 
         return output;

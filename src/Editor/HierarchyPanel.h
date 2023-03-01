@@ -3,13 +3,14 @@
 #include <Core/UUID.h>
 #include <Scene/Scene.h>
 #include <Scene/Entity.h>
+#include <Renderer/Window.h>
 namespace FikoEngine {
 
     class HierarchyPanel {
     public:
         HierarchyPanel() = default;
 
-        HierarchyPanel(Scene *scene) : m_Scene(scene) {}
+        HierarchyPanel(Scene *scene,Ref<Window> window) : m_Scene(scene),m_Window(window) {}
         HierarchyPanel(const HierarchyPanel& other) = default;
 
         HierarchyPanel& operator=(const HierarchyPanel& other){
@@ -26,6 +27,7 @@ namespace FikoEngine {
         void DrawEntityNode(Entity entity);
 
         Scene *m_Scene;
+        Ref<Window> m_Window;
         Entity m_SelectedEntity;
 
     };

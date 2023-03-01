@@ -4,7 +4,7 @@
 #include "../../Core/Core.h"
 #include "Synchronization.h"
 #include "Memory.h"
-#include "VulkanContext.h"
+#include "VulkanRenderer.h"
 
 namespace FikoEngine{
     std::vector<VkSemaphore> CreateSemaphores(RendererDataAPI*  rendererData, u32 count){
@@ -30,9 +30,9 @@ namespace FikoEngine{
         return fences;
     }
     void WaitFence(std::vector<VkFence>& fences,u32 index){
-        vkWaitForFences(VulkanContext::s_RendererData.device, 1, &fences[index], VK_TRUE, UINT64_MAX);
+        vkWaitForFences(VulkanRenderer::s_RendererData.device, 1, &fences[index], VK_TRUE, UINT64_MAX);
     }
     void ResetFence(std::vector<VkFence>& fences,u32 index){
-        vkResetFences(VulkanContext::s_RendererData.device, 1, &fences[index]);
+        vkResetFences(VulkanRenderer::s_RendererData.device, 1, &fences[index]);
     }
 }
