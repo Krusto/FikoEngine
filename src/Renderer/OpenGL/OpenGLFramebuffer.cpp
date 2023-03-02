@@ -4,7 +4,7 @@
 #include <glm/glm.hpp>
 namespace FikoEngine {
 
-    void OpenGLFramebuffer::Init(uint32_t width, uint32_t height) {
+    void OpenGLFramebuffer::Init(u32 width, u32 height) {
         this->m_width = width;
         this->m_height = height;
 
@@ -38,15 +38,15 @@ namespace FikoEngine {
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 
-    uint32_t OpenGLFramebuffer::GetID() {
+    u32 OpenGLFramebuffer::GetID() {
         return m_fbo;
     }
 
-    uint32_t &OpenGLFramebuffer::GetColorAttachmentID() {
+    u32 &OpenGLFramebuffer::GetColorAttachmentID() {
         return m_color_texture;
     }
 
-    void OpenGLFramebuffer::Resize(uint32_t width, uint32_t height) {
+    void OpenGLFramebuffer::Resize(u32 width, u32 height) {
         Destroy();
         Init(width, height);
     }
@@ -66,11 +66,11 @@ namespace FikoEngine {
         glDeleteFramebuffers(1, &m_fbo);
     }
 
-    uint32_t OpenGLFramebuffer::width() {
+    u32 OpenGLFramebuffer::width() {
         return m_width;
     }
 
-    uint32_t OpenGLFramebuffer::height() {
+    u32 OpenGLFramebuffer::height() {
         return m_height;
     }
 }

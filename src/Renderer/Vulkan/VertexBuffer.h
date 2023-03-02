@@ -15,13 +15,13 @@ namespace FikoEngine {
 
     class VulkanVertexBuffer : public VertexBuffer {
     public:
-        VulkanVertexBuffer(const VertexLayout &layout, float *data, uint32_t length);
-        VulkanVertexBuffer(const VertexLayout &layout, Vertex *data, uint32_t length);
+        VulkanVertexBuffer(const VertexLayout &layout, float *data, u32 length);
+        VulkanVertexBuffer(const VertexLayout &layout, Vertex *data, u32 length);
 
         virtual void Bind() const override;
     private:
         Buffer m_Buffer;
-        uint32_t m_Length;
+        u32 m_Length;
 
     };
     Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,

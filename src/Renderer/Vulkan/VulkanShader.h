@@ -24,11 +24,11 @@ namespace FikoEngine{
 
         virtual void Bind() override;
 
-        virtual void SetUniformBuffer(const std::string &name, const void *data, uint32_t size) override;
+        virtual void SetUniformBuffer(const std::string &name, const void *data, u32 size) override;
 
-        virtual void SetStorageBuffer(const std::string &name, const void *data, uint32_t size) override;
+        virtual void SetStorageBuffer(const std::string &name, const void *data, u32 size) override;
 
-        virtual void ResizeStorageBuffer(uint32_t bindingPoint, uint32_t newSize) override;
+        virtual void ResizeStorageBuffer(u32 bindingPoint, u32 newSize) override;
 
         virtual void SetUniform(const std::string &fullname, float value) override;
 
@@ -40,7 +40,7 @@ namespace FikoEngine{
 
         virtual void SetUniform(const std::string &fullname, const glm::ivec4 &value) override;
 
-        virtual void SetUniform(const std::string &fullname, uint32_t value) override;
+        virtual void SetUniform(const std::string &fullname, u32 value) override;
 
         virtual void SetUniform(const std::string &fullname, const glm::vec2 &value) override;
 

@@ -2,8 +2,8 @@
 #include <cstdint>
 
 struct ViewportSize {
-    uint32_t width{};
-    uint32_t height{};
+    u32 width{};
+    u32 height{};
 
     ViewportSize& operator=(ViewportSize&) = default;
     ViewportSize& operator=(const ViewportSize&) = default;

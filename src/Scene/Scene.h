@@ -71,7 +71,7 @@ namespace FikoEngine {
         std::unordered_map<UUID, Ref<Entity>> m_EntityMap;
 
         entt::registry m_Registry;
-        uint32_t m_ViewportWidth, m_ViewportHeight;
+        u32 m_ViewportWidth, m_ViewportHeight;
 
         std::unordered_map<std::string, Ref<Material>> m_MaterialLibrary;
         std::unordered_map<std::string, Ref<Shader>> m_ShaderLibrary;

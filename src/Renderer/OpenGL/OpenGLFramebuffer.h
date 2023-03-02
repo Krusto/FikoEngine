@@ -5,15 +5,15 @@ namespace FikoEngine {
 
     class OpenGLFramebuffer : public Framebuffer {
     public:
-        OpenGLFramebuffer(uint32_t width, uint32_t height) { Init(width, height); }
+        OpenGLFramebuffer(u32 width, u32 height) { Init(width, height); }
 
-        void Init(uint32_t width, uint32_t height);
+        void Init(u32 width, u32 height);
 
-        virtual uint32_t GetID() override;
+        virtual u32 GetID() override;
 
-        virtual uint32_t &GetColorAttachmentID() override;
+        virtual u32 &GetColorAttachmentID() override;
 
-        virtual void Resize(uint32_t width, uint32_t height) override;
+        virtual void Resize(u32 width, u32 height) override;
 
         virtual void Bind() override;
 
@@ -21,17 +21,17 @@ namespace FikoEngine {
 
         virtual void Destroy() override;
 
-        virtual uint32_t width() override;
+        virtual u32 width() override;
 
-        virtual uint32_t height() override;
+        virtual u32 height() override;
 
         virtual ViewportSize GetViewportSize() override { return {m_width, m_height}; }
 
     private:
-        uint32_t m_width{};
-        uint32_t m_height{};
-        uint32_t m_fbo{};
-        uint32_t m_color_texture{};
-        uint32_t m_depth_texture{};
+        u32 m_width{};
+        u32 m_height{};
+        u32 m_fbo{};
+        u32 m_color_texture{};
+        u32 m_depth_texture{};
     };
 }

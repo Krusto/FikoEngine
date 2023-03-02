@@ -15,9 +15,9 @@ public:
         m_RefCount--;
     }
 
-    uint32_t GetRefCount() const { return m_RefCount.load(); }
+    u32 GetRefCount() const { return m_RefCount.load(); }
 private:
-    mutable std::atomic<uint32_t> m_RefCount = 0;
+    mutable std::atomic<u32> m_RefCount = 0;
 };
 
 namespace RefUtils {

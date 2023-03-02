@@ -29,15 +29,15 @@ namespace FikoEngine {
         return framebuffers;
     }
 
-    uint32_t VulkanFramebuffer::GetID() {
+    u32 VulkanFramebuffer::GetID() {
         return {};
     }
 
-    uint32_t &VulkanFramebuffer::GetColorAttachmentID() {
+    u32 &VulkanFramebuffer::GetColorAttachmentID() {
         return m_color_texture;
     }
 
-    void VulkanFramebuffer::Resize(uint32_t width, uint32_t height) {
+    void VulkanFramebuffer::Resize(u32 width, u32 height) {
         Destroy();
 
         Init(width,height);
@@ -56,11 +56,11 @@ namespace FikoEngine {
 
     }
 
-    uint32_t VulkanFramebuffer::width() {
+    u32 VulkanFramebuffer::width() {
         return m_width;
     }
 
-    uint32_t VulkanFramebuffer::height() {
+    u32 VulkanFramebuffer::height() {
         return m_height;
     }
 

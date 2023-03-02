@@ -7,9 +7,9 @@ namespace FikoEngine {
     public:
         OpenGLVertexArray() = default;
 
-        explicit OpenGLVertexArray(uint32_t indexCount);
+        explicit OpenGLVertexArray(u32 indexCount);
 
-        static OpenGLVertexArray Create(uint32_t indexCount);
+        static OpenGLVertexArray Create(u32 indexCount);
 
         void Bind() const override;
 

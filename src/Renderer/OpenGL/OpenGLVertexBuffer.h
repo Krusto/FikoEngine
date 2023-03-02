@@ -14,19 +14,19 @@ namespace FikoEngine {
     public:
         OpenGLVertexBuffer() = default;
 
-        OpenGLVertexBuffer(const VertexLayout &layout, float *data, uint32_t length);
+        OpenGLVertexBuffer(const VertexLayout &layout, float *data, u32 length);
 
-        OpenGLVertexBuffer(const VertexLayout &layout, Vertex *data, uint32_t length);
+        OpenGLVertexBuffer(const VertexLayout &layout, Vertex *data, u32 length);
 
-        static OpenGLVertexBuffer Create(const VertexLayout &layout, float *data, uint32_t length);
+        static OpenGLVertexBuffer Create(const VertexLayout &layout, float *data, u32 length);
 
-        static OpenGLVertexBuffer Create(const VertexLayout &layout, Vertex *data, uint32_t length);
+        static OpenGLVertexBuffer Create(const VertexLayout &layout, Vertex *data, u32 length);
 
-        uint32_t GetID() const { return m_ID; }
+        u32 GetID() const { return m_ID; }
 
         void Bind() const;
 
     private:
-        uint32_t m_ID{};
+        u32 m_ID{};
     };
 }

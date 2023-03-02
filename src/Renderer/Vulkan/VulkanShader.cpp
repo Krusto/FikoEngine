@@ -28,7 +28,7 @@ namespace FikoEngine {
 
         VkShaderModuleCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO};
         createInfo.codeSize = data.size();
-        createInfo.pCode = reinterpret_cast<const uint32_t*>(data.data());
+        createInfo.pCode = reinterpret_cast<const u32*>(data.data());
         VkShaderModule shaderModule{};
 
         VK_CHECK(vkCreateShaderModule(device,&createInfo,nullptr,&shaderModule));
@@ -72,15 +72,15 @@ namespace FikoEngine {
         VulkanRenderer::s_RendererData.currentShader = Ref<Shader>(this);
     }
 
-    void VulkanShader::SetUniformBuffer(const std::string &name, const void *data, uint32_t size) {
+    void VulkanShader::SetUniformBuffer(const std::string &name, const void *data, u32 size) {
 
     }
 
-    void VulkanShader::SetStorageBuffer(const std::string &name, const void *data, uint32_t size) {
+    void VulkanShader::SetStorageBuffer(const std::string &name, const void *data, u32 size) {
 
     }
 
-    void VulkanShader::ResizeStorageBuffer(uint32_t bindingPoint, uint32_t newSize) {
+    void VulkanShader::ResizeStorageBuffer(u32 bindingPoint, u32 newSize) {
 
     }
 
@@ -104,7 +104,7 @@ namespace FikoEngine {
 
     }
 
-    void VulkanShader::SetUniform(const std::string &fullname, uint32_t value) {
+    void VulkanShader::SetUniform(const std::string &fullname, u32 value) {
 
     }
 

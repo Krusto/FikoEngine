@@ -8,7 +8,7 @@ namespace FikoEngine {
     public:
         Entity() = default;
 
-        Entity(uint32_t entityHandle, Scene *scene) :
+        Entity(u32 entityHandle, Scene *scene) :
                 m_EntityHandle((entt::entity) entityHandle), m_Scene(scene) {}
 
         Entity(entt::entity entityHandle, Scene *scene) :
@@ -94,7 +94,7 @@ namespace FikoEngine {
             return UUID(0);
         }
 
-        operator uint32_t() { return (uint32_t) m_EntityHandle; }
+        operator u32() { return (u32) m_EntityHandle; }
 
         operator entt::entity() { return m_EntityHandle; }
 

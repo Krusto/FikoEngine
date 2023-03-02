@@ -16,7 +16,9 @@
 #include "Queue.h"
 
 namespace FikoEngine{
-
+    void check_error(auto a){
+        VK_CHECK(a);
+    }
     void VulkanRenderer::Init(RendererSpec rendererSpec, ApplicationSpec applicationSpec) {
         s_RendererData.workingDir = applicationSpec.WorkingDirectory;
         s_RendererData.instance = CreateInstance(&s_RendererData,applicationSpec);
@@ -143,7 +145,7 @@ namespace FikoEngine{
         init_info.ImageCount = s_RendererData.swapchain->FramesCount;
         init_info.MSAASamples = VK_SAMPLE_COUNT_1_BIT;
         init_info.Allocator = nullptr;
-        init_info.CheckVkResultFn = VK_CHECK;
+        init_info.CheckVkResultFn = check_error;
         ImGui_ImplVulkan_Init(&init_info, s_RendererData.renderPass);
 
     }
@@ -156,7 +158,7 @@ namespace FikoEngine{
                                                     VulkanRenderer::s_RendererData.currentImageIndex);
 
         if (result == VK_ERROR_OUT_OF_DATE_KHR) {
-            uint32_t width,height;
+            u32 width,height;
             glfwGetWindowSize(VulkanRenderer::s_RendererData.window,(int*)&width,(int*)&height);
 
         }else if (result != VK_SUCCESS && result != VK_SUBOPTIMAL_KHR) {
@@ -180,7 +182,7 @@ namespace FikoEngine{
                               VulkanRenderer::s_RendererData.currentFrameIndex);
 
         if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR || VulkanRenderer::s_RendererData.framebufferResized) {
-            uint32_t width,height;
+            u32 width,height;
             glfwGetWindowSize(VulkanRenderer::s_RendererData.window,(int*)&width,(int*)&height);
         }
 

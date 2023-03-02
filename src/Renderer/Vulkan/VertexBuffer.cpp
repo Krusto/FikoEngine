@@ -49,7 +49,7 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
 }
 
     VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, float *data,
-                                           uint32_t length) {
+                                           u32 length) {
         m_Buffer = CreateVertexBuffer(VulkanRenderer::s_RendererData.physicalDevice,
                                       VulkanRenderer::s_RendererData.device,
                                       nullptr,
@@ -62,7 +62,7 @@ Buffer CreateVertexBuffer(VkPhysicalDevice physicalDevice,
     }
 
     VulkanVertexBuffer::VulkanVertexBuffer(const VertexLayout &layout, Vertex *data,
-                                           uint32_t length) {
+                                           u32 length) {
         m_Buffer = CreateVertexBuffer(VulkanRenderer::s_RendererData.physicalDevice,
                                       VulkanRenderer::s_RendererData.device,
                                       nullptr,

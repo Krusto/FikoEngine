@@ -160,12 +160,12 @@ namespace FikoEngine {
         ImGui::Begin("Viewport");
         {
             ImVec2 size = ImGui::GetContentRegionAvail();
-            ViewportSize vSize = ViewportSize{(uint32_t) size.x, (uint32_t) size.y};
+            ViewportSize vSize = ViewportSize{(u32) size.x, (u32) size.y};
             if (m_ViewportSize != vSize) { // intellisense bug
-                m_Framebuffer->Resize((uint32_t) size.x, (uint32_t) size.y);
+                m_Framebuffer->Resize((u32) size.x, (u32) size.y);
                 if (m_CurrentScene->FindEntity("EditorCamera").HasComponent<CameraComponent>()) {
                     m_CurrentScene->FindEntity("EditorCamera").GetComponent<CameraComponent>().camera->ChangeViewport(
-                            (uint32_t) size.x, (uint32_t) size.y);
+                            (u32) size.x, (u32) size.y);
                 }
             }
             ImGui::Image((void *) m_Framebuffer->GetColorAttachmentID(), size);

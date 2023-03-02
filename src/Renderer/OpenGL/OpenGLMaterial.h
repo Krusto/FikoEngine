@@ -16,7 +16,7 @@ namespace FikoEngine {
 
         virtual void Set(const std::string &name, int value) override;
 
-        virtual void Set(const std::string &name, uint32_t value) override;
+        virtual void Set(const std::string &name, u32 value) override;
 
         virtual void Set(const std::string &name, bool value) override;
 
@@ -38,13 +38,13 @@ namespace FikoEngine {
 
         virtual void Set(const std::string &name, const Ref<Texture> &texture) override;
 
-        virtual void Set(const std::string &name, const Ref<Texture> &texture, uint32_t arrayIndex) override {}
+        virtual void Set(const std::string &name, const Ref<Texture> &texture, u32 arrayIndex) override {}
 
         virtual float &GetFloat(const std::string &name) override;
 
         virtual int32_t &GetInt(const std::string &name) override;
 
-        virtual uint32_t &GetUInt(const std::string &name) override;
+        virtual u32 &GetUInt(const std::string &name) override;
 
         virtual bool &GetBool(const std::string &name) override;
 
@@ -63,7 +63,7 @@ namespace FikoEngine {
         virtual Ref<Texture> TryGetTexture(const std::string &name) override;
 
         template<typename T>
-        void Set(const std::string &name, const T &value, ShaderUniformType type, uint32_t size) {
+        void Set(const std::string &name, const T &value, ShaderUniformType type, u32 size) {
             auto &shaderBuffer = m_Shader->GetShaderBuffers()["shaderBuffer"];
             shaderBuffer.Size += 1;
 
@@ -139,8 +139,8 @@ namespace FikoEngine {
         Ref<Shader> m_Shader;
         std::string m_Name;
 
-        uint32_t m_MaterialFlags = 0;
-        uint32_t offset = 0;
+        u32 m_MaterialFlags = 0;
+        u32 offset = 0;
 
         Buffer m_UniformStorageBuffer;
         std::vector<Ref<Texture>> m_Textures;

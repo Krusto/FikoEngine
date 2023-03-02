@@ -7,13 +7,13 @@ namespace FikoEngine {
     public:
         VulkanTexture(std::string_view Path);
 
-        VulkanTexture(char *data, uint32_t channels, uint32_t width, uint32_t height);
+        VulkanTexture(char *data, u32 channels, u32 width, u32 height);
 
         virtual void Load(std::string_view Path) override;
 
-        virtual void Load(char *data, uint32_t channels, uint32_t width, uint32_t height) override;
+        virtual void Load(char *data, u32 channels, u32 width, u32 height) override;
 
-        virtual void Bind(uint32_t slot = 0) const override;
+        virtual void Bind(u32 slot = 0) const override;
 
         virtual void Destroy() override;
 

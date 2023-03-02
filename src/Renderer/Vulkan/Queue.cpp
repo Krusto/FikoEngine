@@ -19,7 +19,7 @@ namespace FikoEngine {
         return index;
     }
 
-    void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, uint32_t index) {
+    void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, u32 index) {
         VkSubmitInfo submitInfo{.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO};
 
         VkSemaphore waitSemaphores[] = {imageAvailableSemaphores[index]};
@@ -37,7 +37,7 @@ namespace FikoEngine {
 
         VK_CHECK(vkQueueSubmit(queue, 1, &submitInfo, fences[index]));
     }
-    VkResult QueuePresent(VkQueue queue,Ref<Swapchain> swapchain,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, uint32_t imageIndex, uint32_t currentFrameIndex){
+    VkResult QueuePresent(VkQueue queue,Ref<Swapchain> swapchain,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, u32 imageIndex, u32 currentFrameIndex){
         VkPresentInfoKHR presentInfo{};
         presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
         VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[currentFrameIndex]};

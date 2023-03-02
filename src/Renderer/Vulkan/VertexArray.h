@@ -6,9 +6,9 @@ namespace FikoEngine {
     public:
         VulkanVertexArray() = default;
 
-        VulkanVertexArray(uint32_t indexCount);
+        VulkanVertexArray(u32 indexCount);
 
-        static VulkanVertexArray Create(uint32_t indexCount);
+        static VulkanVertexArray Create(u32 indexCount);
 
         void Bind() const override;
 

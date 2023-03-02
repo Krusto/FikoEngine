@@ -8,7 +8,7 @@ namespace FikoEngine {
 
     class VertexArray : public RefCounted {
     public:
-        static Ref<VertexArray> Create(uint32_t indexCount);
+        static Ref<VertexArray> Create(u32 indexCount);
 
         virtual void Bind() const = 0;
 
@@ -16,13 +16,13 @@ namespace FikoEngine {
 
         unsigned int IndexCount{};
 
-        uint32_t id() { return m_ID; }
+        u32 id() { return m_ID; }
 
         void AddVertexBuffer(Ref<VertexBuffer> vertexBuffer);
         void AddIndexBuffer(Ref<IndexBuffer> indexBuffer);
     protected:
         Ref<VertexBuffer> m_VertexBuffer;
         Ref<IndexBuffer> m_IndexBuffer;
-        uint32_t m_ID{};
+        u32 m_ID{};
     };
 }

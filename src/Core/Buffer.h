@@ -8,19 +8,19 @@ using byte = uint8_t;
 struct Buffer
 {
 	void* Data;
-	uint32_t Size;
+	u32 Size;
 
 	Buffer()
 		: Data(nullptr), Size(0)
 	{
 	}
 
-	Buffer(void* data, uint32_t size)
+	Buffer(void* data, u32 size)
 		: Data(data), Size(size)
 	{
 	}
 
-	static Buffer Copy(const void* data, uint32_t size)
+	static Buffer Copy(const void* data, u32 size)
 	{
 		Buffer buffer;
 		buffer.Allocate(size);
@@ -28,7 +28,7 @@ struct Buffer
 		return buffer;
 	}
 
-	void Allocate(uint32_t size)
+	void Allocate(u32 size)
 	{
 		delete[] Data;
 		Data = nullptr;
@@ -54,12 +54,12 @@ struct Buffer
 	}
 
 	template<typename T>
-	T& Read(uint32_t offset = 0)
+	T& Read(u32 offset = 0)
 	{
 		return *(T*)((byte*)Data + offset);
 	}
 
-	byte* ReadBytes(uint32_t size, uint32_t offset)
+	byte* ReadBytes(u32 size, u32 offset)
 	{
 		assert(offset + size <= Size);
 		byte* buffer = new byte[size];
@@ -67,7 +67,7 @@ struct Buffer
 		return buffer;
 	}
 
-	void Write(void* data, uint32_t size, uint32_t offset = 0)
+	void Write(void* data, u32 size, u32 offset = 0)
 	{
 		assert(offset + size <= Size);
 		memcpy((byte*)Data + offset, data, size);
@@ -94,5 +94,5 @@ struct Buffer
 		return (T*)Data;
 	}
 
-	inline uint32_t GetSize() const { return Size; }
+	inline u32 GetSize() const { return Size; }
 };

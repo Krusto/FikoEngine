@@ -16,7 +16,7 @@ namespace FikoEngine {
 
         virtual void Set(const std::string &name, int value) = 0;
 
-        virtual void Set(const std::string &name, uint32_t value) = 0;
+        virtual void Set(const std::string &name, u32 value) = 0;
 
         virtual void Set(const std::string &name, bool value) = 0;
 
@@ -38,13 +38,13 @@ namespace FikoEngine {
 
         virtual void Set(const std::string& name, const Ref<Texture>& texture) = 0;
 
-        virtual void Set(const std::string& name, const Ref<Texture>& texture, uint32_t arrayIndex) = 0;
+        virtual void Set(const std::string& name, const Ref<Texture>& texture, u32 arrayIndex) = 0;
 
         virtual float &GetFloat(const std::string &name) = 0;
 
         virtual int32_t &GetInt(const std::string &name) = 0;
 
-        virtual uint32_t &GetUInt(const std::string &name) = 0;
+        virtual u32 &GetUInt(const std::string &name) = 0;
 
         virtual bool &GetBool(const std::string &name) = 0;
 

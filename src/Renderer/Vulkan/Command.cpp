@@ -5,7 +5,7 @@
 #include "../../Core/Core.h"
 #include "Memory.h"
 namespace FikoEngine {
-    VkCommandPool CreateCommandPool(VkDevice device, uint32_t queueFamilyIndex) {
+    VkCommandPool CreateCommandPool(VkDevice device, u32 queueFamilyIndex) {
         VkCommandPool pool{};
         VkCommandPoolCreateInfo createInfo{.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO};
         createInfo.flags = VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT;

@@ -33,7 +33,7 @@ namespace FikoEngine {
 
         Camera(CameraSpec spec);
 
-        void ChangeViewport(uint32_t width, uint32_t height);
+        void ChangeViewport(u32 width, u32 height);
 
         void Update();
 

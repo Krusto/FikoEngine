@@ -4,7 +4,7 @@
 
 namespace FikoEngine {
 
-    VulkanVertexArray::VulkanVertexArray(uint32_t indexCount) {
+    VulkanVertexArray::VulkanVertexArray(u32 indexCount) {
         this->IndexCount = indexCount;
         m_ID = UUID();
     }
@@ -17,7 +17,7 @@ namespace FikoEngine {
             m_IndexBuffer->Bind();
     }
 
-    VulkanVertexArray VulkanVertexArray::Create(uint32_t indexCount) {
+    VulkanVertexArray VulkanVertexArray::Create(u32 indexCount) {
         return VulkanVertexArray(indexCount);
     }
 

@@ -14,5 +14,5 @@ namespace FikoEngine{
     };
     u32 SelectQueueFamily(VkPhysicalDevice physicalDevice);
     void QueueSubmit(VkQueue queue,std::vector<VkSemaphore>& imageAvailableSemaphores,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences,u32 index = {});
-    VkResult QueuePresent(VkQueue queue,Ref<Swapchain> swapchain,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, uint32_t imageIndex, uint32_t currentFrameIndex);
+    VkResult QueuePresent(VkQueue queue,Ref<Swapchain> swapchain,std::vector<VkSemaphore>& renderFinishedSemaphores,std::vector<VkFence>& fences, u32 imageIndex, u32 currentFrameIndex);
 }

@@ -6,7 +6,7 @@
 
 namespace FikoEngine {
 
-    Ref<IndexBuffer> IndexBuffer::Create(const uint32_t *data, uint32_t length) {
+    Ref<IndexBuffer> IndexBuffer::Create(const u32 *data, u32 length) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::OpenGL:
                 return Ref<OpenGLIndexBuffer>::Create(data, length);

@@ -18,15 +18,15 @@ namespace FikoEngine {
 
         static const ShaderUniformBuffer &FindUniformBuffer(const std::string &name) { return s_UniformBuffers[0];}
 
-        static void SetUniformBuffer(const ShaderUniformBuffer &buffer, const void *data, uint32_t size, uint32_t offset = 0) {}
+        static void SetUniformBuffer(const ShaderUniformBuffer &buffer, const void *data, u32 size, u32 offset = 0) {}
 
-        static void SetStorageBuffer(const ShaderStorageBuffer &buffer, const void *data, uint32_t size, uint32_t offset = 0) {}
+        static void SetStorageBuffer(const ShaderStorageBuffer &buffer, const void *data, u32 size, u32 offset = 0) {}
 
-        virtual void SetUniformBuffer(const std::string &name, const void *data, uint32_t size) override {}
+        virtual void SetUniformBuffer(const std::string &name, const void *data, u32 size) override {}
 
-        virtual void SetStorageBuffer(const std::string &name, const void *data, uint32_t size) override {}
+        virtual void SetStorageBuffer(const std::string &name, const void *data, u32 size) override {}
 
-        virtual void ResizeStorageBuffer(uint32_t bindingPoint, uint32_t newSize) override {}
+        virtual void ResizeStorageBuffer(u32 bindingPoint, u32 newSize) override {}
 
         virtual void SetUniform(const std::string &fullname, float value) override;
 
@@ -38,7 +38,7 @@ namespace FikoEngine {
 
         virtual void SetUniform(const std::string &fullname, const glm::ivec4 &value) override;
 
-        virtual void SetUniform(const std::string &fullname, uint32_t value) override;
+        virtual void SetUniform(const std::string &fullname, u32 value) override;
 
         virtual void SetUniform(const std::string &fullname, const glm::vec2 &value) override;
 
@@ -68,14 +68,14 @@ namespace FikoEngine {
     private:
         void Compile(const std::string &vertexData, const std::string &fragmentData);
 
-        void Reflect(std::vector<uint32_t> &data) {}
+        void Reflect(std::vector<u32> &data) {}
 
         void CheckShader(GLuint id, GLuint type, GLint *ret, const char *onfail);
 
-        void CompileOrGetVulkanBinary(std::unordered_map<uint32_t, std::vector<uint32_t>> &outputBinary,
+        void CompileOrGetVulkanBinary(std::unordered_map<u32, std::vector<u32>> &outputBinary,
                                       bool forceCompile = false) {}
 
-        void CompileOrGetOpenGLBinary(const std::unordered_map<uint32_t, std::vector<uint32_t>> &,
+        void CompileOrGetOpenGLBinary(const std::unordered_map<u32, std::vector<u32>> &,
                                       bool forceCompile = false) {}
 
         std::string ReadShaderFromFile(const std::string &filepath, ShaderType shaderType) const;
@@ -95,29 +95,29 @@ namespace FikoEngine {
             return GL_NONE;
         }
 
-        void UploadUniformInt(uint32_t location, int32_t value);
+        void UploadUniformInt(u32 location, int32_t value);
 
-        void UploadUniformIntArray(uint32_t location, int32_t *values, int32_t count);
+        void UploadUniformIntArray(u32 location, int32_t *values, int32_t count);
 
-        void UploadUniformFloat(uint32_t location, float value);
+        void UploadUniformFloat(u32 location, float value);
 
-        void UploadUniformFloat2(uint32_t location, const glm::vec2 &value);
+        void UploadUniformFloat2(u32 location, const glm::vec2 &value);
 
-        void UploadUniformFloat3(uint32_t location, const glm::vec3 &value);
+        void UploadUniformFloat3(u32 location, const glm::vec3 &value);
 
-        void UploadUniformFloat4(uint32_t location, const glm::vec4 &value);
+        void UploadUniformFloat4(u32 location, const glm::vec4 &value);
 
-        void UploadUniformMat3(uint32_t location, const glm::mat3 &values);
+        void UploadUniformMat3(u32 location, const glm::mat3 &values);
 
-        void UploadUniformMat4(uint32_t location, const glm::mat4 &values);
+        void UploadUniformMat4(u32 location, const glm::mat4 &values);
 
-        void UploadUniformMat4Array(uint32_t location, const glm::mat4 &values, uint32_t count);
+        void UploadUniformMat4Array(u32 location, const glm::mat4 &values, u32 count);
 
         void UploadUniformInt(const std::string &name, int32_t value);
 
-        void UploadUniformUInt(const std::string &name, uint32_t value);
+        void UploadUniformUInt(const std::string &name, u32 value);
 
-        void UploadUniformIntArray(const std::string &name, int32_t *values, uint32_t count);
+        void UploadUniformIntArray(const std::string &name, int32_t *values, u32 count);
 
         void UploadUniformFloat(const std::string &name, float value);
 
@@ -130,17 +130,17 @@ namespace FikoEngine {
         void UploadUniformMat4(const std::string &name, const glm::mat4 &value);
 
     private:
-        uint32_t m_RendererID = 0;
+        u32 m_RendererID = 0;
         bool m_Loaded = false;
         bool m_IsCompute = false;
 
-        uint32_t m_ConstantBufferOffset = 0;
+        u32 m_ConstantBufferOffset = 0;
 
         std::string m_Name, m_AssetPath;
         std::unordered_map<GLenum, std::string> m_ShaderSource;
 
-        inline static std::unordered_map<uint32_t, ShaderUniformBuffer> s_UniformBuffers;
-        inline static std::unordered_map<uint32_t, ShaderStorageBuffer> s_StorageBuffers;
+        inline static std::unordered_map<u32, ShaderUniformBuffer> s_UniformBuffers;
+        inline static std::unordered_map<u32, ShaderStorageBuffer> s_StorageBuffers;
 
         std::unordered_map<std::string, ShaderBuffer> m_Buffers;
         std::unordered_map<std::string, ShaderResourceDeclaration> m_Resources;

@@ -13,7 +13,7 @@ namespace FikoEngine {
 
         //if (shaderBuffers.size() > 0)
         //{
-        //	uint32_t size = 0;
+        //	u32 size = 0;
         //	for (auto& [name, shaderBuffer] : shaderBuffers)
         //		size += shaderBuffer.Size;
 
@@ -59,13 +59,13 @@ namespace FikoEngine {
         Set < int > (name, value, ShaderUniformType::Int, sizeof(int));
     }
 
-    void VulkanMaterial::Set(const std::string &name, uint32_t value) {
-        Set < uint32_t > (name, value, ShaderUniformType::UInt, sizeof(uint32_t));
+    void VulkanMaterial::Set(const std::string &name, u32 value) {
+        Set < u32 > (name, value, ShaderUniformType::UInt, sizeof(u32));
     }
 
     void VulkanMaterial::Set(const std::string &name, bool value) {
         // Bools are uints
-        Set < uint32_t > (name, (int) value, ShaderUniformType::UInt, sizeof(uint32_t));
+        Set < u32 > (name, (int) value, ShaderUniformType::UInt, sizeof(u32));
     }
 
     void VulkanMaterial::Set(const std::string &name, const glm::ivec2 &value) {
@@ -108,8 +108,8 @@ namespace FikoEngine {
         return Get<int32_t>(name);
     }
 
-    uint32_t &VulkanMaterial::GetUInt(const std::string &name) {
-        return Get<uint32_t>(name);
+    u32 &VulkanMaterial::GetUInt(const std::string &name) {
+        return Get<u32>(name);
     }
 
     bool &VulkanMaterial::GetBool(const std::string &name) {
@@ -149,7 +149,7 @@ namespace FikoEngine {
                 switch (uniform.GetType()) {
                     case ShaderUniformType::Bool:
                     case ShaderUniformType::UInt: {
-                        const uint32_t value = m_UniformStorageBuffer.Read<uint32_t>(uniform.GetOffset());
+                        const u32 value = m_UniformStorageBuffer.Read<u32>(uniform.GetOffset());
                         shader->SetUniform(name, value);
                         break;
                     }
@@ -216,7 +216,7 @@ namespace FikoEngine {
     Ref<Texture> VulkanMaterial::GetTexture(const std::string &name) {
         auto decl = FindResourceDeclaration(name);
         assert(decl);// "Could not find uniform with name 'x'");
-        uint32_t slot = decl->GetRegister();
+        u32 slot = decl->GetRegister();
         assert((slot < m_Textures.size()));// "Texture slot is invalid");
         return m_Textures[slot];
     }

@@ -8,7 +8,7 @@ namespace FikoEngine {
     static std::uniform_int_distribution<uint64_t> s_UniformDistribution;
 
     static std::mt19937 eng32(s_RandomDevice());
-    static std::uniform_int_distribution<uint32_t> s_UniformDistribution32;
+    static std::uniform_int_distribution<u32> s_UniformDistribution32;
 
     UUID::UUID()
             : m_UUID(s_UniformDistribution(eng)) {
@@ -27,7 +27,7 @@ namespace FikoEngine {
             : m_UUID(s_UniformDistribution32(eng32)) {
     }
 
-    UUID32::UUID32(uint32_t uuid)
+    UUID32::UUID32(u32 uuid)
             : m_UUID(uuid) {
     }
 

@@ -9,9 +9,9 @@ namespace FikoEngine {
     public:
         OpenGLIndexBuffer() = default;
 
-        OpenGLIndexBuffer(const uint32_t *data, uint32_t length);
+        OpenGLIndexBuffer(const u32 *data, u32 length);
 
-        static OpenGLIndexBuffer Create(const uint32_t *data, uint32_t length);
+        static OpenGLIndexBuffer Create(const u32 *data, u32 length);
 
         void Bind() const override;
 

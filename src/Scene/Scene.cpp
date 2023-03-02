@@ -68,13 +68,13 @@ namespace FikoEngine {
     }
 
     Entity Scene::GetHandle() {
-        return {(uint32_t) m_SceneEntity, this};
+        return {(u32) m_SceneEntity, this};
     }
 
     Entity Scene::GetEntity(UUID uuid) {
         if (m_EntityMap.contains(uuid))
             return *m_EntityMap.at(uuid).Raw();
-        return Entity{(uint32_t) entt::null, this};
+        return Entity{(u32) entt::null, this};
     }
 
     Entity Scene::FindEntity(const std::string &name) {
@@ -85,13 +85,13 @@ namespace FikoEngine {
                 }
             }
         }
-        return {(uint32_t) m_SceneEntity, this};
+        return {(u32) m_SceneEntity, this};
     }
 
     Entity Scene::GetSelectedEntity() {
         if (m_SelectedEntity != entt::null)
-            return Entity{(uint32_t) m_SelectedEntity, this};
-        return {(uint32_t) entt::null, this};
+            return Entity{(u32) m_SelectedEntity, this};
+        return {(u32) entt::null, this};
     }
 
     Entity Scene::SetSelectedEntity(const Entity &entity) {

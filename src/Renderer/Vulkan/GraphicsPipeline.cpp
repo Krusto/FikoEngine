@@ -106,7 +106,7 @@ namespace FikoEngine{
 
         VkPipelineDynamicStateCreateInfo dynamicState{};
         dynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
-        dynamicState.dynamicStateCount = static_cast<uint32_t>(dynamicStates.size());
+        dynamicState.dynamicStateCount = static_cast<u32>(dynamicStates.size());
         dynamicState.pDynamicStates = dynamicStates.data();
 
         VkPipelineLayoutCreateInfo pipelineLayoutInfo{};

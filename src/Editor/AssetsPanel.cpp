@@ -19,8 +19,8 @@ void FikoEngine::AssetsPanel::LoadDirectory(std::filesystem::path path) {
 void FikoEngine::AssetsPanel::OnImGUIRender() {
     ImGui::Begin("Assets");
 
-    uint32_t width = ImGui::GetContentRegionAvail().x;
-    uint32_t cellSize = m_Padding + m_IconSize;
+    u32 width = ImGui::GetContentRegionAvail().x;
+    u32 cellSize = m_Padding + m_IconSize;
     m_NumIconsPerRow = width / cellSize;
 
     if(m_NumIconsPerRow < 1)

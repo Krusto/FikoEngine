@@ -4,7 +4,7 @@
 #include "OpenGLIndexBuffer.h"
 namespace FikoEngine {
 
-    OpenGLIndexBuffer::OpenGLIndexBuffer(const uint32_t *data, uint32_t length) {
+    OpenGLIndexBuffer::OpenGLIndexBuffer(const u32 *data, u32 length) {
         glGenBuffers(1, &m_ID);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
@@ -18,7 +18,7 @@ namespace FikoEngine {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
     }
 
-    OpenGLIndexBuffer OpenGLIndexBuffer::Create(const uint32_t *data, uint32_t length) {
+    OpenGLIndexBuffer OpenGLIndexBuffer::Create(const u32 *data, u32 length) {
         return OpenGLIndexBuffer{data, length};
     }
 }

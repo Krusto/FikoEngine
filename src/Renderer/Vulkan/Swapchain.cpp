@@ -82,7 +82,7 @@ namespace FikoEngine {
     }
 
     bool CheckDeviceExtensionSupport(VkPhysicalDevice physicalDevice, std::string_view extension) {
-        uint32_t extensionCount{};
+        u32 extensionCount{};
         vkEnumerateDeviceExtensionProperties(physicalDevice, nullptr, &extensionCount, nullptr);
 
         std::vector<VkExtensionProperties> availableExtensions(extensionCount);
@@ -196,7 +196,7 @@ namespace FikoEngine {
 
     }
 
-    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers, Ref<Swapchain> swapchain, uint32_t index) {
+    void BeginRenderPass(std::vector<VkCommandBuffer> commandBuffers, Ref<Swapchain> swapchain, u32 index) {
         VkRenderPassBeginInfo renderPassInfo{.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO};
         renderPassInfo.renderPass = VulkanRenderer::s_RendererData.renderPass;
         renderPassInfo.framebuffer = VulkanRenderer::s_RendererData.framebuffer->VulkanData()[index];
@@ -210,18 +210,18 @@ namespace FikoEngine {
         vkCmdBeginRenderPass(commandBuffers[index], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
     }
 
-    void EndRenderPass(std::vector<VkCommandBuffer> commandBuffers, uint32_t index) {
+    void EndRenderPass(std::vector<VkCommandBuffer> commandBuffers, u32 index) {
         vkCmdEndRenderPass(commandBuffers[index]);
     }
 
-    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Ref<VulkanShader> shader, uint32_t imageIndex) {
+    void BindGraphicsPipeline(std::vector<VkCommandBuffer> commandBuffers,Ref<VulkanShader> shader, u32 imageIndex) {
         vkCmdBindPipeline(commandBuffers[imageIndex], VK_PIPELINE_BIND_POINT_GRAPHICS, shader->getPipeline());
     }
 
-    void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers, uint32_t imageIndex) {
+    void GraphicsPipelineDraw(std::vector<VkCommandBuffer> commandBuffers, u32 imageIndex) {
         vkCmdDraw(commandBuffers[imageIndex],3,1,0,0);
     }
-    void GraphicsPipelineDrawIndexed(std::vector<VkCommandBuffer> commandBuffers, uint32_t imageIndex,u32 indexCount) {
+    void GraphicsPipelineDrawIndexed(std::vector<VkCommandBuffer> commandBuffers, u32 imageIndex,u32 indexCount) {
         vkCmdDrawIndexed(commandBuffers[imageIndex],indexCount,0,0,0,0);
     }
 

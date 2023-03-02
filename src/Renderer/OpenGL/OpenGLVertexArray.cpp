@@ -3,7 +3,7 @@
 #include "OpenGLVertexArray.h"
 namespace FikoEngine {
 
-    OpenGLVertexArray::OpenGLVertexArray(uint32_t indexCount) {
+    OpenGLVertexArray::OpenGLVertexArray(u32 indexCount) {
         glGenVertexArrays(1, &m_ID);
         this->IndexCount = indexCount;
     }
@@ -13,7 +13,7 @@ namespace FikoEngine {
         glBindVertexArray(m_ID);
     }
 
-    OpenGLVertexArray OpenGLVertexArray::Create(uint32_t indexCount) {
+    OpenGLVertexArray OpenGLVertexArray::Create(u32 indexCount) {
         return OpenGLVertexArray(indexCount);
     }
 

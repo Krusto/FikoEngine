@@ -49,11 +49,11 @@ namespace FikoEngine {
     }
 
     void Renderer::DrawMesh(Mesh &mesh) {
-        auto va = VertexArray::Create((uint32_t) mesh.indices.size());
+        auto va = VertexArray::Create((u32) mesh.indices.size());
         va->Bind();
         auto vb = VertexBuffer::Create(Vertex::GetLayout(), (float *) mesh.vertices.data(),
-                                       (uint32_t) mesh.vertices.size());
-        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
+                                       (u32) mesh.vertices.size());
+        auto ib = IndexBuffer::Create(mesh.indices.data(), (u32) mesh.indices.size());
 
         va->AddVertexBuffer(vb);
         va->AddIndexBuffer(ib);
@@ -91,7 +91,7 @@ namespace FikoEngine {
                             if (materialComponent.isLightDependent) {
                                 auto lightEntities = entity.m_Scene->GetEntitiesWith<LightComponent>();
 
-                                uint32_t lightIndex = 0;
+                                u32 lightIndex = 0;
                                 for (auto &lightEntity: lightEntities) {
                                     if (lightIndex == 0) {
                                         auto lightComponent = Entity(

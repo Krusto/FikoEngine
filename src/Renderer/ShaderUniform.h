@@ -7,18 +7,18 @@ namespace FikoEngine {
     public:
         ShaderResourceDeclaration() = default;
 
-        ShaderResourceDeclaration(const std::string &name, uint32_t resourceRegister, uint32_t count)
+        ShaderResourceDeclaration(const std::string &name, u32 resourceRegister, u32 count)
                 : m_Name(name), m_Register(resourceRegister), m_Count(count) {}
 
         virtual const std::string &GetName() const { return m_Name; }
 
-        virtual uint32_t GetRegister() const { return m_Register; }
+        virtual u32 GetRegister() const { return m_Register; }
 
-        virtual uint32_t GetCount() const { return m_Count; }
+        virtual u32 GetCount() const { return m_Count; }
 
     private:
         std::string m_Name;
-        uint32_t m_Register = 0;
-        uint32_t m_Count = 0;
+        u32 m_Register = 0;
+        u32 m_Count = 0;
     };
 }

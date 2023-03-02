@@ -86,7 +86,7 @@ namespace FikoEngine {
 
             const char *vShaderCode = vertexData.c_str();
             const char *fShaderCode = fragmentData.c_str();
-            uint32_t vertex, fragment;
+            u32 vertex, fragment;
             GLint result;
             vertex = glCreateShader(GL_VERTEX_SHADER);
             glShaderSource(vertex, 1, &vShaderCode, nullptr);
@@ -230,7 +230,7 @@ namespace FikoEngine {
         glUniform1f(GetUniformLocation(fullname), value);
     }
 
-    void OpenGLShader::SetUniform(const std::string &fullname, uint32_t value) {
+    void OpenGLShader::SetUniform(const std::string &fullname, u32 value) {
         //assert(m_UniformLocations.find(fullname) != m_UniformLocations.end());
         //GLint location = m_UniformLocations.at(fullname);
         glUniform1ui(GetUniformLocation(fullname), value);
@@ -299,40 +299,40 @@ namespace FikoEngine {
         return &m_Resources.at(name);
     }
 
-    void OpenGLShader::UploadUniformInt(uint32_t location, int32_t value) {
+    void OpenGLShader::UploadUniformInt(u32 location, int32_t value) {
         glUniform1i(location, value);
     }
 
 
-    void OpenGLShader::UploadUniformIntArray(uint32_t location, int32_t *values, int32_t count) {
+    void OpenGLShader::UploadUniformIntArray(u32 location, int32_t *values, int32_t count) {
         glUniform1iv(location, count, values);
     }
 
-    void OpenGLShader::UploadUniformFloat(uint32_t location, float value) {
+    void OpenGLShader::UploadUniformFloat(u32 location, float value) {
         glUniform1f(location, value);
     }
 
-    void OpenGLShader::UploadUniformFloat2(uint32_t location, const glm::vec2 &value) {
+    void OpenGLShader::UploadUniformFloat2(u32 location, const glm::vec2 &value) {
         glUniform2f(location, value.x, value.y);
     }
 
-    void OpenGLShader::UploadUniformFloat3(uint32_t location, const glm::vec3 &value) {
+    void OpenGLShader::UploadUniformFloat3(u32 location, const glm::vec3 &value) {
         glUniform3f(location, value.x, value.y, value.z);
     }
 
-    void OpenGLShader::UploadUniformFloat4(uint32_t location, const glm::vec4 &value) {
+    void OpenGLShader::UploadUniformFloat4(u32 location, const glm::vec4 &value) {
         glUniform4f(location, value.x, value.y, value.z, value.w);
     }
 
-    void OpenGLShader::UploadUniformMat3(uint32_t location, const glm::mat3 &value) {
+    void OpenGLShader::UploadUniformMat3(u32 location, const glm::mat3 &value) {
         glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    void OpenGLShader::UploadUniformMat4(uint32_t location, const glm::mat4 &value) {
+    void OpenGLShader::UploadUniformMat4(u32 location, const glm::mat4 &value) {
         glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    void OpenGLShader::UploadUniformMat4Array(uint32_t location, const glm::mat4 &values, uint32_t count) {
+    void OpenGLShader::UploadUniformMat4Array(u32 location, const glm::mat4 &values, u32 count) {
         glUniformMatrix4fv(location, count, GL_FALSE, glm::value_ptr(values));
     }
 
@@ -341,12 +341,12 @@ namespace FikoEngine {
         glUniform1i(location, value);
     }
 
-    void OpenGLShader::UploadUniformUInt(const std::string &name, uint32_t value) {
+    void OpenGLShader::UploadUniformUInt(const std::string &name, u32 value) {
         int32_t location = GetUniformLocation(name);
         glUniform1ui(location, value);
     }
 
-    void OpenGLShader::UploadUniformIntArray(const std::string &name, int32_t *values, uint32_t count) {
+    void OpenGLShader::UploadUniformIntArray(const std::string &name, int32_t *values, u32 count) {
         int32_t location = GetUniformLocation(name);
         glUniform1iv(location, count, values);
     }

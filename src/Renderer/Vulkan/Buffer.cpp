@@ -6,7 +6,7 @@
 #include "Command.h"
 namespace FikoEngine{
 
-    Buffer Buffer::Create(VkPhysicalDevice physicalDevice,VkDevice device, VkAllocationCallbacks* allocationCallbacks,uint32_t size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties) {
+    Buffer Buffer::Create(VkPhysicalDevice physicalDevice,VkDevice device, VkAllocationCallbacks* allocationCallbacks,u32 size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties) {
         Buffer buffer{VK_NULL_HANDLE,BufferType::None,VK_NULL_HANDLE,size,0};
         VkBufferCreateInfo bufferInfo{};
         bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -33,7 +33,7 @@ namespace FikoEngine{
         return buffer;
     }
 
-    void Buffer::Copy(VkDevice device,VkCommandPool commandPool,VkQueue queue,Buffer src, Buffer dst, uint32_t size) {
+    void Buffer::Copy(VkDevice device,VkCommandPool commandPool,VkQueue queue,Buffer src, Buffer dst, u32 size) {
         std::vector<VkCommandBuffer> commandBuffer(1);
         commandBuffer[0] = CreateCommandBuffer(device,commandPool);;
 
@@ -55,11 +55,11 @@ namespace FikoEngine{
         vkFreeCommandBuffers(device, commandPool, 1, &commandBuffer[0]);
     }
 
-    uint32_t Buffer::FindMemoryType(VkPhysicalDevice physicalDevice,uint32_t typeFilter, VkMemoryPropertyFlags properties) {
+    u32 Buffer::FindMemoryType(VkPhysicalDevice physicalDevice,u32 typeFilter, VkMemoryPropertyFlags properties) {
         VkPhysicalDeviceMemoryProperties memProperties;
         vkGetPhysicalDeviceMemoryProperties(physicalDevice, &memProperties);
 
-        for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++) {
+        for (u32 i = 0; i < memProperties.memoryTypeCount; i++) {
             if ((typeFilter & (1 << i)) && (memProperties.memoryTypes[i].propertyFlags & properties) == properties) {
                 return i;
             }

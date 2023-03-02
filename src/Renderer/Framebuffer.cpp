@@ -5,7 +5,7 @@
 #include "Framebuffer.h"
 
 namespace FikoEngine {
-    Ref<Framebuffer> Framebuffer::Create(uint32_t width, uint32_t height) {
+    Ref<Framebuffer> Framebuffer::Create(u32 width, u32 height) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanFramebuffer>::Create(width,height);

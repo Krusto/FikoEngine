@@ -16,8 +16,6 @@ find_package(glfw3 CONFIG REQUIRED)
 
 #add_subdirectory(Vendor/glfw)
 
-message("Done")
-
 add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
 add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
 
@@ -105,3 +103,5 @@ target_link_libraries(FikoEngine PRIVATE assimp::assimp)
 target_link_libraries(FikoEngine PRIVATE imgui)
 target_link_libraries(FikoEngine PRIVATE glad)
 #target_link_libraries(FikoEngine VulkanMemoryAllocator)
+
+target_precompile_headers(FikoEngine PRIVATE ${CMAKE_SOURCE_DIR}/src/Core/pch.hpp)

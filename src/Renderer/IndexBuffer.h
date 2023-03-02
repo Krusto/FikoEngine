@@ -5,12 +5,12 @@
 namespace FikoEngine {
     class IndexBuffer : public RefCounted {
     public:
-        static Ref<IndexBuffer> Create(const uint32_t *data, uint32_t length);
+        static Ref<IndexBuffer> Create(const u32 *data, u32 length);
 
         virtual void Bind() const = 0;
 
-        uint32_t indexCount{};
+        u32 indexCount{};
     protected:
-        uint32_t m_ID;
+        u32 m_ID;
     };
 }

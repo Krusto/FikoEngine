@@ -33,9 +33,10 @@ MessageCallback( GLenum source,
 }
 
 
-void ErrorCallback(int, const char* err_str)
+void ErrorCallback(int code, const char* err_str)
 {
-    std::cout << "GLFW Error: " << err_str << std::endl;
+    if(std::string(err_str) != "Invalid window attribute 0x0002000D")
+        std::cout << code <<" GLFW Error: " << err_str << std::endl;
 }
 
 namespace FikoEngine {
@@ -43,7 +44,7 @@ Window::Window(WindowSpec& spec) {
     this->spec = spec;
 
     if (!glfwInit()) {
-        LOG_ERROR("GLFW CAN NOT INITALIZE!!!");
+        LOG_ERROR("GLFW CAN NOT INITIALIZE!!!");
         exit(-1);
     }
 

@@ -86,7 +86,7 @@ void HierarchyPanel::OnImGUIRender() {
         if (entity.HasChildren() == false)
             flags |= ImGuiTreeNodeFlags_Leaf;
 
-        const bool opened = ImGui::TreeNodeEx((void *) (uint64_t) (uint32_t) entity, flags, Tag.c_str());
+        const bool opened = ImGui::TreeNodeEx((void *) (uint64_t) (u32) entity, flags, Tag.c_str());
         if (ImGui::IsItemHovered(ImGuiHoveredFlags_None) && ImGui::IsMouseReleased(ImGuiMouseButton_Left)) {
             m_SelectedEntity = entity;
             m_Scene->SetSelectedEntity(entity);

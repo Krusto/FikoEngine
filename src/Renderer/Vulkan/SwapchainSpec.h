@@ -14,11 +14,11 @@ namespace FikoEngine{
     };
 
     struct SwapChainSpec{
-        uint32_t                         minImageCount;
+        u32                         minImageCount;
         VkFormat                         imageFormat;
         VkColorSpaceKHR                  imageColorSpace;
         VkExtent2D                       imageExtent;
-        uint32_t                         imageArrayLayers;
+        u32                         imageArrayLayers;
         VkImageUsageFlags                imageUsage;
         VkSharingMode                    imageSharingMode;
         VkSurfaceTransformFlagBitsKHR    preTransform;

@@ -10,13 +10,13 @@ namespace FikoEngine {
         const auto &mesh = entity.GetComponent<MeshComponent>().mesh;
 
         DrawableComponent output;
-        output.va = VertexArray::Create((uint32_t) mesh.indices.size());
+        output.va = VertexArray::Create((u32) mesh.indices.size());
         output.va->Bind();
 
         output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
 //        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
-        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
-//        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
+        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (u32) mesh.indices.size()));
+//        auto ib = IndexBuffer::Create(mesh.indices.data(), (u32) mesh.indices.size());
 
         output.va->Unbind();
 
@@ -29,13 +29,13 @@ namespace FikoEngine {
         MeshComponent output;
         output.type = type;
 
-        output.va = VertexArray::Create((uint32_t) mesh.indices.size());
+        output.va = VertexArray::Create((u32) mesh.indices.size());
         output.va->Bind();
 
         output.va->AddVertexBuffer(VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size()));
-        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size()));
+        output.va->AddIndexBuffer(IndexBuffer::Create(mesh.indices.data(), (u32) mesh.indices.size()));
 //        auto vb = VertexBuffer::Create(Vertex::GetLayout(),(float*)&mesh.vertices[0],(u32)mesh.vertices.size());
-//        auto ib = IndexBuffer::Create(mesh.indices.data(), (uint32_t) mesh.indices.size());
+//        auto ib = IndexBuffer::Create(mesh.indices.data(), (u32) mesh.indices.size());
 
         output.va->Unbind();
 

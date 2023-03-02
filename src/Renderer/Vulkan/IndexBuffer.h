@@ -14,7 +14,7 @@ namespace FikoEngine {
 
     class VulkanIndexBuffer : public IndexBuffer{
     public:
-        VulkanIndexBuffer(const uint32_t *data, uint32_t length);
+        VulkanIndexBuffer(const u32 *data, u32 length);
 
         virtual void Bind() const override;
     private:

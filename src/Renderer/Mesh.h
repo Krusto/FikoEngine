@@ -32,7 +32,7 @@ namespace FikoEngine {
     struct Mesh {
     public:
         std::vector<Vertex> vertices{};
-        std::vector<uint32_t> indices{};
+        std::vector<u32> indices{};
         UUID id;
     };
 }

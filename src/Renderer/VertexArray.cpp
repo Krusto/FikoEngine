@@ -5,7 +5,7 @@
 
 namespace FikoEngine {
 
-    Ref<VertexArray> VertexArray::Create(uint32_t indexCount) {
+    Ref<VertexArray> VertexArray::Create(u32 indexCount) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanVertexArray>::Create(indexCount);

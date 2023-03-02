@@ -6,7 +6,7 @@
 namespace FikoEngine {
     class TextureAtlas {
     public:
-        TextureAtlas(const std::string &texturePath, uint32_t texturesPerRow) {
+        TextureAtlas(const std::string &texturePath, u32 texturesPerRow) {
             //texture = Texture::Create(texturePath);
             this->texturesPerRow = (float) texturesPerRow;
             //this->cellSize = texture->width() / texturesPerRow;
@@ -15,7 +15,7 @@ namespace FikoEngine {
 
         }
 
-        TextureAtlas(Ref<Texture> texture, uint32_t texturesPerRow) {
+        TextureAtlas(Ref<Texture> texture, u32 texturesPerRow) {
 //        this->texture = texture;
             this->texturesPerRow = (float) texturesPerRow;
             this->cellSize = texture->width() / texturesPerRow;
@@ -61,7 +61,7 @@ namespace FikoEngine {
 
     protected:
         ///Ref<Texture> texture;
-        uint32_t cellSize{};
+        u32 cellSize{};
         float texturesPerRow{};
         float unitSize{};
         float pixelSize{};

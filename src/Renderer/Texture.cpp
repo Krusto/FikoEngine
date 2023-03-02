@@ -14,7 +14,7 @@ namespace FikoEngine {
         }
     }
 
-    Ref<Texture> Texture::Create(char *data, uint32_t channels, uint32_t width, uint32_t height) {
+    Ref<Texture> Texture::Create(char *data, u32 channels, u32 width, u32 height) {
         switch (RendererAPI::Current()) {
             case RendererAPI::API::Vulkan:
                 return Ref<VulkanTexture>::Create(data, channels, width, height);

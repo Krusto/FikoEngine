@@ -6,15 +6,15 @@
 namespace FikoEngine {
     class VertexBuffer : public RefCounted {
     public:
-        static Ref<VertexBuffer> Create(const VertexLayout &layout, Vertex *data, uint32_t length);
+        static Ref<VertexBuffer> Create(const VertexLayout &layout, Vertex *data, u32 length);
 
-        static Ref<VertexBuffer> Create(const VertexLayout &layout, float *data, uint32_t length);
+        static Ref<VertexBuffer> Create(const VertexLayout &layout, float *data, u32 length);
 
-        uint32_t GetID() const { return m_ID; }
+        u32 GetID() const { return m_ID; }
 
         virtual void Bind() const = 0;
 
     protected:
-        uint32_t m_ID;
+        u32 m_ID;
     };
 }

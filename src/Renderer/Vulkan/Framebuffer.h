@@ -14,12 +14,12 @@
 namespace FikoEngine{
     class VulkanFramebuffer : public Framebuffer{
     public:
-        VulkanFramebuffer(uint32_t width, uint32_t height) { Init(width, height); }
-        void Init(uint32_t width,uint32_t height);
+        VulkanFramebuffer(u32 width, u32 height) { Init(width, height); }
+        void Init(u32 width,u32 height);
 
-        virtual uint32_t GetID() override;
+        virtual u32 GetID() override;
 
-        virtual uint32_t &GetColorAttachmentID() override;
+        virtual u32 &GetColorAttachmentID() override;
 
         virtual void Resize(u32 width, u32 height) override;
 
@@ -29,9 +29,9 @@ namespace FikoEngine{
 
         virtual void Unbind() override;
 
-        virtual uint32_t width() override;
+        virtual u32 width() override;
 
-        virtual uint32_t height() override;
+        virtual u32 height() override;
 
         virtual ViewportSize GetViewportSize() override;
 

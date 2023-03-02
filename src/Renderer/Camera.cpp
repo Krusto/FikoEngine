@@ -15,7 +15,7 @@ namespace FikoEngine {
         Update();
     }
 
-    void Camera::ChangeViewport(uint32_t width, uint32_t height) {
+    void Camera::ChangeViewport(u32 width, u32 height) {
         m_CameraSpec.viewport = {width, height};
         m_CameraSpec.AspectRatio = (float) width / (float) height;
     }

@@ -14,14 +14,14 @@ namespace FikoEngine {
 
         OpenGLTexture(std::string_view Path) { Load(Path); }
 
-        OpenGLTexture(char *data, uint32_t channels, uint32_t width, uint32_t height)
+        OpenGLTexture(char *data, u32 channels, u32 width, u32 height)
         { this->Load(data, channels, width, height); }
 
         virtual void Load(std::string_view Path) override;
 
-        virtual void Load(char *data, uint32_t channels, uint32_t width, uint32_t height) override;
+        virtual void Load(char *data, u32 channels, u32 width, u32 height) override;
 
-        virtual void Bind(uint32_t slot = 0) const override;
+        virtual void Bind(u32 slot = 0) const override;
 
         virtual void Destroy() override;
 
@@ -41,7 +41,7 @@ namespace FikoEngine {
 
         void Destroy();
 
-        uint32_t id{};
+        u32 id{};
         int width{};
         int height{};
         int channels{};

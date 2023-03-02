@@ -49,7 +49,7 @@ namespace FikoEngine {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    void OpenGLTexture::Load(char *data, uint32_t channels, uint32_t width, uint32_t height) {
+    void OpenGLTexture::Load(char *data, u32 channels, u32 width, u32 height) {
         glCreateTextures(GL_TEXTURE_2D, 1, &m_id);
         glBindTexture(GL_TEXTURE_2D, m_id);
 
@@ -74,7 +74,7 @@ namespace FikoEngine {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    void OpenGLTexture::Bind(uint32_t slot) const {
+    void OpenGLTexture::Bind(u32 slot) const {
         if (m_State == TextureState::Loaded) {
             glActiveTexture(GL_TEXTURE0 + slot);
             glBindTexture(GL_TEXTURE_2D, m_id);

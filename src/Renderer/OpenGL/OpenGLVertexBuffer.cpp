@@ -8,13 +8,13 @@
 namespace FikoEngine {
 
     OpenGLVertexBuffer::OpenGLVertexBuffer(const VertexLayout &layout, float *data,
-                                           uint32_t length) {
+                                           u32 length) {
         glGenBuffers(1, &m_ID);
         glBindBuffer(GL_ARRAY_BUFFER, m_ID);
         glBufferData(GL_ARRAY_BUFFER, length * layout.stride, data, GL_STATIC_DRAW);
 
-        uint32_t index = 0;
-        uint32_t offset = 0;
+        u32 index = 0;
+        u32 offset = 0;
 
         glVertexAttribPointer(index, 3, GL_FLOAT, 0, 32, reinterpret_cast<void *>(0));
         glEnableVertexAttribArray(index);
@@ -41,13 +41,13 @@ namespace FikoEngine {
     }
 
     OpenGLVertexBuffer::OpenGLVertexBuffer(const VertexLayout &layout, Vertex *data,
-                                           uint32_t length) {
+                                           u32 length) {
         glGenBuffers(1, &m_ID);
         glBindBuffer(GL_ARRAY_BUFFER, m_ID);
         glBufferData(GL_ARRAY_BUFFER, length * layout.stride, (void *) data, GL_STATIC_DRAW);
 
-        uint32_t index = 0;
-        uint32_t offset = 0;
+        u32 index = 0;
+        u32 offset = 0;
         for (auto attr: layout.attributes) {
             if (attr.type != ShaderUniformType::Int) {
                 glVertexAttribPointer(index, ShaderDataType::Size(attr.type) / sizeof(float), GL_FLOAT, 0, layout.stride,
@@ -67,11 +67,11 @@ namespace FikoEngine {
         glBindBuffer(GL_ARRAY_BUFFER, m_ID);
     }
 
-    OpenGLVertexBuffer OpenGLVertexBuffer::Create(const VertexLayout &layout, float *data, uint32_t length) {
+    OpenGLVertexBuffer OpenGLVertexBuffer::Create(const VertexLayout &layout, float *data, u32 length) {
         return OpenGLVertexBuffer{layout, data, length};
     }
 
-    OpenGLVertexBuffer OpenGLVertexBuffer::Create(const VertexLayout &layout, Vertex *data, uint32_t length) {
+    OpenGLVertexBuffer OpenGLVertexBuffer::Create(const VertexLayout &layout, Vertex *data, u32 length) {
         return OpenGLVertexBuffer{layout, data, length};
     }
 

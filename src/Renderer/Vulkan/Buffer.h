@@ -25,7 +25,7 @@ namespace FikoEngine{
     public:
         static Buffer Create(VkPhysicalDevice physicalDevice,VkDevice device,VkAllocationCallbacks* allocationCallbacks,u32 size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties);
         static void Copy(VkDevice device,VkCommandPool commandPool,VkQueue queue,Buffer src,Buffer dst,u32 size);
-        static uint32_t FindMemoryType(VkPhysicalDevice physicalDevice,uint32_t typeFilter, VkMemoryPropertyFlags properties);
+        static u32 FindMemoryType(VkPhysicalDevice physicalDevice,u32 typeFilter, VkMemoryPropertyFlags properties);
         static void CopyBuffer(VkDevice device,VkCommandPool commandPool,VkQueue queue,Buffer src,Buffer dst,u32 size);
         void Destroy(VkDevice device,VkAllocationCallbacks* callbacks);
 
