@@ -10,7 +10,7 @@
 
 FikoEngine::Application FikoEngine::Application::s_Application;
 
-bool FikoEngine::Application::Run() {
+void FikoEngine::Application::Run() {
     Logger::Init();
 
     m_Window = Window::Create({m_ApplicationSpec.ApplicationName,1280,720});
@@ -62,9 +62,6 @@ bool FikoEngine::Application::Run() {
     glfwDestroyWindow(m_Window->GetHandle());
     glfwTerminate();
 
-    m_Window.Reset();
-
-    return true;
 }
 
 void FikoEngine::Application::Init(const FikoEngine::ApplicationSpec &spec) {

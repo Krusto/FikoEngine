@@ -23,33 +23,33 @@ namespace FikoEngine {
         m_Framebuffer = Framebuffer::Create(window->GetSpec().width,window->GetSpec().height);
         m_Framebuffer->Bind();
 
-        std::vector<std::string> shader_materials = {"BlinnPhongTextured","BlinnPhongDiffuseTextured","BlinnPhongFlat","Light"};
+        std::vector<std::string> shader_materials = {"BlingPhongTextured","BlingPhongDiffuseTextured","BlingPhongFlat","Light"};
 
         for(auto& name : shader_materials){
             m_CurrentScene->AddShader(name,Shader::Load(m_AppSpec.WorkingDirectory+"/assets/Shaders/"+name));
             m_CurrentScene->AddMaterial(Material::Create(m_CurrentScene->GetShader(name), name));
         }
 
-        auto BlinnPhongTexturedMaterial = m_CurrentScene->GetMaterial("BlinnPhongTextured");
-        auto BlinnPhongDiffuseTexturedMaterial = m_CurrentScene->GetMaterial("BlinnPhongDiffuseTextured");
-        auto BlinnPhongFlatMaterial = m_CurrentScene->GetMaterial("BlinnPhongFlat");
+        auto BlingPhongTexturedMaterial = m_CurrentScene->GetMaterial("BlingPhongTextured");
+        auto BlingPhongDiffuseTexturedMaterial = m_CurrentScene->GetMaterial("BlingPhongDiffuseTextured");
+        auto BlingPhongFlatMaterial = m_CurrentScene->GetMaterial("BlingPhongFlat");
 
-        BlinnPhongTexturedMaterial->GetShader()->AddResource("Diffuse", ShaderResourceDeclaration{"Diffuse", 0, 1});
-        BlinnPhongTexturedMaterial->GetShader()->AddResource("Specular", ShaderResourceDeclaration{"Specular", 1, 1});
+        BlingPhongTexturedMaterial->GetShader()->AddResource("Diffuse", ShaderResourceDeclaration{"Diffuse", 0, 1});
+        BlingPhongTexturedMaterial->GetShader()->AddResource("Specular", ShaderResourceDeclaration{"Specular", 1, 1});
 
-        BlinnPhongDiffuseTexturedMaterial->GetShader()->AddResource("Diffuse", ShaderResourceDeclaration{"Diffuse", 0, 1});
+        BlingPhongDiffuseTexturedMaterial->GetShader()->AddResource("Diffuse", ShaderResourceDeclaration{"Diffuse", 0, 1});
 
-        BlinnPhongTexturedMaterial->Set("material.shininess", 40.0f);
-        BlinnPhongTexturedMaterial->Set("material.ambient", glm::vec3(0.1,0.1,0.1));
+        BlingPhongTexturedMaterial->Set("material.shininess", 40.0f);
+        BlingPhongTexturedMaterial->Set("material.ambient", glm::vec3(1,1,1));
 
-        BlinnPhongFlatMaterial->Set("material.shininess", 40.0f);
-        BlinnPhongFlatMaterial->Set("material.ambient", glm::vec3(0.1,0.1,0.1));
-        BlinnPhongFlatMaterial->Set("material.diffuse", glm::vec3(0.75,0.6,0.22));
-        BlinnPhongFlatMaterial->Set("material.specular", glm::vec3(0.62,0.55,0.36));
+        BlingPhongFlatMaterial->Set("material.shininess", 40.0f);
+        BlingPhongFlatMaterial->Set("material.ambient", glm::vec3(1,1,1));
+        BlingPhongFlatMaterial->Set("material.diffuse", glm::vec3(0.75,0.6,0.22));
+        BlingPhongFlatMaterial->Set("material.specular", glm::vec3(0.62,0.55,0.36));
 
-        BlinnPhongDiffuseTexturedMaterial->Set("material.ambient", glm::vec3(0.1,0.1,0.1));
-        BlinnPhongDiffuseTexturedMaterial->Set("material.specular", glm::vec3(0.62,0.55,0.36));
-        BlinnPhongDiffuseTexturedMaterial->Set("material.shininess", 40.0f);
+        BlingPhongDiffuseTexturedMaterial->Set("material.ambient", glm::vec3(1,1,1));
+        BlingPhongDiffuseTexturedMaterial->Set("material.specular", glm::vec3(0.62,0.55,0.36));
+        BlingPhongDiffuseTexturedMaterial->Set("material.shininess", 40.0f);
 
         m_CurrentScene->AddEntity("EditorCamera")
                 .AddComponent<CameraComponent>()
@@ -84,7 +84,7 @@ namespace FikoEngine {
                 .AddComponent<MeshComponent>();
 
         entity.GetComponent<MaterialComponent>().isLightDependent = true;
-        entity.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("BlinnPhongFlat");
+        entity.GetComponent<MaterialComponent>().material = m_CurrentScene->GetMaterial("BlingPhongFlat");
         entity.GetComponent<MeshComponent>() = MeshComponent::Generate(entity, MeshType::Cube);
     }
 

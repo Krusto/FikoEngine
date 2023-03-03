@@ -22,7 +22,6 @@ namespace FikoEngine {
         FikoEngine::Version AppVersion;
     };
 
-///Structure which holds window specification
     struct WindowSpec {
         std::string title;
         u32 width;
@@ -32,7 +31,6 @@ namespace FikoEngine {
 
     class Window : public RefCounted{
     public:
-        static inline ViewportSize s_ViewportSize{};
         Window() = default;
         Window(WindowSpec& spec);
 
@@ -40,41 +38,34 @@ namespace FikoEngine {
 
         static Ref<Window> Create(WindowSpec spec){return Ref<Window>::Create(spec);}
 
-        bool ShouldClose(){return glfwWindowShouldClose(s_Window);}
-        void Loop();
-        [[nodiscard]] double getDeltaTime() const { return 1.0/m_Timestep; }
-
-        void SetDeltaTime(double value) {
-            m_Timestep = value;
-        }
-
-        GLFWwindow* GetHandle() { return s_Window; }
-        [[nodiscard]] const auto& GetHandle() const{ return s_Window; }
-
-
-        bool Good(){return s_Window == NULL;}
-
-        void Close(){
-            glfwSetWindowShouldClose(s_Window,GLFW_TRUE);
-            Window::closeCallback(s_Window);
-        }
-
+    public:
         void Update();
 
-        void Clear(float r = 0.2f, float g = 0.3f, float b = 0.4f, float a = 1.0f);
-        explicit operator bool(){
-            return (s_Window == nullptr);
-        }
+        bool ShouldClose(){return glfwWindowShouldClose(s_Window);}
 
-        VkSurfaceKHR CreateSurface(VkInstance instance);
+        double GetDeltaTime() const;
+        void SetDeltaTime(double value);
+
+        GLFWwindow* GetHandle() { return s_Window; }
+
+        bool Good();
+
+        void Close();
+
+        void Clear(float r = 0.2f, float g = 0.3f, float b = 0.4f, float a = 1.0f);
 
         WindowSpec& GetSpec(){ return spec; }
         const WindowSpec& GetSpec() const { return spec; }
 
+        VkSurfaceKHR CreateSurface(VkInstance instance);
+
+    public:
+        static inline ViewportSize s_ViewportSize{};
+
+    public:
+        operator bool();
+
     private:
-
-        WindowSpec spec;
-
         static void closeCallback(GLFWwindow* window){
 
             for (auto& [layerName, layer] : LayerStack::data()) {
@@ -101,8 +92,10 @@ namespace FikoEngine {
                 layer->OnMouseMoveEvent((int)x,(int)y);
             }
         }
+    private:
         static inline GLFWwindow* s_Window = nullptr;
-        double m_Timestep{};
 
+        WindowSpec spec;
+        double m_Timestep{};
     };
 }

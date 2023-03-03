@@ -14,11 +14,6 @@ find_package(assimp REQUIRED)
 message("Finding glfw3...")
 find_package(glfw3 CONFIG REQUIRED)
 
-#add_subdirectory(Vendor/glfw)
-
-add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
-add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
-
 file(GLOB_RECURSE GLAD_SOURCE_FILES ./vendor/glad/src/*.c)
 file(GLOB_RECURSE GLAD_HEADER_FILES ./vendor/glad/src/*.h)
 
@@ -42,23 +37,10 @@ foreach (TMP_PATH ${HEADER_FILES})
     endif ()
 endforeach(TMP_PATH)
 
-#add_compile_definitions(ASSIMP_BUILD_NO_OPENGEX_IMPORTER)
 
-add_executable(FikoEngine ${SOURCE_FILES} ${HEADER_FILES})
+add_compile_definitions(GLFW_EXPOSE_NATIVE_WIN32)
+add_compile_definitions(GLM_ENABLE_EXPERIMENTAL)
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    target_compile_options(FikoEngine PRIVATE -static-libstdc++)
-    target_compile_options(FikoEngine PRIVATE -Wno-volatile)
-    target_compile_options(FikoEngine PRIVATE -Wno-delete-incomplete)
-    target_compile_options(FikoEngine PRIVATE -Wno-int-to-pointer-cast)
-endif()
-
-#if(USE_LWLOG)
-    include_directories(FIKO_ENGINE Vendor/lwlog/lwlog/src)
-#endif()
-
-#set(ASSIMP_INCLUDE_DIR 	       "./vendor/assimp")
-set(GLFW_INCLUDE_DIR           "./vendor/glfw/include")
 set(GLAD_INCLDUE_DIR           "./vendor/glad/include")
 set(VULKAN_INCLUDE_DIR         "C:/VulkanSDK/1.3.216.0/Include")
 set(GLM_INCLUDE_DIR            "./vendor/glm")
@@ -74,6 +56,15 @@ add_library(imgui STATIC ${IMGUI_SOURCE_FILES} ${IMGUI_HEADER_FILES})
 add_library(glad SHARED ${GLAD_SOURCE_FILES} ${GLAD_HEADER_FILES})
 add_library(glm SHARED ${GLM_SOURCES} ${GLM_HEADER} ${GLM_INLINE})
 
+add_executable(FikoEngine ${SOURCE_FILES} ${HEADER_FILES})
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(FikoEngine PRIVATE -static-libstdc++)
+    target_compile_options(FikoEngine PRIVATE -Wno-volatile)
+    target_compile_options(FikoEngine PRIVATE -Wno-delete-incomplete)
+    target_compile_options(FikoEngine PRIVATE -Wno-int-to-pointer-cast)
+endif()
+
 target_include_directories(glm PRIVATE ${GLM_INCLUDE_DIR})
 
 target_include_directories(glad PRIVATE ${GLAD_INCLDUE_DIR})
@@ -84,7 +75,6 @@ target_include_directories(imgui PRIVATE ${IMGUI_BACKENDS_INCLUDE_DIR})
 target_include_directories(imgui PRIVATE ${GLFW_INCLUDE_DIR})
 
 target_include_directories(FikoEngine PRIVATE "./src")
-target_include_directories(FikoEngine PRIVATE ${GLFW_INCLUDE_DIR})
 target_include_directories(FikoEngine PRIVATE ${GLAD_INCLDUE_DIR})
 target_include_directories(FikoEngine PRIVATE ${VULKAN_INCLUDE_DIR})
 target_include_directories(FikoEngine PRIVATE ${GLM_INCLUDE_DIR})
@@ -102,6 +92,5 @@ target_link_libraries(FikoEngine PRIVATE glfw)
 target_link_libraries(FikoEngine PRIVATE assimp::assimp)
 target_link_libraries(FikoEngine PRIVATE imgui)
 target_link_libraries(FikoEngine PRIVATE glad)
-#target_link_libraries(FikoEngine VulkanMemoryAllocator)
 
 target_precompile_headers(FikoEngine PRIVATE ${CMAKE_SOURCE_DIR}/src/Core/pch.hpp)

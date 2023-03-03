@@ -1,12 +1,8 @@
 //
 // Created by Stoyanov, Krusto (K.S.) on 6/3/2022.
 //
-#undef GLFW_MOUSE_PASSTHROUGH
 
 #include "Core/Core.h"
-#ifdef _WIN32
-#include <conio.h>
-#endif
 #include "Application/Application.h"
 
 int main(){
@@ -15,10 +11,10 @@ int main(){
     Application App(ApplicationSpec{"Example",
                                     "./",
                                     Version{1,0,0}});
-    if(!App.Run()){
-
-    }
+    App.Run();
 
     App.Destroy();
+
+    std::cin.ignore();
     return 0;
 }

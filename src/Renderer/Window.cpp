@@ -97,11 +97,6 @@ Window::Window(WindowSpec& spec) {
 //    glfwSetInputMode(this->s_Window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-void Window::Loop() {
-    this->spec.width = s_ViewportSize.width;
-    this->spec.height = s_ViewportSize.height;;
-}
-
 VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
     VkSurfaceKHR surface;
     #ifdef _WIN32
@@ -116,9 +111,31 @@ VkSurfaceKHR Window::CreateSurface(VkInstance instance) {
 
     void Window::Update() {
         GraphicsContext::s_Context->SwapBuffers();
+        this->spec.width = s_ViewportSize.width;
+        this->spec.height = s_ViewportSize.height;
     }
 
     void Window::Clear(float r, float g, float b, float a) {
         Renderer::ClearColor(glm::vec4{ r,g,b,a });
+    }
+
+    double Window::GetDeltaTime() const {
+        return 1.0/m_Timestep;
+    }
+
+    void Window::SetDeltaTime(double value) {
+        m_Timestep = value;
+    }
+
+    bool Window::Good() {
+        return (s_Window == nullptr);
+    }
+
+    void Window::Close() {
+        glfwSetWindowShouldClose(s_Window,GLFW_TRUE);
+    }
+
+    Window::operator bool() {
+        return false;
     }
 }

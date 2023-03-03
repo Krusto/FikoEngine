@@ -13,7 +13,7 @@ public:
     Application() = default;
     Application(const ApplicationSpec& spec) {Init(spec);}
 
-    bool Run();
+    void Run();
     void Init(const ApplicationSpec& spec);
 
     u32 GetWidth() { return m_Window->GetSpec().width; }
