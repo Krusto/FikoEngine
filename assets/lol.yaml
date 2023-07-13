@@ -1,0 +1,119 @@
+Scene: testScene
+Entity count: 3
+Shader count: 4
+Material count: 4
+Shaders:
+  - Shader:
+      Name: BlingPhongTextured
+      Path: /Shaders/BlingPhongTextured
+      Resources:
+        Diffuse: 0
+        Specular: 1
+  - Shader:
+      Name: BlingPhongDiffuseTextured
+      Path: /Shaders/BlingPhongDiffuseTextured
+      Resources:
+        Diffuse: 0
+  - Shader:
+      Name: BlingPhongFlat
+      Path: /Shaders/BlingPhongFlat
+      Resources:
+        {}
+  - Shader:
+      Name: Light
+      Path: /Shaders/Light
+      Resources:
+        {}
+Materials:
+  - Material:
+      Material Name: BlingPhongTextured
+      Shader: BlingPhongTextured
+      Uniforms:
+        material.shininess: 40
+        material.ambient: [1, 1, 1]
+  - Material:
+      Material Name: BlingPhongDiffuseTextured
+      Shader: BlingPhongDiffuseTextured
+      Uniforms:
+        material.ambient: [0, 0, 0]
+        material.specular: [0.620000005, 0.550000012, 0.360000014]
+        material.shininess: 40
+  - Material:
+      Material Name: BlingPhongFlat
+      Shader: BlingPhongFlat
+      Uniforms:
+        material.shininess: 40
+        material.ambient: [1, 1, 1]
+        material.diffuse: [0.200000003, 0.100000001, 0.819999993]
+        material.specular: [0.620000005, 0.550000012, 0.360000014]
+  - Material:
+      Material Name: Light
+      Shader: Light
+      Uniforms:
+        {}
+Entities:
+  - Entity:
+      ? IDComponent:
+          UUID: 14851852952203354975
+      : TagComponent
+      ? Tag: EditorCamera
+      : TransformComponent
+      ? Position: [0, 0, 3]
+        Rotation: [0, 0, 0]
+        Scale: [0.200000003, 0.200000003, 0.200000003]
+      : CameraComponent
+      ? Primary: true
+        Position: [0, 0, 3]
+        Rotation: [0, 0, 0]
+        Specification:
+          FOV: 90
+          Far: 1000
+          Near: 0.100000001
+          Viewport Width: 488
+          Viewport Height: 314
+      : RelationshipComponent
+      ? ParentHandle: 6330241386909559204
+        Children:
+          []
+  - Entity:
+      ? IDComponent:
+          UUID: 5385650473077488952
+      : TagComponent
+      ? Tag: Light Source
+      : TransformComponent
+      ? Position: [0, 0, 1.5]
+        Rotation: [0, 0, 0]
+        Scale: [0.0500000007, 0.0500000007, 0.0500000007]
+      : MaterialComponent
+      ? Is Light Dependent: false
+        Material: Light
+      : MeshComponent
+      ? Mesh Type: 0
+      : RelationshipComponent
+      ? ParentHandle: 6330241386909559204
+        Children:
+          []
+      : LightComponent
+      ? Position: [0, 0, 1.5]
+        Ambient Color: [0.100000001, 0.100000001, 0.100000001]
+        Diffuse Color: [0.5, 0.5, 0.5]
+        Specular Color: [1, 1, 1]
+        Intensity: 4
+  - Entity:
+      ? IDComponent:
+          UUID: 11946673431562792829
+      : TagComponent
+      ? Tag: Cube
+      : TransformComponent
+      ? Position: [0, 1.20000005, 0]
+        Rotation: [0, 0, 0]
+        Scale: [1, 1, 1]
+      : MaterialComponent
+      ? Is Light Dependent: true
+        Material: BlingPhongFlat
+      : MeshComponent
+      ? Mesh Type: 0
+      : RelationshipComponent
+      ? ParentHandle: 6330241386909559204
+        Children:
+          []

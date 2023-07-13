@@ -1,12 +1,6 @@
-[submodule "Vendor/glfw"]
-	path = Vendor/glfw
-	url = https://github.com/glfw/glfw.git
 [submodule "Vendor/lwlog"]
 	path = Vendor/lwlog
 	url = https://github.com/ChristianPanov/lwlog.git
-[submodule "Vendor/glm"]
-	path = Vendor/glm
-	url = https://github.com/g-truc/glm.git
 [submodule "Vendor/VulkanMemoryAllocator"]
 	path = Vendor/VulkanMemoryAllocator
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
@@ -17,9 +11,6 @@
 	path = Vendor/imgui
 	url = https://github.com/ocornut/imgui
 	branch = docking
-[submodule "Vendor/assimp"]
-	path = Vendor/assimp
-	url = https://github.com/assimp/assimp.git
 [submodule "Vendor/stb"]
 	path = Vendor/stb
 	url = https://github.com/nothings/stb

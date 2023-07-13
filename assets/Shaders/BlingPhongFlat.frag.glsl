@@ -4,9 +4,9 @@ layout(location = 0) out vec4 FragColor;
 
 struct Material {
     float shininess;
+    vec3 ambient;
     vec3 diffuse;
     vec3 specular;
-    vec3 ambient;
 }; 
   
 struct Light {
@@ -31,7 +31,7 @@ layout(location = 9) in VertexData vertexData;
 void main()
 {
 
-    vec3 ambient  =  light.ambient + material.ambient;
+    vec3 ambient  = light.ambient * material.ambient;
 
   	vec3 norm = normalize(vertexData.vertNormal);
     vec3 lightDir = normalize(light.position - vertexData.worldPos);
@@ -49,7 +49,7 @@ void main()
     // specular color
     vec3 specular =  light.specular * (spec * material.specular);  
         
-    vec3 outColor = light.intensity * (specular + diffuse + ambient);
+    vec3 outColor = light.intensity * (ambient + diffuse + specular);
 
     FragColor = vec4(outColor,1.0);
 }

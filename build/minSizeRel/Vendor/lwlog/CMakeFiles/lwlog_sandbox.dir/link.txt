@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\lwlog_sandbox.dir/objects.a
+D:\w64devkit\bin\ar.exe qc CMakeFiles\lwlog_sandbox.dir/objects.a @CMakeFiles\lwlog_sandbox.dir\objects1.rsp
+D:\w64devkit\bin\g++.exe -O3 -Os -DNDEBUG -Wl,--whole-archive CMakeFiles\lwlog_sandbox.dir/objects.a -Wl,--no-whole-archive -o lwlog_sandbox.exe -Wl,--out-implib,liblwlog_sandbox.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\lwlog_sandbox.dir\linklibs.rsp

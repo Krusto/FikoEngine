@@ -1,0 +1,1553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FIKO_ENGINE"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\scripts\;CMake Files\scripts\vcpkg-master\;CMake Files\scripts\vcpkg-master\scripts\;CMake Files\scripts\vcpkg-master\scripts\buildsystems\;CMake Files\scripts\vcpkg-master\installed\;CMake Files\scripts\vcpkg-master\installed\x64-windows\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glm\;CMake Files\Vendor\;CMake Files\Vendor\yaml-cpp\;CMake Files\Vendor\yaml-cpp\util\;CMake Files\Vendor\lwlog\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libimgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 imgui"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="imgui/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libimgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 imgui/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 glad"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glad/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libglad.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 glad/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FikoEngineLib">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libFikoEngineLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLFW_EXPOSE_NATIVE_WIN32"/>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/./FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 FikoEngineLib"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FikoEngineLib/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/libFikoEngineLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLFW_EXPOSE_NATIVE_WIN32"/>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/./FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 FikoEngineLib/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Sandbox">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/bin/Sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 Sandbox"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Sandbox/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/bin/Sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 Sandbox/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FikoEngineEditor">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/bin/FikoEngineEditor.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 FikoEngineEditor"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FikoEngineEditor/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/bin/FikoEngineEditor.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DGLM_ENABLE_EXPERIMENTAL"/>
+					<Add option="-DGLFW_DLL"/>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/FikoEngineLib/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/glad/include"/>
+					<Add directory="C:/VulkanSDK/1.3.216.0/Include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/imgui/backends"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/entt/single_include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/lwlog/lwlog/src"/>
+					<Add directory="E:/Projects/FikoEngine/./vendor/stb"/>
+					<Add directory="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 FikoEngineEditor/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/libyaml-cpp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 yaml-cpp"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/libyaml-cpp.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 yaml-cpp/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-sandbox">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-sandbox"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-sandbox/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-sandbox/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-parse">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/parse.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-parse"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-parse/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/parse.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-parse/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-read">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/read.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-read"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="yaml-cpp-read/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/read.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DYAML_CPP_STATIC_DEFINE"/>
+					<Add directory="E:/Projects/FikoEngine/Vendor/yaml-cpp/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 yaml-cpp-read/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/yaml-cpp/util/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/liblwlog.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/liblwlog.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog_sandbox">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/lwlog_sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog_sandbox"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog_sandbox/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/lwlog_sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog_sandbox/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/AssetsPanel.cpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/AssetsPanel.hpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/Editor.cpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/EditorLayer.cpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/EditorLayer.h">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/HierarchyPanel.cpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/HierarchyPanel.h">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/InspectorPanel.cpp">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineEditor/src/InspectorPanel.h">
+			<Option target="FikoEngineEditor"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Application/Application.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Application/Application.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Buffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Core.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Definitions.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Extent2D.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Log.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Log.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Platform/Windows/WindowsPlatformUtils.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Platform/Windows/WindowsPlatformUtils.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Ref.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Ref.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Timestep.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/Timestep.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/UUID.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/UUID.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Core/stdcpp.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/FikoEngine.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/ImGUI/ComponentView.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/ImGUI/ComponentView.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/ImGUI/ImGUILayer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/ImGUI/ImGUILayer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Layer/Layer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Layer/LayerStack.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Layer/LayerStack.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Camera.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Camera.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Framebuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Framebuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/GraphicsContext.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/GraphicsContext.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/IndexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/IndexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Light.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Light.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Material.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Material.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Mesh.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Mesh.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/MeshBuilder.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/MeshBuilder.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/ObjectLoader.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/ObjectLoader.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLContext.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLContext.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLFramebuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLFramebuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLIndexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLIndexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLMaterial.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLMaterial.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLRenderer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLRenderer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLShader.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLShader.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLTexture.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLTexture.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLVertexArray.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLVertexArray.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLVertexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/OpenGL/OpenGLVertexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Renderer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Renderer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/RendererAPI.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/RendererAPI.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/RendererSpec.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Shader.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Shader.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/ShaderDataType.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/ShaderUniform.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Texture.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Texture.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/TextureAtlas.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vertex.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vertex.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexArray.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexArray.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexLayout.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/VertexLayout.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Viewport.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Buffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Buffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Command.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Command.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Device.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Device.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Framebuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Framebuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/GraphicsPipeline.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/GraphicsPipeline.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Image.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Image.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/ImageView.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/ImageView.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/IndexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/IndexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Instance.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Instance.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Material.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Material.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Memory.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Memory.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/PhysicalDevice.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/PhysicalDevice.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Platform.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Platform.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Queue.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Queue.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/RendererData.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Renderpass.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Renderpass.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Swapchain.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Swapchain.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/SwapchainSpec.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Synchronization.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Synchronization.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Texture.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/Texture.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VertexArray.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VertexArray.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VertexBuffer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VertexBuffer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanContext.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanContext.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanImGUIInterface.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanImGUIInterface.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanRenderer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanRenderer.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanShader.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Vulkan/VulkanShader.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Window.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Renderer/Window.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/Component.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/Component.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/Entity.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/Scene.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/Scene.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/SceneSerializer.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Scene/SceneSerializer.hpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Util/File.cpp">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Util/File.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/FikoEngineLib/src/Util/Version.h">
+			<Option target="FikoEngineLib"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Sandbox/src/SandboxLayer.cpp">
+			<Option target="Sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Sandbox/src/SandboxLayer.h">
+			<Option target="Sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Sandbox/src/sandbox.cpp">
+			<Option target="Sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/glad/src/glad.c">
+			<Option target="glad"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_glfw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_glfw.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_opengl3.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_opengl3.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_vulkan.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/backends/imgui_impl_vulkan.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imconfig.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui_draw.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui_internal.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui_tables.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imgui_widgets.cpp">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imstb_rectpack.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imstb_textedit.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/imgui/imstb_truetype.h">
+			<Option target="imgui"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/Sandbox/Benchmark.h">
+			<Option target="lwlog_sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/Sandbox/Sandbox.cpp">
+			<Option target="lwlog_sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/argument_format.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/argument_format_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/console_writer.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/datetime.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/file_writer.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/file_writer.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/log_message.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/os.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/alignment_formatter.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/alignment_formatter.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/attribute.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/attribute.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/color_format_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/flag_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/format_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatter.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatter_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatters.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/pattern.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/pattern.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/record.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/source_meta.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/topic.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/tweakme_macros.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/windows_lightweight.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/fwd.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/logger_interface.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/logger_interface_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/sink_interface.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/level.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/logger.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/logger_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog_impl.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/log_policy.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/log_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_color_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_storage_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_storage_policy_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/threading_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/registry.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/registry.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/file_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink_factory.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/stderr_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/stdout_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/tweakme.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/binary.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/contrib/graphbuilder.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/contrib/graphbuilderadapter.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/contrib/graphbuilderadapter.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/convert.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/depthguard.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/directives.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/directives.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emit.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitfromevents.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitter.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitterstate.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitterstate.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitterutils.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/emitterutils.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/exceptions.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/exp.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/exp.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/memory.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/node.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/node_data.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/nodebuilder.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/nodebuilder.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/nodeevents.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/nodeevents.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/null.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/ostream_wrapper.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/parse.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/parser.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/regex_yaml.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/regex_yaml.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scanner.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scanner.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scanscalar.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scanscalar.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scantag.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scantag.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/scantoken.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/simplekey.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/singledocparser.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/singledocparser.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/stream.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/stream.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/tag.cpp">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/src/tag.h">
+			<Option target="yaml-cpp"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/util/parse.cpp">
+			<Option target="yaml-cpp-parse"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/util/read.cpp">
+			<Option target="yaml-cpp-read"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/util/sandbox.cpp">
+			<Option target="yaml-cpp-sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/scripts/buildsystems/vcpkg.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\scripts\buildsystems\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpConfig.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-config-version.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glm/glm-config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glm\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/yaml-cpp-config.cmake.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/yaml-cpp.pc.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/util/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\util\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\lwlog\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

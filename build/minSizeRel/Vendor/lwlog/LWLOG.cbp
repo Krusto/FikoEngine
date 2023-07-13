@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="LWLOG"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\scripts\;CMake Files\scripts\vcpkg-master\;CMake Files\scripts\vcpkg-master\scripts\;CMake Files\scripts\vcpkg-master\scripts\buildsystems\;CMake Files\scripts\vcpkg-master\installed\;CMake Files\scripts\vcpkg-master\installed\x64-windows\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\;CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glm\;CMake Files\Vendor\;CMake Files\Vendor\yaml-cpp\;CMake Files\Vendor\yaml-cpp\util\;CMake Files\Vendor\lwlog\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/liblwlog.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/liblwlog.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog_sandbox">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/lwlog_sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog_sandbox"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="lwlog_sandbox/fast">
+				<Option output="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/lwlog_sandbox.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include/c++/backward"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/include-fixed"/>
+					<Add directory="d:\w64devkit\bin\../lib/gcc/x86_64-w64-mingw32/12.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 lwlog_sandbox/fast"/>
+					<CompileFile command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/w64devkit/bin/mingw32-make.exe -f &quot;E:/Projects/FikoEngine/build/minSizeRel/Vendor/lwlog/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/Sandbox/Benchmark.h">
+			<Option target="lwlog_sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/Sandbox/Sandbox.cpp">
+			<Option target="lwlog_sandbox"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/argument_format.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/argument_format_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/console_writer.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/datetime.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/file_writer.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/file_writer.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/log_message.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/os.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/alignment_formatter.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/alignment_formatter.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/attribute.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/attribute.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/color_format_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/flag_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/format_data.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatter.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatter_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/formatters.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/pattern.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/pattern/pattern.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/record.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/source_meta.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/topic.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/tweakme_macros.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/details/windows_lightweight.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/fwd.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/logger_interface.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/logger_interface_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/interface/sink_interface.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/level.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/logger.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/logger_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog_impl.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/lwlog_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/log_policy.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/log_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_color_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_storage_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/sink_storage_policy_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/policy/threading_policy.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/registry.cpp">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/registry.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/file_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink_factory.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/sink_impl.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/stderr_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/sinks/stdout_sink.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/lwlog/src/tweakme.h">
+			<Option target="lwlog"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/scripts/buildsystems/vcpkg.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\scripts\buildsystems\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpConfig.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/assimp/assimpTargets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\assimp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-config-version.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/pugixml/pugixml-targets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\pugixml\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets-debug.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets-release.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glfw3\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/scripts/vcpkg-master/installed/x64-windows/share/glm/glm-config.cmake">
+			<Option virtualFolder="CMake Files\scripts\vcpkg-master\installed\x64-windows\share\glm\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/yaml-cpp-config.cmake.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/yaml-cpp.pc.in">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/yaml-cpp/util/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\yaml-cpp\util\"/>
+		</Unit>
+		<Unit filename="E:/Projects/FikoEngine/Vendor/lwlog/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Vendor\lwlog\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

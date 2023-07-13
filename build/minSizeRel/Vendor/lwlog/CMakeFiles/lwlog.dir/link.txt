@@ -1,0 +1,2 @@
+D:\w64devkit\bin\ar.exe qc liblwlog.a CMakeFiles/lwlog.dir/lwlog/src/details/file_writer.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/details/pattern/alignment_formatter.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/details/pattern/attribute.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/details/pattern/pattern.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/lwlog_impl.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/policy/log_policy.cpp.obj CMakeFiles/lwlog.dir/lwlog/src/registry.cpp.obj
+D:\w64devkit\bin\ranlib.exe liblwlog.a

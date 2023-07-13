@@ -44,15 +44,17 @@ for package in required_packages:
         print(f"{Fore.YELLOW}{package} not found, installing...{Style.RESET_ALL}")
         subprocess.run(["pip", "install", package])
 
-# Download Vcpkg
-print(f"{Fore.BLUE}Downloading Vcpkg from {vcpkg_url}...{Style.RESET_ALL}")
+print(f"{Fore.BLUE}Checking if Vcpkg exist...{Style.RESET_ALL}")
+if not os.access("vcpkg-master", os.F_OK):
+    # Download Vcpkg
+    print(f"{Fore.BLUE}Downloading Vcpkg from {vcpkg_url}...{Style.RESET_ALL}")
 
-urllib.request.urlretrieve(vcpkg_url, "vcpkg.zip")
+    urllib.request.urlretrieve(vcpkg_url, "vcpkg.zip")
 
-# Extract Vcpkg
-print(f"\n{Fore.BLUE}Extracting Vcpkg to {vcpkg_dir}...{Style.RESET_ALL}")
-with zipfile.ZipFile("vcpkg.zip", "r") as zip_ref:
-    zip_ref.extractall(".")
+    # Extract Vcpkg
+    print(f"\n{Fore.BLUE}Extracting Vcpkg to {vcpkg_dir}...{Style.RESET_ALL}")
+    with zipfile.ZipFile("vcpkg.zip", "r") as zip_ref:
+        zip_ref.extractall(".")
 
 # Build Vcpkg
 print(f"{Fore.BLUE}Building Vcpkg in {vcpkg_dir}...{Style.RESET_ALL}")
@@ -63,8 +65,19 @@ else:  # Linux and macOS
     subprocess.run(shlex.split("./bootstrap-vcpkg.sh"))
 
 # Check if libraries are installed and install them if necessary
-libraries = ["assimp:x64-windows","pthreads:x64-windows","glfw3:x64-windows"]
+print(f"{Fore.BLUE}Selecting library tripplet ...{Style.RESET_ALL}")
+flavor = ""
+if os.name == "nt":  # Windows
+    flavor = ":x64-windows-static"
+    libraries = ["glm", "assimp", "pthreads", "glfw3", "yaml-cpp"]
+else: # Linux and macOS
+    flavor = ":x64-linux"
+    libraries = ["glm", "assimp", "pthreads", "glfw3", "yaml-cpp"]
+print(f"{Fore.BLUE}Selected {flavor} library flavor...{Style.RESET_ALL}")
+
 for lib in libraries:
+    lib = lib + flavor
+
     result = subprocess.run(shlex.split(f"./{vcpkg_exe} list {lib}"), capture_output=True, text=True)
     if f"{lib}:{os.linesep}    Installed" not in result.stdout:
         print(f"{Fore.YELLOW}Installing {lib}...{Style.RESET_ALL}")
@@ -72,7 +85,8 @@ for lib in libraries:
 
 # Clean up
 os.chdir("..")
-os.remove("vcpkg.zip")
+if os.access("vcpkg.zip", os.F_OK):
+    os.remove("vcpkg.zip")
 
 # Make sure everything we need for the setup is installed
 PythonRequirements.Validate()
@@ -82,6 +96,14 @@ os.chdir('./../') # Change from devtools/scripts directory to root
 
 VulkanRequirements.Validate()
 
+os.chdir("Vendor")
+print(f"\n{Fore.BLUE}Getting Ninja...{Style.RESET_ALL}")
+subprocess.call(["git","clone","https://github.com/ninja-build/ninja"])
+print(f"\n{Fore.BLUE}Building Ninja...{Style.RESET_ALL}")
+os.chdir("ninja")
+subprocess.call(["cmake","-Bbuild-cmake"])
+subprocess.call(["cmake","--build","build-cmake"])
+os.chdir("../../")
 print(f"\n{Fore.BLUE}Updating submodules...{Style.RESET_ALL}")
 subprocess.call(["git", "submodule", "update", "--init", "--recursive"])
 

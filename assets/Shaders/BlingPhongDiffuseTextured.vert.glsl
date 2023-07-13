@@ -6,9 +6,8 @@ layout(location = 2) in vec2 aTexCoord;
 
 struct Material {
     float shininess;
-    vec3 diffuse;
-    vec3 specular;
     vec3 ambient;
+    vec3 specular;
 }; 
   
 struct Light {
