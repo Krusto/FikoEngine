@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/scripts/vcpkg-master/scripts/buildsystems/vcpkg.cmake")
-set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/scripts/vcpkg-master/installed/x64-windows-static/share")
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/scripts/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/scripts/vcpkg/installed/x64-mingw-static/share")
 
 project(FIKO_ENGINE)
 
@@ -19,8 +19,8 @@ message("${PROJECT_NAME}: Adding yaml-cpp...")
 add_subdirectory("${CMAKE_SOURCE_DIR}/Vendor/yaml-cpp")
 message("${PROJECT_NAME}: Adding lwlog...")
 add_subdirectory("${CMAKE_SOURCE_DIR}/Vendor/lwlog")
-message("${PROJECT_NAME}: Adding shaderc...")
-add_subdirectory("${CMAKE_SOURCE_DIR}/Vendor/shaderc")
+#message("${PROJECT_NAME}: Adding shaderc...")
+#add_subdirectory("${CMAKE_SOURCE_DIR}/Vendor/shaderc")
 
 message("${PROJECT_NAME}: Adding source files")
 file(GLOB_RECURSE GLAD_SOURCE_FILES ./vendor/glad/src/*.c)

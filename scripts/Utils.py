@@ -2,9 +2,9 @@ import sys
 import os
 import winreg
 
-import requests
 import time
 import urllib
+import requests
 
 from zipfile import ZipFile
 

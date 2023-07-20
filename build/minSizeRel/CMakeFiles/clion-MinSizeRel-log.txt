@@ -1,40 +1,45 @@
 "C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_C_COMPILER=D:/w64devkit/bin/gcc.exe -DCMAKE_CXX_COMPILER=D:/w64devkit/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" -S E:\Projects\FikoEngine -B E:\Projects\FikoEngine\build\minSizeRel
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: D:/w64devkit/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/w64devkit/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 Compiler Version: 12.2.0
 FIKO_ENGINE: Finding assimp...
-FIKO_ENGINE: Finding glfw3...
-FIKO_ENGINE: Finding glm...
-FIKO_ENGINE: Adding yaml-cpp...
-FIKO_ENGINE: Adding lwlog...
-LWLOG: Compiler Version: 12.2.0
-LWLOG: Adding source files
-LWLOG: Creating lwlog lib
-LWLOG: Linking lwlog to sandbox
-FIKO_ENGINE: Adding shaderc...
--- Shaderc: build type is "MinSizeRel".
--- Configuring Shaderc to build tests.
--- Configuring Shaderc to build examples.
--- Configuring Shaderc to check copyrights.
--- asciidoctor was not found - no documentation will be generated
--- Performing Test COMPILER_SUPPORTS_EXTRA_SEMI_WARNING
-CMake Error at E:/Projects/FikoEngine/build/minSizeRel/CMakeFiles/CMakeTmp/CMakeLists.txt:3 (project):
-  Generator
-
-    MinGW Makefiles
-
-  does not support platform specification, but platform
-
-    x64
-
-  was specified.
-
-
-CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
-CMake Error at C:/Program Files/CMake/share/cmake-3.22/Modules/Internal/CheckSourceCompiles.cmake:92 (try_compile):
-  Failed to configure test project build system.
+CMake Warning at scripts/vcpkg/installed/x64-mingw-static/share/minizip/minizipConfig.cmake:1 (message):
+  'find_package(minizip CONFIG)' is deprecated.  Please use
+  'find_package(unofficial-minizip CONFIG)' instead.
 Call Stack (most recent call first):
-  C:/Program Files/CMake/share/cmake-3.22/Modules/Internal/CheckCompilerFlag.cmake:71 (cmake_check_source_compiles)
-  C:/Program Files/CMake/share/cmake-3.22/Modules/CheckCXXCompilerFlag.cmake:40 (cmake_check_compiler_flag)
-  Vendor/shaderc/CMakeLists.txt:94 (check_cxx_compiler_flag)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake:47 (find_package)
+  scripts/vcpkg/installed/x64-mingw-static/share/assimp/assimpConfig.cmake:32 (find_dependency)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  CMakeLists.txt:13 (find_package)
+
+
+CMake Error at C:/Program Files/CMake/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR)
+Call Stack (most recent call first):
+  C:/Program Files/CMake/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:594 (_FPHSA_FAILURE_MESSAGE)
+  C:/Program Files/CMake/share/cmake-3.22/Modules/FindZLIB.cmake:120 (FIND_PACKAGE_HANDLE_STANDARD_ARGS)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake:47 (find_package)
+  scripts/vcpkg/installed/x64-mingw-static/share/unofficial-minizip/unofficial-minizipConfig.cmake:28 (find_dependency)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake:47 (find_package)
+  scripts/vcpkg/installed/x64-mingw-static/share/minizip/minizipConfig.cmake:4 (find_dependency)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  C:/Program Files/CMake/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake:47 (find_package)
+  scripts/vcpkg/installed/x64-mingw-static/share/assimp/assimpConfig.cmake:32 (find_dependency)
+  scripts/vcpkg/scripts/buildsystems/vcpkg.cmake:855 (_find_package)
+  CMakeLists.txt:13 (find_package)
 
 
 -- Configuring incomplete, errors occurred!

@@ -218,8 +218,6 @@ namespace FikoEngine {
 
     int32_t OpenGLShader::GetUniformLocation(const std::string &name) const {
         int32_t result = glGetUniformLocation(m_RendererID, name.c_str());
-        if(result < 0)
-            std::cout<<m_Name + " : Cannot find uniform " + name + "!\n";
         return result;
     }
 

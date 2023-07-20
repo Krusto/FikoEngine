@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <memory>
 #define LWLOG
 #ifdef LWLOG
 #include <lwlog.h>

@@ -56,8 +56,8 @@ namespace FikoEngine{
     #else
     void FikoEngine::Logger::Init() {}
     void Logger::Destroy() {}
-    Logger& Logger::GetHandle() {
-        return g_logger;
+    Logger* Logger::GetInstance() {
+        return s_Logger.get();
     }
     #endif
 }
